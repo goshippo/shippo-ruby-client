@@ -8,9 +8,8 @@ module Shippo
       "/" + dc + (dc[-1] == 's' ? 'es' : 's')
     end
     def url
-      unless id = self['id']
-        # TODO
-        raise InvalidRequestError.new("Could not determine which URL to request: #{self.class} instance has invalid ID: #{id.inspect}", 'id')
+      unless id = self['object_id']
+        raise MissingDataError.new("#{self.class} has no object_id")
       end
       "#{self.class.url}/#{CGI.escape(id)}"
     end

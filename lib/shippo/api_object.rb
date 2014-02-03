@@ -1,10 +1,6 @@
 module Shippo
   class ApiObject < ContainerObject
     include Enumerable
-    # remove default id method (is deprecated anyway)
-    if method_defined?(:id)
-      undef :id
-    end
 
     def initialize(id=nil)
       # parameter overloading!
@@ -15,12 +11,9 @@ module Shippo
       @values = {}
       @values[:id] = id if id
     end
-    def tesst
-      p "test test"
-    end
 
     def self.construct_from(values)
-      #todo recursive on arrays
+      # recursive on arrays
       case values
       when Array
         values.map { |v| self.construct_from(v) }

@@ -7,7 +7,7 @@ module Shippo
           self.construct_from(response[:results] || [])
         end
         def get(id, params={})
-          response = Shippo.request(:get, "#{url}/#{CGI.escape(id)}", params)
+          response = Shippo.request(:get, "#{url}/#{CGI.escape(id)}/", params)
           self.construct_from(response)
         end
       end

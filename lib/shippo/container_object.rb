@@ -2,7 +2,6 @@ module Shippo
   class ContainerObject
     protected
     def create_accessor(k_name, k_index)
-      puts "accessor #{k_name}, #{k_index}"
       metaclass.instance_eval do
         define_method(k_name) { @values[k_index] }
         define_method(:"#{k_name}=") do |v|
