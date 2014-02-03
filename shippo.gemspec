@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.description = "Quick and easy access to the Shippo API"
   s.authors     = ["Tobias Schottdorf"]
   s.email       = 'tobias.schottdorf@gmail.com'
-  s.files       = ["lib/shippo.rb"].concat(Dir.entries('./lib/shippo/').keep_if { |v| /\.rb$/.match(v) }.collect! { |v| './lib/shippo/'+v })
+  s.files       = ["example.rb", "test/test.rb", "lib/shippo.rb"].concat(Dir.entries('./lib/shippo/').keep_if { |v| /\.rb$/.match(v) }.collect! { |v| './lib/shippo/'+v })
   s.homepage    = 'http://goshippo.com'
   s.license       = 'MIT'
   puts s
