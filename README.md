@@ -2,7 +2,7 @@ shippo-ruby-client
 ==================
 A client wrapper library to access the API of http://goshippo.com.
 Still under development. Feel free to contribute!
-```
+```ruby
 require 'shippo'
 Shippo::api_user = 'YOUR_API_USER'
 Shippo::api_pass = 'YOUR_API_PASS'
