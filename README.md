@@ -8,7 +8,7 @@ Shippo::api_user = 'YOUR_API_USER'
 Shippo::api_pass = 'YOUR_API_PASS'
 
 from = Shippo::Address.create(
-  :object_purchase => 'QUOTE',
+  :object_purpose => 'QUOTE',
   :name => 'Laura Behrens Wu',
   :company => 'Shippo',
   :street1 => 'Clayton St.',
@@ -25,7 +25,7 @@ from = Shippo::Address.create(
 )
 puts from
 to = Shippo::Address.create(
-  :object_purchase => 'QUOTE',
+  :object_purpose => 'QUOTE',
   :name => 'Mr. John Doe',
   :company => 'ACME Inc.',
   :street1 => nil,
