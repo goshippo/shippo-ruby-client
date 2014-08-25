@@ -10,7 +10,6 @@ module Shippo
           self.construct_from(response)
         end
       end
-
       def self.included(base)
         base.extend(ClassMethods)
       end
