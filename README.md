@@ -2,6 +2,11 @@ shippo-ruby-client
 ==================
 A client wrapper library to access the API of http://goshippo.com.
 Still under development. Feel free to contribute!
+
+The gems you'll need are:
+    Rest Client
+    Mocha (For Testing)
+    
 ```ruby
 require 'shippo'
 Shippo::api_user = 'YOUR_API_USER'
@@ -56,7 +61,7 @@ shipment = Shippo::Shipment.create(
   :metadata => 'Quote Shipment'
 )
 puts shipment
-# never do this in real life
+# Only for Demonstration Purposes
 sleep(5)
 
 rates = shipment.rates

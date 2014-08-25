@@ -41,7 +41,7 @@ module Shippo
         @values[k.to_sym] = v
       end
       instance_eval do
-         add_accessors(@values.keys)
+        add_accessors(@values.keys)
       end
 
     end
