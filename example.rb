@@ -46,7 +46,7 @@ parcel = Shippo::Parcel.create(
   :mass_unit => :lb)
 
 #example CustomsItems object. This is only required for int'l shipment only.
-customs_item = Shippo::Customs_Item.create(
+customs_item = Shippo::CustomsItem.create(
   :description => "T-Shirt",
   :quantity => 2,
   :net_weight => "400",
@@ -57,7 +57,7 @@ customs_item = Shippo::Customs_Item.create(
 
 #Creating the CustomsDeclaration
 #(CustomsDeclarations are only required for international shipments)
-customs_declaration = Shippo::Customs_Declaration.create(
+customs_declaration = Shippo::CustomsDeclaration.create(
   :contents_type => "MERCHANDISE",
   :contents_explanation => "T-Shirt purchase",
   :non_delivery_option => "RETURN",

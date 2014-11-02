@@ -5,11 +5,15 @@ module Shippo
     def initialize(id=nil)
       # parameter overloading!
       if id.kind_of?(Hash)
-        id = id[:id]
+        id = id[:object_id]
       end
 
       @values = {}
-      @values[:id] = id if id
+      @values[:object_id] = id if id
+    end
+
+    def self.find(id)
+      new(id).refresh
     end
 
     def self.construct_from(values)

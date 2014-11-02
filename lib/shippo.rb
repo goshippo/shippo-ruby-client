@@ -17,6 +17,7 @@ require_relative 'shippo/manifest.rb'
 require_relative 'shippo/customs_item.rb'
 require_relative 'shippo/customs_declaration.rb'
 require_relative 'shippo/refund.rb'
+require_relative 'shippo/location.rb'
 
 module Shippo
   @api_base = 'https://api.goshippo.com/v1'
@@ -39,6 +40,9 @@ module Shippo
     begin
       payload = {}
       url = api_url(url)
+
+      headers.merge!(:accept => :json, :content_type => :json)
+
       case method
       when :get
         pairs = []
@@ -47,12 +51,13 @@ module Shippo
         }
         url += "?#{pairs.join('&')}" unless pairs.empty?
       when :post
-        payload = params
+        payload = params.to_json
       end
       opts = { :headers => headers,
         :method => method,
         :payload => payload,
         :url => url,
+        :ssl_version => 'TLSv1_2',
         :open_timeout => 15,
         :timeout => 30,
         :user => @api_user,
@@ -81,13 +86,13 @@ module Shippo
   def self.parse(response)
     JSON::parse(response.body, { :symbolize_names => true })
   end
-end
-def make_request(opts)
-  RestClient::Request.execute(opts){ |response, request, result, &block|
-    if [301, 302, 307].include? response.code
-      response.follow_redirection(request, result, &block)
-    else
-      response.return!(request, result, &block)
-    end
-  }
+  def self.make_request(opts)
+    RestClient::Request.execute(opts){ |response, request, result, &block|
+      if [301, 302, 307].include? response.code
+        response.follow_redirection(request, result, &block)
+      else
+        response.return!(request, result, &block)
+      end
+    }
+  end
 end

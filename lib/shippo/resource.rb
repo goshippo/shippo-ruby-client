@@ -14,14 +14,20 @@ module Shippo
         "/" + dc + (dc[-1] == 's' ? 'es' : 's')
       end
     end
+
+    def id
+      self['object_id']
+    end
+
     def url
-      unless id = self['object_id']
+      unless id
         raise MissingDataError.new("#{self.class} has no object_id")
       end
       "#{self.class.url}/#{CGI.escape(id)}"
     end
+
     def refresh
-      response, api_key = Shippo.request(:get, url, @retrieve_options)
+      response = Shippo.request(:get, url)
       refresh_from(response)
       self
     end
