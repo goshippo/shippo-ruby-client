@@ -21,7 +21,7 @@ module Shippo
       "#{self.class.url}/#{CGI.escape(id)}"
     end
     def refresh
-      response, api_key = Shippo.request(:get, url, @retrieve_options)
+      response = Shippo.request(:get, url)
       refresh_from(response)
       self
     end
