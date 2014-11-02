@@ -5,7 +5,6 @@ Gem::Specification.new do |s|
   s.summary     = "Shippo API"
   s.description = "Quick and easy access to the Shippo API"
   s.add_dependency('rest-client', '~> 1.4')
-  s.add_dependency('mime-types', '>= 1.25', '< 3.0')
   s.add_dependency('json', '~> 1.8.1')
   s.authors     = ["Shippo & Contributors"]
   s.email       = 'support@goshippo.com'

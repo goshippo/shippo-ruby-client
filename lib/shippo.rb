@@ -53,6 +53,7 @@ module Shippo
         :method => method,
         :payload => payload,
         :url => url,
+        :ssl_version => 'TLSv1_2',
         :open_timeout => 15,
         :timeout => 30,
         :user => @api_user,
@@ -81,13 +82,13 @@ module Shippo
   def self.parse(response)
     JSON::parse(response.body, { :symbolize_names => true })
   end
-end
-def make_request(opts)
-  RestClient::Request.execute(opts){ |response, request, result, &block|
-    if [301, 302, 307].include? response.code
-      response.follow_redirection(request, result, &block)
-    else
-      response.return!(request, result, &block)
-    end
-  }
+  def self.make_request(opts)
+    RestClient::Request.execute(opts){ |response, request, result, &block|
+      if [301, 302, 307].include? response.code
+        response.follow_redirection(request, result, &block)
+      else
+        response.return!(request, result, &block)
+      end
+    }
+  end
 end
