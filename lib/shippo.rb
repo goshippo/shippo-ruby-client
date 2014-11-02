@@ -17,6 +17,7 @@ require_relative 'shippo/manifest.rb'
 require_relative 'shippo/customs_item.rb'
 require_relative 'shippo/customs_declaration.rb'
 require_relative 'shippo/refund.rb'
+require_relative 'shippo/location.rb'
 
 module Shippo
   @api_base = 'https://api.goshippo.com/v1'
