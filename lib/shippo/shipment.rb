@@ -13,6 +13,8 @@ module Shippo
     end
 
     def lowest_rate(provider = nil, currency = nil, params = {})
+      params[:results] ||= 100
+
       records = rates(currency, params)
       records = records.select { |r| r.provider == provider } if provider
       records.min_by { |r| r.amount.to_f }

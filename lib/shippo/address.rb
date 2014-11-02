@@ -8,11 +8,15 @@ module Shippo
       Shippo::Address.construct_from(response)
     end
 
-    def locations(params = {}, sync = true)
-      locations_url = "#{url}/locations/"
-      locations_url << 'sync/' if sync
+    def locations(params = {}, options = {})
+      options = {
+        sync: true
+      }.merge(options)
 
-      response = Shippo.request(:get, locations_url)
+      locations_url = "#{url}/locations/"
+      locations_url << 'sync/' if options[:sync]
+
+      response = Shippo.request(:get, locations_url, params)
       Shippo::Location.construct_from(response[:results])
     end
   end
