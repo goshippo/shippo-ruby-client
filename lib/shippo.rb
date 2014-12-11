@@ -39,6 +39,7 @@ module Shippo
     begin
       payload = {}
       url = api_url(url)
+      headers.merge!(:accept => :json, :content_type => :json)
       case method
       when :get
         pairs = []
@@ -47,7 +48,7 @@ module Shippo
         }
         url += "?#{pairs.join('&')}" unless pairs.empty?
       when :post
-        payload = params
+        payload = params.to_json
       end
       opts = { :headers => headers,
         :method => method,
