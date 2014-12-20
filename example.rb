@@ -81,6 +81,7 @@ shipment = Shippo::Shipment.create(
 attempts = 0
 while ["QUEUED","WAITING"].include? shipment.object_status  and attempts <10 do
   shipment = Shippo::Shipment.get(shipment["object_id"])
+  attempts+=1
 end
 
 #Get all rates for shipment.
@@ -97,6 +98,7 @@ transaction = Shippo::Transaction.create(:rate => rate["object_id"])
 attempts = 0
 while ["QUEUED","WAITING"].include? transaction.object_status and attempts <10 do
   transaction = Shippo::Transaction.get(transaction["object_id"])
+  attempts+=1
 end
 
 #label_url and tracking_number
