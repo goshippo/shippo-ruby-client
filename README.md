@@ -13,7 +13,7 @@ Shippo::api_user = 'YOUR_API_USER'
 Shippo::api_pass = 'YOUR_API_PASS'
 
 from = Shippo::Address.create(
-  :object_purpose => 'QUOTE',
+  :object_purpose => 'PURCHASE',
   :name => 'Laura Behrens Wu',
   :company => 'Shippo',
   :street1 => 'Clayton St.',
