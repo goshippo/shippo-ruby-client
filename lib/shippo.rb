@@ -21,11 +21,10 @@ require_relative 'shippo/refund.rb'
 module Shippo
   @api_base = 'https://api.goshippo.com/v1'
   @api_version = 1.0
-  @api_user = ''
-  @api_pass = ''
+  @api_token = ''
 
   class << self
-    attr_accessor :api_base, :api_version, :api_user, :api_pass
+    attr_accessor :api_base, :api_version, :api_token
   end
 
   def self.api_url(url='')
@@ -33,13 +32,17 @@ module Shippo
   end
 
   def self.request(method, url, params = {}, headers = {})
-    unless @api_user && @api_pass
-      raise AuthError.new("API credentials missing! Make sure to set Shippo.api_user, Shippo.api_Pass")
+    if @api_token.empty?
+      raise AuthError.new("API credentials missing! Make sure to set Shippo.api_token")
     end
     begin
       payload = {}
       url = api_url(url)
-      headers.merge!(:accept => :json, :content_type => :json)
+      headers.merge!(
+        :accept => :json,
+        :content_type => :json,
+        :Authorization => "ShippoToken #{@api_token}"
+      )
       case method
       when :get
         pairs = []
