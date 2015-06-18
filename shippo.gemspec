@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'shippo'
-  s.version     = '1.0.1'
+  s.version     = '1.0.2'
   s.date        = '2014-08-23'
   s.summary     = "Shippo API"
   s.description = "Quick and easy access to the Shippo API"

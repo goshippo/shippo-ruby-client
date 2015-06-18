@@ -3,14 +3,22 @@ shippo-ruby-client
 A client wrapper library to access the API of http://goshippo.com.
 Still under development. Feel free to contribute!
 
+Install
+-------
+
+Add this line to your Gemfile:
+
+```
+  gem 'shippo-ruby'
+```
+
 The gems you'll need are:
     Rest Client
     Mocha (For Testing)
-    
+
 ```ruby
 require 'shippo'
-Shippo::api_user = 'YOUR_API_USER'
-Shippo::api_pass = 'YOUR_API_PASS'
+Shippo::api_token = 'YOU_PRIVATE_KEY'
 
 from = Shippo::Address.create(
   :object_purpose => 'PURCHASE',
