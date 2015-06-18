@@ -4,9 +4,8 @@
 require 'shippo'
 require 'timeout'
 
-# replace <USERNAME> and <PASSWORD> with your credentials
-Shippo::api_user = '<USERNAME>'
-Shippo::api_pass = '<PASSWORD>'
+# replace <YOU_PRIVATE_KEY> with your ShippoToken key
+Shippo::api_token = 'YOU_PRIVATE_KEY'
 
 # Create address_from object
 address_from = {
