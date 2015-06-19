@@ -5,18 +5,25 @@ require 'set'
 require_relative 'shippo/error.rb'
 require_relative 'shippo/container_object.rb'
 require_relative 'shippo/api_object.rb'
-require_relative 'shippo/list.rb'
-require_relative 'shippo/create.rb'
 require_relative 'shippo/resource.rb'
+
+# api operations
+require_relative 'shippo/create.rb'
+require_relative 'shippo/update.rb'
+require_relative 'shippo/list.rb'
+
+
+# api objects
 require_relative 'shippo/address.rb'
-require_relative 'shippo/parcel.rb'
-require_relative 'shippo/shipment.rb'
-require_relative 'shippo/transaction.rb'
-require_relative 'shippo/rate.rb'
-require_relative 'shippo/manifest.rb'
+require_relative 'shippo/carrieraccount.rb'
 require_relative 'shippo/customs_item.rb'
 require_relative 'shippo/customs_declaration.rb'
+require_relative 'shippo/manifest.rb'
+require_relative 'shippo/parcel.rb'
+require_relative 'shippo/rate.rb'
 require_relative 'shippo/refund.rb'
+require_relative 'shippo/shipment.rb'
+require_relative 'shippo/transaction.rb'
 
 module Shippo
   @api_base = 'https://api.goshippo.com/v1'
@@ -50,7 +57,7 @@ module Shippo
           pairs.push "#{CGI.escape(k.to_s)}=#{CGI.escape(v.to_s)}"
         }
         url += "?#{pairs.join('&')}" unless pairs.empty?
-      when :post
+      else
         payload = params.to_json
       end
       opts = { :headers => headers,
