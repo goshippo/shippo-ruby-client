@@ -1,6 +1,4 @@
-# This example demonstrates how to purchase a label for an international shipment.
-# Creating domestic shipment would follow a similiar proccess but would not require
-# the creation of CustomsItems and CustomsDeclaration objects.
+# This example demonstrates how to purchase a label for a domestic US shipment.
 require 'shippo'
 require 'timeout'
 
@@ -20,21 +18,20 @@ address_from = {
   :zip => '94117',
   :country => 'US',
   :phone => '+1 555 341 9393',
-  :email => 'laura@goshippo.com'}
+  :email => 'support@goshippo.com'}
 
 # Create address_to object
 address_to = {
   :object_purpose => 'PURCHASE',
   :name => 'Mr Hippo"',
-  :company => 'London Zoo"',
-  :street1 => 'Regents Park',
-  :street2 => 'Outer Cir',
-  :city => 'LONDON',
-  :state => '',
-  :zip => 'NW1 4RY',
-  :country => 'GB',
+  :company => 'San Diego Zoo',
+  :street1 => '2920 Zoo Drive',
+  :city => 'San Diego',
+  :state => 'CA',
+  :zip => '92101',
+  :country => 'US',
   :phone => '+1 555 341 9393',
-  :email => 'mrhippo@goshippo.com'}
+  :email => 'hippo@goshippo.com'}
 
 # Create parcel object
 parcel = {
@@ -45,42 +42,19 @@ parcel = {
   :weight => 2,
   :mass_unit => :lb}
 
-#example CustomsItems object. This is only required for int'l shipment only.
-customs_item = {
-  :description => "T-Shirt",
-  :quantity => 2,
-  :net_weight => "400",
-  :mass_unit => "g",
-  :value_amount => "20",
-  :value_currency => "USD",
-  :origin_country => "US"}
-
-#Creating the CustomsDeclaration
-#(CustomsDeclarations are only required for international shipments)
-customs_declaration = Shippo::Customs_Declaration.create(
-  :contents_type => "MERCHANDISE",
-  :contents_explanation => "T-Shirt purchase",
-  :non_delivery_option => "RETURN",
-  :certify => true,
-  :certify_signer => "Laura Behrens Wu",
-  :items => [customs_item])
-
-# Creating the shipment object. In this example, the objects are directly passed to the
-# Shipment.create method, Alternatively, the Address and Parcel objects could be created
-# using Address.create(..) and Parcel.create(..) functions respectively
+# Creating the shipment object
 puts "Creating shipment object.."
 shipment = Shippo::Shipment.create(
   :object_purpose => 'PURCHASE',
   :submission_type => 'DROPOFF',
   :address_from => address_from,
   :address_to => address_to,
-  :parcel => parcel,
-  :customs_declaration => customs_declaration)
+  :parcel => parcel)
 
 puts "Shipment created. Waiting for rates to be generated.."
 
 # Wait for rates to be generated
-timeout_rates_request = 10 # seconds
+timeout_rates_request = 25 # seconds
 while ["QUEUED","WAITING"].include? shipment.object_status do
   Timeout::timeout(timeout_rates_request) do
     shipment = Shippo::Shipment.get(shipment["object_id"])
@@ -99,7 +73,7 @@ puts "Rates generated. Purchasing a #{rate.provider} #{rate.servicelevel_name} l
 transaction = Shippo::Transaction.create(:rate => rate["object_id"])
 
 # Wait for transaction to be proccessed
-timeout_label_request = 10 # seconds
+timeout_label_request = 25 # seconds
 while ["QUEUED","WAITING"].include? transaction.object_status do
   Timeout::timeout(timeout_label_request) do
     transaction = Shippo::Transaction.get(transaction["object_id"])
