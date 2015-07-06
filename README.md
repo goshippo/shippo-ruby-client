@@ -1,7 +1,10 @@
 shippo-ruby-client
 ==================
-A client wrapper library to access the API of http://goshippo.com.
-Still under development. Feel free to contribute!
+Shippo is a shipping API that connects you with multiple shipping carriers (such as USPS, UPS, Fedex, and DHL Express) all through one interface and allows you to create shipping labels. Shippo also offers you great discounts for US and international shipping rates.
+
+Don't have an account? Sign up at https://goshippo.com/
+
+Feel free to contribute!
 
 Install
 -------
@@ -18,7 +21,7 @@ The gems you'll need are:
 
 ```ruby
 require 'shippo'
-Shippo::api_token = 'YOU_PRIVATE_KEY'
+Shippo::api_token = 'YOUR_PRIVATE_KEY'
 
 from = Shippo::Address.create(
   :object_purpose => 'PURCHASE',
