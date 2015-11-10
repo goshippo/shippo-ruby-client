@@ -12,7 +12,7 @@ Install
 Add this line to your Gemfile:
 
 ```
-  gem 'shippo-ruby'
+  gem 'shippo'
 ```
 
 The gems you'll need are:
