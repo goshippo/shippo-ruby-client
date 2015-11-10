@@ -25,7 +25,7 @@ Shippo::api_token = 'YOUR_PRIVATE_KEY'
 
 from = Shippo::Address.create(
   :object_purpose => 'PURCHASE',
-  :name => 'Laura Behrens Wu',
+  :name => 'Mr. Hippo',
   :company => 'Shippo',
   :street1 => 'Clayton St.',
   :street_no => '215',
@@ -35,7 +35,7 @@ from = Shippo::Address.create(
   :zip => '94117',
   :country => 'US',
   :phone => '+1 555 341 9393',
-  :email => 'laura@goshippo.com',
+  :email => 'support@goshippo.com',
   :ip => '',
   :metadata => 'Customer ID 123456'
 )
