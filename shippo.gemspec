@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'shippo'
-  s.version     = '1.0.3'
-  s.date        = '2014-08-23'
+  s.version     = '1.0.4'
+  s.date        = '2015-06-19'
   s.summary     = "Shippo API"
   s.description = "Quick and easy access to the Shippo API"
   s.add_dependency('rest-client', '~> 1.4')
