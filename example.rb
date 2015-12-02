@@ -52,7 +52,7 @@ shipment = Shippo::Shipment.create(
 
 # Get the desired rate according to your business logic
 # We select the first rate in this example
-rate = shipment.rates_list[0]
+rate = shipment.rates()[0]
 
 puts "Rates generated. Purchasing a #{rate.provider} #{rate.servicelevel_name} label"
 
