@@ -1,3 +1,6 @@
+1.0.4 June 19th, 2015
+- added support for Carrier Accounts
+
 1.0.3 June 18th, 2015
 - changed auth to use ShippoToken (vs username and password)
 
