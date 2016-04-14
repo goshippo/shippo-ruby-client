@@ -9,8 +9,7 @@ address_from = {
   :object_purpose => 'PURCHASE',
   :name => 'Mr Hippo',
   :company => 'Shippo',
-  :street1 => 'Clayton St.',
-  :street_no => '215',
+  :street1 => '215 Clayton St.',
   :street2 => '',
   :city => 'San Francisco',
   :state => 'CA',
@@ -35,9 +34,9 @@ address_to = {
 # Create parcel object
 parcel = {
   :length => 5,
-  :width => 1,
-  :height => 5.555,
-  :distance_unit => :cm,
+  :width => 2,
+  :height => 5,
+  :distance_unit => :in,
   :weight => 2,
   :mass_unit => :lb}
 
