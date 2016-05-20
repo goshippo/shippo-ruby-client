@@ -69,6 +69,8 @@ puts from
 ```
 Look at example.rb for more code samples
 
+This gem has been tested with Ruby 1.8 and 2.2.
+
 ## Documentation
 
 Please see [https://goshippo.com/shipping-api/](https://goshippo.com/shipping-api/) for up-to-date documentation.
