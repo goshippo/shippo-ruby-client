@@ -1,4 +1,4 @@
-#Shippo PHP API wrapper
+#Shippo Ruby API wrapper
 
 Shippo is a shipping API that connects you with multiple shipping carriers (such as USPS, UPS, DHL, Canada Post, Australia Post, UberRush and many [others](https://goshippo.com/shipping-carriers/)) through one interface.
 
