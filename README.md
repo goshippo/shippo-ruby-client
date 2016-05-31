@@ -53,8 +53,7 @@ from = Shippo::Address.create(
   :object_purpose => 'PURCHASE',
   :name => 'Mr. Hippo',
   :company => 'Shippo',
-  :street1 => 'Clayton St.',
-  :street_no => '215',
+  :street1 => '215 Clayton St.',
   :street2 => '',
   :city => 'San Francisco',
   :state => 'CA',
@@ -62,7 +61,6 @@ from = Shippo::Address.create(
   :country => 'US',
   :phone => '+1 555 341 9393',
   :email => 'support@goshippo.com',
-  :ip => '',
   :metadata => 'Customer ID 123456'
 )
 puts from
