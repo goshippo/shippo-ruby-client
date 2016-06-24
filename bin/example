@@ -1,5 +1,10 @@
 #!/usr/bin/env ruby 
-
+#
+# © 2016 Shippo, Inc.
+#
+# License: MIT
+#
+#
 lib = File.expand_path('../../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
@@ -49,31 +54,31 @@ parcel            = {
   :mass_unit     => :lb }
 
 begin
-  hash     = { :object_purpose => 'PURCHASE',
-               :address_from   => address_from,
-               :address_to     => address_to,
-               :parcel         => parcel,
-               :async          => false }
+  hash = { :object_purpose => 'PURCHASE',
+           :address_from   => address_from,
+           :address_to     => address_to,
+           :parcel         => parcel,
+           :async          => false }
   puts 'Making the first API call with the following parameters:'.bold.green.underlined
   ap hash
 
   shipment = Shippo::Model::Shipment.create(hash)
 
-# Get the desired rate according to your business logic
-# We select the first rate in this example
+  # Get the desired rate according to your business logic
+  # We select the first rate in this example
   rate     = shipment.rates()[0]
   puts 'Rates generated:'.bold.green.underlined
   ap rate
 
   puts "Purchasing a #{rate.provider} #{rate.servicelevel_name} Label:".bold.green.underlined
 
-# Purchase the desired rate (create a Transaction object)
+  # Purchase the desired rate (create a Transaction object)
   transaction = Shippo::Model::Transaction.create(
     :rate  => rate['object_id'],
     :async => false)
 
   if transaction.object_status == 'SUCCESS'
-    puts 'OK'.bold.green
+    puts 'SUCCESS'.bold.green.underlined + "\n"
     puts "Label URL      : #{transaction.label_url.bold.yellow }"
     puts "Tracking NO    : #{transaction.tracking_number.to_s.bold.yellow}"
   else
