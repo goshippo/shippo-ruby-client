@@ -1,6 +1,6 @@
 #Shippo Ruby API wrapper
 
-[![Build Status](https://travis-ci.org/goshippo/shippo-ruby-client.svg?branch=master)](https://travis-ci.org/goshippo/shippo-ruby-client)
+[![Build Status](https://travis-ci.org/kigster/shippo-ruby-client.svg?branch=master)](https://travis-ci.org/kigster/shippo-ruby-client)
 
 Shippo is a shipping API that connects you with multiple shipping carriers (such as USPS, UPS, DHL, Canada Post, Australia Post, UberRUSH and many [others](https://goshippo.com/shipping-carriers/)) through one interface.
 
