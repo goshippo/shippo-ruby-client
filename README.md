@@ -1,4 +1,4 @@
-#Shippo Ruby API wrapper
+# Shippo API – Ruby Wrapper for Shippo API
 
 [![Build Status](https://travis-ci.org/kigster/shippo-ruby-client.svg?branch=master)](https://travis-ci.org/kigster/shippo-ruby-client)
 
@@ -27,46 +27,68 @@ For most major carriers (USPS, UPS, FedEx and most others) our API supports:
 
 The complete list of carrier supported features is [here](https://goshippo.com/shipping-api/carriers).
 
-###About Shippo
+## About Shippo
 Connect with multiple different carriers, get discounted shipping labels, track parcels, and much more with just one integration. You can use your own carrier accounts or take advantage of our deeply discounted rates. Using Shippo makes it easy to deal with multiple carrier integrations,  rate shopping, tracking and other parts of the shipping workflow. We provide the API and dashboard for all your shipping needs.
 
 The API is free to use. You only pay when you print a live label from a carrier.  Use test labels during development to avoid all fees.
 
 You do need a Shippo account to use our API. Don't have an account? Sign up at [https://goshippo.com/](https://goshippo.com/).
 
-Install
--------
+## Install
+
 
 Add this line to your Gemfile:
 
-```
-  gem 'shippo'
-```
-
-The gems you'll need are:
-    Rest Client
-    Mocha (For Testing)
-
 ```ruby
 require 'shippo'
-Shippo::api_token = 'YOUR_PRIVATE_KEY'
 
-from = Shippo::Address.create(
+Shippo::Api.token = 'YOUR_PRIVATE_TOKEN'
+
+# Create address_from object
+address_from      = {
   :object_purpose => 'PURCHASE',
-  :name => 'Mr. Hippo',
-  :company => 'Shippo',
-  :street1 => '215 Clayton St.',
-  :street2 => '',
-  :city => 'San Francisco',
-  :state => 'CA',
-  :zip => '94117',
-  :country => 'US',
-  :phone => '+1 555 341 9393',
-  :email => 'support@goshippo.com',
-  :metadata => 'Customer ID 123456'
-)
-puts from
+  :name           => 'Mr Hippo',
+  :company        => 'Shippo',
+  :street1        => '215 Clayton St.',
+  :street2        => '',
+  :city           => 'San Francisco',
+  :state          => 'CA',
+  :zip            => '94117',
+  :country        => 'US',
+  :phone          => '+1 555 341 9393',
+  :email          => 'support@goshippo.com' }
+
+# Create address_to object
+address_to        = {
+  :object_purpose => 'PURCHASE',
+  :name           => 'Mrs Hippo"',
+  :company        => 'San Diego Zoo',
+  :street1        => '2920 Zoo Drive',
+  :city           => 'San Diego',
+  :state          => 'CA',
+  :zip            => '92101',
+  :country        => 'US',
+  :phone          => '+1 555 341 9393',
+  :email          => 'hippo@goshippo.com' }
+
+# Create parcel object
+parcel            = {
+  :length        => 5,
+  :width         => 2,
+  :height        => 5,
+  :distance_unit => :in,
+  :weight        => 2,
+  :mass_unit     => :lb }
+
+# First API call
+shipment = Shippo::Model::Shipment.create(
+  :object_purpose => 'PURCHASE',
+  :address_from   => address_from,
+  :address_to     => address_to,
+  :parcel         => parcel,
+  :async          => false)
 ```
+
 Look at example.rb for more code samples
 
 This gem has been tested with Ruby 1.8 and 2.2.

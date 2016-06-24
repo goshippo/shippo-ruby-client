@@ -6,7 +6,7 @@ module Shippo
           params.each do |k, v|
             params[k] = v[:object_id] if v.is_a?(::Shippo::Api::Resource)
           end
-          response = Shippo::Api.request(:post, "#{self.url}/", params)
+          response = Shippo::Api::Request.new.execute(:post, "#{self.url}/", params)
           self.construct_from(response)
         end
       end

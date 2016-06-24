@@ -26,7 +26,7 @@ module Shippo
       end
 
       def refresh
-        response, api_key = Shippo.request(:get, url)
+        response = Shippo::Api.request(:get, url)
         self.refresh_from(response)
         self
       end

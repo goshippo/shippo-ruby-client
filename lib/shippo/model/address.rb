@@ -5,7 +5,7 @@ module Shippo
       include Shippo::Operations::Create
 
       def validate(params={})
-        response = Shippo.request(:get, "#{url}/validate/", params)
+        response = Shippo::Api.request(:get, "#{url}/validate/", params)
         Shippo::Address.construct_from(response)
       end
     end
