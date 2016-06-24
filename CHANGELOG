@@ -1,3 +1,6 @@
+2.0.0-alpha June 23, 2016
+- started gem refresh for Ruby 2.2+ and a more ruby-like structure
+
 1.0.4 June 19th, 2015
 - added support for Carrier Accounts
 

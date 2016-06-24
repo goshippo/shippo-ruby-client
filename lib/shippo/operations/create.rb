@@ -4,9 +4,9 @@ module Shippo
       module ClassMethods
         def create(params={})
           params.each do |k, v|
-            params[k] = v[:object_id] if v.is_a?(ApiObject)
+            params[k] = v[:object_id] if v.is_a?(::Shippo::Api::Resource)
           end
-          response = Shippo.request(:post, "#{self.url}/", params)
+          response = Shippo::Api.request(:post, "#{self.url}/", params)
           self.construct_from(response)
         end
       end
