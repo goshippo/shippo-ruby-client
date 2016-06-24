@@ -1,0 +1,12 @@
+language: ruby
+env:
+rvm:
+  - 2.2.3
+  - 2.3.0
+script: "gem install bundler --no-ri --no-rdoc; bundle exec rspec"
+notifications:
+  email:
+    recipients:
+      - kigster@gmail.com
+    on_success: never
+    on_failure: always
