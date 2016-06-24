@@ -1,5 +1,6 @@
 language: ruby
 env:
+  - CODECLIMATE_REPO_TOKEN=ab88ea1c6e1d5356540704cb4dd58eeaf256f4ac7b454852f256091bf205d9e2
 rvm:
   - 2.2.3
   - 2.3.0
