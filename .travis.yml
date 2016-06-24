@@ -5,8 +5,11 @@ rvm:
   - 2.3.0
 script: "gem install bundler --no-ri --no-rdoc; bundle exec rspec"
 notifications:
+  slack:
+    rooms:
+    - shippo:JOD4pUgjGlhSJ1s8mNKUTxKB#devcistatus
   email:
     recipients:
       - kigster@gmail.com
-    on_success: never
+    on_success: change
     on_failure: always
