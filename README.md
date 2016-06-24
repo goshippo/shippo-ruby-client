@@ -91,7 +91,7 @@ shipment = Shippo::Model::Shipment.create(
 
 Look at example.rb for more code samples
 
-This gem has been tested with Ruby 1.8 and 2.2.
+This gem works with Ruby 2.2 and later.
 
 ## Documentation
 
