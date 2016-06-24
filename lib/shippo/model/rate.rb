@@ -1,6 +1,6 @@
 module Shippo
   module Model
-    class Rate < ::Shippo::Api::Resource
+    class Rate < ::Shippo::API::Resource
       include Shippo::Operations::List
     end
   end

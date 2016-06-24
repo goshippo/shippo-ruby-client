@@ -6,6 +6,3 @@ RSpec.configure do |config|
     srand 117
   end
 end
-
-RSpec.shared_context :fake_serializer do
-end

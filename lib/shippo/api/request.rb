@@ -1,82 +1,81 @@
 require 'rest_client'
+require 'socket'
 require 'json'
 require 'set'
 
+require 'shippo/exceptions'
+
 module Shippo
-  module Api
+  module API
     #
     # This class is the primary Interface to the Shippo API.
+    # +Request+ is created to execute a single given call to an API,
+    # and once executed, it stores +response+ object.  Used requests can not
+    # be re-executed.
     #
+    # == Example
+    #
+    #   @request = Shippo::API::Request.new(
+    #            method: :get,
+    #               uri: '/address,
+    #            params: { object_id: 1 },
+    #           headers: { 'Last-Modified' => '1213145' }
+    #   begin
+    #     @response = @request.execute
+    #     Shippo::Model::Address.from(@response)
+    #   # =>
     #
     class Request
-
-      # Optional
       attr_accessor :username, :password
+      attr_accessor :method, :url, :params, :headers
 
-      def initialize(username: nil, password: nil)
-      end
-
-      def api_url(uri_component = '')
-        base + uri_component
-      end
-
-      def base
-        ::Shippo::Api.base
-      end
-
-      def token
-        ::Shippo::Api.token
-      end
+      # Result of the execute method is stored in #response and #parsed_response
+      attr_accessor :response, :parsed_response
 
       # @param [symbol] method :get or any other method such as :put, :post, etc.
-      # @param [String] uri_component URI component appended to the base URL
+      # @param [String] uri URI component appended to the base URL
       # @param [Hash] params parameters to append to the URL
       # @param [Hash] headers headers hash sent to the server
-      def execute(method,
-                  uri_component,
-                  params = {},
-                  headers = {})
+      def initialize(method:, uri:, params: {}, headers: {})
+        self.method   = method
+        self.params   = params
+        self.headers  = headers
+        self.url      = api_url(uri)
+        self.response = nil
+      end
+
+      def execute
+        raise ArgumentError.new('Response is already defined, create another Request object.') if self.response
         validate!
-
         begin
-          payload = {}
-          url     = api_url(uri_component)
+          self.response        = shippo_phone_home
+          self.parsed_response = JSON::parse(response.body, { symbolize_names: true })
 
-          (method == :get) ? url = params_to_url(params, url) : payload = params.to_json
+        rescue ::RestClient::Unauthorized => e
+          raise Shippo::Exceptions::AuthenticationError.new(e.message)
 
-          setup_headers!(headers)
-          opts     = make_opts!(headers, method, payload, url)
-          response = make_request!(opts)
+        rescue ::RestClient::Exception => e
+          raise Shippo::Exceptions::ConnectionError.new(connection_error_message(url, e))
 
-        rescue => e
-          handle_error!(e, url)
+        rescue ::JSON::JSONError, ::JSON::ParserError
+          raise Shippo::Exceptions::APIServerError.new('Unable to read data received back from the server', self)
+
+        rescue StandardError => e
+          STDERR.puts "#{self.class.name}: Internal error occurred while connecting to #{url}: #{e.message}".bold.red
+          raise Shippo::Exceptions::Error.new(e)
         end
-        parse(response)
+        self.parsed_response
       end
 
       private
 
-      def parse!(response)
-        JSON::parse(response.body, { symbolize_names: true })
-      end
-
-      def handle_error!(e, url)
-        case e
-          when RestClient::ServerBrokeConnection, RestClient::RequestTimeout
-            msg = %Q[
-          Could not connect to the Shippo API at #{base}.
-          Please proceed to check your connection, try again and
-          contact Shippo support should the issue persist.
-          ].gsub(/^\s*/, '')
-            raise ConnectionError.new msg + "\n\n(e.message)"
-          when SocketError
-            msg = "Unexpected error connecting to the Shippo API at #{url}."
-          when RestClient::ExceptionWithResponse
-            msg = "error: #{e} #{e.http_body}"
-          else
-            msg = "error: #{e}"
-        end
-        raise Shippo::Api::Error.new msg
+      def shippo_phone_home
+        payload = {}
+        request_url = url
+        (method == :get) ? request_url = params_to_url(params, url) : payload = params.to_json
+        setup_headers!(headers)
+        opts = make_opts!(headers, method, payload, request_url)
+        make_request!(opts)
       end
 
       def make_request!(opts)
@@ -110,6 +109,29 @@ module Shippo
         )
       end
 
+      def base
+        ::Shippo::API.base
+      end
+
+      def token
+        ::Shippo::API.token
+      end
+
+      def connection_error_message(url, error)
+%Q[Could not connect to the Shippo API, via URL
+  #{url}.
+
+Please check your Internet connection, try again, if the problem
+persists please contact Shippo Customer Support.
+
+Actual Error:
+  #{error.class.name} ⇨ #{error.message}].gsub(/^\s*/, '')
+      end
+
+      def api_url(uri_component = '')
+        base + uri_component
+      end
+
       def params_to_url(params, url)
         pairs = []
         params.each { |k, v|
@@ -120,10 +142,8 @@ module Shippo
       end
 
       def validate!
-        raise AuthError.new('API credentials missing! Make sure to set Shippo::Api.token') if self.token.empty?
+        raise Shippo::Exceptions::AuthenticationError.new('API credentials seems to be missing, perhaps you forgot to set Shippo::API.token?') if token.empty?
       end
     end
   end
 end
-
-

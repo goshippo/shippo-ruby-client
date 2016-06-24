@@ -1,6 +1,6 @@
 module Shippo
   module Model
-    class CustomsItem < ::Shippo::Api::Resource
+    class CustomsItem < ::Shippo::API::Resource
       url '/customs/items'
       include Shippo::Operations::List
       include Shippo::Operations::Create

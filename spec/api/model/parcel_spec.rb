@@ -1,12 +1,12 @@
 require 'rubygems'
 require 'spec_helper'
 
-RSpec.describe 'Shippo::Api::Parcel' do
+RSpec.describe 'Shippo::API::Parcel' do
   let(:json) { JSON::parse(File.read('spec/fixtures/parcel_list.json')) }
 
   describe 'parcel import' do
     # get an array of test parcels from JSON
-    let(:result) { Shippo::Model::Parcel.construct_from(json) }
+    let(:result) { Shippo::Model::Parcel.from(json) }
     it 'should read data from the json' do
       # test the various options of accessi bg the parcel data
       expect(result[:metadata]).to eql('Customer ID 123456')

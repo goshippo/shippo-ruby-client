@@ -1,12 +1,12 @@
 module Shippo
   module Model
-    class Address < ::Shippo::Api::Resource
+    class Address < ::Shippo::API::Resource
       include Shippo::Operations::List
       include Shippo::Operations::Create
 
       def validate(params={})
-        response = Shippo::Api.request(:get, "#{url}/validate/", params)
-        Shippo::Address.construct_from(response)
+        response = Shippo::API.request(:get, "#{url}/validate/", params)
+        Shippo::Address.from(response)
       end
     end
   end

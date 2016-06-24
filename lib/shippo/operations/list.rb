@@ -1,20 +1,25 @@
 module Shippo
   module Operations
     module List
+
       module ClassMethods
-        # return all items
+
+        # Return all items
+        # @param [Hash] params of additional URI parameters tacked onto the query URL
         def all(params={})
-          response = Shippo::Api.request(:get, "#{url}/", params)
-          # Limiting to results array, does not allow user to see count,..
-          # self.construct_from(response[:results] || [])
-          self.construct_from(response)
+          response = Shippo::API.request(:get, "#{url}/", params)
+          self.from(response)
         end
-        # return a specific item
+
+        # Retrieve a concrete item by it's ID
+        # @param [Fixnum] id database ID of the item to be retrieved
+        # @param [Hash] params of additional URI parameters tacked onto the query URL
         def get(id, params={})
-          response = Shippo::Api.request(:get, "#{url}/#{CGI.escape(id)}/", params)
-          self.construct_from(response)
+          response = Shippo::API.request(:get, "#{url}/#{CGI.escape(id)}/", params)
+          self.from(response)
         end
       end
+
       def self.included(base)
         base.extend(ClassMethods)
       end

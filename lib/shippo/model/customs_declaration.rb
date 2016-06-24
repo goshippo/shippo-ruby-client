@@ -1,6 +1,6 @@
 module Shippo
   module Model
-    class CustomsDeclaration < ::Shippo::Api::Resource
+    class CustomsDeclaration < ::Shippo::API::Resource
       url '/customs/declarations'
       include Shippo::Operations::List
       include Shippo::Operations::Create

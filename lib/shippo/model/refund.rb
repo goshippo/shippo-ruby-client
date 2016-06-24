@@ -1,6 +1,6 @@
 module Shippo
   module Model
-    class Refund < ::Shippo::Api::Resource
+    class Refund < ::Shippo::API::Resource
       include Shippo::Operations::List
       include Shippo::Operations::Create
     end

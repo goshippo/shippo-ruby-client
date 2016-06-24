@@ -1,6 +1,6 @@
 module Shippo
   module Model
-    class Transaction < ::Shippo::Api::Resource
+    class Transaction < ::Shippo::API::Resource
       include Shippo::Operations::List
       include Shippo::Operations::Create
     end

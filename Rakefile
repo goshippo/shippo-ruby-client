@@ -1,4 +1,8 @@
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'rake/clean'
+require_relative 'lib/shippo/tasks/shippo'
+
 CLEAN.include %w(pkg coverage *.gem)
 
 begin

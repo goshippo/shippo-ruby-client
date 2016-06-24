@@ -3,8 +3,8 @@ module Shippo
     module Update
       module ClassMethods
         def update(object_id, params={})
-          response = Shippo::Api.request(:put, "#{url}/#{CGI.escape(object_id)}/", params)
-          self.construct_from(response)
+          response = Shippo::API.request(:put, "#{url}/#{CGI.escape(object_id)}/", params)
+          self.from(response)
         end
       end
       def self.included(base)

@@ -1,6 +1,6 @@
 module Shippo
   module Model
-    class Manifest < ::Shippo::Api::Resource
+    class Manifest < ::Shippo::API::Resource
       include Shippo::Operations::List
       include Shippo::Operations::Create
     end
