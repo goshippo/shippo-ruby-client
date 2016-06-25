@@ -65,7 +65,7 @@ module Shippo
       end
 
       def refresh
-        response = Shippo::API.request(:get, url)
+        response = Shippo::API.get(url)
         self.from(response)
         self
       end

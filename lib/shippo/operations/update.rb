@@ -3,7 +3,7 @@ module Shippo
     module Update
       module ClassMethods
         def update(object_id, params={})
-          response = Shippo::API.request(:put, "#{url}/#{CGI.escape(object_id)}/", params)
+          response = Shippo::API.put("#{url}/#{CGI.escape(object_id)}/", params)
           self.from(response)
         end
       end

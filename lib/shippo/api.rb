@@ -27,6 +27,12 @@ module Shippo
                                    params:  params,
                                    headers: headers).execute
       end
+      %i[get put post].each do |method|
+        define_method method do |*args|
+          uri, params, headers = *args
+          request(method, uri, params, headers)
+        end
+      end
     end
   end
 end

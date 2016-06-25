@@ -6,9 +6,9 @@ module Shippo
 
       def rates(currency=nil, params={})
         if !currency.nil?
-          response = Shippo::API.request(:get, "#{url}/rates/#{currency}/", params)
+          response = Shippo::API.get("#{url}/rates/#{currency}/", params)
         else
-          response = Shippo::API.request(:get, "#{url}/rates/", params)
+          response = Shippo::API.get("#{url}/rates/", params)
         end
         Shippo::Rate.from(response[:results])
       end
