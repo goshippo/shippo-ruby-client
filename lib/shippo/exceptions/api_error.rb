@@ -13,3 +13,5 @@ class Shippo::Exceptions::APIError < ::Shippo::Exceptions::Error
     req.response && req.response.http_code ? "[ ⇨ HTTP #{req.response.http_code} ]" : ''
   end
 end
+
+class Shippo::Exceptions::APIServerError < Shippo::Exceptions::APIError; end

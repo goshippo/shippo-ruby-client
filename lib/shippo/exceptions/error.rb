@@ -16,3 +16,6 @@ class Shippo::Exceptions::Error < StandardError
   end
 end
 
+class Shippo::Exceptions::ConnectionError < Shippo::Exceptions::Error; end
+class Shippo::Exceptions::AuthenticationError < Shippo::Exceptions::Error; end
+class Shippo::Exceptions::MissingDataError < Shippo::Exceptions::Error; end
