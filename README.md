@@ -65,7 +65,7 @@ gem 'shippo-api'
 If you prefer to use the latest version of the library, just point your Gemfile to our github repo:
 
 ```
-gem 'shippo-api', git: 'https://github.com/goshippo/shippo-ruby-api'
+gem 'shippo-api', git: 'https://github.com/goshippo/shippo-ruby-client'
 ```
 
 Or you can install the gem using the `gem` command:
