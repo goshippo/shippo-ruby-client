@@ -61,7 +61,11 @@ module Shippo
           raise Shippo::Exceptions::APIServerError.new('Unable to read data received back from the server', self)
 
         rescue StandardError => e
+          raise Shippo::Exceptions::ConnectionError.new(connection_error_message(url, e)) if e.message =~ /TCP|connection|getaddrinfo/
+
           STDERR.puts "#{self.class.name}: Internal error occurred while connecting to #{url}: #{e.message}".bold.red
+          STDERR.puts 'Stack Trace'.bold.yellow.underlined
+          STDERR.puts e.backtrace.join("\n").yellow
           raise Shippo::Exceptions::Error.new(e)
         end
         self.parsed_response
@@ -124,7 +128,7 @@ module Shippo
 Please check your Internet connection, try again, if the problem
 persists please contact Shippo Customer Support.
 
-Actual Error:
+Error Description:
   #{error.class.name} ⇨ #{error.message}].gsub(/^\s*/, '')
       end
 
@@ -142,7 +146,9 @@ Actual Error:
       end
 
       def validate!
-        raise Shippo::Exceptions::AuthenticationError.new('API credentials seems to be missing, perhaps you forgot to set Shippo::API.token?') if token.empty?
+        raise Shippo::Exceptions::AuthenticationError.new(
+          'API credentials seems to be missing, perhaps you forgot to set Shippo::API.token?') \
+          unless token
       end
     end
   end

@@ -2,8 +2,7 @@ module Shippo
   module Model
     class CustomsDeclaration < ::Shippo::API::Resource
       url '/customs/declarations'
-      include Shippo::Operations::List
-      include Shippo::Operations::Create
+      operations :list, :create
     end
   end
 end

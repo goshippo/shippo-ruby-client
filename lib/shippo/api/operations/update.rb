@@ -1,14 +1,11 @@
 module Shippo
-  module Operations
-    module Update
-      module ClassMethods
+  module API
+    module Operations
+      module Update
         def update(object_id, params={})
           response = Shippo::API.put("#{url}/#{CGI.escape(object_id)}/", params)
           self.from(response)
         end
-      end
-      def self.included(base)
-        base.extend(ClassMethods)
       end
     end
   end

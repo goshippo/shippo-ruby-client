@@ -1,7 +1,7 @@
 module Shippo
-  module Operations
-    module List
-      module ClassMethods
+  module API
+    module Operations
+      module List
         # Return all items
         # @param [Hash] params of additional URI parameters tacked onto the query URL
         def all(params={})
@@ -16,10 +16,6 @@ module Shippo
           response = Shippo::API.get("#{url}/#{CGI.escape(id)}/", params)
           self.from(response)
         end
-      end
-
-      def self.included(base)
-        base.extend(ClassMethods)
       end
     end
   end

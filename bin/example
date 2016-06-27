@@ -13,8 +13,8 @@ require 'colored2'
 require 'awesome_print'
 
 # This example demonstrates how to purchase a label for a domestic US shipment.
-# replace YOUR_PRIVATE_TOKEN with your ShippoToken key
-Shippo::API.token = 'YOUR_PRIVATE_TOKEN'
+# Please set SHIPPO_API_TOKEN in the environment
+Shippo::API.token = ENV['SHIPPO_API_TOKEN']
 Shippo::API.debug = true
 
 # Create address_from object
@@ -58,15 +58,35 @@ hash = { :object_purpose => 'PURCHASE',
          :address_to     => address_to,
          :parcel         => parcel,
          :async          => false }
-puts 'Making the first API call with the following parameters:'.bold.green.underlined
-ap hash
+puts 'Making first API call for shipment rates...'.blue.bold
 
-shipment = Shippo::Model::Shipment.create(hash)
+begin
+  shipment = Shippo::Model::Shipment.create(hash)
+rescue Shippo::Exceptions::APIServerError => e
+  puts "Server returned an error:\n#{e.inspect}".bold.red
+  exit 3
+rescue Shippo::Exceptions::ConnectionError
+  puts 'Error connecting to remote host. Is your Internet working?'.bold.red
+  exit 2
+rescue Shippo::Exceptions::AuthenticationError
+  if Shippo::API.token
+    puts "Token '#{Shippo::API.token}' does not appear to be valid.".bold.red
+    puts 'Access denied.'
+  else
+    puts 'Please set authentication token in the environment:'.bold.red
+    puts 'export SHIPPO_API_TOKEN="<your token here>"'
+    puts 'and re-run the example.'
+  end
+  exit 1
+end
+
+puts 'REQUEST:'.bold.underlined
+ap hash
 
 # Get the desired rate according to your business logic
 # We select the first rate in this example
 rate     = shipment.rates()[0]
-puts 'Rates generated:'.bold.green.underlined
+puts 'RATES:'.bold.green.underlined
 ap rate
 
 puts "Purchasing a #{rate.provider} #{rate.servicelevel_name} Label:".bold.green.underlined

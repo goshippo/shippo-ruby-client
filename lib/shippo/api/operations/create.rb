@@ -1,7 +1,7 @@
 module Shippo
-  module Operations
-    module Create
-      module ClassMethods
+  module API
+    module Operations
+      module Create
         # Creates an item in the database
         # @param [Hash] params tacked onto the URL as URI parameters
         def create(params={})
@@ -11,9 +11,6 @@ module Shippo
           response = Shippo::API.post("#{url}/", params)
           self.from(response)
         end
-      end
-      def self.included(base)
-        base.extend(ClassMethods)
       end
     end
   end

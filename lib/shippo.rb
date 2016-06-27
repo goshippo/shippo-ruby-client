@@ -29,3 +29,15 @@ end
 
 
 require 'shippo/api'
+
+# Backwards compatibility
+module Shippo
+  def self.api_key(value)
+    ::Shippo::API.token = value
+  end
+  class << self
+    alias_method :api_key=, :api_key
+    alias_method :api_token=, :api_key
+  end
+end
+

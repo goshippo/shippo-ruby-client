@@ -25,6 +25,8 @@ module Shippo
       end
 
       class << self
+        # For each subclass we define helpers #url and #operations
+        # allowing sublasses declare which operations they support.
         def inherited(klass)
           klass.instance_eval do
             @url = nil
@@ -35,6 +37,14 @@ module Shippo
                 @url = value if value
                 @url = "/#{short_name.downcase.pluralize}" unless @url
                 @url
+              end
+
+              def operations(*ops)
+                ops.each do |operation|
+                  module_name = "Shippo::API::Operations::#{operation.to_s.capitalize}"
+                  # noinspection RubyResolve
+                  self.extend(module_name.constantize)
+                end
               end
             end
           end

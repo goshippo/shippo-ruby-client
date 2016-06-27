@@ -79,53 +79,47 @@ gem install shippo-api
 ```ruby
 require 'shippo/api'
 
-Shippo::API.token = 'YOUR_PRIVATE_TOKEN'
+# Setup your API token
+Shippo.api_key = '1234ABFC1234ABCFD'
 
-# Create address_from hash
-address_from      = {
-  :object_purpose => 'PURCHASE',
-  :name           => 'Mr Hippo',
-  :company        => 'Shippo',
-  :street1        => '215 Clayton St.',
-  :street2        => '',
-  :city           => 'San Francisco',
-  :state          => 'CA',
-  :zip            => '94117',
-  :country        => 'US',
-  :phone          => '+1 555 341 9393',
-  :email          => 'support@goshippo.com' }
+# Setup query parameter hash
+params   = { object_purpose: 'PURCHASE',
+              async:          false,
+              address_from:   {
+                object_purpose: 'PURCHASE',
+                name:           'Mr Hippo',
+                company:        'Shippo',
+                street1:        '215 Clayton St.',
+                street2:        '',
+                city:           'San Francisco',
+                state:          'CA',
+                zip:            '94117',
+                country:        'US',
+                phone:          '+1 555 341 9393',
+                email:          'support@goshippo.com' },
+              address_to:     {
+                object_purpose: 'PURCHASE',
+                name:           'Mrs Hippo"',
+                company:        'San Diego Zoo',
+                street1:        '2920 Zoo Drive',
+                city:           'San Diego',
+                state:          'CA',
+                zip:            '92101',
+                country:        'US',
+                phone:          '+1 555 341 9393',
+                email:          'hippo@goshippo.com' },
+              parcel:         {
+                length:        5,
+                width:         2,
+                height:        5,
+                distance_unit: :in,
+                weight:        2,
+                mass_unit:     :lb }
+}
 
-# Create address_to hash
-address_to        = {
-  :object_purpose => 'PURCHASE',
-  :name           => 'Mrs Hippo"',
-  :company        => 'San Diego Zoo',
-  :street1        => '2920 Zoo Drive',
-  :city           => 'San Diego',
-  :state          => 'CA',
-  :zip            => '92101',
-  :country        => 'US',
-  :phone          => '+1 555 341 9393',
-  :email          => 'hippo@goshippo.com' }
+# Make our API call 
+@shipment = Shippo::Model::Shipment.create(params)
 
-# Create a parcel hash
-parcel            = {
-  :length        => 5,
-  :width         => 2,
-  :height        => 5,
-  :distance_unit => :in,
-  :weight        => 2,
-  :mass_unit     => :lb }
-
-hash = { :object_purpose => 'PURCHASE',
-         :address_from   => address_from,
-         :address_to     => address_to,
-         :parcel         => parcel,
-         :async          => false }
-puts 'Making the first API call with the following parameters:'.bold.green.underlined
-ap hash
-
-@shipment = Shippo::Model::Shipment.create(hash)
 ```
 
 Look at `bin/example` for more code samples

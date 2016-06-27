@@ -30,13 +30,13 @@ module Shippo
       %i[get put post].each do |method|
         define_method method do |*args|
           uri, params, headers = *args
-          request(method, uri, params, headers)
+          request(method, uri, params || {}, headers || {})
         end
       end
     end
   end
 end
 
-Shippo.require_all_from('shippo/operations')
+Shippo.require_all_from('shippo/api/operations')
 Shippo.require_all_from('shippo/model')
 
