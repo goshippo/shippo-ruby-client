@@ -137,15 +137,15 @@ export SHIPPO_API_TOKEN="<your token here>"
 bin/example
 ```
 
-## Gem Versioning
+## Gem Versioning Notes
 
 Version 2 and up of this library works with Ruby 2.2 and later, and is not backwards compatible. Starting version 2, the gem has been renamed to `shippo-api` to further emphasize changes in the library. __Version 1.0.4__ of this library is the last version of the gem `shippo`, and the last version supporting ruby 1.8 and 1.9.
 
 The intent, however, is to completely deprecate `shippo` gem in the near future.
 
-### If you are using Ruby 1.8 or 1.9...
+### If you are still using Ruby 1.8 or 1.9
 
-_If you are still using an older version of Ruby, please make sure to use the last 1.X version of this library, which is currently the [tag v1.0.4](https://github.com/goshippo/shippo-ruby-client/tree/v1.0.4).
+If you are still using an older version of Ruby, please make sure to use the last 1.X version of this library, which is currently the [tag v1.0.4](https://github.com/goshippo/shippo-ruby-client/tree/v1.0.4).
 
 ## Documentation
 
