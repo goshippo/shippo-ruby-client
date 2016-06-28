@@ -13,4 +13,22 @@ RSpec.describe Shippo::API do
       end
     end
   end
+
+  context 'api token' do
+    before do
+      Shippo::API.token = nil
+    end
+    it 'should set api token via Shippo.api_token=' do
+      Shippo.api_token = 1
+      expect(Shippo::API.token).to eql(1)
+    end
+    it 'should set api token via Shippo.api_key=' do
+      Shippo.api_key = 0xFF
+      expect(Shippo::API.token).to eql(0xFF)
+    end
+    it 'should set api token via Shippo.api_key(value)' do
+      Shippo.api_key 'XYZ'
+      expect(Shippo::API.token).to eql('XYZ')
+    end
+  end
 end
