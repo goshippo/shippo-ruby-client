@@ -76,10 +76,14 @@ gem install shippo-api
 
 ## Usage 
 
+
 ```ruby
 require 'shippo/api'
 
 # Setup your API token
+Shippo::API.token = '1234ABFC1234ABCFD'
+
+# OR, equivalently (kept for backwards compatibility)
 Shippo.api_key = '1234ABFC1234ABCFD'
 
 # Setup query parameter hash
@@ -122,11 +126,26 @@ params   = { object_purpose: 'PURCHASE',
 
 ```
 
-Look at `bin/example` for more code samples
+### Using Provided Example File
 
-Version 2 and up of this gem works with Ruby 2.2 and later, and is not backwards compatible.
+Look at `bin/example` for more code sample.
 
-If you are still using an older version of Ruby, please make sure to get the latest 1.* version of this gem also.
+You can actually run this file, but first you should set your API token in the environment:
+
+```bash
+export SHIPPO_API_TOKEN="<your token here>"
+bin/example
+```
+
+## Gem Versioning
+
+Version 2 and up of this library works with Ruby 2.2 and later, and is not backwards compatible. Starting version 2, the gem has been renamed to `shippo-api` to further emphasize changes in the library. __Version 1.0.4__ of this library is the last version of the gem `shippo`, and the last version supporting ruby 1.8 and 1.9.
+
+The intent, however, is to completely deprecate `shippo` gem in the near future.
+
+### If you are using Ruby 1.8 or 1.9...
+
+_If you are still using an older version of Ruby, please make sure to use the last 1.X version of this library, which is currently the [tag v1.0.4](https://github.com/goshippo/shippo-ruby-client/tree/v1.0.4).
 
 ## Documentation
 
@@ -135,8 +154,8 @@ Please see [https://goshippo.com/shipping-api/](https://goshippo.com/shipping-ap
 For Ruby class documentation, please run the following rake task:
 
 ```bash
-bundle
-bundle exec rake shippo:doc
+bundle install
+bundle exec rake doc:read # preview documentation in the browser
 ```
 
 This task will generate documentation using [Yard](https://yardoc.org) and then open the browser with the generated index.html.
