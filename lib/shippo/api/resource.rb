@@ -1,11 +1,14 @@
 require 'hashie/mash'
 require 'active_support/inflector'
 require 'shippo/exceptions'
+require 'shippo/api/api_object'
 module Shippo
   module API
     class Resource < Hashie::Mash
       include Hashie::Extensions::StringifyKeys
       include Enumerable
+
+      attr_accessor :api_object
 
       # Creates a possibly recursive chain (map of lists, etc) of Resource
       # instances based on whether each value is a scalar, array or a hash.
@@ -34,9 +37,13 @@ module Shippo
               # It's a getter and a class-level setter
               def url(value = nil)
                 return @url if @url
-                @url = value if value
-                @url = "/#{short_name.downcase.pluralize}" unless @url
-                @url
+                @url ||= value if value
+                 @url ||= class_to_url
+              end
+
+              def class_to_url
+                words = self.short_name.underscore.split(/_/)
+                words.map{|w| "/#{w == words.last ? w.pluralize : w}" }.join
               end
 
               def operations(*ops)
@@ -55,6 +62,14 @@ module Shippo
       def initialize(*args)
         if args[0].is_a?(Fixnum)
           self.id = [0]
+        elsif args.first.respond_to?(:keys)
+          h = args.first
+          object_keys = h.keys.grep /#{Shippo::API::ApiObject::PREFIX}/ # [ 'object_owner', 'object_id', ...]
+          h_object = {}
+          object_keys.each { |k| h_object[k] = h[k] }
+          self.api_object = ApiObject.new(h_object)
+          object_keys.each { |k| args.first.delete(k) }
+          super(*args)
         else
           super(*args)
         end

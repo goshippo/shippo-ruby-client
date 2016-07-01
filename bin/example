@@ -80,12 +80,11 @@ rescue Shippo::Exceptions::AuthenticationError
   exit 1
 end
 
-puts 'REQUEST:'.bold.underlined
-ap hash
-
+puts 'SHIPMENT:'.bold.underlined
+ap shipment
 # Get the desired rate according to your business logic
 # We select the first rate in this example
-rate     = shipment.rates()[0]
+rate     = shipment.rates_list.first
 puts 'RATES:'.bold.green.underlined
 ap rate
 

@@ -1,6 +1,16 @@
-{ "object_state": "VALID", "object_created": "2014-01-29T14:34:34.253",
-  "object_updated": "2014-01-29T14:34:34.253", "_object_id":
-    "67fec30841534ecdb02803902dd78f53", "object_owner":
-    "tobias.schottdorf@gmail.com", "length": "5.0000", "width": "5.0000",
-  "height": "5.0000", "distance_unit": "cm", "weight": "2.0000", "mass_unit":
-    "lb", "metadata": "Customer ID 123456" }
+{
+  "object_state": "VALID",
+  "object_created": "2014-01-29T14:34:34.253",
+  "object_updated": "2014-01-29T14:34:34.253",
+  "object_id": "67fec30841534ecdb02803902dd78f53",
+  "object_purpose": "QUOTE",
+  "object_source": "FULLY_ENTERED",
+  "object_owner": "tobias.schottdorf@gmail.com",
+  "length": "5.0000",
+  "width": "5.0000",
+  "height": "5.0000",
+  "distance_unit": "cm",
+  "weight": "2.0000",
+  "mass_unit": "lb",
+  "metadata": "Customer ID 123456"
+}

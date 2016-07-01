@@ -37,6 +37,6 @@ module Shippo
   end
 end
 
-Shippo.require_all_from('shippo/api/operations')
+Shippo.require_all_from('shippo/api')
 Shippo.require_all_from('shippo/model')
 
