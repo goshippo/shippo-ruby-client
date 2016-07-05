@@ -14,6 +14,7 @@ class Shippo::Exceptions::APIError < ::Shippo::Exceptions::Error
   end
 end
 
+class Shippo::Exceptions::UnsuccessfulResponseError < Shippo::Exceptions::APIError; end
 class Shippo::Exceptions::APIServerError < Shippo::Exceptions::APIError; end
 class Shippo::Exceptions::InvalidCategoryValueError < Shippo::Exceptions::APIError; end
 

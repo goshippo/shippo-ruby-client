@@ -1,4 +1,3 @@
-require_relative '../category'
 module Shippo
   module API
     module Category

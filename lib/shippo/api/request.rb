@@ -8,10 +8,14 @@ require 'shippo/exceptions'
 module Shippo
   module API
     #
-    # This class is the primary Interface to the Shippo API.
-    # +Request+ is created to execute a single given call to an API,
-    # and once executed, it stores +response+ object.  Used requests can not
-    # be re-executed.
+    # This class is the primary *internal* Interface to the Shippo API.
+    #
+    # Public consumers should use Model API, and perform actions on models
+    # rather than submit requests directly using this class.
+    #
+    # +Request+ instance is created with the intention to execute a single
+    # API call and once executed, it stores +response+ object.  Used
+    # requests can not be re-executed.
     #
     # == Example
     #
@@ -57,7 +61,7 @@ module Shippo
         rescue ::RestClient::Exception => e
           raise Shippo::Exceptions::ConnectionError.new(connection_error_message(url, e))
 
-        rescue ::JSON::JSONError, ::JSON::ParserError
+        rescue ::JSON::JSONError, ::JSON::ParserError, ::RestClient::BadRequest
           raise Shippo::Exceptions::APIServerError.new('Unable to read data received back from the server', self)
 
         rescue StandardError => e

@@ -8,9 +8,12 @@ lib = File.expand_path('../../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 require 'bundler/setup'
-require 'shippo'
+require 'shippo/api'
+require 'shippo/api/category'
+require 'shippo/exceptions/api_error'
 require 'colored2'
 require 'awesome_print'
+require 'json'
 
 # This example demonstrates how to purchase a label for a domestic US shipment.
 # Please set SHIPPO_API_TOKEN in the environment
@@ -62,6 +65,10 @@ puts 'Making first API call for shipment rates...'.blue.bold
 
 begin
   shipment = Shippo::Model::Shipment.create(hash)
+  raise Shippo::Exceptions::UnsuccessfulResponseError.new(shipment.object.inspect) unless shipment.success?
+  File.open('example-shipment.json', 'w') do |file|
+    file.puts JSON.dump(shipment.to_hash)
+  end
 rescue Shippo::Exceptions::APIServerError => e
   puts "Server returned an error:\n#{e.inspect}".bold.red
   exit 3
@@ -80,26 +87,22 @@ rescue Shippo::Exceptions::AuthenticationError
   exit 1
 end
 
-puts 'SHIPMENT:'.bold.underlined
-ap shipment
 # Get the desired rate according to your business logic
 # We select the first rate in this example
-rate     = shipment.rates_list.first
+rate = shipment.rates.first
 puts 'RATES:'.bold.green.underlined
-ap rate
+ap(rate)
 
-puts "Purchasing a #{rate.provider} #{rate.servicelevel_name} Label:".bold.green.underlined
+puts "Purchasing a #{rate} label!"
 
 # Purchase the desired rate (create a Transaction object)
-transaction = Shippo::Model::Transaction.create(
-  :rate  => rate['object_id'],
-  :async => false)
+transaction = Shippo::Model::Transaction.create(rate: rate.id, async: false)
 
-if transaction.object_status == 'SUCCESS'
-  puts 'SUCCESS'.bold.green.underlined + "\n"
+if transaction.success?
+  puts 'Transaction OK'.bold.green.underlined + "\n"
   puts "Label URL      : #{transaction.label_url.bold.yellow }"
   puts "Tracking NO    : #{transaction.tracking_number.to_s.bold.yellow}"
 else
-  puts 'ERROR'.bold.red
+  puts 'Transaction ERROR'.bold.red
   puts transaction.messages.bold.red
 end

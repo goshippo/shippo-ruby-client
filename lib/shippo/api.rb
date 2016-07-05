@@ -5,6 +5,7 @@ require 'set'
 require_relative '../shippo' unless defined?(Shippo) && Shippo.methods.include?(:require_all_from)
 
 require 'shippo/exceptions'
+require 'shippo/api/category'
 require 'shippo/api/request'
 require 'shippo/api/resource'
 
@@ -32,6 +33,13 @@ module Shippo
           uri, params, headers = *args
           request(method, uri, params || {}, headers || {})
         end
+      end
+
+      def debug?
+        Integer(ENV['SHIPPO_API_DEBUG'] || 0) > 0
+      end
+      def debug_debug?
+        Integer(ENV['SHIPPO_API_DEBUG'] || 0) > 1
       end
     end
   end

@@ -2,13 +2,17 @@ require 'hashie/mash'
 require 'active_support/inflector'
 require 'shippo/exceptions'
 require 'shippo/api/api_object'
+require 'shippo/api/category/status'
+require 'forwardable'
 module Shippo
   module API
     class Resource < Hashie::Mash
       include Hashie::Extensions::StringifyKeys
       include Enumerable
+      extend Forwardable
 
-      attr_accessor :api_object
+      attr_accessor :object
+      def_delegators :@object, :id, :status, :state, :created, :updated
 
       # Creates a possibly recursive chain (map of lists, etc) of Resource
       # instances based on whether each value is a scalar, array or a hash.
@@ -64,24 +68,22 @@ module Shippo
           self.id = [0]
         elsif args.first.respond_to?(:keys)
           h = args.first
-          object_keys = h.keys.grep /#{Shippo::API::ApiObject::PREFIX}/ # [ 'object_owner', 'object_id', ...]
-          h_object = {}
-          object_keys.each { |k| h_object[k] = h[k] }
-          self.api_object = ApiObject.new(h_object)
-          object_keys.each { |k| args.first.delete(k) }
-          super(*args)
+          # [ 'object_owner', 'object_id', ...]
+          convert_object_fields(h)
+          # { 'rates_list' => [ ... ] }
+          convert_resource_lists(h)
+          super(h)
         else
           super(*args)
         end
       end
 
       def inspect
-        id_string = (respond_to?(:id) && !id.nil?) ? " id=#{id}" : ''
-        "#<#{self.class.name}:0x#{self.object_id.to_s(16)}#{id_string}> JSON: " + to_s
+        "#<#{self.class.name}:0x#{self.object_id.to_s(16)}#{id.nil? ? '' : ":[id=#{id}]"}" + to_s + '>'
       end
 
-      def id
-        self['object_id']
+      def to_s
+        self.to_hash.to_s + '|' + self.object.to_s
       end
 
       def url
@@ -94,6 +96,39 @@ module Shippo
         self.from(response)
         self
       end
+
+      def success?
+        self.object && self.object.status && self.object.status.eql?(Shippo::API::Category::Status::SUCCESS)
+      end
+
+      private
+
+
+      def convert_object_fields(h)
+        object_keys = h.keys.select { |k| Shippo::API::ApiObject.matches_prefix?(k) }
+        h_object    = {}
+        object_keys.each { |k| h_object[k] = h[k] }
+        self.object = ApiObject.new(h_object)
+        object_keys.each { |k| h.delete(k) }
+      end
+
+      def convert_resource_lists(h)
+        reg   = /([\w_]+)_list/
+        lists = h.keys.select { |k| reg.match(k.to_s) && h[k].is_a?(Array) }
+        lists.each do |list_key|
+          model = reg.match(list_key.to_s)[1]
+          type  = model.singularize.capitalize if model
+          if type
+            type_class = "Shippo::Model::#{type}".constantize rescue nil
+            if type_class
+              h[model.to_sym] = h[list_key].map { |item| type_class.from(item) }
+              h.delete(list_key)
+              puts "Converted array #{list_key} to #{model} of type #{type_class}, #{h[model.to_sym]}".bold.yellow if Shippo::API.debug?
+            end
+          end
+        end
+      end
+
     end
   end
 end
