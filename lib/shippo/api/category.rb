@@ -20,7 +20,7 @@ module Shippo
     # # ⤷ [:small, :medium, :large, :xlarge, :xxlarge]
     #
     # my_size = Shippo::API::Category.for('size', 'xlarge')
-    # # ⤷ size:xlarge
+    # # ⤷ XLARGE
     # my_size.class.name
     # # ⤷ My::Big::Module::Size
     # ```
@@ -46,4 +46,4 @@ module Shippo
   end
 end
 
-Shippo.require_all_from('shippo/api/category')
+Shippo.dir('shippo/api/category')

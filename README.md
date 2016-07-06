@@ -81,10 +81,7 @@ gem install shippo-api
 require 'shippo/api'
 
 # Setup your API token
-Shippo::API.token = '1234ABFC1234ABCFD'
-
-# OR, equivalently (kept for backwards compatibility)
-Shippo.api_key = '1234ABFC1234ABCFD'
+Shippo.api_key = 'aff988f77afa0fdfdfadf'  # not an actual valid token
 
 # Setup query parameter hash
 params   = { object_purpose: 'PURCHASE',
@@ -119,13 +116,137 @@ params   = { object_purpose: 'PURCHASE',
                 distance_unit: :in,
                 weight:        2,
                 mass_unit:     :lb }
-}
+} 
 
 # Make our API call 
-@shipment = Shippo::Model::Shipment.create(params)
-
+@shipment = Shippo::Shipment.create(params)
+@shipment.success?
+# => true
+@shipment.object.status
+# => 'SUCCESS'
+@shipment.status # forwarded to #object
+# => 'SUCCESS'
+@shipment.state
+# => 'VALID'
 ```
 
+Let's take a quick look at what the `Address` object looks like:
+
+```ruby
+require 'awesome_print'
+ap @shipment
+# {
+#        "carrier_accounts" => [],
+#            "address_from" => "a704eada7494bb1be6184ef64b1646db",
+#              "address_to" => "92b43fbfa3641644beb32996042eb57a",
+#                  "parcel" => "92df4baac73ea6131940c0d315d70a7d",
+#         "submission_type" => "DROPOFF",
+#         "submission_date" => "2016-07-06T20:33:02.211Z",
+#          "address_return" => "a1f64ba14b7e41b86a0446de4ebbd769",
+#               "return_of" => nil,
+#     "customs_declaration" => nil,
+#        "insurance_amount" => "0",
+#      "insurance_currency" => nil,
+#                   "extra" => {},
+#             "reference_1" => "",
+#             "reference_2" => "",
+#               "rates_url" => "https://api.goshippo.com/v1/shipments/a336daf87a8e442992a68daa6622758f/rates/",
+#                "messages" => [ ] # ommitted for brevity,
+#                   "rates" => [ ] # ommitted for brevity.
+# }
+```
+
+#### List Handling
+
+In the case when the API returns a hash containing a key named like `<field>_list`, and if the extracted word `<field>`" matches one of the existing models, then each of the members of the array is coerced from a hash into an object, and the original key `<field>_list` is replaced by `<field>`.
+
+In the example below we are showing the result of such transformation where the `rates_list` member returned from the API has been converted to `rates`, and contains a list of fully constructed objects of type `Shippo::Rate`.
+  
+```ruby
+ap @shipment.rates.first
+# => 
+# {
+#                     "shipment" => "20f25e44b16b4051b6dd910cb66fd27b",
+#             "available_shippo" => true,
+#                   "attributes" => [],
+#                       "amount" => "8.51",
+#                     "currency" => "USD",
+#                 "amount_local" => "8.51",
+#               "currency_local" => "USD",
+#                     "provider" => "FedEx",
+#            "provider_image_75" => "https://shippo-static.s3.amazonaws.com/providers/75/FedEx.png",
+#           "provider_image_200" => "https://shippo-static.s3.amazonaws.com/providers/200/FedEx.png",
+#            "servicelevel_name" => "Ground",
+#           "servicelevel_token" => "fedex_ground",
+#           "servicelevel_terms" => "",
+#                         "days" => 2,
+#                   "arrives_by" => nil,
+#               "duration_terms" => "",
+#                    "trackable" => true,
+#                    "insurance" => false,
+#       "insurance_amount_local" => "0.00",
+#     "insurance_currency_local" => nil,
+#             "insurance_amount" => "0.00",
+#           "insurance_currency" => nil,
+#            "delivery_attempts" => nil,
+#            "outbound_endpoint" => "door",
+#             "inbound_endpoint" => "door",
+#                     "messages" => [],
+#              "carrier_account" => "4b1940bc69524163b669asd361842db",
+#                         "test" => true
+# }
+@shipment.rates.first.owner
+# ⤷ unittest@gmail.com
+@shipment.rates.first.class
+# ⤷ Shippo::Rate
+```
+
+#### Resource ID and Other Object Fields
+
+Shippo API returns several generalized fields for each valid resource, that being with 'object_' – for example, `object_id`, `object_owner`, etc.  In this library we move these fields out of the main model, and into an instance of `Shippo::API::ApiObject`. However the fields can still be accessed on the main model via generated accessors.
+ 
+Unfortunately Shippo API also returns `object_id`, which in Ruby has a special meaning: it's the pointer address of any object. Overwriting this field causes all sorts of issues.
+
+For this reason we are mapping `object_id` to `resource_id`, as soon as the hash is passed in to initialize `ApiObject`.
+
+See the following console output for various ways of accessing `object_` fields:
+
+```ruby
+@shipment.object_id    # this is the Ruby object pointer
+# ⤷ 70206221831520  
+@shipment.resource_id  # this is the API id (note: deprecated accessor)
+# ⤷ 20f25e44b16b4051b6dd910cb66fd27b
+@shipment.object.id    # which is actually just this
+# ⤷ 20f25e44b16b4051b6dd910cb66fd27b
+@shipment.id           # but it can also be accessed this way too
+# ⤷ 20f25e44b16b4051b6dd910cb66fd27b
+```
+
+And with the rest of the `object_` fields:
+
+``` ruby
+@shipment.object.owner    # this is whether 'object_owner' is stored
+# ⤷ valued_customer@gmail.com
+@shipment.object_owner    # deprecated accessor method
+# ⤷ valued_customer@gmail.com
+@shipment.owner           # forwarded alias to #object.owner
+# ⤷ valued_customer@gmail.com
+```
+
+Here is the fully construted `ApiObject` instance, attached to our `@shipment`:
+
+```ruby
+ap @shipment.object
+# {
+#     :created => 2016-07-06 20:44:47 UTC,
+#     :updated => 2016-07-06 20:44:47 UTC,
+#       :owner => "valued_customer@gmail.com",
+#       :state => #<Shippo::API::Category::State:0x007fd88be8aa38 @name=:state, @value=:valid>,
+#      :status => #<Shippo::API::Category::Status:0x007fd88be82e28 @name=:status, @value=:success>,
+#     :purpose => #<Shippo::API::Category::Purpose:0x007fd88be985e8 @name=:purpose, @value=:purchase>,
+#          :id => "20f25e44b16b4051b6dd910cb66fd27b"
+# }
+```
 ### Using Provided Example File
 
 Look at `bin/example` for more code sample.
@@ -133,7 +254,7 @@ Look at `bin/example` for more code sample.
 You can actually run this file, but first you should set your API token in the environment:
 
 ```bash
-export SHIPPO_API_TOKEN="<your token here>"
+export SHIPPO_TOKEN="<your token here>"
 bin/example
 ```
 

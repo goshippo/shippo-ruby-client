@@ -16,8 +16,8 @@ require 'awesome_print'
 require 'json'
 
 # This example demonstrates how to purchase a label for a domestic US shipment.
-# Please set SHIPPO_API_TOKEN in the environment
-Shippo::API.token = ENV['SHIPPO_API_TOKEN']
+# Please set SHIPPO_TOKEN in the environment
+Shippo::API.token = ENV['SHIPPO_TOKEN']
 Shippo::API.debug = true
 
 # Create address_from object
@@ -64,7 +64,7 @@ hash = { :object_purpose => 'PURCHASE',
 puts 'Making first API call for shipment rates...'.blue.bold
 
 begin
-  shipment = Shippo::Model::Shipment.create(hash)
+  shipment = Shippo::Shipment.create(hash)
   raise Shippo::Exceptions::UnsuccessfulResponseError.new(shipment.object.inspect) unless shipment.success?
   File.open('example-shipment.json', 'w') do |file|
     file.puts JSON.dump(shipment.to_hash)
@@ -81,7 +81,7 @@ rescue Shippo::Exceptions::AuthenticationError
     puts 'Access denied.'
   else
     puts 'Please set authentication token in the environment:'.bold.red
-    puts 'export SHIPPO_API_TOKEN="<your token here>"'
+    puts 'export SHIPPO_TOKEN="<your token here>"'
     puts 'and re-run the example.'
   end
   exit 1
@@ -96,12 +96,18 @@ ap(rate)
 puts "Purchasing a #{rate} label!"
 
 # Purchase the desired rate (create a Transaction object)
-transaction = Shippo::Model::Transaction.create(rate: rate.id, async: false)
+transaction = Shippo::Transaction.create(rate: rate.id, async: false)
 
 if transaction.success?
+  # noinspection RubyResolve
   puts 'Transaction OK'.bold.green.underlined + "\n"
-  puts "Label URL      : #{transaction.label_url.bold.yellow }"
-  puts "Tracking NO    : #{transaction.tracking_number.to_s.bold.yellow}"
+
+  puts "Label URL      : #{
+  # noinspection RubyResolve
+  transaction.label_url.bold.yellow }"
+  puts "Tracking NO    : #{
+  # noinspection RubyResolve
+  transaction.tracking_number.to_s.bold.yellow}"
 else
   puts 'Transaction ERROR'.bold.red
   puts transaction.messages.bold.red

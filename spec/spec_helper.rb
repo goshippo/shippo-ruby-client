@@ -9,3 +9,5 @@ RSpec.configure do |config|
     srand 117
   end
 end
+
+Shippo::API.warnings = false

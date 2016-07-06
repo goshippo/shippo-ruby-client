@@ -22,6 +22,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'hashie', '~> 3.4'
   spec.add_dependency 'activesupport', '~> 4'
   spec.add_dependency 'colored2'
+  spec.add_dependency 'require_dir'
 
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'yard'

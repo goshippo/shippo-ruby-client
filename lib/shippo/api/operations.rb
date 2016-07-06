@@ -5,4 +5,4 @@ module Shippo
   end
 end
 
-Shippo.require_all_from('shippo/api/operations')
+Shippo.dir('shippo/api/operations')

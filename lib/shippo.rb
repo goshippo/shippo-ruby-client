@@ -8,25 +8,12 @@
 # Shippo integration.
 #
 
+require 'require_dir'
+
 module Shippo
-  class << self
-    def require_all_from(folder)
-      folder = "/#{folder}" unless folder.start_with? '/'
-      ::Dir.glob(project_libs_folder + folder + '/*.rb') { |file| Kernel.require(file) }
-    end
-
-    private
-
-    def project_libs_folder
-      File.dirname(File.absolute_path(__FILE__))
-    end
-
-    def project_home
-      project_libs_folder + '/..'
-    end
-  end
+  extend ::RequireDir
+  init_from_source __FILE__
 end
-
 
 require 'shippo/api'
 

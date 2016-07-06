@@ -4,4 +4,4 @@ module Shippo
 end
 
 require 'shippo/exceptions/error'
-Shippo.require_all_from('shippo/exceptions')
+Shippo.dir('shippo/exceptions')

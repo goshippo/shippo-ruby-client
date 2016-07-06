@@ -30,7 +30,7 @@ RSpec.describe 'Shippo::API::Category::Base' do
     expect(doo_instance.name).to eql(:boomoo)
   end
   it 'should have correct #to_s' do
-    expect(doo_instance.to_s).to eql('boomoo:doo')
+    expect(doo_instance.to_s).to eql('DOO')
   end
 
 end

@@ -113,7 +113,7 @@ module Shippo
         end
 
         def to_s
-          "#{self.name}:#{self.value}"
+          "#{self.value.upcase}"
         end
 
         private

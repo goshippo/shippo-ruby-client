@@ -2,7 +2,7 @@ require 'rest_client'
 require 'json'
 require 'set'
 
-require_relative '../shippo' unless defined?(Shippo) && Shippo.methods.include?(:require_all_from)
+require_relative '../shippo' unless defined?(Shippo) && Shippo.respond_to?(:dir_r)
 
 require 'shippo/exceptions'
 require 'shippo/api/category'
@@ -11,13 +11,14 @@ require 'shippo/api/resource'
 
 module Shippo
   module API
-    @base    = 'https://api.goshippo.com/v1'
-    @version = 1.0
-    @token   = ''
-    @debug   = false
+    @base     = 'https://api.goshippo.com/v1'
+    @version  = 1.0
+    @token    = ''
+    @debug    = Integer(ENV['SHIPPO_DEBUG'] || 0) > 0 ? true : false
+    @warnings = true
 
     class << self
-      attr_accessor :base, :version, :token, :debug
+      attr_accessor :base, :version, :token, :debug, :warnings
       # @param [Symbol] method One of :get, :put, :post
       # @param [String] uri the URL component after the first slash but before params
       # @param [Hash] params hash of optional parameters to add to the URL
@@ -28,6 +29,7 @@ module Shippo
                                    params:  params,
                                    headers: headers).execute
       end
+
       %i[get put post].each do |method|
         define_method method do |*args|
           uri, params, headers = *args
@@ -36,15 +38,15 @@ module Shippo
       end
 
       def debug?
-        Integer(ENV['SHIPPO_API_DEBUG'] || 0) > 0
-      end
-      def debug_debug?
-        Integer(ENV['SHIPPO_API_DEBUG'] || 0) > 1
+        Shippo::API.debug
       end
     end
   end
 end
 
-Shippo.require_all_from('shippo/api')
-Shippo.require_all_from('shippo/model')
+Shippo.dir('shippo/api')
+Shippo.dir('shippo/api/transformers')
+Shippo.dir('shippo/api/extend')
+Shippo.dir('shippo/model')
+
 

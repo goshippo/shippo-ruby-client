@@ -26,7 +26,7 @@ module Shippo
     #           headers: { 'Last-Modified' => '1213145' }
     #   begin
     #     @response = @request.execute
-    #     Shippo::Model::Address.from(@response)
+    #     Shippo::Address.from(@response)
     #   # =>
     #
     class Request

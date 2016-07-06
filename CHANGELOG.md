@@ -12,7 +12,7 @@
     - Extracted a new class `Shippo::API::Request`
     - Extracted `#validate` and `#rates` into operations
     - Created 2nd-level namspaces to separate models from operations from utility classes such as `Request` and `Resource`
-    - Consolidated models under Shippo::Model namespace
+    - Consolidated models under Shippo namespace
     - Converted existing unit test into an RSpec
  - Improved overall exception handling
     - split up and organized Exceptions

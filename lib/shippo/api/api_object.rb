@@ -41,7 +41,7 @@ module Shippo
     # }
     #
     # require 'shippo'
-    # address = Shippo::Model::Address.from(response)
+    # address = Shippo::Address.from(response)
     # address.name
     # # ⤷ Shawn Ippotle
     # require 'ap'
@@ -60,12 +60,11 @@ module Shippo
     class ApiObject < Hashie::Dash
       include Hashie::Extensions::Dash::PropertyTranslation
 
-
-      PREFIX           = { id: 'remote_', default: 'object_' }
+      PREFIX           = { id: 'resource_', default: 'object_' }
 
       class << self
-        def prefix(prop)
-          Shippo::API::ApiObject::PREFIX[prop.to_sym] || Shippo::API::ApiObject::PREFIX[:default]
+        def field_name(property)
+          "#{PREFIX[property.to_sym] || PREFIX[:default]}#{property}".to_sym
         end
 
         def matches_prefix?(value)
@@ -73,48 +72,58 @@ module Shippo
         end
 
         def mk_opts(property)
-          { with: ->(value) { value }, from: "#{self.prefix(property)}#{property}".to_sym, required: false }
+          { with: ->(value) { value }, from: "#{field_name(property)}".to_sym, required: false }
         end
       end
 
       # list of allowed properties, of a given type.
-      PROPS_FIXNM      = %i()
       PROPS_ID         = %i(id)
-      PROPS_STRNG      = %i()
       PROPS_CATEG      = %i(state purpose source status)
       PROPS_EMAIL      = %i(owner)
       PROPS_TIMED      = %i(created updated)
 
-      PROPS            = (PROPS_ID + PROPS_STRNG + PROPS_FIXNM + PROPS_EMAIL + PROPS_TIMED + PROPS_CATEG ).flatten
-      PROPS_AS_IS      = (PROPS_STRNG + PROPS_EMAIL + PROPS_FIXNM + PROPS_ID)
+      PROPS            = (PROPS_ID + PROPS_EMAIL + PROPS_TIMED + PROPS_CATEG ).flatten
+      PROPS_AS_IS      = (PROPS_EMAIL + PROPS_ID)
 
-      PROPS_TIMED.each { |prop| property prop, self.mk_opts(prop).merge(with: ->(value) { Time.parse(value) } ) }
-      PROPS_AS_IS.each { |prop| property prop, self.mk_opts(prop) }
+      def self.setup_property(prop, custom = {})
+        property prop, self.mk_opts(prop).merge(custom)
+      end
 
-      PROPS_EMAIL.each { |prop| property prop, self.mk_opts(prop).merge(with: ->(value) {
+      PROPS_AS_IS.each { |prop| setup_property(prop) }
+      PROPS_TIMED.each { |prop| setup_property(prop, with: ->(value) { Time.parse(value) } ) }
+      PROPS_EMAIL.each { |prop| setup_property(prop, with: ->(value) {
           value && value.strip!
           value = "#{value}@gmail.com" if value and value !~ %r[.*@.*\..*]
           value
         })
       }
-      PROPS_CATEG.each { |prop| property prop, self.mk_opts(prop).merge(with: ->(value) {
+      PROPS_CATEG.each { |prop| setup_property(prop, with: ->(value) {
         Shippo::API::Category.for(prop, value)
         })
       }
 
-      def initialize(*args)
-        opts = args[0]
-        if opts.respond_to?(:keys)
-          Hashie::Extensions::StringifyKeys.stringify_keys!(opts)
-          if opts['object_id']
-            opts['remote_id'] = opts['object_id']
-            opts.delete('object_id')
-          end
-          Hashie::Extensions::SymbolizeKeys.symbolize_keys!(opts)
-        end
-        super *args
+      def self.create_object(h)
+        object_keys = h.keys.select { |k| matches_prefix?(k) }
+        h_object    = {}
+        object_keys.each { |k| h_object[k] = h[k] }
+        instance = self.new(h_object)
+        object_keys.each { |k| h.delete(k) }
+        instance
       end
-
+      
+      def initialize(*args)
+        opts = args.first
+        if opts && opts.respond_to?(:keys)
+          Hashie::Extensions::SymbolizeKeys.symbolize_keys!(opts)
+          if opts[:object_id]
+            opts[(PREFIX[:id] + 'id').to_sym] = opts[:object_id]
+            opts.delete(:object_id)
+          end
+          super(opts)
+        else
+          super *args
+        end
+      end
     end
   end
 end
