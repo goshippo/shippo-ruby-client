@@ -60,7 +60,7 @@ module Shippo
     class ApiObject < Hashie::Dash
       include Hashie::Extensions::Dash::PropertyTranslation
 
-      PREFIX           = { id: 'resource_', default: 'object_' }
+      PREFIX           = { id: 'resource_', default: 'object_' }.freeze
 
       class << self
         def field_name(property)
@@ -77,13 +77,13 @@ module Shippo
       end
 
       # list of allowed properties, of a given type.
-      PROPS_ID         = %i(id)
-      PROPS_CATEG      = %i(state purpose source status)
-      PROPS_EMAIL      = %i(owner)
-      PROPS_TIMED      = %i(created updated)
+      PROPS_ID         = %i(id).freeze
+      PROPS_CATEG      = %i(state purpose source status).freeze
+      PROPS_EMAIL      = %i(owner).freeze
+      PROPS_TIMED      = %i(created updated).freeze
 
-      PROPS            = (PROPS_ID + PROPS_EMAIL + PROPS_TIMED + PROPS_CATEG ).flatten
-      PROPS_AS_IS      = (PROPS_EMAIL + PROPS_ID)
+      PROPS            = (PROPS_ID + PROPS_EMAIL + PROPS_TIMED + PROPS_CATEG ).flatten.freeze
+      PROPS_AS_IS      = (PROPS_EMAIL + PROPS_ID).freeze
 
       def self.setup_property(prop, custom = {})
         property prop, self.mk_opts(prop).merge(custom)
@@ -110,7 +110,7 @@ module Shippo
         object_keys.each { |k| h.delete(k) }
         instance
       end
-      
+
       def initialize(*args)
         opts = args.first
         if opts && opts.respond_to?(:keys)
@@ -121,7 +121,7 @@ module Shippo
           end
           super(opts)
         else
-          super *args
+          super(args)
         end
       end
     end

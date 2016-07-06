@@ -56,7 +56,7 @@ module Shippo
       # allows resources to set supported operations
       include Shippo::API::Extend::Operation
 
-      ENABLED_TRANSFORMERS = [ Shippo::API::Transformers::List ]
+      ENABLED_TRANSFORMERS = [ Shippo::API::Transformers::List ].freeze
 
       # As a Hashie::Mash subclass, Resource can initialize from another hash
       def initialize(*args)
