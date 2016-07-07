@@ -105,9 +105,9 @@ module Shippo
       def self.create_object(h)
         object_keys = h.keys.select { |k| matches_prefix?(k) }
         h_object    = {}
-        object_keys.each { |k| h_object[k] = h[k] }
+        object_keys.each { |k| h_object[k.to_s] = h[k] }
         instance = self.new(h_object)
-        object_keys.each { |k| h.delete(k) }
+        object_keys.each { |k| h.delete(k) if h.key(k) }
         instance
       end
 
@@ -123,6 +123,10 @@ module Shippo
         else
           super(args)
         end
+      end
+
+      def to_s
+        Shippo::API::Resource.short_name(self.class.name) + self.to_hash.to_s
       end
     end
   end

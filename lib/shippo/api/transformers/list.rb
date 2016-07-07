@@ -1,3 +1,4 @@
+require 'active_support/inflector'
 module Shippo
   module API
     module Transformers
@@ -5,36 +6,65 @@ module Shippo
       # to another member 'rates' containing equivalent list of object instances of
       # the corresponding type, in the example above – Shippo::Rate.
       class List
-        attr_accessor :hash
+        attr_accessor :h
+
+        # Matchers receive a key as a parameter, and they extract a candidate word to be
+        # tried in Coercing the values of the array to an object. For example, it could be
+        # "shipments" or "rates_list" or "items".
+        #
+        # They are tried in order they are defined.
+
+        MATCHERS = [
+          ->(key) {
+            case key.to_sym
+              when :items
+                :customs_items
+              else
+                nil
+            end
+          },
+
+          ->(key) {
+            reg = /^([\w_]+)_list$/
+            reg.match(key.to_s) ? reg.match(key.to_s)[1] : nil
+          },
+
+          ->(key) {
+            reg = /^([\w_]+s)$/
+            reg.match(key.to_s) ? reg.match(key.to_s)[1] : nil
+          }
+        ]
 
         def initialize(hash)
-          self.hash = hash
+          self.h = hash
         end
 
         def transform
-          reg   = /([\w_]+)_list/
-          lists = h.keys.select { |k| reg.match(k.to_s) && h[k].is_a?(Array) }
-          lists.each do |list_key|
-            convert_list(list_key, reg)
+          h.keys.each { |k| h[k].is_a?(Array) && !h[k].empty? }.each do |list_key|
+            type, *values = transform_list(list_key, h[list_key])
+            h[list_key]   = values if type
           end
         end
 
         private
 
-        def h
-          hash
+        def detect_type_class(model_name)
+          type = model_name.to_s.singularize.camelize
+          "Shippo::#{type}".constantize rescue nil
         end
 
-        def convert_list(list_key, reg)
-          model = reg.match(list_key.to_s)[1] # extract the word eg 'rates'
-          type  = model.singularize.capitalize if model # convert to Rate
-          return unless type
-          type_class = "Shippo::#{type}".constantize rescue nil # Instantiate Shippo::Rate
-          return unless type_class
-          h[model.to_sym] = h[list_key].map { |item| type_class.from(item) }
-          h.delete(list_key)
-          if Shippo::API.debug?
-            puts "Converted array #{list_key} to #{model} of type #{type_class}, #{h[model.to_sym]}".bold.yellow
+        def detect_type_name(list_key)
+          results = MATCHERS.map { |m| m.call(list_key) }.compact
+          results.is_a?(Array) && results.size > 0 ? results.first : nil
+        end
+
+        def transform_list(list_key, array)
+          if (type_name = detect_type_name(list_key)) &&
+            (type_class = detect_type_class(type_name))
+            type_array = array.map { |item| type_class.from(item) }
+            return type_name, *type_array
+          else
+            nil
           end
         end
       end

@@ -38,8 +38,8 @@ module Shippo
         end
       end
 
-      def self.short_name
-        self.name.split('::')[-1]
+      def self.short_name(name = self.name)
+        name.split('::')[-1]
       end
 
       # Generate object_ accessors.
@@ -60,28 +60,27 @@ module Shippo
 
       # As a Hashie::Mash subclass, Resource can initialize from another hash
       def initialize(*args)
-        if args[0].is_a?(Fixnum)
-          self.id = [0]
+        if args.first.is_a?(Fixnum) or
+          (args.first.is_a?(String) && args.first =~ /^[0-9A-Fa-f]+$/)
+          self.id = args.first
         elsif args.first.respond_to?(:keys)
-          h = args.first
-          # [ 'object_owner', 'object_id', ...]
-          self.object = ApiObject.create_object(h)
-          # { 'rates_list' => [ ... ] }
+          h = Hashie::Mash.new(args.first)
+          self.deep_merge!(h)
+          self.object = ApiObject.create_object(self)
           ENABLED_TRANSFORMERS.each do |transformer|
-            transformer.new(h).transform
+            transformer.new(self).transform
           end
-          super(h)
         else
           super(*args)
         end
       end
 
       def inspect
-        "#<#{self.class.name}:0x#{self.object_id.to_s(16)}#{id.nil? ? '' : ":[id=#{id}]"}" + to_s + '>'
+        "#<#{self.class.short_name}:0x#{self.object_id.to_s(16)}#{id.nil? ? '' : "[id=#{id}]"}#{to_hash.inspect}->#{object.inspect}"
       end
 
       def to_s
-        self.to_hash.to_s + '|' + self.object.to_s
+        self.class.short_name + self.to_hash.to_s + '->' + self.object.to_s
       end
 
       def url
