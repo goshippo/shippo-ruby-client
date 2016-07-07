@@ -20,6 +20,7 @@ For most major carriers (USPS, UPS, FedEx and most others) our API supports:
 
 #### Additional Features for USPS
 
+
 For USPS, the API additionally supports:
 
   * US Address validation
@@ -158,9 +159,9 @@ ap @shipment
 
 #### List Handling
 
-In the case when the API returns a hash containing a key named like `<field>_list`, and if the extracted word `<field>`" matches one of the existing models, then each of the members of the array is coerced from a hash into an object, and the original key `<field>_list` is replaced by `<field>`.
+In the case when the API returns a hash with one of the hash values being an array of entities, and if the corresponding key can be mapped into one of the existing API models, then each of the members of the array is coerced from a hash into an object of the model's type.
 
-In the example below we are showing the result of such transformation where the `rates_list` member returned from the API has been converted to `rates`, and contains a list of fully constructed objects of type `Shippo::Rate`.
+In the example below we are showing the result of such transformation where the `rates_list` contains a list of fully constructed objects of type `Shippo::Rate` after being coerced from a hash.
   
 ```ruby
 ap @shipment.rates.first
@@ -209,7 +210,7 @@ Unfortunately Shippo API also returns `object_id`, which in Ruby has a special m
 
 For this reason we are mapping `object_id` to `resource_id`, as soon as the hash is passed in to initialize `ApiObject`.
 
-See the following console output for various ways of accessing `object_` fields:
+The following console output demonstrates many ways of accessing `object_` fields:
 
 ```ruby
 @shipment.object_id    # this is the Ruby object pointer
@@ -247,6 +248,11 @@ ap @shipment.object
 #          :id => "20f25e44b16b4051b6dd910cb66fd27b"
 # }
 ```
+
+#### Validation 
+
+In general this gem does not currently perform validation, *except* in the cases when enumerations are used. The gem automatically converts a response containing keys matching one of the known categories (such as `Shippo::API::Category::Status` and it's value into one of the constants, such as `SUCCESS`. 
+
 ### Using Provided Example File
 
 Look at `bin/example` for more code sample.
