@@ -24,7 +24,7 @@ module Shippo
           ap(api_params)
           puts "#{self.name}->create / response: \n".bold.yellow.underlined
           ap(response)
-          puts "#{self.name}->create / from: \n".bold.blue.underlind
+          puts "#{self.name}->create / from: \n".bold.blue.underlined
           ap(instance)
         end
       end

@@ -18,7 +18,7 @@ require 'json'
 # This example demonstrates how to purchase a label for a domestic US shipment.
 # Please set SHIPPO_TOKEN in the environment
 Shippo::API.token = ENV['SHIPPO_TOKEN']
-Shippo::API.debug = true
+Shippo::API.debug = false # set to true for debugging output
 
 # Create address_from object
 address_from      = {
@@ -89,7 +89,7 @@ end
 
 # Get the desired rate according to your business logic
 # We select the first rate in this example
-rate = shipment.rates.first
+rate = shipment.rates_list.first
 puts 'RATES:'.bold.green.underlined
 ap(rate)
 
