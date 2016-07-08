@@ -24,6 +24,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'colored2'
   spec.add_dependency 'require_dir'
 
+  spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'guard'
   spec.add_development_dependency 'guard-rspec'
