@@ -1,5 +1,11 @@
-####  2.0.0 June, 2016
+####  2.0.0-beta  July 7th, 2016
 
+ - Added a concept of List transformer in order to properly coerce
+   received hashes into proper model objects
+ - updated to_s and inspect on models and ApiObject
+ - added a large number of new tests
+
+####  2.0.0-alpha June, 2016
 
  - Library refactoring and reorganization
     - Consolidating operations under the Shippo::API::Operations namespace
@@ -20,7 +26,7 @@
     - mapping JSON parser and server errors
  - Improved the Example script
     - Added exception handling clause similar to how the API should be used in real life
-    - Reading API token from the environment 
+    - Reading API token from the environment
     - Moved example script into `bin/example`
  - Miscellaneous:
     - Reformatting and updated README

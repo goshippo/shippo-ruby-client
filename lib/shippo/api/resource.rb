@@ -9,6 +9,7 @@ require_relative 'api_object'
 require_relative 'category/status'
 require_relative 'transformers/list'
 require_relative 'extend/operation'
+require_relative 'extend/transformers'
 require_relative 'extend/url'
 
 module Shippo
@@ -55,8 +56,9 @@ module Shippo
       include Shippo::API::Extend::Url
       # allows resources to set supported operations
       include Shippo::API::Extend::Operation
-
-      ENABLED_TRANSFORMERS = [ Shippo::API::Transformers::List ].freeze
+      # adds #transformers method that enumerates available transformers
+      # of the hashes into other types.
+      include Shippo::API::Extend::Transformers
 
       # As a Hashie::Mash subclass, Resource can initialize from another hash
       def initialize(*args)
@@ -67,7 +69,7 @@ module Shippo
           h = Hashie::Mash.new(args.first)
           self.deep_merge!(h)
           self.object = ApiObject.create_object(self)
-          ENABLED_TRANSFORMERS.each do |transformer|
+          transformers.each do |transformer|
             transformer.new(self).transform
           end
         else
@@ -100,4 +102,3 @@ module Shippo
     end
   end
 end
-

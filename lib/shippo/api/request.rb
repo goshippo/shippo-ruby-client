@@ -58,11 +58,11 @@ module Shippo
         rescue ::RestClient::Unauthorized => e
           raise Shippo::Exceptions::AuthenticationError.new(e.message)
 
-        rescue ::RestClient::Exception => e
-          raise Shippo::Exceptions::ConnectionError.new(connection_error_message(url, e))
-
         rescue ::JSON::JSONError, ::JSON::ParserError, ::RestClient::BadRequest
           raise Shippo::Exceptions::APIServerError.new('Unable to read data received back from the server', self)
+
+        rescue ::RestClient::Exception => e
+          raise Shippo::Exceptions::ConnectionError.new(connection_error_message(url, e))
 
         rescue StandardError => e
           raise Shippo::Exceptions::ConnectionError.new(connection_error_message(url, e)) if e.message =~ /TCP|connection|getaddrinfo/
