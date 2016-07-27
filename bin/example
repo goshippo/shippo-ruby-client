@@ -1,0 +1,114 @@
+#!/usr/bin/env ruby
+#
+# © 2016 Shippo, Inc.
+#
+# License: MIT
+#
+lib = File.expand_path('../../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
+require 'bundler/setup'
+require 'shippo/api'
+require 'shippo/api/category'
+require 'shippo/exceptions/api_error'
+require 'colored2'
+require 'awesome_print'
+require 'json'
+
+# This example demonstrates how to purchase a label for a domestic US shipment.
+# Please set SHIPPO_TOKEN in the environment
+Shippo::API.token = ENV['SHIPPO_TOKEN']
+Shippo::API.debug = false # set to true for debugging output
+
+# Create address_from object
+address_from      = {
+  :object_purpose => 'PURCHASE',
+  :name           => 'Mr Hippo',
+  :company        => 'Shippo',
+  :street1        => '215 Clayton St.',
+  :street2        => '',
+  :city           => 'San Francisco',
+  :state          => 'CA',
+  :zip            => '94117',
+  :country        => 'US',
+  :phone          => '+1 555 341 9393',
+  :email          => 'support@goshippo.com' }
+
+# Create address_to object
+address_to        = {
+  :object_purpose => 'PURCHASE',
+  :name           => 'Mrs Hippo"',
+  :company        => 'San Diego Zoo',
+  :street1        => '2920 Zoo Drive',
+  :city           => 'San Diego',
+  :state          => 'CA',
+  :zip            => '92101',
+  :country        => 'US',
+  :phone          => '+1 555 341 9393',
+  :email          => 'hippo@goshippo.com' }
+
+# Create parcel object
+parcel            = {
+  :length        => 5,
+  :width         => 2,
+  :height        => 5,
+  :distance_unit => :in,
+  :weight        => 2,
+  :mass_unit     => :lb }
+
+hash = { :object_purpose => 'PURCHASE',
+         :address_from   => address_from,
+         :address_to     => address_to,
+         :parcel         => parcel,
+         :async          => false }
+puts 'Making first API call for shipment rates...'.blue.bold
+
+begin
+  shipment = Shippo::Shipment.create(hash)
+  raise Shippo::Exceptions::UnsuccessfulResponseError.new(shipment.object.inspect) unless shipment.success?
+  File.open('example-shipment.json', 'w') do |file|
+    file.puts JSON.dump(shipment.to_hash)
+  end
+rescue Shippo::Exceptions::APIServerError => e
+  puts "Server returned an error:\n#{e.inspect}".bold.red
+  exit 3
+rescue Shippo::Exceptions::ConnectionError
+  puts 'Error connecting to remote host. Is your Internet working?'.bold.red
+  exit 2
+rescue Shippo::Exceptions::AuthenticationError
+  if Shippo::API.token
+    puts "Token '#{Shippo::API.token}' does not appear to be valid.".bold.red
+    puts 'Access denied.'
+  else
+    puts 'Please set authentication token in the environment:'.bold.red
+    puts 'export SHIPPO_TOKEN="<your token here>"'
+    puts 'and re-run the example.'
+  end
+  exit 1
+end
+
+# Get the desired rate according to your business logic
+# We select the first rate in this example
+rate = shipment.rates_list.first
+puts 'RATES:'.bold.green.underlined
+ap(rate)
+
+puts "Purchasing a #{rate} label!"
+
+# Purchase the desired rate (create a Transaction object)
+transaction = Shippo::Transaction.create(rate: rate.id, async: false)
+
+if transaction.success?
+  # noinspection RubyResolve
+  puts 'Transaction OK'.bold.green.underlined + "\n"
+
+  puts "Label URL      : #{
+  # noinspection RubyResolve
+  transaction.label_url.bold.yellow }"
+  puts "Tracking NO    : #{
+  # noinspection RubyResolve
+  transaction.tracking_number.to_s.bold.yellow}"
+else
+  puts 'Transaction ERROR'.bold.red
+  puts transaction.messages.bold.red
+end
