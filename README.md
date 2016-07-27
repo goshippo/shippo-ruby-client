@@ -60,19 +60,19 @@ You do need a Shippo account to use our API. Don't have an account? Sign up at [
 This library is distributed as a ruby gem, therefore youcan install it via adding the following line to your `Gemfile`:
 
 ```
-gem 'shippo-api'
+gem 'shippo'
 ```
 
 If you prefer to use the latest version of the library, just point your Gemfile to our github repo:
 
 ```
-gem 'shippo-api', git: 'https://github.com/goshippo/shippo-ruby-client'
+gem 'shippo', git: 'https://github.com/goshippo/shippo-ruby-client'
 ```
 
 Or you can install the gem using the `gem` command:
 
 ```bash
-gem install shippo-api
+gem install shippo
 ```
 
 ## Usage 
@@ -266,7 +266,7 @@ bin/example
 
 ## Gem Versioning Notes
 
-Version 2 and up of this library works with Ruby 2.2 and later, and is not backwards compatible. Starting version 2, the gem has been renamed to `shippo-api` to further emphasize changes in the library. __Version 1.0.4__ of this library is the last version of the gem `shippo`, and the last version supporting ruby 1.8 and 1.9.
+Version 2 and up of this library works with Ruby 2.2 and later, and is not backwards compatible. __Version 1.0.4__ of this library is the last version of the gem `shippo`, and the last version supporting ruby 1.8 and 1.9.
 
 The intent, however, is to completely deprecate `shippo` gem in the near future.
 
