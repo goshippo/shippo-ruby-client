@@ -153,7 +153,7 @@ ap @shipment
 #             "reference_2" => "",
 #               "rates_url" => "https://api.goshippo.com/v1/shipments/a336daf87a8e442992a68daa6622758f/rates/",
 #                "messages" => [ ] # ommitted for brevity,
-#                   "rates" => [ ] # ommitted for brevity.
+#              "rates_list" => [ ] # ommitted for brevity.
 # }
 ```
 
@@ -164,7 +164,7 @@ In the case when the API returns a hash with one of the hash values being an arr
 In the example below we are showing the result of such transformation where the `rates_list` contains a list of fully constructed objects of type `Shippo::Rate` after being coerced from a hash.
   
 ```ruby
-ap @shipment.rates.first
+ap @shipment.rates_list.first
 # => 
 # {
 #                     "shipment" => "20f25e44b16b4051b6dd910cb66fd27b",
