@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'shippo/api/version'
 
 Gem::Specification.new do |spec|
-  spec.name                  = 'shippo-api'
+  spec.name                  = 'shippo'
   spec.version               = Shippo::API::VERSION
   spec.required_ruby_version = '>= 2.0.0'
   spec.summary               = 'API client for Shippo® APIs. Shippo helps you connect with multiple carriers (FedEx, UPS, USPS and many others) via a unified modern API'
