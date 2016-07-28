@@ -1,8 +1,8 @@
 
 # Shippo API – Ruby Wrapper for Shippo API
 
-[![Build Status](https://travis-ci.org/kigster/shippo-ruby-client.svg?branch=master)](https://travis-ci.org/kigster/shippo-ruby-client) 
-[![Code Climate](https://codeclimate.com/github/kigster/shippo-ruby-client/badges/gpa.svg)](https://codeclimate.com/github/kigster/shippo-ruby-client) 
+[![Build Status](https://travis-ci.org/kigster/shippo-ruby-client.svg?branch=master)](https://travis-ci.org/kigster/shippo-ruby-client)
+[![Code Climate](https://codeclimate.com/github/kigster/shippo-ruby-client/badges/gpa.svg)](https://codeclimate.com/github/kigster/shippo-ruby-client)
 [![Test Coverage](https://codeclimate.com/github/kigster/shippo-ruby-client/badges/coverage.svg?refresh=1)](https://codeclimate.com/github/kigster/shippo-ruby-client/coverage)
 [![Issue Count](https://codeclimate.com/github/kigster/shippo-ruby-client/badges/issue_count.svg?refresh=1)](https://codeclimate.com/github/kigster/shippo-ruby-client)
 
@@ -75,7 +75,7 @@ Or you can install the gem using the `gem` command:
 gem install shippo
 ```
 
-## Usage 
+## Usage
 
 
 ```ruby
@@ -117,9 +117,9 @@ params   = { object_purpose: 'PURCHASE',
                 distance_unit: :in,
                 weight:        2,
                 mass_unit:     :lb }
-} 
+}
 
-# Make our API call 
+# Make our API call
 @shipment = Shippo::Shipment.create(params)
 @shipment.success?
 # => true
@@ -131,7 +131,7 @@ params   = { object_purpose: 'PURCHASE',
 # => 'VALID'
 ```
 
-Let's take a quick look at what the `Address` object looks like:
+Let's take a quick look at what the `Shipment` object looks like:
 
 ```ruby
 require 'awesome_print'
@@ -140,10 +140,9 @@ ap @shipment
 #        "carrier_accounts" => [],
 #            "address_from" => "a704eada7494bb1be6184ef64b1646db",
 #              "address_to" => "92b43fbfa3641644beb32996042eb57a",
-#                  "parcel" => "92df4baac73ea6131940c0d315d70a7d",
-#         "submission_type" => "DROPOFF",
-#         "submission_date" => "2016-07-06T20:33:02.211Z",
 #          "address_return" => "a1f64ba14b7e41b86a0446de4ebbd769",
+#                  "parcel" => "92df4baac73ea6131940c0d315d70a7d",
+#         "submission_date" => "2016-07-06T20:33:02.211Z",
 #               "return_of" => nil,
 #     "customs_declaration" => nil,
 #        "insurance_amount" => "0",
@@ -162,10 +161,10 @@ ap @shipment
 In the case when the API returns a hash with one of the hash values being an array of entities, and if the corresponding key can be mapped into one of the existing API models, then each of the members of the array is coerced from a hash into an object of the model's type.
 
 In the example below we are showing the result of such transformation where the `rates_list` contains a list of fully constructed objects of type `Shippo::Rate` after being coerced from a hash.
-  
+
 ```ruby
 ap @shipment.rates_list.first
-# => 
+# =>
 # {
 #                     "shipment" => "20f25e44b16b4051b6dd910cb66fd27b",
 #             "available_shippo" => true,
@@ -205,7 +204,7 @@ ap @shipment.rates_list.first
 #### Resource ID and Other Object Fields
 
 Shippo API returns several generalized fields for each valid resource, that being with 'object_' – for example, `object_id`, `object_owner`, etc.  In this library we move these fields out of the main model, and into an instance of `Shippo::API::ApiObject`. However the fields can still be accessed on the main model via generated accessors.
- 
+
 Unfortunately Shippo API also returns `object_id`, which in Ruby has a special meaning: it's the pointer address of any object. Overwriting this field causes all sorts of issues.
 
 For this reason we are mapping `object_id` to `resource_id`, as soon as the hash is passed in to initialize `ApiObject`.
@@ -249,9 +248,9 @@ ap @shipment.object
 # }
 ```
 
-#### Validation 
+#### Validation
 
-In general this gem does not currently perform validation, *except* in the cases when enumerations are used. The gem automatically converts a response containing keys matching one of the known categories (such as `Shippo::API::Category::Status` and it's value into one of the constants, such as `SUCCESS`. 
+In general this gem does not currently perform validation, *except* in the cases when enumerations are used. The gem automatically converts a response containing keys matching one of the known categories (such as `Shippo::API::Category::Status` and it's value into one of the constants, such as `SUCCESS`.
 
 ### Using Provided Example File
 
