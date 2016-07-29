@@ -4,24 +4,55 @@
 #
 # License: MIT
 #
+# This example demonstrates how to purchase a label for a domestic US shipment.
+# Please set +SHIPPO_TOKEN+ in the environment before running it.
+#
+# You can also set +SHIPPO_DEBUG+ to see detailed printouts of objects returned.
+#
+#
+
 lib = File.expand_path('../../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 require 'bundler/setup'
-require 'shippo/api'
+require 'shippo'
 require 'shippo/api/category'
 require 'shippo/exceptions/api_error'
 require 'colored2'
 require 'awesome_print'
 require 'json'
 
-# This example demonstrates how to purchase a label for a domestic US shipment.
-# Please set SHIPPO_TOKEN in the environment
 Shippo::API.token = ENV['SHIPPO_TOKEN']
 Shippo::API.debug = false # set to true for debugging output
 
+# Simple wrapper class to help us print objects to the STDOUT
+class ExampleHelper
+  def self.log_operation(msg)
+    printf '%s', msg.blue
+    result = yield
+    puts 'OK'.bold.green
+    result
+  rescue Exception => e
+    puts 'ERROR'.bold.red
+    raise(e)
+  end
+
+  def self.dump_object(instance, msg = nil)
+    return unless ENV['SHIPPO_DEBUG']
+    sep
+    puts "#{msg.upcase.bold.green}:" if msg
+    puts "\#<#{instance.class.inspect.bold.blue}:0x#{instance.object_id.to_s(16).bold.yellow}> ⇒ "
+    ap instance
+    sep
+  end
+
+  def self.sep
+    puts '—' * (ENV['COLUMNS'] || 80)
+  end
+end
+
 # Create address_from object
-address_from      = {
+address_from = {
   :object_purpose => 'PURCHASE',
   :name           => 'Mr Hippo',
   :company        => 'Shippo',
@@ -35,7 +66,7 @@ address_from      = {
   :email          => 'support@goshippo.com' }
 
 # Create address_to object
-address_to        = {
+address_to   = {
   :object_purpose => 'PURCHASE',
   :name           => 'Mrs Hippo"',
   :company        => 'San Diego Zoo',
@@ -48,7 +79,7 @@ address_to        = {
   :email          => 'hippo@goshippo.com' }
 
 # Create parcel object
-parcel            = {
+parcel       = {
   :length        => 5,
   :width         => 2,
   :height        => 5,
@@ -61,10 +92,11 @@ hash = { :object_purpose => 'PURCHASE',
          :address_to     => address_to,
          :parcel         => parcel,
          :async          => false }
-puts 'Making first API call for shipment rates...'.blue.bold
 
 begin
-  shipment = Shippo::Shipment.create(hash)
+  shipment = ExampleHelper.log_operation 'Making first API call for shipment rates... ' do
+    Shippo::Shipment.create(hash)
+  end
   raise Shippo::Exceptions::UnsuccessfulResponseError.new(shipment.object.inspect) unless shipment.success?
   File.open('example-shipment.json', 'w') do |file|
     file.puts JSON.dump(shipment.to_hash)
@@ -90,23 +122,21 @@ end
 # Get the desired rate according to your business logic
 # We select the first rate in this example
 rate = shipment.rates_list.first
-puts 'RATES:'.bold.green.underlined
-ap(rate)
+ExampleHelper.dump_object(rate, 'First rate returned')
 
-puts "Purchasing a #{rate} label!"
+transaction = ExampleHelper.log_operation 'Creating a label with the first rate in the list... ' do
+  # Purchase the desired rate (create a Transaction object)
+  Shippo::Transaction.create(rate: rate.id, async: false)
+end
+ExampleHelper.dump_object(transaction, 'Transaction object received')
 
-# Purchase the desired rate (create a Transaction object)
-transaction = Shippo::Transaction.create(rate: rate.id, async: false)
 
 if transaction.success?
-  # noinspection RubyResolve
-  puts 'Transaction OK'.bold.green.underlined + "\n"
-
   puts "Label URL      : #{
-  # noinspection RubyResolve
+    # noinspection RubyResolve
   transaction.label_url.bold.yellow }"
   puts "Tracking NO    : #{
-  # noinspection RubyResolve
+    # noinspection RubyResolve
   transaction.tracking_number.to_s.bold.yellow}"
 else
   puts 'Transaction ERROR'.bold.red

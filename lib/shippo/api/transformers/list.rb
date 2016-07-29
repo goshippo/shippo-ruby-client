@@ -2,17 +2,18 @@ require 'active_support/inflector'
 module Shippo
   module API
     module Transformers
-      # List Transformer: if it finds a key named like 'rates_list' it converts it
-      # to another member 'rates' containing equivalent list of object instances of
-      # the corresponding type, in the example above – Shippo::Rate.
+      # List Transformer: if it finds a key mapped to an array, this transformer coerces each element
+      # into an appropriate model class – if available. As a result, return from, eg. +Shipment.create+
+      # will contain +rates+ key that will no longer be an array of hashes, but an array of +Shippo::Rate+
+      # instances.
       class List
         attr_accessor :h
 
-        # Matchers receive a key as a parameter, and they extract a candidate word to be
-        # tried in Coercing the values of the array to an object. For example, it could be
-        # "shipments" or "rates_list" or "items".
+        # +MATCHERS+ contains a list of procs that are used to try, in order, to convert a key
+        # mapped to an array of hashes, into a word that represents an existing model.
         #
-        # They are tried in order they are defined.
+        # Each matcher receives a key as a parameter, and (if matches) it extracts the candidate word to be
+        # attempted to +constantize+. For example, +rates_list+ matcher will return +rates+ as output.
 
         MATCHERS = [
           ->(key) {

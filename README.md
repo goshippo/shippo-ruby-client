@@ -77,9 +77,12 @@ gem install shippo
 
 ## Usage
 
+> NOTE: examples below use the gem `awesome_print` to dump formatted objects and hashes to STDOUT. To be able to use the examples verbatum, please ensure you have this gem installed, or run: `gem install awesome_print --no-rdoc --no-ri`
+
+Below we demonstrate the most basic usage of the library:
 
 ```ruby
-require 'shippo/api'
+require 'shippo'
 
 # Setup your API token
 Shippo.api_key = 'aff988f77afa0fdfdfadf'  # not an actual valid token
@@ -263,11 +266,13 @@ export SHIPPO_TOKEN="<your token here>"
 bin/example
 ```
 
+NOTE: this environment variable is only used by the included `bin/example` script, and is not automatically used by the underlying client library.
+
 ## Gem Versioning Notes
 
-Version 2 and up of this library works with Ruby 2.2 and later, and is not backwards compatible. __Version 1.0.4__ of this library is the last version of the gem `shippo`, and the last version supporting ruby 1.8 and 1.9.
+Version 2 and up of this library works with Ruby 2.2 and later, and is not backwards compatible. __Version 1.0.4__ of this library is the last version supporting ruby 1.8 and 1.9.
 
-The intent, however, is to completely deprecate `shippo` gem in the near future.
+__Warning:__ Version 2 brings potential backwards incompatibility issues. Please be prepared to update your usages (if necessary) when you migrate. 
 
 ### If you are still using Ruby 1.8 or 1.9
 
