@@ -22,13 +22,13 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'hashie', '~> 3.4'
   spec.add_dependency 'activesupport', '~> 4'
   spec.add_dependency 'colored2'
-  spec.add_dependency 'require_dir'
+  spec.add_dependency 'require_dir', '~> 0.1'
+  spec.add_dependency 'awesome_print'
 
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'guard'
   spec.add_development_dependency 'guard-rspec'
   spec.add_development_dependency 'yard'
-  spec.add_development_dependency 'awesome_print'
   spec.add_development_dependency 'rspec', '~> 3.4'
 end
