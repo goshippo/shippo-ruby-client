@@ -1,5 +1,4 @@
 require 'spec_helper'
-
 RSpec.describe Shippo::API do
   let(:now) { Time.now.to_i }
   let(:params) { { page: 1 } }
@@ -29,6 +28,13 @@ RSpec.describe Shippo::API do
     it 'should set api token via Shippo.api_key(value)' do
       Shippo.api_key 'XYZ'
       expect(Shippo::API.token).to eql('XYZ')
+    end
+  end
+
+  context 'colors are no longer defined, but should work silently' do
+    let(:string) { 'poopikinks' }
+    it 'throws exception when colors are used without require' do
+      expect { string.bold.red }.to raise_error(NoMethodError)
     end
   end
 end

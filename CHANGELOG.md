@@ -1,4 +1,10 @@
-####  2.0.0-beta  July 7th, 2016
+#### 2.0.2 release, Aug 17th 2016
+
+ * Removed gem dependency `colored2` as directly decorating object and string was causing Rals Rack to throw errors when users uploaded large files.
+ * Fixed url for `CarrierAccount` 
+ * README fixes
+ 
+#### 2.0.0-beta  July 7th, 2016
 
  - Added a concept of List transformer in order to properly coerce
    received hashes into proper model objects

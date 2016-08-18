@@ -67,9 +67,9 @@ module Shippo
         rescue StandardError => e
           raise Shippo::Exceptions::ConnectionError.new(connection_error_message(url, e)) if e.message =~ /TCP|connection|getaddrinfo/
 
-          STDERR.puts "#{self.class.name}: Internal error occurred while connecting to #{url}: #{e.message}".bold.red
-          STDERR.puts 'Stack Trace'.bold.yellow.underlined
-          STDERR.puts e.backtrace.join("\n").yellow
+          STDERR.puts "#{self.class.name}: Internal error occurred while connecting to #{url}: #{e.message}"
+          STDERR.puts 'Stack Trace'
+          STDERR.puts e.backtrace.join("\n")
           raise Shippo::Exceptions::Error.new(e)
         end
         self.parsed_response
