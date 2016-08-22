@@ -1,4 +1,3 @@
-require 'colored2'
 require 'awesome_print'
 module Shippo
   module API
@@ -20,11 +19,11 @@ module Shippo
         end
 
         def debug_log!(api_params, response, instance)
-          puts "#{self.name}->create / request : \n".bold.green.underlined
+          puts "#{self.name}->create / request : \n"
           ap(api_params)
-          puts "#{self.name}->create / response: \n".bold.yellow.underlined
+          puts "#{self.name}->create / response: \n"
           ap(response)
-          puts "#{self.name}->create / from: \n".bold.blue.underlined
+          puts "#{self.name}->create / from: \n"
           ap(instance)
         end
       end
