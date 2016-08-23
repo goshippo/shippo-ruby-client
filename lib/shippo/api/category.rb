@@ -46,4 +46,4 @@ module Shippo
   end
 end
 
-Shippo.dir('shippo/api/category')
+Dir[File.dirname(__FILE__) + '/category/*.rb'].each {|file| require file }

@@ -21,10 +21,10 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'json', '~> 1.8'
   spec.add_dependency 'hashie', '~> 3.4'
   spec.add_dependency 'activesupport', '~> 4'
-  spec.add_dependency 'require_dir', '~> 0.1'
   spec.add_dependency 'awesome_print'
 
   spec.add_development_dependency 'rake'
+  spec.add_development_dependency 'pry'
   spec.add_development_dependency 'guard'
   spec.add_development_dependency 'guard-rspec'
   spec.add_development_dependency 'yard'

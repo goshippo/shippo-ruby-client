@@ -5,4 +5,4 @@ module Shippo
   end
 end
 
-Shippo.dir('shippo/api/operations')
+Dir[File.dirname(__FILE__) + '/operations/*.rb'].each {|file| require file }

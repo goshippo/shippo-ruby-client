@@ -8,11 +8,7 @@
 # Shippo integration.
 #
 
-require 'require_dir'
-
 module Shippo
-  extend ::RequireDir
-  init_from_source __FILE__
 end
 
 require 'shippo/api'
