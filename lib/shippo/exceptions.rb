@@ -4,4 +4,4 @@ module Shippo
 end
 
 require 'shippo/exceptions/error'
-Shippo.dir('shippo/exceptions')
+Dir[File.dirname(__FILE__) + '/exceptions/*.rb'].each {|file| require file }

@@ -1,4 +1,6 @@
 require 'codeclimate-test-reporter'
+require 'pry'
+
 CodeClimate::TestReporter.start
 
 require 'rspec/core'

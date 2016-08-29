@@ -44,9 +44,7 @@ module Shippo
   end
 end
 
-Shippo.dir('shippo/api')
-Shippo.dir('shippo/api/transformers')
-Shippo.dir('shippo/api/extend')
-Shippo.dir('shippo/model')
-
-
+Dir[File.dirname(__FILE__) + '/api/*.rb'].each {|file| require file }
+Dir[File.dirname(__FILE__) + '/api/transformers/*.rb'].each {|file| require file }
+Dir[File.dirname(__FILE__) + '/api/extend/*.rb'].each {|file| require file }
+Dir[File.dirname(__FILE__) + '/model/*.rb'].each {|file| require file }
