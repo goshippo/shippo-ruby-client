@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe 'Shippo::API::Request' do
+RSpec.describe Shippo::API::Request do
 
   let(:json_string) { File.read('spec/fixtures/parcel_list.json') }
   let(:json) { JSON.parse(json_string, { symbolize_names: true }) }
@@ -11,8 +11,10 @@ RSpec.describe 'Shippo::API::Request' do
 
   let(:api_request) { Shippo::API::Request.new(method: method, uri: uri, params: params, headers: headers) }
   let(:http_response) { RestClient::Response.create(json_string, 200, {}, { response: 'OK' }) }
+
   context '#new' do
     before do
+
       expect(RestClient::Request).to receive(:execute).and_return(http_response)
       api_request.execute
     end
@@ -26,4 +28,5 @@ RSpec.describe 'Shippo::API::Request' do
       expect(api_request.parsed_response).to eql(json.to_hash)
     end
   end
+
 end

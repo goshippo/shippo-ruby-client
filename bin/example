@@ -22,7 +22,6 @@ require 'awesome_print'
 require 'json'
 
 Shippo::API.token = ENV['SHIPPO_TOKEN']
-Shippo::API.debug = false # set to true for debugging output
 
 # Simple wrapper class to help us print objects to the STDOUT
 class ExampleHelper
@@ -32,12 +31,11 @@ class ExampleHelper
     puts 'OK'
     result
   rescue Exception => e
-    puts 'ERROR'
     raise(e)
   end
 
   def self.dump_object(instance, msg = nil)
-    return unless ENV['SHIPPO_DEBUG']
+    return unless Shippo::API.debug?
     sep
     puts "#{msg.upcase}:" if msg
     puts "\#<#{instance.class.inspect}:0x#{instance.object_id.to_s(16)}> ⇒ "
@@ -101,7 +99,7 @@ begin
     file.puts JSON.dump(shipment.to_hash)
   end
 rescue Shippo::Exceptions::APIServerError => e
-  puts "Server returned an error:\n#{e.inspect}"
+  puts "Server returned an error:\n#{e}"
   exit 3
 rescue Shippo::Exceptions::ConnectionError
   puts 'Error connecting to remote host. Is your Internet working?'
