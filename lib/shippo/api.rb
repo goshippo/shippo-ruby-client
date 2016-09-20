@@ -33,7 +33,7 @@ module Shippo
       %i[get put post].each do |method|
         define_method method do |*args|
           uri, params, headers = *args
-          request(method, uri, params || {}, headers || {})
+          self.request(method, uri, params || {}, headers || {})
         end
       end
 
