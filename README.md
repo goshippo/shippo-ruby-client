@@ -10,7 +10,7 @@ Shippo is a shipping API that connects you with [multiple shipping carriers](htt
 
 Print a shipping label in 10 mins using our default USPS and DHL Express accounts. No need to register for a carrier account to get started.
 
-You will need to [register for a Shippo account](https://goshippo.com/) to use the Shippo API. It's free to sign up, free to use the API. Only pay to print a live label, test labels are free. 
+You will need to [register for a Shippo account](https://goshippo.com/) to use the Shippo API. It's free to sign up, free to use the API. Only pay to print a live label, test labels are free.
 
 ## Installation
 
@@ -161,6 +161,22 @@ ap @shipment.rates_list.first
 # ⤷ Shippo::Rate
 ```
 
+#### List Endpoints
+
+You can retrieve a list of objects for many endpoints (e.g. Transactions, Shipments). The API will return a paginated list of objects, usually sorted by creation date. Retrieving a list of your last Transactions can be done as follows, for instance:
+
+```ruby
+@transactions = Shippo::Transaction.all()
+@transactions
+# =>
+# {
+#     "count" => 3055,
+#      "next" => "https://api.goshippo.com/v1/transactions/?page=2",
+#  "previous" => nil,
+#  "results"  => [ ... list of Transaction objects ... ]
+# }
+```
+
 #### Resource ID and Other Object Fields
 
 Shippo API returns several generalized fields for each valid resource, that being with 'object_' – for example, `object_id`, `object_owner`, etc.  In this library we move these fields out of the main model, and into an instance of `Shippo::API::ApiObject`. However the fields can still be accessed on the main model via generated accessors.
@@ -229,7 +245,7 @@ NOTE: this environment variable is only used by the included `bin/example` scrip
 
 Version 2 and up of this library works with Ruby 2.2 and later, and is not backwards compatible. __Version 1.0.4__ of this library is the last version supporting ruby 1.8 and 1.9.
 
-__Warning:__ Version 2 brings potential backwards incompatibility issues. Please be prepared to update your usages (if necessary) when you migrate. 
+__Warning:__ Version 2 brings potential backwards incompatibility issues. Please be prepared to update your usages (if necessary) when you migrate.
 
 ### If you are still using Ruby 1.8 or 1.9
 
