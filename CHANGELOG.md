@@ -1,5 +1,9 @@
 #### 2.0.2 release, Aug 17th 2016
 
+ * Handled RestClient::BadRequest to show response content
+
+#### 2.0.2 release, Aug 17th 2016
+
  * Removed gem dependency `colored2` as directly decorating object and string was causing Rals Rack to throw errors when users uploaded large files.
  * Fixed url for `CarrierAccount` 
  * README fixes
