@@ -12,7 +12,7 @@ class Shippo::Exceptions::Error < StandardError
   end
 
   def to_s
-    "BOOM! ⇨ #{message}"
+    "Error! ⇨ #{message}"
   end
 end
 
@@ -20,3 +20,4 @@ class Shippo::Exceptions::ConnectionError < Shippo::Exceptions::Error; end
 class Shippo::Exceptions::AuthenticationError < Shippo::Exceptions::Error; end
 class Shippo::Exceptions::MissingDataError < Shippo::Exceptions::Error; end
 class Shippo::Exceptions::AbstractClassInitError < Shippo::Exceptions::Error; end
+class Shippo::Exceptions::InvalidInputError < Shippo::Exceptions::Error; end
