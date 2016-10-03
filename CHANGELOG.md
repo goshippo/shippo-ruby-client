@@ -1,4 +1,4 @@
-#### 2.0.2 release, Aug 17th 2016
+#### 2.0.3 release, Oct 3rd 2016
 
  * Handled RestClient::BadRequest to show response content
 
