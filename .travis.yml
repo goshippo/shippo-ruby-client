@@ -11,6 +11,6 @@ notifications:
     - shippo:JOD4pUgjGlhSJ1s8mNKUTxKB#devcistatus
   email:
     recipients:
-      - kigster@gmail.com
+      - wissam@goshippo.com
     on_success: change
     on_failure: always
