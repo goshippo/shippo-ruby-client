@@ -1,20 +1,35 @@
-class Shippo::Exceptions::APIError < ::Shippo::Exceptions::Error
-  attr_accessor :message, :req
-  def initialize(message = nil, req = nil)
-    super(message)
-    self.req = req
-  end
+module Shippo
+  module Exceptions
+    class APIError < ::Shippo::Exceptions::Error
+      attr_accessor :request,
+                    :response,
+                    :http_response_message
 
-  def to_s
-    "#{self.class.name} ⇨ #{req.url}#{response} ⇨ #{message}"
-  end
 
-  def response
-    req.response && req.response.http_code ? "[ ⇨ HTTP #{req.response.http_code} ]" : ''
+      def initialize(message = nil,
+                     request = nil,
+                     response = nil)
+        super(message)
+        self.request  = request
+        self.response = response
+      end
+
+      def to_s_members
+        super + %i(server_url response)
+      end
+
+      def server_url
+        @server_url ||= (request ? request.url : '')
+      end
+    end
   end
 end
 
-class Shippo::Exceptions::UnsuccessfulResponseError < Shippo::Exceptions::APIError; end
-class Shippo::Exceptions::APIServerError < Shippo::Exceptions::APIError; end
-class Shippo::Exceptions::InvalidCategoryValueError < Shippo::Exceptions::APIError; end
+
+class Shippo::Exceptions::UnsuccessfulResponseError < Shippo::Exceptions::APIError;
+end
+class Shippo::Exceptions::InvalidCategoryValueError < Shippo::Exceptions::APIError;
+end
+class Shippo::Exceptions::InvalidJsonError < Shippo::Exceptions::APIError;
+end
 

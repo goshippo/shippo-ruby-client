@@ -2,6 +2,7 @@ require 'rest_client'
 require 'socket'
 require 'json'
 require 'set'
+require 'awesome_print'
 
 require 'shippo/exceptions'
 
@@ -58,8 +59,15 @@ module Shippo
         rescue ::RestClient::Unauthorized => e
           raise Shippo::Exceptions::AuthenticationError.new(e.message)
 
-        rescue ::JSON::JSONError, ::JSON::ParserError
-          raise Shippo::Exceptions::APIServerError.new('Unable to read data received back from the server', self)
+        rescue ::RestClient::BadRequest => e
+          if e.respond_to?(:response) && e.response.is_a?(RestClient::Response)
+            awesome_print_response(e) if Shippo::API.debug?
+            raise Shippo::Exceptions::APIServerError.new('Backend responded with an error',
+                                                         self, e.response, e.message)
+          end
+
+        rescue ::JSON::JSONError, ::JSON::ParserError => e
+          raise Shippo::Exceptions::InvalidJsonError.new(e.message)
 
         rescue ::RestClient::BadRequest => e
           raise Shippo::Exceptions::InvalidInputError.new(e.inspect)
@@ -81,11 +89,17 @@ module Shippo
       private
 
       def shippo_phone_home
-        payload = {}
+        payload     = {}
         request_url = url
         (method == :get) ? request_url = params_to_url(params, url) : payload = params.to_json
         setup_headers!(headers)
         opts = make_opts!(headers, method, payload, request_url)
+
+        if Shippo::API.debug?
+          puts "\nCLIENT REQUEST:"
+          ap opts
+        end
+
         make_request!(opts)
       end
 
@@ -120,6 +134,17 @@ module Shippo
         )
       end
 
+      def awesome_print_response(e)
+        begin
+          h = JSON.parse(e.response)
+          if h
+            puts "\nSERVER RESPONSE:"
+            ap JSON.parse(e.response)
+          end
+        rescue nil
+        end
+      end
+
       def base
         ::Shippo::API.base
       end
@@ -129,7 +154,7 @@ module Shippo
       end
 
       def connection_error_message(url, error)
-%Q[Could not connect to the Shippo API, via URL
+        %Q[Could not connect to the Shippo API, via URL
   #{url}.
 
 Please check your Internet connection, try again, if the problem

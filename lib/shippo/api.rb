@@ -38,7 +38,7 @@ module Shippo
       end
 
       def debug?
-        Shippo::API.debug
+        self.debug
       end
     end
   end
