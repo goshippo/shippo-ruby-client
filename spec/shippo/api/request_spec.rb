@@ -7,16 +7,24 @@ RSpec.describe Shippo::API::Request do
   let(:method) { :get }
   let(:uri) { '/some-uri' }
   let(:params) { {} }
-  let(:headers) { {'X-Authorize-Your-Mom' => 'Accepted' } }
+  let(:headers) { {'X-Authorize-Your-Mom' => 'Accepted'} }
 
   let(:api_request) { Shippo::API::Request.new(method: method, uri: uri, params: params, headers: headers) }
   let(:http_response) { RestClient::Response.create(json_string, 200, {}, { response: 'OK' }) }
 
   context '#new' do
-    before do
-
-      expect(RestClient::Request).to receive(:execute).and_return(http_response)
-      api_request.execute
+    before do |example|
+      unless example.metadata[:skip_before]
+        Shippo::API.version = "2.4.5"
+      end
+        expect(RestClient::Request).to receive(:execute).and_return(http_response)
+        api_request.execute
+    end
+    it 'should not include Shippo-API-Version in header if one is not specified', skip_before: true do
+      expect(api_request.headers[:'Shippo-API-Version']).to be_nil
+    end
+    it 'should include Shippo-API-Version in header if one is specified' do
+      expect(api_request.headers[:'Shippo-API-Version']).to eql("Shippo-API-Version 2.4.5")
     end
     it 'should successfully return the response object' do
       expect(api_request.response).to_not be_nil

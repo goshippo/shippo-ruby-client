@@ -127,12 +127,13 @@ module Shippo
       end
 
       def setup_headers!(headers)
-        headers.merge!(
+        additional_hash = {
           :accept        => :json,
           :content_type  => :json,
-          :Authorization => "ShippoToken #{token}",
-          :'Shippo-API-Version' => "#{version}"
-        )
+          :Authorization => "ShippoToken #{token}"
+        }
+        additional_hash[:'Shippo-API-Version'] = "Shippo-API-Version #{version}" if version
+        headers.merge!(additional_hash)
       end
 
       def awesome_print_response(e)
@@ -155,7 +156,7 @@ module Shippo
       end
 
       def version
-       ::Shippo::API.version
+        ::Shippo::API.version
       end
 
       def connection_error_message(url, error)

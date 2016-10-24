@@ -1,4 +1,4 @@
-#
+VERSION = '2.0.5'#
 # +Shippo+ is the ruby module enclosing all and any ruby-based
 # functionality developed by Shippo, Inc.
 #
