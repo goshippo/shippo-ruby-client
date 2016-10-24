@@ -130,7 +130,8 @@ module Shippo
         headers.merge!(
           :accept        => :json,
           :content_type  => :json,
-          :Authorization => "ShippoToken #{token}"
+          :Authorization => "ShippoToken #{token}",
+          :'Shippo-API-Version' => "#{version}"
         )
       end
 
@@ -151,6 +152,10 @@ module Shippo
 
       def token
         ::Shippo::API.token
+      end
+
+      def version
+       ::Shippo::API.version
       end
 
       def connection_error_message(url, error)
