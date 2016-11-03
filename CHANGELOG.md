@@ -1,12 +1,22 @@
+#### 2.0.5 release, Oct 24th, 2016
+ - Updated README.md
+ - now possible to send API version
+#### 2.0.4 release, Oct 6th 2016
+ - Rails5 Compatibility via relaxed dependencies
+   - removing mime-types dependency
+   - relaxing activesupport to allow version 5
+ - reorganizing exceptions to enable subclassing with additional parameters and more readable #to_s method
+ - adding bin/console for easy irb-ing 
+
 #### 2.0.3 release, Oct 3rd 2016
 
- * Handled RestClient::BadRequest to show response content
+ - Handled RestClient::BadRequest to show response content
 
 #### 2.0.2 release, Aug 17th 2016
 
- * Removed gem dependency `colored2` as directly decorating object and string was causing Rals Rack to throw errors when users uploaded large files.
- * Fixed url for `CarrierAccount` 
- * README fixes
+ - Removed gem dependency `colored2` as directly decorating object and string was causing Rals Rack to throw errors when users uploaded large files.
+ - Fixed url for `CarrierAccount` 
+ - README fixes
  
 #### 2.0.0-beta  July 7th, 2016
 

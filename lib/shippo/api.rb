@@ -11,8 +11,8 @@ require 'shippo/api/resource'
 
 module Shippo
   module API
-    @base     = 'https://api.goshippo.com/v1'
-    @version  = 1.0
+    @base     = 'https://api.goshippo.com/'
+    @version  = nil
     @token    = ''
     @debug    = Integer(ENV['SHIPPO_DEBUG'] || 0) > 0 ? true : false
     @warnings = true
