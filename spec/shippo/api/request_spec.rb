@@ -15,7 +15,7 @@ RSpec.describe Shippo::API::Request do
   context '#new' do
     before do |example|
       unless example.metadata[:skip_before]
-        Shippo::API.version = "2.4.5"
+        Shippo::API.version = "2016-10-25"
       end
         expect(RestClient::Request).to receive(:execute).and_return(http_response)
         api_request.execute
@@ -24,7 +24,7 @@ RSpec.describe Shippo::API::Request do
       expect(api_request.headers[:'Shippo-API-Version']).to be_nil
     end
     it 'should include Shippo-API-Version in header if one is specified' do
-      expect(api_request.headers[:'Shippo-API-Version']).to eql("Shippo-API-Version 2.4.5")
+      expect(api_request.headers[:'Shippo-API-Version']).to eql("2016-10-25")
     end
     it 'should successfully return the response object' do
       expect(api_request.response).to_not be_nil
