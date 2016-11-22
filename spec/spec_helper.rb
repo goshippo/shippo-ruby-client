@@ -1,10 +1,11 @@
-require 'codeclimate-test-reporter'
 require 'pry'
+require 'simplecov'
 
-CodeClimate::TestReporter.start
+SimpleCov.start
 
 require 'rspec/core'
 require 'shippo'
+
 
 RSpec.configure do |config|
   config.before do

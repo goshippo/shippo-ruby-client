@@ -132,7 +132,7 @@ module Shippo
           :content_type  => :json,
           :Authorization => "ShippoToken #{token}"
         }
-        additional_hash[:'Shippo-API-Version'] = "Shippo-API-Version #{version}" if version
+        additional_hash[:'Shippo-API-Version'] = version if version
         headers.merge!(additional_hash)
       end
 
