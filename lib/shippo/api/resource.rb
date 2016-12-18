@@ -5,12 +5,12 @@ require 'active_support/inflector'
 
 require 'shippo/exceptions'
 
-require_relative 'api_object'
-require_relative 'category/status'
-require_relative 'transformers/list'
-require_relative 'extend/operation'
-require_relative 'extend/transformers'
-require_relative 'extend/url'
+require 'shippo/api/api_object'
+require 'shippo/api/category/status'
+require 'shippo/api/transformers/list'
+require 'shippo/api/extend/operation'
+require 'shippo/api/extend/transformers'
+require 'shippo/api/extend/url'
 
 module Shippo
   module API
