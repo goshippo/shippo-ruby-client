@@ -1,3 +1,5 @@
+### 2.0.6 release, Nov 22nd, 2016
+- Fixed bug to send request with correct API version header
 #### 2.0.5 release, Oct 24th, 2016
  - Updated README.md
  - now possible to send API version
