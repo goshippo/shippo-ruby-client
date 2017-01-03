@@ -1,5 +1,6 @@
 ### 2.0.7 release, Jan 2nd, 2017
 - Fixed bug preventing address validation
+- Removed trailing slash from base URL, added spec test to ensure this configuration
 ### 2.0.6 release, Nov 22nd, 2016
 - Fixed bug to send request with correct API version header
 #### 2.0.5 release, Oct 24th, 2016
