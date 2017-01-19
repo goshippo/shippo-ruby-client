@@ -183,13 +183,17 @@ Shippo API returns several generalized fields for each valid resource, that bein
 
 Unfortunately Shippo API also returns `object_id`, which in Ruby has a special meaning: it's the pointer address of any object. Overwriting this field causes all sorts of issues.
 
-For this reason we are mapping `object_id` to `resource_id`, as soon as the hash is passed in to initialize `ApiObject`.
+For this reason we are mapping `object_id` to `resource_id`, as soon as the hash is passed in to initialize `ApiObject`. This way `object_id` continues to be used as a ruby internal field, and can be accessed as expected:
 
-The following console output demonstrates many ways of accessing `object_` fields:
+> In the example below, `object_id` does not refer to any API field, and is a ruby internal field.
 
 ```ruby
 @shipment.object_id    # this is the Ruby object pointer
 # ⤷ 70206221831520  
+```
+To access the `"object_id"` field retrieved with the API, see the following session that highlights many ways of accessing `object_id` field:
+
+```ruby
 @shipment.resource_id  # this is the API id (note: deprecated accessor)
 # ⤷ 20f25e44b16b4051b6dd910cb66fd27b
 @shipment.object.id    # which is actually just this
@@ -198,7 +202,7 @@ The following console output demonstrates many ways of accessing `object_` field
 # ⤷ 20f25e44b16b4051b6dd910cb66fd27b
 ```
 
-And with the rest of the `object_` fields:
+Finally, here is how we access the rest of the `object_` fields:
 
 ``` ruby
 @shipment.object.owner    # this is whether 'object_owner' is stored
