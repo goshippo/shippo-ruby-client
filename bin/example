@@ -41,6 +41,9 @@ class ExampleHelper
     puts "\#<#{instance.class.inspect}:0x#{instance.object_id.to_s(16)}> ⇒ "
     ap instance
     sep
+    # See https://github.com/goshippo/shippo-ruby-client#resource-id-and-other-object-fields
+    puts "Shippo object id: #{instance.object.id}"
+    sep
   end
 
   def self.sep
