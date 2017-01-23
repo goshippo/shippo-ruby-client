@@ -7,7 +7,7 @@ RSpec.describe Shippo::API::Request do
   let(:method) { :get }
   let(:uri) { '/some-uri' }
   let(:params) { {} }
-  let(:headers) { {'X-Authorize-Your-Mom' => 'Accepted'} }
+  let(:headers) { {'X-Authorize' => 'Accepted'} }
 
   let(:api_request) { Shippo::API::Request.new(method: method, uri: uri, params: params, headers: headers) }
   let(:http_response) { RestClient::Response.create(json_string, 200, {}, { response: 'OK' }) }

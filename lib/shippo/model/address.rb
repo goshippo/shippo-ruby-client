@@ -1,5 +1,5 @@
 module Shippo
   class Address < ::Shippo::API::Resource
-    operations :list, :create
+    operations :list, :create, :validate
   end
 end

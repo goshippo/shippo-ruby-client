@@ -13,6 +13,12 @@ RSpec.describe Shippo::API do
     end
   end
 
+  context 'api url definition' do
+    it 'api base url should have no trailing slash' do
+      expect(Shippo::API.base[-1]).not_to eql('/')
+    end
+  end    
+
   context 'api token' do
     before do
       Shippo::API.token = nil
