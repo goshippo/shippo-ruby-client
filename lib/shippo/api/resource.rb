@@ -99,6 +99,10 @@ module Shippo
       def success?
         self.object && self.object.status && self.object.status.eql?(Shippo::API::Category::Status::SUCCESS)
       end
+
+      def valid?
+        self.object && self.object.state && self.object.state.eql?(Shippo::API::Category::State::VALID)
+      end
     end
   end
 end
