@@ -47,7 +47,7 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Tue, 14 Feb 2017 23:34:02 GMT
+      - Tue, 14 Feb 2017 23:28:40 GMT
       P3p:
       - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
       Server:
@@ -61,55 +61,7 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIAOqTo1gC/42RXUvDMBiF/8qot26kadfGXTkVtDDEi+GFIiVN3tpol5R8VMfYfzepbqsXgnfJOc/7kZNdpKo3YLYUPFpMIp7NCYlJhnJMU6A1JXWSJ3BBUMIzkqfR+eRQoD4k6FDTC9lcvirTiK5TM6Y2I8hYap0J1ONyVdws18X97chmGqiFYTJGcT5FeBqna5wsknSB8Ixk86cR7Tr+H3oDlnqQBu5qub6+m5zFOQoOh5q61o+lWgvQJWVMOWkDWFX+jRRxxjFK8wQThNOKJZxRPs8ygsflBnQvGLTQQ1ta9Q4ydHCmM2WnhdLCbgPe0sr7tWjBbjsIyNPDqiiCVVHLmjIktgFpQz676LAK8r6Ez3CUrm39rdPQCzXE+KNoMH6RIDy/7E8BneRd1DnNGmqgNI4xAD7kFnofjZr61Q7q8BNCyT/UX032x8c53X7v8AWxRoKfRwIAAA==
+        H4sIAKiSo1gC/42RXU/CMBiF/wqZt0K6bmyDK1ETXUKMF8QLjFm69sVVS9v0Y0oI/911CswLE+/ac573o6f7SNVvQF3FWTQfRTShNC8yjMgMpUnNapaSBOIiTwuUZWgaXY6OBepDggk1LZfN1auyDddaTajaDiDriPM2UE+LZXm7WJUPdwObGiAO+skYxfkY4XGcrnAyx8U8RROEk/WA9pr9h96CIx1IAne9WN3cjy7iHAWHwYZ40Y0lxnAwFaFUeekCWNezAhHEKMMozRNcIJzWNGGUsGmWFXhYbsG0nIKAFkTl1DvI0MFbbSttuDLc7QIuSN35Gy7A7TQEZP24LMtg1cTRpgqJbUG6kM8+Oq6COl/CZzhKL0R30wZarvoYfxQDtlskCM8vh3NAZ3kfaW9oQyxU1lMKwPrcQu+TsSHdake1/wmu5B/qryaH0+O8Ed87fAGtbhjdRwIAAA==
     http_version: 
-  recorded_at: Tue, 14 Feb 2017 23:34:02 GMT
-- request:
-    method: get
-    uri: https://api.goshippo.com/batches/d6588186072a4eafa8f373e9803d6874/
-    body:
-      encoding: ASCII-8BIT
-      string: ''
-    headers:
-      Accept:
-      - application/json
-      Accept-Encoding:
-      - gzip, deflate
-      Content-Type:
-      - application/x-www-form-urlencoded
-      Authorization:
-      - "<API_TOKEN>"
-      Content-Length:
-      - '0'
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Allow:
-      - OPTIONS
-      Content-Encoding:
-      - gzip
-      Content-Type:
-      - application/json
-      Date:
-      - Tue, 14 Feb 2017 23:34:03 GMT
-      P3p:
-      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
-      Server:
-      - nginx/1.8.0
-      Vary:
-      - Host, Cookie, Accept-Encoding
-      Content-Length:
-      - '349'
-      Connection:
-      - keep-alive
-    body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        H4sIAOuTo1gC/42RXUvDMBiF/8qot26kadfGXTkVtDDEi+GFIiVN3tpol5R8VMfYfzepbqsXgnfJOc/7kZNdpKo3YLYUPFpMIp7NCYlJhnJMU6A1JXWSJ3BBUMIzkqfR+eRQoD4k6FDTC9lcvirTiK5TM6Y2I8hYap0J1ONyVdws18X97chmGqiFYTJGcT5FeBqna5wsknSB8Ixk86cR7Tr+H3oDlnqQBu5qub6+m5zFOQoOh5q61o+lWgvQJWVMOWkDWFX+jRRxxjFK8wQThNOKJZxRPs8ygsflBnQvGLTQQ1ta9Q4ydHCmM2WnhdLCbgPe0sr7tWjBbjsIyNPDqiiCVVHLmjIktgFpQz676LAK8r6Ez3CUrm39rdPQCzXE+KNoMH6RIDy/7E8BneRd1DnNGmqgNI4xAD7kFnofjZr61Q7q8BNCyT/UX032x8c53X7v8AWxRoKfRwIAAA==
-    http_version: 
-  recorded_at: Tue, 14 Feb 2017 23:34:03 GMT
+  recorded_at: Tue, 14 Feb 2017 23:28:39 GMT
 recorded_with: VCR 3.0.3

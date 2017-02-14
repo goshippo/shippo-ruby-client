@@ -13,7 +13,7 @@ RSpec.describe 'Shippo::API::Track' do
   describe '#retrieve' do
     it 'should properly return a Track object' do
       VCR.use_cassette("track/test_retrieve") do
-        track = Shippo::Track::get_with_carrier(TRACKING_NO, CARRIER)
+        track = Shippo::Track::get(TRACKING_NO, CARRIER)
         expect(track).to be_kind_of(Shippo::Track)
         expect(track.tracking_number).to be == TRACKING_NO
         expect(track.tracking_history).not_to be == nil
