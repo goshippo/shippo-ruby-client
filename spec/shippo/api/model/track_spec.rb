@@ -25,7 +25,7 @@ RSpec.describe 'Shippo::API::Track' do
     it 'should raise an exception' do
       VCR.use_cassette("track/test_invalid_retrieve") do
         expect {
-          Shippo::Track::get_with_carrier(TRACKING_NO, "INVALID_CARRIER")
+          Shippo::Track::get(TRACKING_NO, "INVALID_CARRIER")
         }.to raise_error(Shippo::Exceptions::Error)
       end
     end

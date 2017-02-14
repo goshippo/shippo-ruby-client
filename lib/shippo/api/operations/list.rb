@@ -16,15 +16,6 @@ module Shippo
           response = Shippo::API.get("#{url}/#{CGI.escape(id)}/", params)
           self.from(response)
         end
-
-        # Retrieve a concrete item by its ID and carrier
-        # @param [Fixnum] id Database ID of the item to be received
-        # @param [String] carrier The carrier of the item to be received
-        # @param [Hash] params Additional URI parameters tacked onto the query URL
-        def get_with_carrier(id, carrier, params={})
-          response = Shippo::API.get("#{url}/#{CGI.escape(carrier)}/#{CGI.escape(id)}/")
-          self.from(response)
-        end
       end
     end
   end
