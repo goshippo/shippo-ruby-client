@@ -4,6 +4,7 @@ require 'simplecov'
 SimpleCov.start
 
 require 'rspec/core'
+require 'webmock/rspec'
 require 'shippo'
 
 
