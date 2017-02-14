@@ -27,4 +27,14 @@ RSpec.describe 'Shippo::API::Batch' do
       end
     end
   end
+
+  describe '#invalid_retrieve' do
+    it 'should raise an error' do
+      VCR.use_cassette('batch/test_invalid_retrieve') do
+        expect {
+          batch = Shippo::Batch::get("INVALID_ID")
+        }.to raise_error(Shippo::Exceptions::Error)
+      end
+    end
+  end
 end
