@@ -16,6 +16,9 @@ RSpec.describe 'Shippo::API::Track' do
   let(:params) { { 'carrier': CARRIER,
                    'tracking_number': TRACKING_NO }}
 
+  let(:invalid_params) { { 'carrier': "INVALID_CARRIER",
+                   'tracking_number': TRACKING_NO }}
+
   describe '#retrieve' do
     it 'should properly return a Track object' do
       VCR.use_cassette("test_retrieve") do
@@ -44,6 +47,16 @@ RSpec.describe 'Shippo::API::Track' do
         expect(track).to be_kind_of(Shippo::Track)
         expect(track.tracking_number).to be == TRACKING_NO
         expect(track.tracking_history).not_to be == nil
+      end
+    end
+  end
+
+  describe '#invalid_register_webhook' do
+    it 'should raise an exception' do
+      VCR.use_cassette("test_invalid_register_webhook") do
+        expect {
+          Shippo::Track::create(invalid_params.dup)
+        }.to raise_error(Shippo::Exceptions::APIServerError)
       end
     end
   end
