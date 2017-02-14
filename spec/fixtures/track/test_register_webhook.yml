@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.goshippo.com/tracks/
+    body:
+      encoding: UTF-8
+      string: '{"carrier":"usps","tracking_number":"9205590164917312751089"}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<API_TOKEN>"
+      Content-Length:
+      - '61'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 201
+      message: CREATED
+    headers:
+      Allow:
+      - OPTIONS
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 14 Feb 2017 18:43:28 GMT
+      P3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      Server:
+      - nginx/1.8.0
+      Vary:
+      - Host, Cookie, Accept-Encoding
+      Content-Length:
+      - '740'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIANBPo1gC/92WW0/bMBSA/0rU51H5Gtt5Q4IHJIYQLZW2aaqOb+CRJlHiVmMT/31ORrUCWxm006ZJfrF9fC7fOfbx15GBtg2uHRXZaNk13ehNNootmJtQXc2r5UJ/31IEca4QzpnCgmIiOEZS9cJgbeu6bu7bepEkv45MiLf9kVPospm7gkFlFyG6fvVs1k+/hKafSIUR7uemXlaxHY5dTkZ3G2pj/UDppKljd1uuoArwQO/scEMvIZz/Qq+LMEikUA6QOCB0ilAxjPeDPteugnGlW7lyMBzrG1et4cybNtRt70oSrWAxWD6/X8veQigHG4tkxMJgqFqW5SbR3t9lN2iu9Sdn4ty0LoVgHzlFUEF5QfIxJmpw7F562dgXSIdBUGHlkObeMwWMEKml1gyUtYQRhqxccxz8Gh0dn57Mji+Oj34sz20KKJTD9rt62WbddWgWrorZdcqxdq7KrCvDyrXOZhCzeO3SQhdDBTHUVbZIh3X9ebyp8T5tG0FgWiC6zkNZm+HsHpN/t5mH69DFetj7sDUTZIpZQfOCo7Fi9ClbKnFOjAeWI8wkJVp4DUZylQshibcP2U4vDs8mJ9MXkQVjXJPc2koPTzEv6HZ6O9zHhG4nSsxJAsIqTalhgFAalmCjsQbnrcH7o7Quv8vJ+SRL1/IqVJkHE8oE4TmCqsD5v0qQSkmY9tJLzRnXaea0BmGQs54LBjsR7DvAaid2/QOE98COoD/AzuTYIuEAMcmZRkpK5bDH3gucIy93Y2ddA21feDuQ43+LXGp+sjfP8Fhy/JOq44onVCrnNE/kdHrVMKFWAKBkMRd7r7rNrvFbAFMEpCDPtA2obHrtqy0tg2L+On595SV+fEyweMrPcmW80jnRmDAAo3PuUa7S1eWYCiD75NfUXcxq79Pv5TliqVXIPTVa+ipq2/8rVPA89QdpuDRMS6O0FdJiSykFhsyjnvr//lc+3n0DxIH4E54LAAA=
+    http_version: 
+  recorded_at: Tue, 14 Feb 2017 18:43:28 GMT
+recorded_with: VCR 3.0.3
