@@ -1,5 +1,5 @@
 module Shippo
   class Track < ::Shippo::API::Resource
-    operations :list
+    operations :create, :list
   end
 end
