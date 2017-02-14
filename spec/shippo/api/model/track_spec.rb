@@ -1,17 +1,10 @@
 require 'spec_helper'
-require 'vcr'
 
 CARRIER = 'usps'
 TRACKING_NO = '9205590164917312751089'
 
 RSpec.describe 'Shippo::API::Track' do
-  VCR.configure do |config|
-    config.filter_sensitive_data('<API_TOKEN>') do |interaction|
-      interaction.request.headers['Authorization'].first
-    end
-    config.cassette_library_dir = 'spec/fixtures/track'
-    config.hook_into :webmock
-  end
+  configure_vcr('spec/fixtures/track')
 
   let(:params) { { 'carrier': CARRIER,
                    'tracking_number': TRACKING_NO }}
