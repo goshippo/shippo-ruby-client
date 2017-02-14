@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.goshippo.com/tracks/usps/9205590164917312751089/
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Authorization:
+      - "<API_TOKEN>"
+      Content-Length:
+      - '0'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Allow:
+      - OPTIONS
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 14 Feb 2017 00:22:00 GMT
+      P3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      Server:
+      - nginx/1.8.0
+      Vary:
+      - Host, Cookie, Accept-Encoding
+      Content-Length:
+      - '739'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAKhNolgC/92WW2/TMBSA/0rUZ6h8Ob7lbdL2MGkgREslQKjydTOkSZS4FRftv+OEVXQMOrYWgZDyYvtcv3Oc4y8Tq7su+m5SFpN13/aTJ8Ukddp+iPXlsl6vzLcjRRBjCmEOCguKiWAYSTUIa+c63/fL0DWrLPllYmP6NKhc6L5Y+Es9muyTTn7Yfb4Ylp9jOyykwggPa9us69SNaq9mk+sds6m5ZXTWNqn/VG10HfUtu4uTHbuEMPYLuz7pUSKn8hSJp4TOESrH781oz3ebaH3lN74aHafmg6+3cJZtF5tuCCWL1no1en5xs1c807EafayyE6dHR/W6qnaJDvGu+9FyY957m5a28zkF90NQBJWUlYRPMVFjYDfS69Y9QDqOgtIFS1XQSgsFQJgCaTnlNhAuMeJiy3GMa3J6dnG+OHt5dvp9e+lyQrEaj183667or2K78nUqrnKNjfd14XwVN77zrtCpSFc+b/Qp1jrFpi5WWdk0H6e7Fm/KtpMEpiWi2zpUjR11j1j86906XMU+NePZ272VIHMMJeUlQ1MF9C5bABqkZiAV8YBMBgqWaOelsRJzw2+znb88eT47nz+IrLbWtzmsvfTwHLOS7qd3wH3M6A6iJIxGijPhwQtwnCiei0SA5m7EgSJzPErb9ns1ezEr8rW8jHURtI1VhnAfQVVi/q8SVEIbIQkw7AGYD8oyRxWlwQVDsdUHERwmwOYgdsMPCB+BHUF/gB0WymLKMEhvIRisqcXIgVPCI+uEPIid863uhsY7gBz7W+Ty8JODe8BTyfBPJgcYKTg3huahYRmRYLEVCnPEQQeJj951u1PjtwDmDEhJ7hkbunb5b1/vGRkUs8fxGzov82NTgsVdfiRoypVkDnEDGoFWyGHLvAeBASw9Jr+26VPRhJBfL/cRy6NCHmnQ0kdR2/9ecSowoEwTTQWg4Iz0gisCyhpA1PzQdf/ve+Xd9Ve3xAEXngsAAA==
+    http_version: 
+  recorded_at: Tue, 14 Feb 2017 00:22:00 GMT
+recorded_with: VCR 3.0.3
