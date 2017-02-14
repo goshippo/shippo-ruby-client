@@ -18,8 +18,18 @@ RSpec.describe 'Shippo::API::Track' do
       VCR.use_cassette("test_retrieve") do
         track = Shippo::Track::get_with_carrier(TRACKING_NO, CARRIER)
         expect(track).to be_kind_of(Shippo::Track)
-        track.tracking_number.should == TRACKING_NO
-        track.tracking_history.should_not == nil
+        expect(track.tracking_number).to be == TRACKING_NO
+        expect(track.tracking_history).not_to be == nil
+      end
+    end
+  end
+
+  describe '#invalid_retrieve' do
+    it 'should raise an exception' do
+      VCR.use_cassette("test_invalid_retrieve") do
+        expect {
+          Shippo::Track::get_with_carrier("INVALID_NO", CARRIER)
+        }.to raise_error(Shippo::Exceptions::ConnectionError)
       end
     end
   end
