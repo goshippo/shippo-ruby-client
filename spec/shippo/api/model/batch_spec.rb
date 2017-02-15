@@ -72,4 +72,20 @@ RSpec.describe 'Shippo::API::Batch' do
       end
     end
   end
+
+  describe '#invalid_add_shipment' do
+    it 'should raise an error' do
+      VCR.use_cassette('batch/test_invalid_add') do
+        batch = Shippo::Batch::create(dummy_batch.dup)
+
+        shipments = Array.new
+        shipment = Shippo::Shipment::create(dummy_shipment.dup)
+        shipments.push({"shipment" => shipment[:object_id]})
+
+        expect {
+          add = Shippo::Batch::add_shipment("INVALID_ID", shipments)
+        }.to raise_error(Shippo::Exceptions::Error)
+      end
+    end
+  end
 end
