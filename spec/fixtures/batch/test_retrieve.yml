@@ -47,7 +47,7 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Tue, 14 Feb 2017 23:34:02 GMT
+      - Wed, 15 Feb 2017 22:51:32 GMT
       P3p:
       - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
       Server:
@@ -55,18 +55,18 @@ http_interactions:
       Vary:
       - Host, Cookie, Accept-Encoding
       Content-Length:
-      - '349'
+      - '348'
       Connection:
       - keep-alive
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIAOqTo1gC/42RXUvDMBiF/8qot26kadfGXTkVtDDEi+GFIiVN3tpol5R8VMfYfzepbqsXgnfJOc/7kZNdpKo3YLYUPFpMIp7NCYlJhnJMU6A1JXWSJ3BBUMIzkqfR+eRQoD4k6FDTC9lcvirTiK5TM6Y2I8hYap0J1ONyVdws18X97chmGqiFYTJGcT5FeBqna5wsknSB8Ixk86cR7Tr+H3oDlnqQBu5qub6+m5zFOQoOh5q61o+lWgvQJWVMOWkDWFX+jRRxxjFK8wQThNOKJZxRPs8ygsflBnQvGLTQQ1ta9Q4ydHCmM2WnhdLCbgPe0sr7tWjBbjsIyNPDqiiCVVHLmjIktgFpQz676LAK8r6Ez3CUrm39rdPQCzXE+KNoMH6RIDy/7E8BneRd1DnNGmqgNI4xAD7kFnofjZr61Q7q8BNCyT/UX032x8c53X7v8AWxRoKfRwIAAA==
+        H4sIAHTbpFgC/42RyU7DMBRFf6UKW1o5TtKkXVFAgkgVYlGxKEKRY78QQ2pbHgJV1X/HDnRggcTOvve8wde7SNZvQG3FWTQfRTAr0gwnaQYFTvOcEeYvaYOLBIokJhBdjg4F8kOADjU9F+3VqzQtV0pOqNycQcYS60ygnhbL8naxKh/uzmyqgVgYJmMU52OEx3G2wniexfMET7IYr89op9h/6A1Y4kESuOvF6uZ+dBHnKDgMGuI6P5ZozUFXhFLphA1gXc8KRBCjDKM0T3CBcFrThFHCsum0wOflBnTPKXTQQ1dZ+Q4idHBGmUppLjW324B3pPZ+wzuwWwUBWT8uyzJYNbG0rUJiGxA25LOLDqsg7wv4DEfhus7flIaeyyHGH0WD8YsE4fllfwroJO8i5TRtiYHKOEoB2JBb6H00GuJXO6jDT3Ap/lB/NdkfH+d0973DF0TuIadHAgAA
     http_version: 
-  recorded_at: Tue, 14 Feb 2017 23:34:02 GMT
+  recorded_at: Wed, 15 Feb 2017 22:51:32 GMT
 - request:
     method: get
-    uri: https://api.goshippo.com/batches/d6588186072a4eafa8f373e9803d6874/
+    uri: https://api.goshippo.com/batches/e98452345e82477dad2344f283e831ae
     body:
       encoding: ASCII-8BIT
       string: ''
@@ -95,7 +95,7 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Tue, 14 Feb 2017 23:34:03 GMT
+      - Wed, 15 Feb 2017 22:51:32 GMT
       P3p:
       - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
       Server:
@@ -103,13 +103,13 @@ http_interactions:
       Vary:
       - Host, Cookie, Accept-Encoding
       Content-Length:
-      - '349'
+      - '348'
       Connection:
       - keep-alive
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIAOuTo1gC/42RXUvDMBiF/8qot26kadfGXTkVtDDEi+GFIiVN3tpol5R8VMfYfzepbqsXgnfJOc/7kZNdpKo3YLYUPFpMIp7NCYlJhnJMU6A1JXWSJ3BBUMIzkqfR+eRQoD4k6FDTC9lcvirTiK5TM6Y2I8hYap0J1ONyVdws18X97chmGqiFYTJGcT5FeBqna5wsknSB8Ixk86cR7Tr+H3oDlnqQBu5qub6+m5zFOQoOh5q61o+lWgvQJWVMOWkDWFX+jRRxxjFK8wQThNOKJZxRPs8ygsflBnQvGLTQQ1ta9Q4ydHCmM2WnhdLCbgPe0sr7tWjBbjsIyNPDqiiCVVHLmjIktgFpQz676LAK8r6Ez3CUrm39rdPQCzXE+KNoMH6RIDy/7E8BneRd1DnNGmqgNI4xAD7kFnofjZr61Q7q8BNCyT/UX032x8c53X7v8AWxRoKfRwIAAA==
+        H4sIAHTbpFgC/42RyU7DMBRFf6UKW1o5TtKkXVFAgkgVYlGxKEKRY78QQ2pbHgJV1X/HDnRggcTOvve8wde7SNZvQG3FWTQfRTAr0gwnaQYFTvOcEeYvaYOLBIokJhBdjg4F8kOADjU9F+3VqzQtV0pOqNycQcYS60ygnhbL8naxKh/uzmyqgVgYJmMU52OEx3G2wniexfMET7IYr89op9h/6A1Y4kESuOvF6uZ+dBHnKDgMGuI6P5ZozUFXhFLphA1gXc8KRBCjDKM0T3CBcFrThFHCsum0wOflBnTPKXTQQ1dZ+Q4idHBGmUppLjW324B3pPZ+wzuwWwUBWT8uyzJYNbG0rUJiGxA25LOLDqsg7wv4DEfhus7flIaeyyHGH0WD8YsE4fllfwroJO8i5TRtiYHKOEoB2JBb6H00GuJXO6jDT3Ap/lB/NdkfH+d0973DF0TuIadHAgAA
     http_version: 
-  recorded_at: Tue, 14 Feb 2017 23:34:03 GMT
+  recorded_at: Wed, 15 Feb 2017 22:51:32 GMT
 recorded_with: VCR 3.0.3

@@ -47,7 +47,7 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 15 Feb 2017 07:22:21 GMT
+      - Wed, 15 Feb 2017 22:51:33 GMT
       P3p:
       - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
       Server:
@@ -55,18 +55,18 @@ http_interactions:
       Vary:
       - Host, Cookie, Accept-Encoding
       Content-Length:
-      - '349'
+      - '348'
       Connection:
       - keep-alive
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIAK0BpFgC/42RyU7DMBRFf6UKW1rZTpqhKwpIEKlCLCoWRShy7BdicOPIQ6Cq+u/EgbZhgcTOvve8wdf7QJVvwGwheLCYBDzGgEMKKVAcZQkuIxRlELI4nVdVSHFwOTkWqI8GtK/pRFNfvSpTi7ZVM6a2I8hYap3x1NNyld8u1/nD3chmGqiFYTJBOJkiMsXzNUoWhCwInsVZthnRruX/obdgaQ9Sz10v1zf3kwucIO9wqKiT/ViqtQBdUMaUa6wHyzJLEUWccYKiJCQpIlHJQs4on8dxSsblBnQnGEjoQBZWvUPjOzjTmqLVQmlhdx6XtOz9SkiwuxY8snlc5bm3SmpZXfjEttBYn88+OK6Cer+BT39snJT9rdXQCTXE+KNoMP0iXnh+OZwDOsv7oHWa1dRAYRxjAHzIzfc+GRXtVzuqw08I1fyh/mpyOD3Oafm9wxfae9roRwIAAA==
+        H4sIAHXbpFgC/42RyU7DMBRFf6UKW1o5TtukXVFAgkgVYlGxKELRs/1CDKkdeQhUVf+dONCBBRI7+97zBl/vIs3ekLtCimg+iBImSppiAlmZjclUAJQ8AUIYsphRkUaXg0OB/lBoQk0rVXX1qm0lm0aPuN6cQdaB8zZQT4tlfrtY5Q93ZzY3CA77yZTE6ZDQYTxZUTqfxPMkGdF0tj6jfSP+Q2/QQQdC4K4Xq5v7wUWckuAILMHX3VgwRqIpgHPtlQsgY7OMABFcUDJOE5oROmY8ERzEZDrN6Hm5RdNKjjW2WBdOv6MKHbxtbNEYqY1024DXwDq/lDW6bYMBWT8u8zxYDByvipDYBpUL+eyiwyqk8xV+hqPydd3dGoOt1H2MP4pB2y0ShOeX/Smgk7yLGm94BRYL6zlHFH1uoffRKKFb7aD2PyG1+kP91WR/fJw39fcOX3RoAFlHAgAA
     http_version: 
-  recorded_at: Wed, 15 Feb 2017 07:22:21 GMT
+  recorded_at: Wed, 15 Feb 2017 22:51:33 GMT
 - request:
     method: get
-    uri: https://api.goshippo.com/batches/d61e13ae8ea14971b4049e3c685ff3a1/
+    uri: https://api.goshippo.com/batches/3bdf27e3a8f8406daafc3a00beb1b2d7
     body:
       encoding: ASCII-8BIT
       string: ''
@@ -95,7 +95,7 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 15 Feb 2017 07:22:25 GMT
+      - Wed, 15 Feb 2017 22:51:36 GMT
       P3p:
       - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
       Server:
@@ -103,15 +103,15 @@ http_interactions:
       Vary:
       - Host, Cookie, Accept-Encoding
       Content-Length:
-      - '539'
+      - '537'
       Connection:
       - keep-alive
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIALEBpFgC/8VUwY7TMBD9lapcdyuP7dhOTyxwoNIeOKw4LELV2B5vA2kSOU5hVe2/Y5cWuoJFywEh5ZDMezPznjPj/by3n8ildePny9ncKyAQSIYQZK3BSiZrEk6ZKgSBML+YnRL6Lx3FkrNrus3Lu37cNMPQL1y/PSONCdM0Ftb7q+vVmzPERcJEh6acgb5k/BKqG6aXnC85LFRd356xp8E/zZYLkPLA3lLCTMTCe3V18/rt7AVoVhBPAac2t8UYG4prdK6fulSI1taGIfPOcya14IZxaZ3wDn2llOHn6SPFXeOopR2169R/pq5UmMZhXA+x6WOT7gu9RZvx0LSU7gcqlNt316tVgSwmt1mXw9pSl8rR7OcnKSLjHX0tr93UtvlriLRr+sMJHiORxiykBD7sH/ktxX91d8z6re4TdtRSipgKgwJTO+2slMpYTii518YplBX40iRF7EZ0qenPijyaoqCcE1xgTtXSMMqP11wJZsFaId2fB2RL44h3dLD48eFi9g9sZnNWQJ7wEECGKliLHLzKuj3WFPTzbEpJJEFiJQOXOis0RgZU3nidd4Wr/26zqhgXwhuLRkmnbS2MRyWC4gG4FOJ5NjH/MgRAXdU+jwSvAUCTBlOBUsT+ymYxeiL/nOT9fJii2+BI63FyjsgfVp2VBTgBAfM2naKHyyMrfiJ6XkQ8/NjHKbbfVXwDRfqf0vUEAAA=
+        H4sIAHjbpFgC/8VUTW/TQBD9K1G4ttV+f/REgQOVeuBQcShC0ezsbGNwbGttB6qo/53d0EAqKCoHxM2e9+bNvPGMd8s+fCKcVk1cni+WMsQkLElwySlmIkBCCYwFCjyIaJcni0NC/6WjXHO2Tbd+eduP62YY+jPsN0ekcYJpHivr/cXV5ZsjBDPBRPuignF7ysQp19dCnGt+LuWZsP7miD0P8Wm2PtNc7dkbmqAQofJeXVy/frt4wS2rSKQEc1vKQs4N5RUg9nM3VWII3jFgEaNgykrhmFABZUSI2hgnjtNHytsGqaUttaup/0xdVZjHYVwNuelzM91Veguh4KlpabobqFJu3l1dXlYowITrVR3Whrqpjma3PLQiC97R1/rYzW1b3oZM26bfT/AhkmksjdTAh90jv1X8V3cPWb/t+4A99FJFjOOcjLBJJ618FM4geuWiI++1U6YWmTJ0I+DU9Ecij7ZIc5RUZIThSXHhAA0ROqVQmRis//OCbGgc4Zb2Fj/enyz+gU0mmMAYJQUGylvlGJPOakVCp8BdfJ5NAWgTKld2BpXV4A3waMsW6WCBrPzvNjlnpDSzToNUQUifLETOy+dBj1q659lkzFOwSgEvNpErZwL3RTb5hEIk8zc2q9ED+ecm75bDnHENI63GGZEo7k+d1QM4AAnKNR2i+59H6fiJ6LGIvP9xj3Nuv3fxDavXMsD1BAAA
     http_version: 
-  recorded_at: Wed, 15 Feb 2017 07:22:25 GMT
+  recorded_at: Wed, 15 Feb 2017 22:51:36 GMT
 - request:
     method: post
     uri: https://api.goshippo.com/shipments/
@@ -148,7 +148,7 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 15 Feb 2017 07:22:25 GMT
+      - Wed, 15 Feb 2017 22:51:37 GMT
       P3p:
       - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
       Server:
@@ -156,21 +156,21 @@ http_interactions:
       Vary:
       - Host, Cookie, Accept-Encoding
       Content-Length:
-      - '473'
+      - '469'
       Connection:
       - keep-alive
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIALEBpFgC/5VT227UMBD9lVWe6cZ27GSzT1R0K5CQWgrLQxGKnPGkG7SJI1+Aquq/1zaXZCsk4M2ec45n5sz4IQNpTI+mkQDaj85m29Wnzy9WmW6/ILgGDEqHKkQzRmh1RtgZFR9ItWVsy8S6JNVtNrP9pP6D3SdiKYlQtCKc1xtOOdtURc1EgYSyEmohFwL9bUQTNV/78fDyTttDP016DXpYkKwLJUTSx/O3by6eAT72l73b7/a7JTR5M2mbVNf7m1evz9/vIiqVMmht05mQIWBFp1oBLQPZ1RwJ3ygJglNJa84ZKWGpcToq5KbDGhXpgAGHmkssOC0LbMtO0FYWUTFJA3hMVhCoFaUbpaqCtzVreSWKGgTjtCqKLrGtb4fe2l6PjbufUskXN1fXV5eXz1D104Y/DUJU4nZZrEHnzfivLf5gN7oLgtEfjyEE3jo92EYhHKWRLhQwg/1ovZEjYCOHuGMxD8lOAPDG4Aj3swi/OyPD9eExZeww4tjQKE5jX/0OZicMlnwftTugWSVmfsoMvtjGm+T4wbnJbvNcTv16uU95PA4Y/kP+t/3M04P5/PSxt+7XLxqCu/IO7Xx3MgwmNpZFReBHrjMeH58AixitcowDAAA=
+        H4sIAHnbpFgC/5WTy27UMBSGX2WUNZ04jnObFRWdCiSklsKwKELRsX3cCUriyBegqvru2CmQTIUE7Gz/32+fmx8SAcZ0aFoQQvvR2WS3+fT5xSbR/AsK1wqD4FCG04SSrDoj9CwrPlC6K7JdXm0Jq2+ThfaT/A+6m0GiMsGanDQF1KzOGS9LKXkJJQHFoMKVQX8b0UTP1248vrzT9thNk94KPawg60IIEfp4/vbNxTPBx/ySd4f9Yb+WJm8mbWfX9eHm1evz9/uogpQGrW2VCS8EDWkGTcEZrQrJQJGmkqxsKC/yPC+ZJGuP09HBUfKc1QQyXjMiBAjOGBChaFNm1VNyExiBfaQzqBgljDRCqFAKxSVtkDKKpFQEASJtPR86azs9tu5+mkO+uLm6vrq8fKbKn2X4YyNoebsO1qDzZvzXFJ/oVqtgGH3fhyPhrdODbSWKHgy4EMAidqP1BkaBLQxxxuauJyeC8MbgKO4XE353BsL24XF+UWHUsc2ieW775vdhckLQSMCo3RHNZibTUzLUxbbezBU/OjfZXZrC1G3X85TG5YDhP6R/m890vjBdru476379oiFUF+7QLnsHoTExsSQ6Ah9ZZzw+/gChrS20jAMAAA==
     http_version: 
-  recorded_at: Wed, 15 Feb 2017 07:22:25 GMT
+  recorded_at: Wed, 15 Feb 2017 22:51:37 GMT
 - request:
     method: post
-    uri: https://api.goshippo.com/batches/d61e13ae8ea14971b4049e3c685ff3a1/add_shipments
+    uri: https://api.goshippo.com/batches/3bdf27e3a8f8406daafc3a00beb1b2d7/add_shipments
     body:
       encoding: UTF-8
-      string: '[{"shipment":"6a05d170449841428739253e0126c95a"}]'
+      string: '[{"shipment":"0f1c493095a84834b66ddb6a60af4a7e"}]'
     headers:
       Accept:
       - application/json
@@ -196,7 +196,7 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 15 Feb 2017 07:22:26 GMT
+      - Wed, 15 Feb 2017 22:51:37 GMT
       P3p:
       - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
       Server:
@@ -204,13 +204,13 @@ http_interactions:
       Vary:
       - Host, Cookie, Accept-Encoding
       Content-Length:
-      - '584'
+      - '582'
       Connection:
       - keep-alive
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIALIBpFgC/8VUTW/UMBD9K6vl2lb+GH/1RIEDlXrgUHEoQquxPe4GskmUOAvVqv8de+nCVlBUDggph2Tem/F7zszslr3/RCGvmrg8Xyyj5sQlkiXk4Az3wMCRDNqqlCTy5cnikNB/6WisOdumW7+87ad1Mwz9Weg3R6QpY56nynp/cXX55ggJI2Gm/aGCcXPKxClX18ycC3Eu+Jl27uaIPQ/xabY+46D27A1lLESsvFcX16/fLl5wwyoSKeHclmNxHBsaVxhCP3e5Er13liGLIQoGRgrLBPggY8CotLbiOH2icdsEamlL7Sr3n6mrFeZpmFbD2PRjk+8qvUVf8NS0lO8GqpSbd1eXlxXymMN6VS9rQ12uV7NbHqRAwTv6Wl+7uW3L1zDStun3N/gQGWkqQmrgw+6R31r8V3cPWb/VfcAetNQiVmHS3LpgggfQ1gtCENHYoBEUj/WQPGI3YchNf1TkURclHYIUEkuqAcuoPNEILZnn3ksIf26QDU0T3tLe4sf7k8U/sFnMeclLh6fEIankPQoeddEd0VEyz7MJQAQcUEESYIpCayGhjjaaMitC/3ebSjEhZbQerYZgvJM2opZJi8QFSPk8m1h+GXKORrlYWkI4zrkhw63iWhP7/zY1MhXLnAM4W/6HsEY6oSQxLnRwCp9n0zskl6xJjJWmddrzFJPS6Fg0DgD+xmY1eiD/HNjdcpjHsMaJVtMcAlHcbzRW5/wAJCxL4xDd78ii+InocRG4/7F25rH9ruIb2K6lU9wFAAA=
+        H4sIAHnbpFgC/8VUTW/UMBD9K6vl2lb+/uiJAgcq9cCh4lCEVuPxuBvIJlHiLFSr/nfspQtbQVE5IG7xvDfP8ybj2S378Ikwr5q4PF8sZYhJWJLgklPMRICEEhgLFHgQ0S5PFoeE/ktHY83ZNt365W0/rZth6M+w3xyRpgx5nirr/cXV5ZsjBEeCTPtLBeP2lIlTrq+FONf8XMozYf3NEXse4tNse6Y537M3lKEQofJeXVy/frt4wS2rSKQEc1uuhXFsaFwBYj93uRJD8I4BixgFU1YKx4QKKCNC1MY4cZw+0bhtkFraUrvK/WfqqsI8DdNqGJt+bPJdpbcQCp6alvLdQJVy8+7q8rJCATKuV7VZG+pybc1ueShFFbyjr/Wzm9u2nIaRtk2/7+BDZKSpFFIDH3aP/FbxX909ZP227gP2UEsVMY5zMsImnbTyUTiD6JWLjrzXTpl6SR6hmwBz0x+JPJoizVFSkRGGJ8WFAzRE6JRCZWKw/s8DsqFpglvaW/x4f7L4BzaZYAJjlBQYKG+VY0w6qxUJnQJ38Xk2BaBNqFyZGVRWgzfAoy1TpIMFsvK/2+SckdLMOg1SBSF9shA5L78HPWrpnmeTMU/BKgW82ESunAncF9nkEwqRzH+3yRJH5SXzGpxyxakxMQYDhkFSYOl5NqG0JlnvTLSkvKEAzFviSkltpFDxb2xWowfyzwe7Ww7ziGuYaDXNiERxv9FYfecHIEFZGofofkeWip+IHouo+x9rZx7b71V8A0+NnKbcBQAA
     http_version: 
-  recorded_at: Wed, 15 Feb 2017 07:22:26 GMT
+  recorded_at: Wed, 15 Feb 2017 22:51:37 GMT
 recorded_with: VCR 3.0.3
