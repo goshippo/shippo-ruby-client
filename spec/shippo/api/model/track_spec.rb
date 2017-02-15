@@ -33,6 +33,16 @@ RSpec.describe 'Shippo::API::Track' do
     end
   end
 
+  describe '#invalid_retrieve_no_carrier' do
+    it 'should raise an exception' do
+      VCR.use_cassette("test_invalid_retrieve_no_carrier") do
+        expect {
+          Shippo::Track::get(TRACKING_NO)
+        }.to raise_error(Shippo::Exceptions::Error)
+      end
+    end
+  end
+
   describe '#register_webhook' do
     it 'should properly return a Track object' do
       VCR.use_cassette("test_register_webhook") do
