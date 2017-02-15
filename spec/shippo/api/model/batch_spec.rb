@@ -88,4 +88,27 @@ RSpec.describe 'Shippo::API::Batch' do
       end
     end
   end
+
+  describe '#remove_shipment' do
+    it 'should properly remove a shipment from an existing batch' do
+      VCR.use_cassette('batch/test_remove') do
+        batch = Shippo::Batch::create(dummy_batch.dup)
+        retrieve = retrieve_valid_batch(batch[:object_id])
+        batch_size = retrieve.batch_shipments.results.length
+
+        shipments = Array.new
+        shipment = Shippo::Shipment::create(dummy_shipment.dup)
+        shipments.push({"shipment" => shipment[:object_id]})
+
+        added = Shippo::Batch::add_shipment(retrieve[:object_id], shipments)
+        added_size = added.batch_shipments.results.length
+        expect(batch_size + shipments.length).to be == added_size
+
+        shipments_to_remove = Array.new
+        shipments_to_remove.push(added.batch_shipments.results[0][:object_id])
+        removed = Shippo::Batch::remove_shipment(retrieve[:object_id], shipments_to_remove)
+        expect(batch_size).to be == removed.batch_shipments.results.count
+      end
+    end
+  end
 end
