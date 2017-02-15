@@ -54,4 +54,22 @@ RSpec.describe 'Shippo::API::Batch' do
       end
     end
   end
+
+  describe '#add_shipment' do
+    it 'should properly add a shipment to an existing batch' do
+      VCR.use_cassette('batch/test_add') do
+        batch = Shippo::Batch::create(dummy_batch.dup)
+        retrieve = retrieve_valid_batch(batch[:object_id])
+        batch_size = retrieve.batch_shipments.results.length
+
+        shipments = Array.new
+        shipment = Shippo::Shipment::create(dummy_shipment.dup)
+        shipments.push({"shipment" => shipment[:object_id]})
+
+        added = Shippo::Batch::add_shipment(retrieve[:object_id], shipments)
+        added_size = added.batch_shipments.results.length
+        expect(batch_size + shipments.length).to be == added_size
+      end
+    end
+  end
 end
