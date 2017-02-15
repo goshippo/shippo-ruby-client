@@ -4,7 +4,7 @@ module Shippo
       module Retrieve
         # Retrieve a concrete item by its ID
         # @param [Fixnum] id Database ID of the item to be received
-        # @param [String] carrier Optional carrier of the item to be received
+        # @param [String] carrier Optional carrier of the item to be received (use with Track API)
         # @param [Hash] params Additional URI parameters tacked onto the query URL
         def get(id, carrier=nil, params={})
           carrier = "#{CGI.escape(carrier)}/" if carrier else ""
