@@ -17,6 +17,13 @@ module Shippo
           response = Shippo::API.post("#{url}/#{CGI.escape(id)}/remove_shipments", shipment_ids)
           self.from(response)
         end
+
+        # Purchases an existing batch
+        # @param [String] id The ID of the Batch object
+        def purchase(id)
+          response = Shippo::API.post("#{url}/#{CGI.escape(id)}/purchase")
+          self.from(response)
+        end
       end
     end
   end
