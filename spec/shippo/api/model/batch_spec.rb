@@ -55,6 +55,17 @@ RSpec.describe 'Shippo::API::Batch' do
     end
   end
 
+  describe '#invalid_retrieve_with_carrier' do
+    it 'should raise an error (carrier should not be included)' do
+      VCR.use_cassette('batch/test_invalid_retrieve_with_carrier') do
+        expect {
+          batch = Shippo::Batch::create(dummy_batch.dup)
+          retrieve = Shippo::Batch::get(batch[:object_id], "CARRIER_SHOULD_BE_EXCLUDED")
+        }.to raise_error(Shippo::Exceptions::Error)
+      end
+    end
+  end
+
   describe '#add_shipment' do
     it 'should properly add a shipment to an existing batch' do
       VCR.use_cassette('batch/test_add') do
