@@ -130,4 +130,14 @@ RSpec.describe 'Shippo::API::Batch' do
       end
     end
   end
+
+  describe '#invalid_purchase' do
+    it 'should raise an error' do
+      VCR.use_cassette('batch/test_invalid_purchase') do
+        expect {
+          purchase = Shippo::Batch::purchase("INVALID_ID")
+        }.to raise_error(Shippo::Exceptions::Error)
+      end
+    end
+  end
 end
