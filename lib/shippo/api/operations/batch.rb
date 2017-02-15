@@ -3,9 +3,18 @@ module Shippo
     module Operations
       module Batch
         # Adds a new shipment to a batch object
-        # @param [Hash] params tacked onto the URL as URI parameters
+        # @param [String] id The ID of the Batch object
+        # @param [Array] shipments Array of shipment objects to be added
         def add_shipment(id, shipments=[])
           response = Shippo::API.post("#{url}/#{CGI.escape(id)}/add_shipments", shipments)
+          self.from(response)
+        end
+
+        # Removes an existing shipment from a batch object
+        # @param [String] id The ID of the Batch object
+        # @param [Array] shipment_ids Array of shipment IDs to be removed
+        def remove_shipment(id, shipment_ids=[])
+          response = Shippo::API.post("#{url}/#{CGI.escape(id)}/remove_shipments", shipment_ids)
           self.from(response)
         end
       end
