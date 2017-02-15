@@ -1,5 +1,5 @@
 module Shippo
   class Batch < ::Shippo::API::Resource
-    operations :create, :retrieve, :batch
+    operations :create, :batch
   end
 end

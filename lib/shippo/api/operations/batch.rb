@@ -2,6 +2,14 @@ module Shippo
   module API
     module Operations
       module Batch
+        # Retrieves a Batch by its ID
+        # @param [String] id The ID of the Batch object
+        # @param [Hash] params Optional params tacked onto the URL as URI parameters
+        def get(id, params={})
+          response = Shippo::API.get("#{url}/#{CGI.escape(id)}", params)
+          self.from(response)
+        end
+
         # Adds a new shipment to a batch object
         # @param [String] id The ID of the Batch object
         # @param [Array] shipments Array of shipment objects to be added
