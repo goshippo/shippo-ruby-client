@@ -49,6 +49,22 @@ class ExampleHelper
   def self.sep
     puts '—' * (ENV['COLUMNS'] || 80)
   end
+
+  # Retries up to 10 times to retrieve a valid
+  # Batch (which takes time to become 'VALID' from
+  # 'VALIDATING' after initially being created).
+  def self.retrieve_valid_batch(id)
+    retries = 10
+    retrieve = nil
+    until retries == 0 do
+      sleep 1
+      retrieve = Shippo::Batch::get(id)
+      break if retrieve[:object_status] == 'VALID'
+      retries -= 1
+    end
+    STDERR.puts 'Unable to retrieve VALID Batch object' unless retrieve
+    retrieve
+  end
 end
 
 # Create address_from object
@@ -87,22 +103,49 @@ parcel       = {
   :weight        => 2,
   :mass_unit     => :lb }
 
-hash = { :object_purpose => 'PURCHASE',
-         :address_from   => address_from,
-         :address_to     => address_to,
-         :parcel         => parcel,
-         :async          => false }
+default_carrier_account = ENV['SHIPPO_TEST_CARRIER_ACCOUNT']
+if !default_carrier_account
+  STDERR.puts 'Please set your SHIPPO_TEST_CARRIER_ACCOUNT environment variable.'
+  STDERR.puts
+  STDERR.puts 'You can do this by setting it to your USPS carrier account object ID:
+
+  Steps
+  --------------------------------------------------------------
+  1. curl https://api.goshippo.com/carrier_accounts/ \
+    -H "Authorization: ShippoToken <TEST_API_TOKEN>"
+
+  2. Look for {"carrier": "usps"} and find its "object_id"
+
+  3. export SHIPPO_TEST_CARRIER_ACCOUNT=<USPS_CARRIER_OBJECT_ID>
+  --------------------------------------------------------------
+  '
+  STDERR.puts
+  exit 1
+end
+hash = { :default_carrier_account => default_carrier_account,
+         :default_servicelevel_token => 'usps_priority',
+         :label_filetype => 'ZPLII',
+         :metadata => 'BATCH #170',
+         :batch_shipments => [
+           {
+             :shipment => {
+               :object_purpose => 'PURCHASE',
+               :address_from   => address_from,
+               :address_to     => address_to,
+               :parcel         => parcel,
+               :async          => false
+             }
+           }
+         ]
+       }
 
 begin
-  shipment = ExampleHelper.log_operation 'Making first API call for shipment rates... ' do
-    Shippo::Shipment.create(hash)
+  batch = ExampleHelper.log_operation 'Making first API call to create a Batch... ' do
+    Shippo::Batch.create(hash)
   end
-  track = ExampleHelper.log_operation 'Making API call to retrieve tracking status' do
-    Shippo::Track.get(shipment[:object_id], 'usps')
-  end
-  raise Shippo::Exceptions::UnsuccessfulResponseError.new(shipment.object.inspect) unless shipment.success?
-  File.open('example-shipment.json', 'w') do |file|
-    file.puts JSON.dump(shipment.to_hash)
+  # Allow time for the Batch to fully process
+  retrieve = ExampleHelper.log_operation 'Making API call to retrieve newly created batch' do
+    ExampleHelper.retrieve_valid_batch(batch[:object_id])
   end
 rescue Shippo::Exceptions::APIServerError => e
   puts "Server returned an error:\n#{e}"
@@ -122,9 +165,10 @@ rescue Shippo::Exceptions::AuthenticationError
   exit 1
 end
 
-if track
-  puts "Carrier         : #{track[:carrier]}"
-  puts "Tracking NO     : #{track[:tracking_number]}"
+STDERR.puts retrieve
+if retrieve
+  puts "Batch status    : #{retrieve[:object_status]}"
+  puts "metadata        : #{retrieve[:metadata]}"
 else
-  puts 'Track ERROR'
+  puts 'Batch ERROR'
 end
