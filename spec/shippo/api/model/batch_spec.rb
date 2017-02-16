@@ -34,6 +34,18 @@ RSpec.describe 'Shippo::API::Batch' do
     end
   end
 
+  describe '#invalid_create' do
+    it 'should raise an error' do
+      VCR.use_cassette('batch/test_invalid_create') do
+        invalid_dummy_batch = dummy_batch.dup
+        invalid_dummy_batch[:default_carrier_account] = 'INVALID_CARRIER_ACCOUNT'
+        expect {
+          batch = Shippo::Batch::create(invalid_dummy_batch.dup)
+        }.to raise_error(Shippo::Exceptions::Error)
+      end
+    end
+  end
+
   describe '#retrieve' do
     it 'should properly return a Batch object' do
       VCR.use_cassette('batch/test_retrieve') do
