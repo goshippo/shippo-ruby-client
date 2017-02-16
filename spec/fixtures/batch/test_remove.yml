@@ -1,0 +1,264 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.goshippo.com/batches/
+    body:
+      encoding: UTF-8
+      string: '{"default_carrier_account":"bb980a0dcd2047328024bc3dcad56682","default_servicelevel_token":"usps_priority","label_filetype":"ZPLII","metadata":"BATCH
+        #170","batch_shipments":[{"shipment":{"object_purpose":"PURCHASE","address_from":{"object_purpose":"PURCHASE","name":"Simon
+        Says","company":"","street1":"965 Mission St","street2":"Ste 201","city":"San
+        Francisco","state":"CA","zip":"94103","country":"US","phone":"4151234567","email":"hippo@goshippo.com"},"address_to":{"object_purpose":"PURCHASE","name":"Who
+        Says","company":"","street1":"400 Simon St","street_no":"","street2":"Apt
+        123","city":"San Francisco","state":"CA","zip":"94102","country":"US","phone":"4151234567","email":"hippo@goshippo.com","metadata":""},"parcel":{"length":"5","width":"5","height":"5","distance_unit":"in","weight":"2","mass_unit":"oz","template":"","metadata":"Customer
+        ID 123456"},"reference_1":"REF1 - Simon","reference_2":"REF2 - Says","metadata":""}},{"shipment":{"object_purpose":"PURCHASE","address_from":{"object_purpose":"PURCHASE","name":"Simon
+        Says","company":"","street1":"965 Mission St","street2":"Ste 201","city":"San
+        Francisco","state":"CA","zip":"94103","country":"US","phone":"4151234567","email":"shippo@goshippo.com"},"address_to":{"object_purpose":"PURCHASE","name":"Who
+        Says","company":"","street1":"400 Simon St","street_no":"","street2":"Apt
+        123","city":"San Francisco","state":"CA","zip":"94102","country":"US","phone":"4151234567","email":"hippo@goshippo.com","metadata":""},"parcel":{"length":"5","width":"5","height":"5","distance_unit":"in","weight":"2","mass_unit":"oz","template":"","metadata":"Customer
+        ID 123456"},"reference_1":"REF1 - Simon","reference_2":"REF2 - Says","metadata":""}},{"shipment":{"object_purpose":"PURCHASE","address_from":{"object_purpose":"PURCHASE","name":"Simon
+        Says","company":"","street1":"965 Mission St","street2":"Ste 201","city":"San
+        Francisco","state":"CA","zip":"94103","country":"US","phone":"4151234567","email":"hippo@goshippo.com"},"address_to":{"object_purpose":"PURCHASE","name":"Who
+        Says","company":"","street1":"400 Simon St","street_no":"","street2":"Apt
+        123","city":"San Francisco","state":"CA","zip":"94102","country":"US","phone":"4151234567","email":"hippo@goshippo.com","metadata":""},"parcel":{"length":"5","width":"5","height":"5","distance_unit":"in","weight":"2","mass_unit":"oz","template":"","metadata":"Customer
+        ID 123456"},"reference_1":"REF1 - Simon","reference_2":"REF2 - Says","metadata":""}}]}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<API_TOKEN>"
+      Content-Length:
+      - '2466'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 201
+      message: CREATED
+    headers:
+      Allow:
+      - OPTIONS
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 15 Feb 2017 22:51:37 GMT
+      P3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      Server:
+      - nginx/1.8.0
+      Vary:
+      - Host, Cookie, Accept-Encoding
+      Content-Length:
+      - '348'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAHnbpFgC/42RyU7DMBRFf6UKW1o5ztiuKCBBpAqxqFgUocixX4ghjS0Pgarqv2MH2oYFEjv73vMGX+8DUb0BNSVnwWISoIhBnSQ4ZzWNAcUkB6AszUOK0jQiJLicHAvERwfK1/S8a65ehW64lGJGxXYEaUOM1Z56Wq6K2+W6eLgb2VQBMTBMxijMpghPw2SN8SIJF1E2m+NsM6KtZP+ht2CIA4nnrpfrm/vJRZgh77i3Edu6sUQpDqoklArbGQ9W1TxHBDHKMIqzCOcIxxWNGCUsSdMcj8s1qJ5TaKGHtjTiHTrfwWqpS6m4UNzsPN6Syvk1b8HsJHhk87gqCm9VxNCm9IltoTM+n31wXAU5v4NPf+xs27qbVNBzMcT4oyjQbhEvPL8czgGd5X0graIN0VBqSykAG3LzvU9GTdxqR3X4CS66P9RfTQ6nx1nVfu/wBXfFQ2FHAgAA
+    http_version: 
+  recorded_at: Wed, 15 Feb 2017 22:51:37 GMT
+- request:
+    method: get
+    uri: https://api.goshippo.com/batches/03def5528dfc4e04a8eecd681c0663aa
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Authorization:
+      - "<API_TOKEN>"
+      Content-Length:
+      - '0'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Allow:
+      - OPTIONS
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 15 Feb 2017 22:51:41 GMT
+      P3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      Server:
+      - nginx/1.8.0
+      Vary:
+      - Host, Cookie, Accept-Encoding
+      Content-Length:
+      - '537'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAH3bpFgC/8VUTW/TQBD9K1G4ttV+f/REgQOVeuBQcShC0Xh2tjE4trVeB6qo/53dtIFUUAQHxM2e92bmvfGMd8uh+USYV21Yni+WTAaKWgsXIipiChwRBuM4MmMkwPJkcUgYvvSUas627dcvb4dp3Y7jcIbD5og0ZcjzVFnvL64u3xwhmAgy7ZsKxu0pE6dcXwtxrvm5tGde2Jsj9jyGZ9mKnXGt9+wNZShEqLxXF9ev3y5ecMsqUmzB3JW2kFJLaQWIw9znSmwa7xiwgEEwZaVwTKgGZUAI2hgnjtMnStsWqaMtdas8fKa+VpincVqNqR1Sm+8qvYOm4LHtKN+NVCk3764uLyvUQMb1qg5rQ32uo9ktD1JkwXv6Wh/7uevK25ho2w77CT5GEk1FSA182D3xW4v/7O4x65e6D9ijlloEyElvoxUcUXliTROMFIbAR5T+YRY5QT8B5nY4KvJki0hEi8wFTtIqLSIEqRkRw8ghaou/X5ANTRPc0t7ix/uTxT+wKZiXsuFCGWBKI/iy8A4Zk1LbwJrwZzYbLo0vR6GjjcpG7a1DEEw3ngMFcv/dJkO0URIYSVwZ1F4Fp6M2kYlQFf+ZTaE8GIiCc1JlJwSwaKUs39Lp4Bxnf2OzGj2Qf2zybjnOCdcw0WqaEakMr3Zm9QAOQIRyTYfo/udRFD8TPS4i77/f45y6BxXfAPQhNsr1BAAA
+    http_version: 
+  recorded_at: Wed, 15 Feb 2017 22:51:41 GMT
+- request:
+    method: post
+    uri: https://api.goshippo.com/shipments/
+    body:
+      encoding: UTF-8
+      string: '{"object_purpose":"PURCHASE","address_to":{"object_purpose":"PURCHASE","name":"First
+        Last","company":"","street1":"965 Mission St","street2":"#123","city":"San
+        Francisco","state":"CA","zip":"94103","country":"US","phone":"4151234567","email":"hippo@goshippo.com"},"address_from":{"object_purpose":"PURCHASE","name":"Amazon
+        Fulfillment Services","company":"Returns Departments","street1":"400 Simon
+        St","street2":"123","city":"San Francisco","state":"CA","zip":"94102","country":"US","phone":"4151234567","email":"hippo@goshippo.com"},"parcel":{"length":"10","width":"15","height":"10","distance_unit":"in","weight":"15","mass_unit":"oz","metadata":""},"reference_1":"hippo
+        reference","reference_2":"another hippo/reference"}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<API_TOKEN>"
+      Content-Length:
+      - '724'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 201
+      message: CREATED
+    headers:
+      Allow:
+      - OPTIONS
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 15 Feb 2017 22:51:41 GMT
+      P3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      Server:
+      - nginx/1.8.0
+      Vary:
+      - Host, Cookie, Accept-Encoding
+      Content-Length:
+      - '471'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAH3bpFgC/5WTW2/TMBiG/0qVa9bYsVO7vWJinUBC2hiUiyEU+fBlDUrsyAdgmvbfZ4dD0gkJuLP9Pq+/k/1QKOFcB64RStlogi92q0+fX6wKK7+ACo1yIALodFpUCLMzVJ3h+kNV7Wq8o3jNML0tZjqO+j/obgJJS5isFdpSjSmrEJdAJEMbkAwI1GxhsN8MuOz52pnjyzvrj9042rWywwLyIaWQoY/nb99cPBNirq94d9gf9ktpjG60fnJdH25evT5/v8+q0NqB903rUoSkQYvItkJ11UpMORAuhOQVYUwjUIzxpSfY7MCMYaCEAwNNt0xx2lLFGdugasuJ3mTHKJyCPtOaoxqhLUeYAwXNZWpCSwhnwCSpqcq0j3LovO+sacL9OKV8cXN1fXV5+UzVP9vwp0FsOL5dJusgRGf+tcQfdGPbZDCx79ORij7YwTcaVC+cCCmBWeyMj04YBY0Y8hvLcVBxIqjoHBh1P5vge3AibR8ep4gtZB0anM3T2Fe/D4sTosqEMDYcwa0msjwlU198E93U8WMIo9+VpRi79fI9lXk5QPoP5d/eZzldWM5X950Pv37RkLor7sDP+yDSYHJhRXYkPrPBRXh8Ag5IjyqMAwAA
+    http_version: 
+  recorded_at: Wed, 15 Feb 2017 22:51:41 GMT
+- request:
+    method: post
+    uri: https://api.goshippo.com/batches/03def5528dfc4e04a8eecd681c0663aa/add_shipments
+    body:
+      encoding: UTF-8
+      string: '[{"shipment":"3f37b5c094d147208be3b706eb7e3e57"}]'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<API_TOKEN>"
+      Content-Length:
+      - '49'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Allow:
+      - OPTIONS
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 15 Feb 2017 22:51:42 GMT
+      P3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      Server:
+      - nginx/1.8.0
+      Vary:
+      - Host, Cookie, Accept-Encoding
+      Content-Length:
+      - '582'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAH7bpFgC/8VUTW8UMQz9K9VybSvnO9MTBQ5U6oFDxaEIrRzH6Q7MzozmY6Fa9b+TbLuwFRSVA+ptxu/Zfs9xsl104QvTtKzj4uxoASpyMkb6mEgzaPTMFK0XBNYqxMXx0T6h+9byUHI2dbt6fdONq7rvu1Pq1gekccJpHgvr4/nlxbsDhAbGiXdNJQh3AvJEmCspz4w4U+60ku76gD338Um2lqdSix17zRNmIhbem/Ort++PXgkHBcm2cG5yWxyGmoclEnVzOxViCJUHhEhRgnZKepA6kIqE0Vjr5WH6yMOmJm54w81y6r5yWyrMYz8u+6Huhnq6LfQGQ8ZT3fB023OhXH+4vLgoUMCJVssyrDW3UxnNdrGXojPe8vfy2c5Nk//6gTd1t5vgQ2TgMQspgU/bR35L8d/dPWT9Ufcee9BSiiB7VbnkpCDSFUMI0SppGatEqrqfxTRgOyJNdXdQ5NEWsUyOwEfBymkjE0ZlgBkoCUzG0d8XZM3jiDe8s/j57vjoP9iUUCkVhNQWQRvCKi+8JwCljIsQ4vNsBqFslS+FSS5pl0zlPKEEEyqBHNm/uE0gckkxWsVCWzKVjt4kYxPIWBQ/z6bUFVpMUgjWeSckQnJK5bP0Jnov4MVtqqRcMATZntBOgg+sggPLwbFi4565tFYl40W2lE8z766vHKAij5ZlqKL+F5vF6J7868JuF/080ApHXo4zEecdKZ2h3PM9kDA/Gvvo7o3Mip+IHhbRdz+fnXlo7lX8AMLwqMfcBQAA
+    http_version: 
+  recorded_at: Wed, 15 Feb 2017 22:51:42 GMT
+- request:
+    method: post
+    uri: https://api.goshippo.com/batches/03def5528dfc4e04a8eecd681c0663aa/remove_shipments
+    body:
+      encoding: UTF-8
+      string: '["e2f7c08d1e37452fad350ee0cf1af57c"]'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<API_TOKEN>"
+      Content-Length:
+      - '36'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Allow:
+      - OPTIONS
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 15 Feb 2017 22:51:42 GMT
+      P3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      Server:
+      - nginx/1.8.0
+      Vary:
+      - Host, Cookie, Accept-Encoding
+      Content-Length:
+      - '537'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAH7bpFgC/8VUTW/UMBD9K6vl2lb+ttMTBQ5U6oFDxaEIrcbjcTeQTSLHWahW/e/Y2y5sBUVwQNySeW9m3pvMZLcc/CfCvGrD8nyxZDJQ1Fq4EFERU+CIMBjHkRkjAZYni0PC8KWnVHO2bb9+eTtM63YchzMcNkekKUOep8p6f3F1+eYIwUSQad9UMG5PmTjl+lqIc83PpT1rhL05Ys9jeJatxJkRas/eUIZChMp7dXH9+u3iBbesIsUWzF1pCym1lFaAOMx9rkTvG8eABQyCKSuFY0J5lAEhaGOcOE6fKG1bpI621K3y8Jn6WmGexmk1pnZIbb6r9A58wWPbUb4bqVJu3l1dXlbIQ8b1qg5rQ32uo9ktD1JkwXv6Wh/7uevK25ho2w77CT5GEk1FSA182D3xW4v/7O4x65e6D9ijlofhNlJ6LpQBpjRCUzbBIWNSahuYD7VJTtBPgLkdjoo82SLPpWnKtuhoo7JRN9YhCKZ9w4ECud8vyIamCW5pb/Hj/cniH9hkiDZKAiOJK4O6UcHpqE1kIlTFf2ZTqAYMRME5KdWQABatlBi508E5zv67TRml9RpZsceVFcx5kt4yQ96SJG3/zCYZGbXjxVL5mi5w11gGEh0YEr4J6m9sVqMH8o9N3i3HOeEaJlpNMyKVHamdWT2AAxChXNMhuv95FMXPRI+LyPvv9zin7kHFN8yRekj1BAAA
+    http_version: 
+  recorded_at: Wed, 15 Feb 2017 22:51:42 GMT
+recorded_with: VCR 3.0.3
