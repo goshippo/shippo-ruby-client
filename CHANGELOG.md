@@ -1,11 +1,11 @@
 ### 2.0.8 release, Feb 15th, 2017
-- Add Batch API
+- Add Batch API with example code
     - Creation
     - Retrieval
     - Adding shipments to Batch objects
     - Removing shipments from Batch objects
     - Purchasing
-- Add Track API
+- Add Track API with example code
     - Retrieving tracking status of a shipment
     - Registering a tracking webhook
 - Add mock tests using VCR (for Batch and Track API)
