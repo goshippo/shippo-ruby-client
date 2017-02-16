@@ -19,6 +19,8 @@ module Shippo
       include Enumerable
       extend Forwardable
 
+      disable_warnings
+
       def self.object_properties
         Shippo::API::ApiObject::PROPS
       end
@@ -62,7 +64,7 @@ module Shippo
 
       # As a Hashie::Mash subclass, Resource can initialize from another hash
       def initialize(*args)
-        if args.first.is_a?(Fixnum) or
+        if args.first.is_a?(Integer) or
           (args.first.is_a?(String) && args.first =~ /^[0-9A-Fa-f]+$/)
           self.id = args.first
         elsif args.first.respond_to?(:keys)

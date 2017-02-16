@@ -22,6 +22,7 @@ require 'awesome_print'
 require 'json'
 
 Shippo::API.token = ENV['SHIPPO_TOKEN']
+Hashie.logger = Logger.new(nil)
 
 # Simple wrapper class to help us print objects to the STDOUT
 class ExampleHelper
