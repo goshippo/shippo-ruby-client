@@ -27,9 +27,9 @@ Hashie.logger = Logger.new(nil)
 # Simple wrapper class to help us print objects to the STDOUT
 class ExampleHelper
   def self.log_operation(msg)
-    printf "%s\n", msg
+    printf "%s", msg
     result = yield
-    puts 'OK'
+    print "OK\n"
     result
   rescue Exception => e
     raise(e)
@@ -147,11 +147,11 @@ shipment_params = { :object_purpose => 'PURCHASE',
                     :async          => false }
 
 begin
-  batch = ExampleHelper.log_operation 'Making first API call to create a Batch... ' do
+  batch = ExampleHelper.log_operation 'Making first API call to create a batch...' do
     Shippo::Batch.create(hash)
   end
 
-  retrieve = ExampleHelper.log_operation 'Making API call to retrieve newly created batch' do
+  retrieve = ExampleHelper.log_operation 'Making API call to retrieve newly created batch...' do
     ExampleHelper.retrieve_valid_batch(batch[:object_id])
   end
   puts "Batch status    : #{retrieve[:object_status]}"

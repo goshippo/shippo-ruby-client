@@ -29,7 +29,7 @@ class ExampleHelper
   def self.log_operation(msg)
     printf '%s', msg
     result = yield
-    puts 'OK'
+    printf "OK\n"
     result
   rescue Exception => e
     raise(e)
@@ -95,10 +95,10 @@ hash = { :object_purpose => 'PURCHASE',
          :async          => false }
 
 begin
-  shipment = ExampleHelper.log_operation 'Making first API call for shipment rates... ' do
+  shipment = ExampleHelper.log_operation 'Making first API call for shipment rates...' do
     Shippo::Shipment.create(hash)
   end
-  track = ExampleHelper.log_operation 'Making API call to retrieve tracking status' do
+  track = ExampleHelper.log_operation 'Making API call to retrieve tracking status...' do
     Shippo::Track.get(shipment[:object_id], 'usps')
   end
   raise Shippo::Exceptions::UnsuccessfulResponseError.new(shipment.object.inspect) unless shipment.success?
