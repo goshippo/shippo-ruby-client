@@ -213,9 +213,6 @@ ap @shipment.object
 #   :created  => 2016-07-06 20:44:47 UTC,
 #   :updated  => 2016-07-06 20:44:47 UTC,
 #   :owner    => "valued_customer@gmail.com",
-#   :state    => #<Shippo::API::Category::State:0x007fd88be8aa38 @name=:state, @value=:valid>,
-#   :status   => #<Shippo::API::Category::Status:0x007fd88be82e28 @name=:status, @value=:success>,
-#   :purpose  => #<Shippo::API::Category::Purpose:0x007fd88be985e8 @name=:purpose, @value=:purchase>,
 #   :id       => "20f25e44b16b4051b6dd910cb66fd27b"
 # }
 ```
