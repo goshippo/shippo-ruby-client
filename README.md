@@ -93,13 +93,14 @@ params   = { object_purpose: 'PURCHASE',
 Let's take a quick look at what the `Shipment` object looks like:
 
 ```ruby
-require 'awesome_print'
+require 'awesome-print'
 ap @shipment
-# { "carrier_accounts"    => [],
-#   "address_from"        => [ ... ]   # omitted for brevity,
-#   "address_to"          => [ ... ]   # omitted for brevity,
-#   "address_return"      => [ ... ]   # omitted for brevity,
-#   "parcel"              => [ ... ]   # omitted for brevity,
+# {
+#   "carrier_accounts"    => [],
+#   "address_from"        => [ ... ],   # omitted for brevity
+#   "address_to"          => [ ... ],
+#   "address_return"      => [ ... ],
+#   "parcel"              => [ ... ],
 #   "shipment_date"       => "2016-07-06T20:33:02.211Z",
 #   "customs_declaration" => nil,
 #   "extra"               => {
@@ -114,8 +115,8 @@ ap @shipment
 #     "reference_2" => "",
 #   },
 #   "rates_url"           => "https://api.goshippo.com/v1/shipments/a336daf87a8e442992a68daa6622758f/rates/",
-#   "messages"            => [ ... ],   # omitted for brevity
-#   "rates"               => [ ... ]    # omitted for brevity
+#   "messages"            => [ ... ],
+#   "rates"               => [ ... ]
 # }
 ```
 
@@ -128,7 +129,8 @@ In the example below we are showing the result of such transformation where `rat
 ```ruby
 ap @shipment.rates.first
 # =>
-# { "shipment"            => "20f25e44b16b4051b6dd910cb66fd27b",
+# { 
+#   "shipment"            => "20f25e44b16b4051b6dd910cb66fd27b",
 #   "attributes"          => [],
 #   "amount"              => "8.51",
 #   "currency"            => "USD",
@@ -165,10 +167,10 @@ You can retrieve a list of objects for many endpoints (e.g. Transactions, Shipme
 @transactions
 # =>
 # {
-#     "count" => 3055,
-#      "next" => "https://api.goshippo.com/v1/transactions/?page=2",
-#  "previous" => nil,
-#  "results"  => [ ... list of Transaction objects ... ]
+#   "count"     => 3055,
+#   "next"      => "https://api.goshippo.com/v1/transactions/?page=2",
+#   "previous"  => nil,
+#   "results"   => [ ... list of Transaction objects ... ]
 # }
 ```
 
@@ -213,13 +215,13 @@ Here is the fully constructed `ApiObject` instance, attached to our `@shipment`:
 ```ruby
 ap @shipment.object
 # {
-#     :created => 2016-07-06 20:44:47 UTC,
-#     :updated => 2016-07-06 20:44:47 UTC,
-#       :owner => "valued_customer@gmail.com",
-#       :state => #<Shippo::API::Category::State:0x007fd88be8aa38 @name=:state, @value=:valid>,
-#      :status => #<Shippo::API::Category::Status:0x007fd88be82e28 @name=:status, @value=:success>,
-#     :purpose => #<Shippo::API::Category::Purpose:0x007fd88be985e8 @name=:purpose, @value=:purchase>,
-#          :id => "20f25e44b16b4051b6dd910cb66fd27b"
+#   :created  => 2016-07-06 20:44:47 UTC,
+#   :updated  => 2016-07-06 20:44:47 UTC,
+#   :owner    => "valued_customer@gmail.com",
+#   :state    => #<Shippo::API::Category::State:0x007fd88be8aa38 @name=:state, @value=:valid>,
+#   :status   => #<Shippo::API::Category::Status:0x007fd88be82e28 @name=:status, @value=:success>,
+#   :purpose  => #<Shippo::API::Category::Purpose:0x007fd88be985e8 @name=:purpose, @value=:purchase>,
+#   :id       => "20f25e44b16b4051b6dd910cb66fd27b"
 # }
 ```
 
