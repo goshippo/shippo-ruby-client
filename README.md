@@ -47,7 +47,6 @@ Shippo::API.token = 'aff988f77afa0fdfdfadf'  # not an actual valid token
 # Setup query parameter hash
 params   = {  async:          false,
               address_from:   {
-                is_complete:    true,
                 name:           'Mr Hippo',
                 company:        'Shippo',
                 street1:        '215 Clayton St.',
@@ -58,7 +57,6 @@ params   = {  async:          false,
                 country:        'US',
                 phone:          '+1 555 341 9393' },
               address_to:     {
-                is_complete:    true,
                 name:           'Mrs Hippo"',
                 company:        'San Diego Zoo',
                 street1:        '2920 Zoo Drive',
