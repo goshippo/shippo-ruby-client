@@ -45,8 +45,7 @@ require 'shippo'
 Shippo::API.token = 'aff988f77afa0fdfdfadf'  # not an actual valid token
 
 # Setup query parameter hash
-params   = { object_purpose: 'PURCHASE',
-              async:          false,
+params   = {  async:          false,
               address_from:   {
                 is_complete:    true,
                 name:           'Mr Hippo',
@@ -114,7 +113,6 @@ ap @shipment
 #     "reference_1" => "",
 #     "reference_2" => "",
 #   },
-#   "rates_url"           => "https://api.goshippo.com/v1/shipments/a336daf87a8e442992a68daa6622758f/rates/",
 #   "messages"            => [ ... ],
 #   "rates"               => [ ... ]
 # }
@@ -140,14 +138,13 @@ ap @shipment.rates.first
 #   "provider_image_75"   => "https://shippo-static.s3.amazonaws.com/providers/75/FedEx.png",
 #   "provider_image_200"  => "https://shippo-static.s3.amazonaws.com/providers/200/FedEx.png",
 #   "servicelevel"        => {
-#     "name"      => "Ground",
-#     "token"     => "fedex_ground",
-#     "terms"     => ""
+#     "name"  => "Ground",
+#     "token" => "fedex_ground",
+#     "terms" => ""
 #   }
 #   "days"                => 2,
 #   "arrives_by"          => nil,
 #   "duration_terms"      => "",
-#   "trackable"           => true,
 #   "messages"            => [],
 #   "carrier_account"     => "4b1940bc69524163b669asd361842db",
 #   "test"                => true
