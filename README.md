@@ -79,12 +79,8 @@ params   = {  async:          false,
 @shipment = Shippo::Shipment.create(params)
 @shipment.success?
 # => true
-@shipment.object.status
+@shipment.status
 # => 'SUCCESS'
-@shipment.status # forwarded to #object
-# => 'SUCCESS'
-@shipment.state
-# => 'VALID'
 ```
 
 Let's take a quick look at what the `Shipment` object looks like:
