@@ -48,7 +48,7 @@ Shippo::API.token = 'aff988f77afa0fdfdfadf'  # not an actual valid token
 params   = { object_purpose: 'PURCHASE',
               async:          false,
               address_from:   {
-                object_purpose: 'PURCHASE',
+                is_complete:    true,
                 name:           'Mr Hippo',
                 company:        'Shippo',
                 street1:        '215 Clayton St.',
@@ -57,10 +57,9 @@ params   = { object_purpose: 'PURCHASE',
                 state:          'CA',
                 zip:            '94117',
                 country:        'US',
-                phone:          '+1 555 341 9393',
-                email:          'support@goshippo.com' },
+                phone:          '+1 555 341 9393' },
               address_to:     {
-                object_purpose: 'PURCHASE',
+                is_complete:    true,
                 name:           'Mrs Hippo"',
                 company:        'San Diego Zoo',
                 street1:        '2920 Zoo Drive',
@@ -96,23 +95,27 @@ Let's take a quick look at what the `Shipment` object looks like:
 ```ruby
 require 'awesome_print'
 ap @shipment
-# {
-#        "carrier_accounts" => [],
-#            "address_from" => "a704eada7494bb1be6184ef64b1646db",
-#              "address_to" => "92b43fbfa3641644beb32996042eb57a",
-#          "address_return" => "a1f64ba14b7e41b86a0446de4ebbd769",
-#                  "parcel" => "92df4baac73ea6131940c0d315d70a7d",
-#         "submission_date" => "2016-07-06T20:33:02.211Z",
-#               "return_of" => nil,
-#     "customs_declaration" => nil,
-#        "insurance_amount" => "0",
-#      "insurance_currency" => nil,
-#                   "extra" => {},
-#             "reference_1" => "",
-#             "reference_2" => "",
-#               "rates_url" => "https://api.goshippo.com/v1/shipments/a336daf87a8e442992a68daa6622758f/rates/",
-#                "messages" => [ ] # ommitted for brevity,
-#              "rates_list" => [ ] # ommitted for brevity.
+# { "carrier_accounts"    => [],
+#   "address_from"        => [ ... ]   # omitted for brevity,
+#   "address_to"          => [ ... ]   # omitted for brevity,
+#   "address_return"      => [ ... ]   # omitted for brevity,
+#   "parcel"              => [ ... ]   # omitted for brevity,
+#   "shipment_date"       => "2016-07-06T20:33:02.211Z",
+#   "customs_declaration" => nil,
+#   "extra"               => {
+#     "insurance"   => {
+#       "amount"    => 10,
+#       "currency"  => "USD",
+#       "content"   => "",
+#       "provider"  => "FEDEX"
+#     },
+#     "is_return"   => nil,
+#     "reference_1" => "",
+#     "reference_2" => "",
+#   },
+#   "rates_url"           => "https://api.goshippo.com/v1/shipments/a336daf87a8e442992a68daa6622758f/rates/",
+#   "messages"            => [ ... ],   # omitted for brevity
+#   "rates"               => [ ... ]    # omitted for brevity
 # }
 ```
 
@@ -120,40 +123,32 @@ ap @shipment
 
 In the case when the API returns a hash with one of the hash values being an array of entities, and if the corresponding key can be mapped into one of the existing API models, then each of the members of the array is coerced from a hash into an object of the model's type.
 
-In the example below we are showing the result of such transformation where the `rates_list` contains a list of fully constructed objects of type `Shippo::Rate` after being coerced from a hash.
+In the example below we are showing the result of such transformation where `rates` contains a list of fully constructed objects of type `Shippo::Rate` after being coerced from a hash.
 
 ```ruby
-ap @shipment.rates_list.first
+ap @shipment.rates.first
 # =>
-# {
-#                     "shipment" => "20f25e44b16b4051b6dd910cb66fd27b",
-#             "available_shippo" => true,
-#                   "attributes" => [],
-#                       "amount" => "8.51",
-#                     "currency" => "USD",
-#                 "amount_local" => "8.51",
-#               "currency_local" => "USD",
-#                     "provider" => "FedEx",
-#            "provider_image_75" => "https://shippo-static.s3.amazonaws.com/providers/75/FedEx.png",
-#           "provider_image_200" => "https://shippo-static.s3.amazonaws.com/providers/200/FedEx.png",
-#            "servicelevel_name" => "Ground",
-#           "servicelevel_token" => "fedex_ground",
-#           "servicelevel_terms" => "",
-#                         "days" => 2,
-#                   "arrives_by" => nil,
-#               "duration_terms" => "",
-#                    "trackable" => true,
-#                    "insurance" => false,
-#       "insurance_amount_local" => "0.00",
-#     "insurance_currency_local" => nil,
-#             "insurance_amount" => "0.00",
-#           "insurance_currency" => nil,
-#            "delivery_attempts" => nil,
-#            "outbound_endpoint" => "door",
-#             "inbound_endpoint" => "door",
-#                     "messages" => [],
-#              "carrier_account" => "4b1940bc69524163b669asd361842db",
-#                         "test" => true
+# { "shipment"            => "20f25e44b16b4051b6dd910cb66fd27b",
+#   "attributes"          => [],
+#   "amount"              => "8.51",
+#   "currency"            => "USD",
+#   "amount_local"        => "8.51",
+#   "currency_local"      => "USD",
+#   "provider"            => "FedEx",
+#   "provider_image_75"   => "https://shippo-static.s3.amazonaws.com/providers/75/FedEx.png",
+#   "provider_image_200"  => "https://shippo-static.s3.amazonaws.com/providers/200/FedEx.png",
+#   "servicelevel"        => {
+#     "name"      => "Ground",
+#     "token"     => "fedex_ground",
+#     "terms"     => ""
+#   }
+#   "days"                => 2,
+#   "arrives_by"          => nil,
+#   "duration_terms"      => "",
+#   "trackable"           => true,
+#   "messages"            => [],
+#   "carrier_account"     => "4b1940bc69524163b669asd361842db",
+#   "test"                => true
 # }
 @shipment.rates.first.owner
 # ⤷ unittest@gmail.com
@@ -213,7 +208,7 @@ Finally, here is how we access the rest of the `object_` fields:
 # ⤷ valued_customer@gmail.com
 ```
 
-Here is the fully construted `ApiObject` instance, attached to our `@shipment`:
+Here is the fully constructed `ApiObject` instance, attached to our `@shipment`:
 
 ```ruby
 ap @shipment.object
