@@ -86,7 +86,7 @@ params   = {  async:          false,
 Let's take a quick look at what the `Shipment` object looks like:
 
 ```ruby
-require 'awesome-print'
+require 'awesome_print'
 ap @shipment
 # {
 #   "carrier_accounts"    => [],
