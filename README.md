@@ -103,7 +103,7 @@ ap @shipment
 #       "content"   => "",
 #       "provider"  => "FEDEX"
 #     },
-#     "is_return"   => nil,
+#     "is_return"   => false,
 #     "reference_1" => "",
 #     "reference_2" => "",
 #   },
