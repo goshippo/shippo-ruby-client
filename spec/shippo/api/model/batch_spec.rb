@@ -1,8 +1,10 @@
 require 'dummy_helper'
 require 'spec_helper'
 
-DEFAULT_CARRIER_ACCOUNT = 'bb980a0dcd2047328024bc3dcad56682'
+DEFAULT_CARRIER_ACCOUNT = '903074429eab4954b72df8a70defdfe3'
 DEFAULT_SERVICELEVEL_TOKEN = 'usps_priority'
+
+Shippo::API.token = 'shippo_test_09e74f332aa839940e6c241bb008157c19428339'
 
 # Retries up to 10 times to retrieve a valid
 # Batch (which takes time to become 'VALID' from

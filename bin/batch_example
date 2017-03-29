@@ -4,9 +4,6 @@
 #
 # License: MIT
 #
-# This example demonstrates how to get the tracking status of a shipment
-# Please set +SHIPPO_TOKEN+ in the environment before running it.
-#
 # You can also set +SHIPPO_DEBUG+ to see detailed printouts of objects returned.
 #
 #
@@ -21,7 +18,7 @@ require 'shippo/exceptions/api_error'
 require 'awesome_print'
 require 'json'
 
-Shippo::API.token = ENV['SHIPPO_TOKEN']
+Shippo::API.token = 'shippo_test_09e74f332aa839940e6c241bb008157c19428339'
 Hashie.logger = Logger.new(nil)
 
 # Simple wrapper class to help us print objects to the STDOUT
@@ -104,25 +101,7 @@ parcel       = {
   :weight        => 2,
   :mass_unit     => :lb }
 
-default_carrier_account = ENV['SHIPPO_TEST_CARRIER_ACCOUNT']
-if !default_carrier_account
-  STDERR.puts 'Please set your SHIPPO_TEST_CARRIER_ACCOUNT environment variable.'
-  STDERR.puts
-  STDERR.puts 'You can do this by setting it to your USPS carrier account object ID:
-
-  Steps
-  --------------------------------------------------------------
-  1. curl https://api.goshippo.com/carrier_accounts/ \
-    -H "Authorization: ShippoToken <TEST_API_TOKEN>"
-
-  2. Look for {"carrier": "usps"} and find its "object_id"
-
-  3. export SHIPPO_TEST_CARRIER_ACCOUNT=<USPS_CARRIER_OBJECT_ID>
-  --------------------------------------------------------------
-  '
-  STDERR.puts
-  exit 1
-end
+default_carrier_account = '903074429eab4954b72df8a70defdfe3'
 hash = { :default_carrier_account => default_carrier_account,
          :default_servicelevel_token => 'usps_priority',
          :label_filetype => 'ZPLII',

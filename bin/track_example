@@ -4,9 +4,6 @@
 #
 # License: MIT
 #
-# This example demonstrates how to get the tracking status of a shipment
-# Please set +SHIPPO_TOKEN+ in the environment before running it.
-#
 # You can also set +SHIPPO_DEBUG+ to see detailed printouts of objects returned.
 #
 #
@@ -21,7 +18,7 @@ require 'shippo/exceptions/api_error'
 require 'awesome_print'
 require 'json'
 
-Shippo::API.token = ENV['SHIPPO_TOKEN']
+Shippo::API.token = 'shippo_test_09e74f332aa839940e6c241bb008157c19428339'
 Hashie.logger = Logger.new(nil)
 
 # Simple wrapper class to help us print objects to the STDOUT

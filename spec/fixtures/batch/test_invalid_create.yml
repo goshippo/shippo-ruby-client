@@ -45,7 +45,7 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Thu, 16 Feb 2017 00:22:40 GMT
+      - Wed, 29 Mar 2017 23:27:03 GMT
       P3p:
       - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
       Server:
@@ -62,5 +62,5 @@ http_interactions:
         Please list the available CarrierAccount objects (/v1/carrier_accounts) to
         get your valid object_ids."]}'
     http_version: 
-  recorded_at: Thu, 16 Feb 2017 00:22:40 GMT
+  recorded_at: Wed, 29 Mar 2017 23:27:03 GMT
 recorded_with: VCR 3.0.3

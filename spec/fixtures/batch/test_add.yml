@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.goshippo.com/batches/
     body:
       encoding: UTF-8
-      string: '{"default_carrier_account":"bb980a0dcd2047328024bc3dcad56682","default_servicelevel_token":"usps_priority","label_filetype":"ZPLII","metadata":"BATCH
+      string: '{"default_carrier_account":"903074429eab4954b72df8a70defdfe3","default_servicelevel_token":"usps_priority","label_filetype":"ZPLII","metadata":"BATCH
         #170","batch_shipments":[{"shipment":{"object_purpose":"PURCHASE","address_from":{"object_purpose":"PURCHASE","name":"Simon
         Says","company":"","street1":"965 Mission St","street2":"Ste 201","city":"San
         Francisco","state":"CA","zip":"94103","country":"US","phone":"4151234567","email":"hippo@goshippo.com"},"address_to":{"object_purpose":"PURCHASE","name":"Who
@@ -47,7 +47,7 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 15 Feb 2017 22:51:33 GMT
+      - Wed, 29 Mar 2017 23:27:04 GMT
       P3p:
       - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
       Server:
@@ -55,18 +55,18 @@ http_interactions:
       Vary:
       - Host, Cookie, Accept-Encoding
       Content-Length:
-      - '348'
+      - '349'
       Connection:
       - keep-alive
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIAHXbpFgC/42RyU7DMBRFf6UKW1o5TtukXVFAgkgVYlGxKELRs/1CDKkdeQhUVf+dONCBBRI7+97zBl/vIs3ekLtCimg+iBImSppiAlmZjclUAJQ8AUIYsphRkUaXg0OB/lBoQk0rVXX1qm0lm0aPuN6cQdaB8zZQT4tlfrtY5Q93ZzY3CA77yZTE6ZDQYTxZUTqfxPMkGdF0tj6jfSP+Q2/QQQdC4K4Xq5v7wUWckuAILMHX3VgwRqIpgHPtlQsgY7OMABFcUDJOE5oROmY8ERzEZDrN6Hm5RdNKjjW2WBdOv6MKHbxtbNEYqY1024DXwDq/lDW6bYMBWT8u8zxYDByvipDYBpUL+eyiwyqk8xV+hqPydd3dGoOt1H2MP4pB2y0ShOeX/Smgk7yLGm94BRYL6zlHFH1uoffRKKFb7aD2PyG1+kP91WR/fJw39fcOX3RoAFlHAgAA
+        H4sIAMhC3FgC/42RXU/CMBiF/wqZt0LK1lHKlaiJLiHGC+IFxixd+06qZV36gRLCf7edAvPCxLv2nOf96Ok+0dUbcFdKkcwGyQSEwBM+zXKCcAoTNqVZTnMqUkynGHhyOTgW6I8GTKxxYN3Vq7Zr2bY6XkZcb3qgdcx5G8mn+aK4nS+Lh7uezQ0wB930FI3JEGXDlC7TbJaSGcIjQsiqR/tW/IfegGMBZJG7ni9v7gcXY4KiI6BmXoWxzBgJpmSca9+4CFKUIYJxSoFVmOa4Iqmop4ygUCNqyPrlFsxWclCwBVU6/Q5N7OBta8vWSG2k20VcsSr4tVTgdi1EZPW4KIpoVczxdRlT20DjYj775LgKCn4Dn/HYeKXCrTWwlbqL8UcxYMMiUXh+OZwDOsv7pPWGr5mF0nrOAUSXW+x9MmoWVjuq3U9I3fyh/mpyOD3OG/W9wxf4UC88SwIAAA==
     http_version: 
-  recorded_at: Wed, 15 Feb 2017 22:51:33 GMT
+  recorded_at: Wed, 29 Mar 2017 23:27:04 GMT
 - request:
     method: get
-    uri: https://api.goshippo.com/batches/3bdf27e3a8f8406daafc3a00beb1b2d7
+    uri: https://api.goshippo.com/batches/6edd46c8357042e6a8935959d24984ec
     body:
       encoding: ASCII-8BIT
       string: ''
@@ -95,7 +95,55 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 15 Feb 2017 22:51:36 GMT
+      - Wed, 29 Mar 2017 23:27:06 GMT
+      P3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      Server:
+      - nginx/1.8.0
+      Vary:
+      - Host, Cookie, Accept-Encoding
+      Content-Length:
+      - '349'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAMpC3FgC/42RXU/CMBiF/wqZt0LK1lHKlaiJLiHGC+IFxixd+06qZV36gRLCf7edAvPCxLv2nOf96Ok+0dUbcFdKkcwGyQSEwBM+zXKCcAoTNqVZTnMqUkynGHhyOTgW6I8GTKxxYN3Vq7Zr2bY6XkZcb3qgdcx5G8mn+aK4nS+Lh7uezQ0wB930FI3JEGXDlC7TbJaSGcIjQsiqR/tW/IfegGMBZJG7ni9v7gcXY4KiI6BmXoWxzBgJpmSca9+4CFKUIYJxSoFVmOa4Iqmop4ygUCNqyPrlFsxWclCwBVU6/Q5N7OBta8vWSG2k20VcsSr4tVTgdi1EZPW4KIpoVczxdRlT20DjYj775LgKCn4Dn/HYeKXCrTWwlbqL8UcxYMMiUXh+OZwDOsv7pPWGr5mF0nrOAUSXW+x9MmoWVjuq3U9I3fyh/mpyOD3OG/W9wxf4UC88SwIAAA==
+    http_version: 
+  recorded_at: Wed, 29 Mar 2017 23:27:06 GMT
+- request:
+    method: get
+    uri: https://api.goshippo.com/batches/6edd46c8357042e6a8935959d24984ec
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Authorization:
+      - "<API_TOKEN>"
+      Content-Length:
+      - '0'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Allow:
+      - OPTIONS
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 29 Mar 2017 23:27:07 GMT
       P3p:
       - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
       Server:
@@ -109,9 +157,9 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIAHjbpFgC/8VUTW/TQBD9K1G4ttV+f/REgQOVeuBQcShC0ezsbGNwbGttB6qo/53d0EAqKCoHxM2e9+bNvPGMd8s+fCKcVk1cni+WMsQkLElwySlmIkBCCYwFCjyIaJcni0NC/6WjXHO2Tbd+eduP62YY+jPsN0ekcYJpHivr/cXV5ZsjBDPBRPuignF7ysQp19dCnGt+LuWZsP7miD0P8Wm2PtNc7dkbmqAQofJeXVy/frt4wS2rSKQEc1vKQs4N5RUg9nM3VWII3jFgEaNgykrhmFABZUSI2hgnjtNHytsGqaUttaup/0xdVZjHYVwNuelzM91Veguh4KlpabobqFJu3l1dXlYowITrVR3Whrqpjma3PLQiC97R1/rYzW1b3oZM26bfT/AhkmksjdTAh90jv1X8V3cPWb/t+4A99FJFjOOcjLBJJ618FM4geuWiI++1U6YWmTJ0I+DU9Ecij7ZIc5RUZIThSXHhAA0ROqVQmRis//OCbGgc4Zb2Fj/enyz+gU0mmMAYJQUGylvlGJPOakVCp8BdfJ5NAWgTKld2BpXV4A3waMsW6WCBrPzvNjlnpDSzToNUQUifLETOy+dBj1q659lkzFOwSgEvNpErZwL3RTb5hEIk8zc2q9ED+ecm75bDnHENI63GGZEo7k+d1QM4AAnKNR2i+59H6fiJ6LGIvP9xj3Nuv3fxDavXMsD1BAAA
+        H4sIAMtC3FgC/8VUTW8TMRD9K1G4tpXXH2s7JwociNQDh4pDEVqN7XGzsNld2d5AFfW/Y6fZkgqKygFxs+e9eTPP9ni/HMwXtKlp3XK1WNboHK+tYkISTrEGpZnQQjvKteJol2eLOWH41mMoOQljen07xE07jkPZXNhhe0KMCdIUC/Pj5dX63QliA0LCQ2FKKnlO2DnV15StqFwRfiGlvDlhT6N7nl1faPXA3mKCTITCe3N5/fb94lUlSUEcepi6XBZCaDE0YO0w9akQNWFEck41guFacCOp8wokyTnOIztNjxh2rcUOd9g1afiKfVGY4hibMbRDaNNdoXdgMu7bDtPdiIVy8+FqvS6QgWQ3TTmwLfapHM1+ObfCMt7j97Lsp67LuzHgrh0OJ3iMBIy5kRL4tH/it4j/6u6Y9du+Z+zYSxExlBAntCcgNCeSGS+oE5VxttaVYb4USQH6CDa1w4nIk5dkuDRcKeqtU5yCMTarqKxZS8tqJf78QLYYI9ziweLn+7PFP7DJKlMpIizoSnPFpMHaAiglTFUpJeFlNi2Xyiik2ZvhvjJGelC8OK+lpsr/f5uaCyUrUa6CU++0ztdKKoLUC+WsfZlN7TwwY73kJP8EzmttNGJd10CAcPwrm8XoTP75kvfLcQp2AxGbOFmL6A6jTsoAzICHPE1z9PB55I6fiZ6KsPvHeZxC99DFD7+OcrT5BAAA
     http_version: 
-  recorded_at: Wed, 15 Feb 2017 22:51:36 GMT
+  recorded_at: Wed, 29 Mar 2017 23:27:07 GMT
 - request:
     method: post
     uri: https://api.goshippo.com/shipments/
@@ -148,7 +196,7 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 15 Feb 2017 22:51:37 GMT
+      - Wed, 29 Mar 2017 23:27:08 GMT
       P3p:
       - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
       Server:
@@ -156,21 +204,21 @@ http_interactions:
       Vary:
       - Host, Cookie, Accept-Encoding
       Content-Length:
-      - '469'
+      - '473'
       Connection:
       - keep-alive
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIAHnbpFgC/5WTy27UMBSGX2WUNZ04jnObFRWdCiSklsKwKELRsX3cCUriyBegqvru2CmQTIUE7Gz/32+fmx8SAcZ0aFoQQvvR2WS3+fT5xSbR/AsK1wqD4FCG04SSrDoj9CwrPlC6K7JdXm0Jq2+ThfaT/A+6m0GiMsGanDQF1KzOGS9LKXkJJQHFoMKVQX8b0UTP1248vrzT9thNk94KPawg60IIEfp4/vbNxTPBx/ySd4f9Yb+WJm8mbWfX9eHm1evz9/uogpQGrW2VCS8EDWkGTcEZrQrJQJGmkqxsKC/yPC+ZJGuP09HBUfKc1QQyXjMiBAjOGBChaFNm1VNyExiBfaQzqBgljDRCqFAKxSVtkDKKpFQEASJtPR86azs9tu5+mkO+uLm6vrq8fKbKn2X4YyNoebsO1qDzZvzXFJ/oVqtgGH3fhyPhrdODbSWKHgy4EMAidqP1BkaBLQxxxuauJyeC8MbgKO4XE353BsL24XF+UWHUsc2ieW775vdhckLQSMCo3RHNZibTUzLUxbbezBU/OjfZXZrC1G3X85TG5YDhP6R/m890vjBdru476379oiFUF+7QLnsHoTExsSQ6Ah9ZZzw+/gChrS20jAMAAA==
+        H4sIAMxC3FgC/5WT227UMBCGX2WVa7pJbG8Oe0VFtwIJqaV0uShC0WQ87gZt4sgHQVX13bEDJdkKCbiz/X+/5+DxY4JgTEemAUTtB2eT7erzl1erRLdfCV2DhsCRDKcJy/LyLONnrL5lfMvKbVau6zK7S2baj/I/6G4CsSVRQCVVgZlAJdtCsRaqTa2EVMTYwqC/DWSix5F1r++1PXTjqONmjbpfgNaFNCL46fz9u4sXgo81Jh/2u/1uKY3ejNpOruv9zZu35x93UQUpDVnbKBMiBC0nxQQrIKurWlCpasKc18Q5EYHYbJYep6NDyoIpJXMBm0LwPKsEZlmAOSAVyNvoGMEgHSMNKBAEw1JKEpyragN5TqwsSYaQWEfa+rbvrO300LiHcUr54ubq+ury8oUqf7Xhj4/B+d0yWUPOm+FfS/xJN1oFw+CPx3CE3jrd20YSHsGACwnMYjdYb2BAaqCPcxbjZMmJgN4YGvBhNtF3ZyBsH5+miIqiTk0ezdPTr34fJicEmzo5aHcgs5rI9JQMfbGNN1PHD86NdpumMHbr55mK85TGZU/hT6R/m9F0ujCdrz521j3/pD50F+7JznsH4WFiYUl0xPkNa2c8Pf0AUBmIa5ADAAA=
     http_version: 
-  recorded_at: Wed, 15 Feb 2017 22:51:37 GMT
+  recorded_at: Wed, 29 Mar 2017 23:27:08 GMT
 - request:
     method: post
-    uri: https://api.goshippo.com/batches/3bdf27e3a8f8406daafc3a00beb1b2d7/add_shipments
+    uri: https://api.goshippo.com/batches/6edd46c8357042e6a8935959d24984ec/add_shipments
     body:
       encoding: UTF-8
-      string: '[{"shipment":"0f1c493095a84834b66ddb6a60af4a7e"}]'
+      string: '[{"shipment":"cbe46a8df6c04cfdb6f2ba859f4dfe22"}]'
     headers:
       Accept:
       - application/json
@@ -196,7 +244,7 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 15 Feb 2017 22:51:37 GMT
+      - Wed, 29 Mar 2017 23:27:08 GMT
       P3p:
       - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
       Server:
@@ -204,13 +252,13 @@ http_interactions:
       Vary:
       - Host, Cookie, Accept-Encoding
       Content-Length:
-      - '582'
+      - '583'
       Connection:
       - keep-alive
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIAHnbpFgC/8VUTW/UMBD9K6vl2lb+/uiJAgcq9cCh4lCEVuPxuBvIJlHiLFSr/nfspQtbQVE5IG7xvDfP8ybj2S378Ikwr5q4PF8sZYhJWJLgklPMRICEEhgLFHgQ0S5PFoeE/ktHY83ZNt365W0/rZth6M+w3xyRpgx5nirr/cXV5ZsjBEeCTPtLBeP2lIlTrq+FONf8XMozYf3NEXse4tNse6Y537M3lKEQofJeXVy/frt4wS2rSKQEc1uuhXFsaFwBYj93uRJD8I4BixgFU1YKx4QKKCNC1MY4cZw+0bhtkFraUrvK/WfqqsI8DdNqGJt+bPJdpbcQCp6alvLdQJVy8+7q8rJCATKuV7VZG+pybc1ueShFFbyjr/Wzm9u2nIaRtk2/7+BDZKSpFFIDH3aP/FbxX909ZP227gP2UEsVMY5zMsImnbTyUTiD6JWLjrzXTpl6SR6hmwBz0x+JPJoizVFSkRGGJ8WFAzRE6JRCZWKw/s8DsqFpglvaW/x4f7L4BzaZYAJjlBQYKG+VY0w6qxUJnQJ38Xk2BaBNqFyZGVRWgzfAoy1TpIMFsvK/2+SckdLMOg1SBSF9shA5L78HPWrpnmeTMU/BKgW82ESunAncF9nkEwqRzH+3yRJH5SXzGpxyxakxMQYDhkFSYOl5NqG0JlnvTLSkvKEAzFviSkltpFDxb2xWowfyzwe7Ww7ziGuYaDXNiERxv9FYfecHIEFZGofofkeWip+IHouo+x9rZx7b71V8A0+NnKbcBQAA
+        H4sIAMxC3FgC/8VUTW8TMRD9K1G4tpXtHX/1RIEDlXrgUHEoQtF4PG4XNtnVrrdQRf3v2KGBVFBUDoibPfPmeZ49fttlHz4x5VUbl6eLpeEYwZBrtBWg2KDzjfbaRwXeAdPyaLEv6L9seKw1maf88rqfbtph6OvmhPr1AXDKmOepIt+fXZy/OcjQyJh5d7AS0h6L5lj5S9WcKnsq4MRae3WAnof4NNqdgIUdes0ZCxAr7tXZ5eu3ixfSipqJnHDuyrE4ji2PKyTq502uQC8aYQGUZwzgNQSrYnJoRamJiZvD8onH25a441vuVrn/zJvKME/DtBrGth/bfFfhHYaST23H+W7gCrl6d3F+XlMBM92s6oWteZPr1WyX+1ag5Df8tS43c9eV3TDybdvvbvAhMvJUGqmBD9tHeiv5r+oeqn7b9z730EslCUqIqH0SqD0I24SkVdQyRDJehibVQ/KImwkpt/0ByaNJCmADOKcSRQcKQ6DC4gqnsdQYp/88IGueJrzmncSP90eLfyCzkUE6oQm99OAaG9gQonM6SOmcxefJJLAuOFZFW4AkQ7AJHVTlxnrl0v+X6UE7K3V9ClApel+eVUjBKmkXiZ4n08eETaBkQRQniMn74JmNMShQAP9/mRQYilvFZEgApRhMUgFdGWMo/1ep58l0EIvjgdWSHJQGHUdPTNIkaMqIxL+RWYXuwT8/7HY5zCPd4MSraSZijjtHE/Wf7xMJi2nsozuPLB0/ET0kgfsftjOP3fcuvgEAdmDM4AUAAA==
     http_version: 
-  recorded_at: Wed, 15 Feb 2017 22:51:37 GMT
+  recorded_at: Wed, 29 Mar 2017 23:27:08 GMT
 recorded_with: VCR 3.0.3
