@@ -47,7 +47,7 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 29 Mar 2017 23:27:03 GMT
+      - Wed, 29 Mar 2017 23:39:00 GMT
       P3p:
       - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
       Server:
@@ -61,12 +61,12 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIAMdC3FgC/41Ry07DMBD8lSpcaeXYSd30RAEJIlWIQ8WhCEWOs6EGN7b8KFRV/x070AcHJG7emdnd2fEuUfUbcFeJJpkOkiLlacrGKaYEZRnOC4rSSZ5jwpsJFLxOLgeHBvXRgYk9Dqy7elV2JbRWsRhxtT4TWsect1H5NJuXt7NF+XB3RnMDzEG/HaOUDhEZ4mKByRTTKSKjMSXLM7XXzX/Ua3AsCFnUXc8WN/eDi5SiyDTQMi/DWmaMAFMxzpXvXH88IoiGqwtgdVbkWU1x004YRaGnaYGct1swG8FBwgZk5dQ7dHGCt9pW2ghlhNtGuWR14FshwW01RMnycV6WkaqZ46sqpraGzsV8dsnBCgp8B5/x2XkpQ6UNbITqY/xBDNhgJALPL/tTQCd4l2hv+IpZqKznHKDpc4uzj0TLgrUD2v+EUN0f6K8h++Nx3shvD1/geFLVSwIAAA==
+        H4sIAJRF3FgC/42RXUvDMBiF/8qot26kTUvbXVkVtDDEi+HFREqavHXRrAn5mI6x/25S3VYvBO+Sc573Iyf7SLZvQG3DWTSfRFmRsbigeV7EXcpw1gKkCLIWd3GJKUmiy8mxQH70oEONBWOvXqVZc6VkuMyo3IxAY4l1JpBP1aK+rZb1w93IphqIhWF6guJ8ivA0KZcJnuNyjtAswXg1op1i/6E3YIkHSeCuq+XN/eQizlFwGHTECT+WaM1BN4RS6XobwBJhlKdpUgJp0zJL2zxhXUFy5GtYB3hcbkBvOQUBWxCNle/Qhw7OKNMozaXmdhdwQVrvd1yA3SkIyOpxUdfBaoml6yaktoHehnz20XEV5P0ePsOxd0L4m9Kw5XKI8UfRYPwiQXh+OZwDOsv7SDlN18RAYxylAGzILfQ+GR3xqx3V4Se47P9QfzU5nB7ntPje4QsEXzbPSwIAAA==
     http_version: 
-  recorded_at: Wed, 29 Mar 2017 23:27:03 GMT
+  recorded_at: Wed, 29 Mar 2017 23:39:00 GMT
 - request:
     method: get
-    uri: https://api.goshippo.com/batches/91c11a6127304425970185523cd8e9cb
+    uri: https://api.goshippo.com/batches/585d18c7781f4d35bee40e5b3f193ca2
     body:
       encoding: ASCII-8BIT
       string: ''
@@ -95,7 +95,7 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 29 Mar 2017 23:27:04 GMT
+      - Wed, 29 Mar 2017 23:39:00 GMT
       P3p:
       - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
       Server:
@@ -109,7 +109,7 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIAMhC3FgC/41Ry07DMBD8lSpcaeXYSd30RAEJIlWIQ8WhCEWOs6EGN7b8KFRV/x070AcHJG7emdnd2fEuUfUbcFeJJpkOkiLlacrGKaYEZRnOC4rSSZ5jwpsJFLxOLgeHBvXRgYk9Dqy7elV2JbRWsRhxtT4TWsect1H5NJuXt7NF+XB3RnMDzEG/HaOUDhEZ4mKByRTTKSKjMSXLM7XXzX/Ua3AsCFnUXc8WN/eDi5SiyDTQMi/DWmaMAFMxzpXvXH88IoiGqwtgdVbkWU1x004YRaGnaYGct1swG8FBwgZk5dQ7dHGCt9pW2ghlhNtGuWR14FshwW01RMnycV6WkaqZ46sqpraGzsV8dsnBCgp8B5/x2XkpQ6UNbITqY/xBDNhgJALPL/tTQCd4l2hv+IpZqKznHKDpc4uzj0TLgrUD2v+EUN0f6K8h++Nx3shvD1/geFLVSwIAAA==
+        H4sIAJRF3FgC/42RXUvDMBiF/8qot26kTUvbXVkVtDDEi+HFREqavHXRrAn5mI6x/25S3VYvBO+Sc573Iyf7SLZvQG3DWTSfRFmRsbigeV7EXcpw1gKkCLIWd3GJKUmiy8mxQH70oEONBWOvXqVZc6VkuMyo3IxAY4l1JpBP1aK+rZb1w93IphqIhWF6guJ8ivA0KZcJnuNyjtAswXg1op1i/6E3YIkHSeCuq+XN/eQizlFwGHTECT+WaM1BN4RS6XobwBJhlKdpUgJp0zJL2zxhXUFy5GtYB3hcbkBvOQUBWxCNle/Qhw7OKNMozaXmdhdwQVrvd1yA3SkIyOpxUdfBaoml6yaktoHehnz20XEV5P0ePsOxd0L4m9Kw5XKI8UfRYPwiQXh+OZwDOsv7SDlN18RAYxylAGzILfQ+GR3xqx3V4Se47P9QfzU5nB7ntPje4QsEXzbPSwIAAA==
     http_version: 
-  recorded_at: Wed, 29 Mar 2017 23:27:04 GMT
+  recorded_at: Wed, 29 Mar 2017 23:39:00 GMT
 recorded_with: VCR 3.0.3
