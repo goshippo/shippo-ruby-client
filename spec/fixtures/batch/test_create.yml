@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.goshippo.com/batches/
     body:
       encoding: UTF-8
-      string: '{"default_carrier_account":"bb980a0dcd2047328024bc3dcad56682","default_servicelevel_token":"usps_priority","label_filetype":"ZPLII","metadata":"BATCH
+      string: '{"default_carrier_account":"903074429eab4954b72df8a70defdfe3","default_servicelevel_token":"usps_priority","label_filetype":"ZPLII","metadata":"BATCH
         #170","batch_shipments":[{"shipment":{"object_purpose":"PURCHASE","address_from":{"object_purpose":"PURCHASE","name":"Simon
         Says","company":"","street1":"965 Mission St","street2":"Ste 201","city":"San
         Francisco","state":"CA","zip":"94103","country":"US","phone":"4151234567","email":"hippo@goshippo.com"},"address_to":{"object_purpose":"PURCHASE","name":"Who
@@ -47,7 +47,7 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Tue, 14 Feb 2017 23:28:40 GMT
+      - Wed, 29 Mar 2017 23:38:59 GMT
       P3p:
       - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
       Server:
@@ -55,13 +55,13 @@ http_interactions:
       Vary:
       - Host, Cookie, Accept-Encoding
       Content-Length:
-      - '349'
+      - '350'
       Connection:
       - keep-alive
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIAKiSo1gC/42RXU/CMBiF/wqZt0K6bmyDK1ETXUKMF8QLjFm69sVVS9v0Y0oI/911CswLE+/ac573o6f7SNVvQF3FWTQfRTShNC8yjMgMpUnNapaSBOIiTwuUZWgaXY6OBepDggk1LZfN1auyDddaTajaDiDriPM2UE+LZXm7WJUPdwObGiAO+skYxfkY4XGcrnAyx8U8RROEk/WA9pr9h96CIx1IAne9WN3cjy7iHAWHwYZ40Y0lxnAwFaFUeekCWNezAhHEKMMozRNcIJzWNGGUsGmWFXhYbsG0nIKAFkTl1DvI0MFbbSttuDLc7QIuSN35Gy7A7TQEZP24LMtg1cTRpgqJbUG6kM8+Oq6COl/CZzhKL0R30wZarvoYfxQDtlskCM8vh3NAZ3kfaW9oQyxU1lMKwPrcQu+TsSHdake1/wmu5B/qryaH0+O8Ed87fAGtbhjdRwIAAA==
+        H4sIAJNF3FgC/42RW0/CMBiG/wqZt0LG1h3KlaiJLiHGC+IFxixt902qZW16QAnhv9tOgXlh4l37vs936Nt9JOkbMFvzJpqNorIklGKAsmBTlGOEKcpyyFmRFHmZl1l0OToWyI8OdKixYOzVqzRrrpQMlwmTmwFoLLHOBPJpvqhu58vq4W5gMw3EQj89iafFOE7HCV4m6SwtZxmeoDJbDWinmv/QG7DEgyRw1/Plzf3oYlrEwWmgJU74sURrDromjEnX2QDiOI0LhBIMhCKcIVokTVuSIvY1TQvpsNyA3nIGArYgaivfoQsdnFGmVppLze0u4IJQ77dcgN0pCMjqcVFVwaLEsnUdUttAZ0M+++i4Suz9Dj7DsXNC+JvSsOWyj/FH0WD8IkF4fjmcAzrL+0g5zdbEQG0cYwBNn1vofTJa4lc7qv1PcNn9of5qcjg9zmnxvcMXVmfJKksCAAA=
     http_version: 
-  recorded_at: Tue, 14 Feb 2017 23:28:39 GMT
+  recorded_at: Wed, 29 Mar 2017 23:38:59 GMT
 recorded_with: VCR 3.0.3

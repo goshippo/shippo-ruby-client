@@ -1,5 +1,5 @@
 DUMMY_BATCH = {
-  "default_carrier_account": "bb980a0dcd2047328024bc3dcad56682",
+  "default_carrier_account": "903074429eab4954b72df8a70defdfe3",
   "default_servicelevel_token": "usps_priority",
   "label_filetype": "ZPLII",
   "metadata": "BATCH #170",
