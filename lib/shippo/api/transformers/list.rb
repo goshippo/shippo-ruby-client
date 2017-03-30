@@ -13,7 +13,7 @@ module Shippo
         # mapped to an array of hashes, into a word that represents an existing model.
         #
         # Each matcher receives a key as a parameter, and (if matches) it extracts the candidate word to be
-        # attempted to +constantize+. For example, +rates_list+ matcher will return +rates+ as output.
+        # attempted to +constantize+. For example, +rates+ matcher will return +rates+ as output.
 
         MATCHERS = [
           ->(key) {

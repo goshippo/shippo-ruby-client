@@ -52,7 +52,6 @@ end
 
 # Create address object
 address = {
-  :object_purpose => 'PURCHASE',
   :name           => 'Mr Hippo',
   :company        => 'Shippo',
   :street1        => '215 Clayton St.',

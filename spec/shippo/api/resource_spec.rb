@@ -5,7 +5,7 @@ RSpec.describe Shippo::API::Resource do
   context '#initialize' do
     let(:object_id) { 'afa9fa09fa809f98f0a' }
     let(:params) { {
-      rates_list:
+      rates:
                     [{ shipment: '13123' },
                      { shipment: '44343' }],
       object_id:    object_id,
