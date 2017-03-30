@@ -6,9 +6,7 @@ DUMMY_BATCH = {
   "batch_shipments": [
     {
       "shipment": {
-        "object_purpose": "PURCHASE",
         "address_from": {
-          "object_purpose": "PURCHASE",
           "name": "Simon Says",
           "company": "",
           "street1": "965 Mission St",
@@ -21,7 +19,6 @@ DUMMY_BATCH = {
           "email": "hippo@goshippo.com"
         },
         "address_to": {
-          "object_purpose": "PURCHASE",
           "name": "Who Says",
           "company": "",
           "street1": "400 Simon St",
@@ -45,16 +42,16 @@ DUMMY_BATCH = {
           "template": "",
           "metadata": "Customer ID 123456"
         },
-        "reference_1": "REF1 - Simon",
-        "reference_2": "REF2 - Says",
+        "extra": {
+          "reference_1": "REF1 - Simon",
+          "reference_2": "REF2 - Says",
+        },
         "metadata": ""
       }
     },
     {
       "shipment": {
-        "object_purpose": "PURCHASE",
         "address_from": {
-          "object_purpose": "PURCHASE",
           "name": "Simon Says",
           "company": "",
           "street1": "965 Mission St",
@@ -67,7 +64,6 @@ DUMMY_BATCH = {
           "email": "shippo@goshippo.com"
         },
         "address_to": {
-          "object_purpose": "PURCHASE",
           "name": "Who Says",
           "company": "",
           "street1": "400 Simon St",
@@ -91,16 +87,16 @@ DUMMY_BATCH = {
           "template": "",
           "metadata": "Customer ID 123456"
         },
-        "reference_1": "REF1 - Simon",
-        "reference_2": "REF2 - Says",
+        "extra": {
+          "reference_1": "REF1 - Simon",
+          "reference_2": "REF2 - Says",
+        },
         "metadata": ""
       }
     },
     {
       "shipment": {
-        "object_purpose": "PURCHASE",
         "address_from": {
-          "object_purpose": "PURCHASE",
           "name": "Simon Says",
           "company": "",
           "street1": "965 Mission St",
@@ -113,7 +109,6 @@ DUMMY_BATCH = {
           "email": "hippo@goshippo.com"
         },
         "address_to": {
-          "object_purpose": "PURCHASE",
           "name": "Who Says",
           "company": "",
           "street1": "400 Simon St",
@@ -137,8 +132,10 @@ DUMMY_BATCH = {
           "template": "",
           "metadata": "Customer ID 123456"
         },
-        "reference_1": "REF1 - Simon",
-        "reference_2": "REF2 - Says",
+        "extra": {
+          "reference_1": "REF1 - Simon",
+          "reference_2": "REF2 - Says",
+        },
         "metadata": ""
       }
     }
@@ -146,9 +143,7 @@ DUMMY_BATCH = {
 }
 
 DUMMY_SHIPMENT = {
-    "object_purpose": "PURCHASE",
     "address_to": {
-        "object_purpose": "PURCHASE",
         "name": "First Last",
         "company": "",
         "street1": "965 Mission St",
@@ -161,7 +156,6 @@ DUMMY_SHIPMENT = {
         "email": "hippo@goshippo.com",
     },
     "address_from": {
-        "object_purpose": "PURCHASE",
         "name": "Amazon Fulfillment Services",
         "company": "Returns Departments",
         "street1": "400 Simon St",
@@ -182,6 +176,8 @@ DUMMY_SHIPMENT = {
         "mass_unit": "oz",
         "metadata": ""
     },
-    "reference_1": "hippo reference",
-    "reference_2": "another hippo/reference",
+    "extra": {
+      "reference_1": "REF1 - Simon",
+      "reference_2": "REF2 - Says",
+    }
 }
