@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.goshippo.com/batches/INVALID_ID/
+    uri: https://api.goshippo.com/batches/INVALID_ID
     body:
       encoding: ASCII-8BIT
       string: ''
@@ -29,7 +29,7 @@ http_interactions:
       Content-Type:
       - text/html
       Date:
-      - Tue, 14 Feb 2017 23:38:48 GMT
+      - Wed, 29 Mar 2017 23:39:00 GMT
       P3p:
       - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
       Server:
@@ -37,13 +37,13 @@ http_interactions:
       Vary:
       - Host, Cookie
       Content-Length:
-      - '108'
+      - '107'
       Connection:
       - keep-alive
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIAAAAAAAAA7PJMLTzyy9RcMsvzUux0QfybArsQjJSFYpSC0tTi0tSUxRCg3wU9JMSS5IzUov1Pf3CHH08XeI9XfQVyhOLFfKAetNAehXy8xRKMjKLFYpTi8pSi/Rs9AvsADa/nLtdAAAA
+        H4sIAAAAAAAAA7PJMLTzyy9RcMsvzUux0QfybArsQjJSFYpSC0tTi0tSUxRCg3wU9JMSS5IzUov1Pf3CHH08XeI9XRTKE4sV8oBa00BaFfLzFEoyMosVilOLylKL9Gz0C+wAuEr6hlwAAAA=
     http_version: 
-  recorded_at: Tue, 14 Feb 2017 23:38:48 GMT
+  recorded_at: Wed, 29 Mar 2017 23:39:00 GMT
 recorded_with: VCR 3.0.3

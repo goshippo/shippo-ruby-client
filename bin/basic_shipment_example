@@ -14,14 +14,13 @@
 lib = File.expand_path('../../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
+require_relative 'config'
 require 'bundler/setup'
 require 'shippo'
 require 'shippo/api/category'
 require 'shippo/exceptions/api_error'
 require 'awesome_print'
 require 'json'
-
-Shippo::API.token = ENV['SHIPPO_TOKEN']
 
 # Simple wrapper class to help us print objects to the STDOUT
 class ExampleHelper

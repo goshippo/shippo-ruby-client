@@ -1,9 +1,6 @@
 require 'dummy_helper'
 require 'spec_helper'
 
-DEFAULT_CARRIER_ACCOUNT = 'bb980a0dcd2047328024bc3dcad56682'
-DEFAULT_SERVICELEVEL_TOKEN = 'usps_priority'
-
 # Retries up to 10 times to retrieve a valid
 # Batch (which takes time to become 'VALID' from
 # 'VALIDATING' after initially being created).

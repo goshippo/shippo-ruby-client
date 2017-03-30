@@ -29,7 +29,7 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Tue, 14 Feb 2017 18:54:34 GMT
+      - Wed, 29 Mar 2017 23:39:15 GMT
       P3p:
       - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
       Server:
@@ -44,5 +44,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"detail": "Carrier with name ''INVALID_CARRIER'' is not supported."}'
     http_version: 
-  recorded_at: Tue, 14 Feb 2017 18:54:34 GMT
+  recorded_at: Wed, 29 Mar 2017 23:39:15 GMT
 recorded_with: VCR 3.0.3

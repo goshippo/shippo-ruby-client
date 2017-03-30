@@ -1,8 +1,5 @@
 require 'spec_helper'
 
-CARRIER = 'usps'
-TRACKING_NO = '9205590164917312751089'
-
 RSpec.describe 'Shippo::API::Track' do
   let(:params) { { 'carrier': CARRIER,
                    'tracking_number': TRACKING_NO }}

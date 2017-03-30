@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.goshippo.com/batches/
     body:
       encoding: UTF-8
-      string: '{"default_carrier_account":"bb980a0dcd2047328024bc3dcad56682","default_servicelevel_token":"usps_priority","label_filetype":"ZPLII","metadata":"BATCH
+      string: '{"default_carrier_account":"903074429eab4954b72df8a70defdfe3","default_servicelevel_token":"usps_priority","label_filetype":"ZPLII","metadata":"BATCH
         #170","batch_shipments":[{"shipment":{"object_purpose":"PURCHASE","address_from":{"object_purpose":"PURCHASE","name":"Simon
         Says","company":"","street1":"965 Mission St","street2":"Ste 201","city":"San
         Francisco","state":"CA","zip":"94103","country":"US","phone":"4151234567","email":"hippo@goshippo.com"},"address_to":{"object_purpose":"PURCHASE","name":"Who
@@ -47,7 +47,7 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 15 Feb 2017 22:51:32 GMT
+      - Wed, 29 Mar 2017 23:39:00 GMT
       P3p:
       - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
       Server:
@@ -55,18 +55,18 @@ http_interactions:
       Vary:
       - Host, Cookie, Accept-Encoding
       Content-Length:
-      - '348'
+      - '349'
       Connection:
       - keep-alive
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIAHTbpFgC/42RyU7DMBRFf6UKW1o5TtKkXVFAgkgVYlGxKEKRY78QQ2pbHgJV1X/HDnRggcTOvve8wde7SNZvQG3FWTQfRTAr0gwnaQYFTvOcEeYvaYOLBIokJhBdjg4F8kOADjU9F+3VqzQtV0pOqNycQcYS60ygnhbL8naxKh/uzmyqgVgYJmMU52OEx3G2wniexfMET7IYr89op9h/6A1Y4kESuOvF6uZ+dBHnKDgMGuI6P5ZozUFXhFLphA1gXc8KRBCjDKM0T3CBcFrThFHCsum0wOflBnTPKXTQQ1dZ+Q4idHBGmUppLjW324B3pPZ+wzuwWwUBWT8uyzJYNbG0rUJiGxA25LOLDqsg7wv4DEfhus7flIaeyyHGH0WD8YsE4fllfwroJO8i5TRtiYHKOEoB2JBb6H00GuJXO6jDT3Ap/lB/NdkfH+d0973DF0TuIadHAgAA
+        H4sIAJRF3FgC/42RXUvDMBiF/8qot26kTUvbXVkVtDDEi+HFREqavHXRrAn5mI6x/25S3VYvBO+Sc573Iyf7SLZvQG3DWTSfRFmRsbigeV7EXcpw1gKkCLIWd3GJKUmiy8mxQH70oEONBWOvXqVZc6VkuMyo3IxAY4l1JpBP1aK+rZb1w93IphqIhWF6guJ8ivA0KZcJnuNyjtAswXg1op1i/6E3YIkHSeCuq+XN/eQizlFwGHTECT+WaM1BN4RS6XobwBJhlKdpUgJp0zJL2zxhXUFy5GtYB3hcbkBvOQUBWxCNle/Qhw7OKNMozaXmdhdwQVrvd1yA3SkIyOpxUdfBaoml6yaktoHehnz20XEV5P0ePsOxd0L4m9Kw5XKI8UfRYPwiQXh+OZwDOsv7SDlN18RAYxylAGzILfQ+GR3xqx3V4Se47P9QfzU5nB7ntPje4QsEXzbPSwIAAA==
     http_version: 
-  recorded_at: Wed, 15 Feb 2017 22:51:32 GMT
+  recorded_at: Wed, 29 Mar 2017 23:39:00 GMT
 - request:
     method: get
-    uri: https://api.goshippo.com/batches/e98452345e82477dad2344f283e831ae
+    uri: https://api.goshippo.com/batches/585d18c7781f4d35bee40e5b3f193ca2
     body:
       encoding: ASCII-8BIT
       string: ''
@@ -95,7 +95,7 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 15 Feb 2017 22:51:32 GMT
+      - Wed, 29 Mar 2017 23:39:00 GMT
       P3p:
       - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
       Server:
@@ -103,13 +103,13 @@ http_interactions:
       Vary:
       - Host, Cookie, Accept-Encoding
       Content-Length:
-      - '348'
+      - '349'
       Connection:
       - keep-alive
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIAHTbpFgC/42RyU7DMBRFf6UKW1o5TtKkXVFAgkgVYlGxKEKRY78QQ2pbHgJV1X/HDnRggcTOvve8wde7SNZvQG3FWTQfRTAr0gwnaQYFTvOcEeYvaYOLBIokJhBdjg4F8kOADjU9F+3VqzQtV0pOqNycQcYS60ygnhbL8naxKh/uzmyqgVgYJmMU52OEx3G2wniexfMET7IYr89op9h/6A1Y4kESuOvF6uZ+dBHnKDgMGuI6P5ZozUFXhFLphA1gXc8KRBCjDKM0T3CBcFrThFHCsum0wOflBnTPKXTQQ1dZ+Q4idHBGmUppLjW324B3pPZ+wzuwWwUBWT8uyzJYNbG0rUJiGxA25LOLDqsg7wv4DEfhus7flIaeyyHGH0WD8YsE4fllfwroJO8i5TRtiYHKOEoB2JBb6H00GuJXO6jDT3Ap/lB/NdkfH+d0973DF0TuIadHAgAA
+        H4sIAJRF3FgC/42RXUvDMBiF/8qot26kTUvbXVkVtDDEi+HFREqavHXRrAn5mI6x/25S3VYvBO+Sc573Iyf7SLZvQG3DWTSfRFmRsbigeV7EXcpw1gKkCLIWd3GJKUmiy8mxQH70oEONBWOvXqVZc6VkuMyo3IxAY4l1JpBP1aK+rZb1w93IphqIhWF6guJ8ivA0KZcJnuNyjtAswXg1op1i/6E3YIkHSeCuq+XN/eQizlFwGHTECT+WaM1BN4RS6XobwBJhlKdpUgJp0zJL2zxhXUFy5GtYB3hcbkBvOQUBWxCNle/Qhw7OKNMozaXmdhdwQVrvd1yA3SkIyOpxUdfBaoml6yaktoHehnz20XEV5P0ePsOxd0L4m9Kw5XKI8UfRYPwiQXh+OZwDOsv7SDlN18RAYxylAGzILfQ+GR3xqx3V4Se47P9QfzU5nB7ntPje4QsEXzbPSwIAAA==
     http_version: 
-  recorded_at: Wed, 15 Feb 2017 22:51:32 GMT
+  recorded_at: Wed, 29 Mar 2017 23:39:00 GMT
 recorded_with: VCR 3.0.3
