@@ -11,15 +11,13 @@
 lib = File.expand_path('../../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
+require_relative 'config'
 require 'bundler/setup'
 require 'shippo'
 require 'shippo/api/category'
 require 'shippo/exceptions/api_error'
 require 'awesome_print'
 require 'json'
-
-Shippo::API.token = 'shippo_test_09e74f332aa839940e6c241bb008157c19428339'
-Hashie.logger = Logger.new(nil)
 
 # Simple wrapper class to help us print objects to the STDOUT
 class ExampleHelper
@@ -101,8 +99,7 @@ parcel       = {
   :weight        => 2,
   :mass_unit     => :lb }
 
-default_carrier_account = '903074429eab4954b72df8a70defdfe3'
-hash = { :default_carrier_account => default_carrier_account,
+hash = { :default_carrier_account => DEFAULT_CARRIER_ACCOUNT,
          :default_servicelevel_token => 'usps_priority',
          :label_filetype => 'ZPLII',
          :metadata => 'BATCH #170',
@@ -181,10 +178,6 @@ rescue Shippo::Exceptions::AuthenticationError
   if Shippo::API.token
     puts "Token '#{Shippo::API.token}' does not appear to be valid."
     puts 'Access denied.'
-  else
-    puts 'Please set authentication token in the environment:'
-    puts 'export SHIPPO_TOKEN="<your token here>"'
-    puts 'and re-run the example.'
   end
   exit 1
 end
