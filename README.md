@@ -66,7 +66,7 @@ params   = {  async:          false,
                 country:        'US',
                 phone:          '+1 555 341 9393',
                 email:          'hippo@goshippo.com' },
-              parcel:         {
+              parcels:         {
                 length:        5,
                 width:         2,
                 height:        5,

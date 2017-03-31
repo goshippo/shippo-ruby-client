@@ -32,7 +32,7 @@ DUMMY_BATCH = {
           "email": "hippo@goshippo.com",
           "metadata": ""
         },
-        "parcel": {
+        "parcels": [{
           "length": "5",
           "width": "5",
           "height": "5",
@@ -41,7 +41,7 @@ DUMMY_BATCH = {
           "mass_unit": "oz",
           "template": "",
           "metadata": "Customer ID 123456"
-        },
+        }],
         "extra": {
           "reference_1": "REF1 - Simon",
           "reference_2": "REF2 - Says",
@@ -77,7 +77,7 @@ DUMMY_BATCH = {
           "email": "hippo@goshippo.com",
           "metadata": ""
         },
-        "parcel": {
+        "parcels": [{
           "length": "5",
           "width": "5",
           "height": "5",
@@ -86,7 +86,7 @@ DUMMY_BATCH = {
           "mass_unit": "oz",
           "template": "",
           "metadata": "Customer ID 123456"
-        },
+        }],
         "extra": {
           "reference_1": "REF1 - Simon",
           "reference_2": "REF2 - Says",
@@ -122,7 +122,7 @@ DUMMY_BATCH = {
           "email": "hippo@goshippo.com",
           "metadata": ""
         },
-        "parcel": {
+        "parcels": [{
           "length": "5",
           "width": "5",
           "height": "5",
@@ -131,7 +131,7 @@ DUMMY_BATCH = {
           "mass_unit": "oz",
           "template": "",
           "metadata": "Customer ID 123456"
-        },
+        }],
         "extra": {
           "reference_1": "REF1 - Simon",
           "reference_2": "REF2 - Says",
@@ -167,7 +167,7 @@ DUMMY_SHIPMENT = {
         "phone": "4151234567",
         "email": "hippo@goshippo.com"
     },
-    "parcel": {
+    "parcels": [{
         "length": "10",
         "width": "15",
         "height": "10",
@@ -175,7 +175,7 @@ DUMMY_SHIPMENT = {
         "weight": "15",
         "mass_unit": "oz",
         "metadata": ""
-    },
+    }],
     "extra": {
       "reference_1": "REF1 - Simon",
       "reference_2": "REF2 - Says",
