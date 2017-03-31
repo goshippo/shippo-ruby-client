@@ -6,8 +6,6 @@ RSpec.describe 'Shippo::API::ApiObject' do
   let(:json) { '
        {
          "object_state":"VALID",
-         "object_purpose":"PURCHASE",
-         "object_source":"FULLY_ENTERED",
          "object_created":"2014-07-16T23:20:31.089Z",
          "object_updated":"2014-07-16T23:20:31.089Z",
          "object_id":"747207de2ba64443b645d08388d0309c",
@@ -18,9 +16,6 @@ RSpec.describe 'Shippo::API::ApiObject' do
   let(:hash) { JSON.load(json) }
 
   context '#new' do
-    it 'should contain valid data in hash' do
-      expect(hash['object_purpose']).to eql('PURCHASE')
-    end
     context 'instantiate ApiObject' do
       let(:object) { Shippo::API::ApiObject.new(hash) }
       it 'should properly initialize strings' do

@@ -65,7 +65,6 @@ end
 
 # Create address_from object
 address_from = {
-  :object_purpose => 'PURCHASE',
   :name           => 'Mr Hippo',
   :company        => 'Shippo',
   :street1        => '215 Clayton St.',
@@ -79,7 +78,6 @@ address_from = {
 
 # Create address_to object
 address_to   = {
-  :object_purpose => 'PURCHASE',
   :name           => 'Mrs Hippo"',
   :company        => 'San Diego Zoo',
   :street1        => '2920 Zoo Drive',
@@ -106,7 +104,6 @@ hash = { :default_carrier_account => DEFAULT_CARRIER_ACCOUNT,
          :batch_shipments => [
            {
              :shipment => {
-               :object_purpose => 'PURCHASE',
                :address_from   => address_from,
                :address_to     => address_to,
                :parcel         => parcel,
@@ -116,8 +113,7 @@ hash = { :default_carrier_account => DEFAULT_CARRIER_ACCOUNT,
          ]
        }
 
-shipment_params = { :object_purpose => 'PURCHASE',
-                    :address_from   => address_from,
+shipment_params = { :address_from   => address_from,
                     :address_to     => address_to,
                     :parcel         => parcel,
                     :async          => false }

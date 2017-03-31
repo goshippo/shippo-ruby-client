@@ -15,6 +15,8 @@ http_interactions:
       - application/x-www-form-urlencoded
       Authorization:
       - "<API_TOKEN>"
+      Shippo-Api-Version:
+      - '2017-03-29'
       Content-Length:
       - '0'
       User-Agent:
@@ -31,7 +33,7 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 29 Mar 2017 23:39:15 GMT
+      - Fri, 31 Mar 2017 00:35:44 GMT
       P3p:
       - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
       Server:
@@ -39,13 +41,13 @@ http_interactions:
       Vary:
       - Host, Cookie, Accept-Encoding
       Content-Length:
-      - '741'
+      - '737'
       Connection:
       - keep-alive
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIAKNF3FgC/+WWbW/bNhDHv4rg163B5we9C9C8KNAVRe0GaIvCOJLHhKssCRJtrCvy3UupCeYsmLPWHjZght+QPP7v7ncUj18XHoYh4bCoq8Vu7MfFs2qRB/CfU3u9aXdb933JMiKlJVQJSzWnTEtKjJ2MIYQBx3ETh25bLL8ufMpfpi2vYKyu8BpmyTFDxmn29dU0/D3108BYSug09t2uzcO87d1qcXsgm7sHoqu+y+OXZg9tgge6VxcHuoxJ+Re6mGG2KKk8J/o542tC6vn/YdbDYZ88NrjHZnacu8/Y3sPZ9EPqhimUYtrCdvb85m6u+gVSM/vYFicBZkftrmkOiU7x7sZZuXO/os8bP2BJIfwpKEZqLmumlpTZObA7610ffsA6zYbOQxQOFIIKwrFoQFKtvIvRWIvR3HOc41q8uHz18ury7eWLP6Y3oSSUmnn5fbcbqvEm9Vtsc3VTauwQ2ypgk/Y4YKggV/kGy8SYUws5dW21LZtd99vyUPGubAdJUF4Tfl+HpvPz3jMW//awDjdpzN289vFoJdiaipqrWpKlFfwxWyIpauCoCTARKTWUCSeQgfFUWgsP2a7fXrxevVz/EFnwHvsS1lF6dE1lzY/TO+F7LOhOosRFIEwpZ4JAoRHBAUF0YKh3xmlzPkr3x+/d6s2qKp/ldWqrCD41BcJTBG1N1X+VYLlzSaSx/KgU1FgI3mtqGNeBeYnqJIJTB9ifxG66gOgZ2DHyD7BTTChjmNaKWKHA2aC5Z4iRSwwQ8CR2AXsYpoN3Ajn5b5Erzc9M7gVdGkkfkxPRKGnABPRMSGGBomOeaOm8sUbGs5+6w67xtwCWDFjNnmgb0IZy27dHWgan8uf4TSev8JNLRvVjfoxZlMQbENoKagGo5VRJriwPluhwTn59N+aqi7G8Xp4iVlqFOVOj5T9F7fh7JUQGlsjoJDGCS2Wt5E55zYl1RoP7v7xXPt1+A39Gr6KeCwAA
+        H4sIAGCk3VgC/92WW2/TMBTHv0rUZ6h8v+Rt0vYwaSBESyVAqDq+bYY0iRK34qJ9d5ywio5Bx9YiEGpfbB+fy+/Y+fvLxELXRd9NymKy7tt+8qSYpA7sh1hfLuv1ynxb0gRxrhEWTGNJMZEcI6UHY3Cu832/DF2zypZfJjamT8OWC+iLhb+E0WWfIPlh9vliGH6O7TBQGiM8jG2zrlM3bns1m1zvuE3NLaeztkn9p2oDdYRbfhcnO34J4fwXfn2C0SKX8hTJp4TOESrH/5vRn+820frKb3w1Bk7NB19v4SzbLjbdkEo2rWE1Rn5xM1c8g1iNMVY5iIMxUL2uql2iQ77rfvTcmPfepqXtfC7B/ZAUQSXlJRFTTPSY2I31unUPsI6jofAewGjJlAAmAoDGOGhtmPZGKWe2HMe8JqdnF+eLs5dnp9+nly4XFKtx+XWz7or+KrYrX6fiKvfYeF8Xzldx4zvvCkhFuvJ5ok+xhhSbuljlzab5ON31eNO2nSIwLRHd9qFq7Lj3iM2/3u3DVexTM6693dsJMsespKLkaKoZvctW5tvAFXDGCWZSBeDeaSNpEJyFIPBttvOXJ89n5/MHkQVrfZvT2ksPzzEv6X56B9zHjO4gSshKH4i1jkjPOJNGBq6lE0QAMEaOSGl7/F7NXsyKfC0vY10EsLHKEO4jqEss/lWCVFESsOGEMcWstkCotBYFFohh+XcQwUEBNgexGz5A+AjsCPoD7LSnmZkAjQJhxkmDuRUkEJBCcLD0IHbOt9ANB+8Acvxvkcvip4bwDE8Vx3fJWWS8pI5SqhxDQavgjdCgQJvMj7Gjn7pd1fgtgLkCUpJ7ZANql7/29R7JoJg/jt9w8jI/PiVY/kx5icGaALNEME+z5mIWNOPOGUWtOyq/tulT0YSQXy/3EctSoY4ktPRR1Pa/V7QNQVPBUBYNRhTXVEuCNYCXWIgf7+v/+155d/0VI/DOQJ4LAAA=
     http_version: 
-  recorded_at: Wed, 29 Mar 2017 23:39:15 GMT
+  recorded_at: Fri, 31 Mar 2017 00:35:45 GMT
 recorded_with: VCR 3.0.3

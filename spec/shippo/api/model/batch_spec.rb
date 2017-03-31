@@ -10,7 +10,7 @@ def retrieve_valid_batch(id)
   until retries == 0 do
     sleep 1
     retrieve = Shippo::Batch::get(id)
-    break if retrieve[:object_status] == 'VALID'
+    break if retrieve[:status] == 'VALID'
     retries -= 1
   end
   STDERR.puts 'Unable to retrieve VALID Batch object' unless retrieve
@@ -26,7 +26,7 @@ RSpec.describe 'Shippo::API::Batch' do
       VCR.use_cassette('batch/test_create') do
         batch = Shippo::Batch::create(dummy_batch.dup)
         expect(batch).to be_kind_of(Shippo::Batch)
-        expect(batch[:object_status]).to be == 'VALIDATING'
+        expect(batch[:status]).to be == 'VALIDATING'
       end
     end
   end
@@ -135,7 +135,7 @@ RSpec.describe 'Shippo::API::Batch' do
         batch = Shippo::Batch::create(dummy_batch.dup)
         retrieve = retrieve_valid_batch(batch[:object_id])
         purchase = Shippo::Batch::purchase(retrieve[:object_id])
-        expect(purchase[:object_status]).to be == 'PURCHASING'
+        expect(purchase[:status]).to be == 'PURCHASING'
       end
     end
   end

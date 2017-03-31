@@ -49,7 +49,6 @@ end
 
 # Create address_from object
 address_from = {
-  :object_purpose => 'PURCHASE',
   :name           => 'Mr Hippo',
   :company        => 'Shippo',
   :street1        => '215 Clayton St.',
@@ -63,7 +62,6 @@ address_from = {
 
 # Create address_to object
 address_to   = {
-  :object_purpose => 'PURCHASE',
   :name           => 'Mrs Hippo"',
   :company        => 'San Diego Zoo',
   :street1        => '2920 Zoo Drive',
@@ -83,8 +81,7 @@ parcel       = {
   :weight        => 2,
   :mass_unit     => :lb }
 
-hash = { :object_purpose => 'PURCHASE',
-         :address_from   => address_from,
+hash = { :address_from   => address_from,
          :address_to     => address_to,
          :parcel         => parcel,
          :async          => false }
