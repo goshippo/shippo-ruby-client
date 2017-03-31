@@ -6,22 +6,21 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"default_carrier_account":"903074429eab4954b72df8a70defdfe3","default_servicelevel_token":"usps_priority","label_filetype":"ZPLII","metadata":"BATCH
-        #170","batch_shipments":[{"shipment":{"object_purpose":"PURCHASE","address_from":{"object_purpose":"PURCHASE","name":"Simon
-        Says","company":"","street1":"965 Mission St","street2":"Ste 201","city":"San
-        Francisco","state":"CA","zip":"94103","country":"US","phone":"4151234567","email":"hippo@goshippo.com"},"address_to":{"object_purpose":"PURCHASE","name":"Who
+        #170","batch_shipments":[{"shipment":{"address_from":{"name":"Simon Says","company":"","street1":"965
+        Mission St","street2":"Ste 201","city":"San Francisco","state":"CA","zip":"94103","country":"US","phone":"4151234567","email":"hippo@goshippo.com"},"address_to":{"name":"Who
         Says","company":"","street1":"400 Simon St","street_no":"","street2":"Apt
         123","city":"San Francisco","state":"CA","zip":"94102","country":"US","phone":"4151234567","email":"hippo@goshippo.com","metadata":""},"parcel":{"length":"5","width":"5","height":"5","distance_unit":"in","weight":"2","mass_unit":"oz","template":"","metadata":"Customer
-        ID 123456"},"reference_1":"REF1 - Simon","reference_2":"REF2 - Says","metadata":""}},{"shipment":{"object_purpose":"PURCHASE","address_from":{"object_purpose":"PURCHASE","name":"Simon
+        ID 123456"},"extra":{"reference_1":"REF1 - Simon","reference_2":"REF2 - Says"},"metadata":""}},{"shipment":{"address_from":{"name":"Simon
         Says","company":"","street1":"965 Mission St","street2":"Ste 201","city":"San
-        Francisco","state":"CA","zip":"94103","country":"US","phone":"4151234567","email":"shippo@goshippo.com"},"address_to":{"object_purpose":"PURCHASE","name":"Who
+        Francisco","state":"CA","zip":"94103","country":"US","phone":"4151234567","email":"shippo@goshippo.com"},"address_to":{"name":"Who
         Says","company":"","street1":"400 Simon St","street_no":"","street2":"Apt
         123","city":"San Francisco","state":"CA","zip":"94102","country":"US","phone":"4151234567","email":"hippo@goshippo.com","metadata":""},"parcel":{"length":"5","width":"5","height":"5","distance_unit":"in","weight":"2","mass_unit":"oz","template":"","metadata":"Customer
-        ID 123456"},"reference_1":"REF1 - Simon","reference_2":"REF2 - Says","metadata":""}},{"shipment":{"object_purpose":"PURCHASE","address_from":{"object_purpose":"PURCHASE","name":"Simon
+        ID 123456"},"extra":{"reference_1":"REF1 - Simon","reference_2":"REF2 - Says"},"metadata":""}},{"shipment":{"address_from":{"name":"Simon
         Says","company":"","street1":"965 Mission St","street2":"Ste 201","city":"San
-        Francisco","state":"CA","zip":"94103","country":"US","phone":"4151234567","email":"hippo@goshippo.com"},"address_to":{"object_purpose":"PURCHASE","name":"Who
+        Francisco","state":"CA","zip":"94103","country":"US","phone":"4151234567","email":"hippo@goshippo.com"},"address_to":{"name":"Who
         Says","company":"","street1":"400 Simon St","street_no":"","street2":"Apt
         123","city":"San Francisco","state":"CA","zip":"94102","country":"US","phone":"4151234567","email":"hippo@goshippo.com","metadata":""},"parcel":{"length":"5","width":"5","height":"5","distance_unit":"in","weight":"2","mass_unit":"oz","template":"","metadata":"Customer
-        ID 123456"},"reference_1":"REF1 - Simon","reference_2":"REF2 - Says","metadata":""}}]}'
+        ID 123456"},"extra":{"reference_1":"REF1 - Simon","reference_2":"REF2 - Says"},"metadata":""}}]}'
     headers:
       Accept:
       - application/json
@@ -31,8 +30,10 @@ http_interactions:
       - application/json
       Authorization:
       - "<API_TOKEN>"
+      Shippo-Api-Version:
+      - '2017-03-29'
       Content-Length:
-      - '2466'
+      - '2244'
       User-Agent:
       - Ruby
   response:
@@ -47,7 +48,7 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 29 Mar 2017 23:39:00 GMT
+      - Fri, 31 Mar 2017 00:34:54 GMT
       P3p:
       - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
       Server:
@@ -55,18 +56,18 @@ http_interactions:
       Vary:
       - Host, Cookie, Accept-Encoding
       Content-Length:
-      - '349'
+      - '348'
       Connection:
       - keep-alive
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIAJRF3FgC/42RXUvDMBiF/8qot26kTUvbXVkVtDDEi+HFREqavHXRrAn5mI6x/25S3VYvBO+Sc573Iyf7SLZvQG3DWTSfRFmRsbigeV7EXcpw1gKkCLIWd3GJKUmiy8mxQH70oEONBWOvXqVZc6VkuMyo3IxAY4l1JpBP1aK+rZb1w93IphqIhWF6guJ8ivA0KZcJnuNyjtAswXg1op1i/6E3YIkHSeCuq+XN/eQizlFwGHTECT+WaM1BN4RS6XobwBJhlKdpUgJp0zJL2zxhXUFy5GtYB3hcbkBvOQUBWxCNle/Qhw7OKNMozaXmdhdwQVrvd1yA3SkIyOpxUdfBaoml6yaktoHehnz20XEV5P0ePsOxd0L4m9Kw5XKI8UfRYPwiQXh+OZwDOsv7SDlN18RAYxylAGzILfQ+GR3xqx3V4Se47P9QfzU5nB7ntPje4QsEXzbPSwIAAA==
+        H4sIAC6k3VgC/42RS08CMRSF/woZt0I60w4FVqImSkKMC+ICYyZt545Uy7TpAyWE/247ysOFibv2nO8+errLNH8D4StZZ5NeRlkBuKQ5FmREymHOEeMYxQMlQ07yJrvsHQr0Rws21Xhw/upVu5U0RqfLQOh1Ap1nPriEPE3ns9vpYvZwd9ZAWGAeurEFymkf4T7OFwhNMJmUZFAgtDyjg6n/Q6/BswiyxF1PFzf3vYucouTU0LCg4lhmrQRbMSF0aH0CxwgjSkgxBsbJuCScFnUzYhTFmroBfF7uwG6kAAUbUJXX79CmDsEZVxkrtZV+m3DFePQbqcBvDSRk+TifzZLFmRerKsW1htanfHbZYRUU/RY+07ENSsWbsbCRuovxR7Hg4iJJeH7ZnwI6ybvMBCtWzEHlghAAdZdb6n00GhZXO6jdT0jd/qH+arI/Pi5Y9b3DF1awRsdEAgAA
     http_version: 
-  recorded_at: Wed, 29 Mar 2017 23:39:00 GMT
+  recorded_at: Fri, 31 Mar 2017 00:34:55 GMT
 - request:
     method: get
-    uri: https://api.goshippo.com/batches/585d18c7781f4d35bee40e5b3f193ca2
+    uri: https://api.goshippo.com/batches/7a2e35713c484561b0ab30561746b41f
     body:
       encoding: ASCII-8BIT
       string: ''
@@ -79,6 +80,8 @@ http_interactions:
       - application/x-www-form-urlencoded
       Authorization:
       - "<API_TOKEN>"
+      Shippo-Api-Version:
+      - '2017-03-29'
       Content-Length:
       - '0'
       User-Agent:
@@ -95,7 +98,7 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 29 Mar 2017 23:39:00 GMT
+      - Fri, 31 Mar 2017 00:34:54 GMT
       P3p:
       - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
       Server:
@@ -103,13 +106,13 @@ http_interactions:
       Vary:
       - Host, Cookie, Accept-Encoding
       Content-Length:
-      - '349'
+      - '348'
       Connection:
       - keep-alive
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIAJRF3FgC/42RXUvDMBiF/8qot26kTUvbXVkVtDDEi+HFREqavHXRrAn5mI6x/25S3VYvBO+Sc573Iyf7SLZvQG3DWTSfRFmRsbigeV7EXcpw1gKkCLIWd3GJKUmiy8mxQH70oEONBWOvXqVZc6VkuMyo3IxAY4l1JpBP1aK+rZb1w93IphqIhWF6guJ8ivA0KZcJnuNyjtAswXg1op1i/6E3YIkHSeCuq+XN/eQizlFwGHTECT+WaM1BN4RS6XobwBJhlKdpUgJp0zJL2zxhXUFy5GtYB3hcbkBvOQUBWxCNle/Qhw7OKNMozaXmdhdwQVrvd1yA3SkIyOpxUdfBaoml6yaktoHehnz20XEV5P0ePsOxd0L4m9Kw5XKI8UfRYPwiQXh+OZwDOsv7SDlN18RAYxylAGzILfQ+GR3xqx3V4Se47P9QfzU5nB7ntPje4QsEXzbPSwIAAA==
+        H4sIAC6k3VgC/42RS08CMRSF/woZt0I60w4FVqImSkKMC+ICYyZt545Uy7TpAyWE/247ysOFibv2nO8+errLNH8D4StZZ5NeRlkBuKQ5FmREymHOEeMYxQMlQ07yJrvsHQr0Rws21Xhw/upVu5U0RqfLQOh1Ap1nPriEPE3ns9vpYvZwd9ZAWGAeurEFymkf4T7OFwhNMJmUZFAgtDyjg6n/Q6/BswiyxF1PFzf3vYucouTU0LCg4lhmrQRbMSF0aH0CxwgjSkgxBsbJuCScFnUzYhTFmroBfF7uwG6kAAUbUJXX79CmDsEZVxkrtZV+m3DFePQbqcBvDSRk+TifzZLFmRerKsW1htanfHbZYRUU/RY+07ENSsWbsbCRuovxR7Hg4iJJeH7ZnwI6ybvMBCtWzEHlghAAdZdb6n00GhZXO6jdT0jd/qH+arI/Pi5Y9b3DF1awRsdEAgAA
     http_version: 
-  recorded_at: Wed, 29 Mar 2017 23:39:00 GMT
+  recorded_at: Fri, 31 Mar 2017 00:34:55 GMT
 recorded_with: VCR 3.0.3

@@ -6,22 +6,21 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"default_carrier_account":"INVALID_CARRIER_ACCOUNT","default_servicelevel_token":"usps_priority","label_filetype":"ZPLII","metadata":"BATCH
-        #170","batch_shipments":[{"shipment":{"object_purpose":"PURCHASE","address_from":{"object_purpose":"PURCHASE","name":"Simon
-        Says","company":"","street1":"965 Mission St","street2":"Ste 201","city":"San
-        Francisco","state":"CA","zip":"94103","country":"US","phone":"4151234567","email":"hippo@goshippo.com"},"address_to":{"object_purpose":"PURCHASE","name":"Who
+        #170","batch_shipments":[{"shipment":{"address_from":{"name":"Simon Says","company":"","street1":"965
+        Mission St","street2":"Ste 201","city":"San Francisco","state":"CA","zip":"94103","country":"US","phone":"4151234567","email":"hippo@goshippo.com"},"address_to":{"name":"Who
         Says","company":"","street1":"400 Simon St","street_no":"","street2":"Apt
         123","city":"San Francisco","state":"CA","zip":"94102","country":"US","phone":"4151234567","email":"hippo@goshippo.com","metadata":""},"parcel":{"length":"5","width":"5","height":"5","distance_unit":"in","weight":"2","mass_unit":"oz","template":"","metadata":"Customer
-        ID 123456"},"reference_1":"REF1 - Simon","reference_2":"REF2 - Says","metadata":""}},{"shipment":{"object_purpose":"PURCHASE","address_from":{"object_purpose":"PURCHASE","name":"Simon
+        ID 123456"},"extra":{"reference_1":"REF1 - Simon","reference_2":"REF2 - Says"},"metadata":""}},{"shipment":{"address_from":{"name":"Simon
         Says","company":"","street1":"965 Mission St","street2":"Ste 201","city":"San
-        Francisco","state":"CA","zip":"94103","country":"US","phone":"4151234567","email":"shippo@goshippo.com"},"address_to":{"object_purpose":"PURCHASE","name":"Who
+        Francisco","state":"CA","zip":"94103","country":"US","phone":"4151234567","email":"shippo@goshippo.com"},"address_to":{"name":"Who
         Says","company":"","street1":"400 Simon St","street_no":"","street2":"Apt
         123","city":"San Francisco","state":"CA","zip":"94102","country":"US","phone":"4151234567","email":"hippo@goshippo.com","metadata":""},"parcel":{"length":"5","width":"5","height":"5","distance_unit":"in","weight":"2","mass_unit":"oz","template":"","metadata":"Customer
-        ID 123456"},"reference_1":"REF1 - Simon","reference_2":"REF2 - Says","metadata":""}},{"shipment":{"object_purpose":"PURCHASE","address_from":{"object_purpose":"PURCHASE","name":"Simon
+        ID 123456"},"extra":{"reference_1":"REF1 - Simon","reference_2":"REF2 - Says"},"metadata":""}},{"shipment":{"address_from":{"name":"Simon
         Says","company":"","street1":"965 Mission St","street2":"Ste 201","city":"San
-        Francisco","state":"CA","zip":"94103","country":"US","phone":"4151234567","email":"hippo@goshippo.com"},"address_to":{"object_purpose":"PURCHASE","name":"Who
+        Francisco","state":"CA","zip":"94103","country":"US","phone":"4151234567","email":"hippo@goshippo.com"},"address_to":{"name":"Who
         Says","company":"","street1":"400 Simon St","street_no":"","street2":"Apt
         123","city":"San Francisco","state":"CA","zip":"94102","country":"US","phone":"4151234567","email":"hippo@goshippo.com","metadata":""},"parcel":{"length":"5","width":"5","height":"5","distance_unit":"in","weight":"2","mass_unit":"oz","template":"","metadata":"Customer
-        ID 123456"},"reference_1":"REF1 - Simon","reference_2":"REF2 - Says","metadata":""}}]}'
+        ID 123456"},"extra":{"reference_1":"REF1 - Simon","reference_2":"REF2 - Says"},"metadata":""}}]}'
     headers:
       Accept:
       - application/json
@@ -31,8 +30,10 @@ http_interactions:
       - application/json
       Authorization:
       - "<API_TOKEN>"
+      Shippo-Api-Version:
+      - '2017-03-29'
       Content-Length:
-      - '2457'
+      - '2235'
       User-Agent:
       - Ruby
   response:
@@ -45,7 +46,7 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 29 Mar 2017 23:38:59 GMT
+      - Fri, 31 Mar 2017 00:34:53 GMT
       P3p:
       - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
       Server:
@@ -62,5 +63,5 @@ http_interactions:
         Please list the available CarrierAccount objects (/v1/carrier_accounts) to
         get your valid object_ids."]}'
     http_version: 
-  recorded_at: Wed, 29 Mar 2017 23:38:59 GMT
+  recorded_at: Fri, 31 Mar 2017 00:34:54 GMT
 recorded_with: VCR 3.0.3
