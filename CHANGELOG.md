@@ -1,9 +1,9 @@
-### 3.0.0 release, Mar 31st, 2017
+#### 3.0.0 release, Mar 31st, 2017
 - Version 3 changes
     - Object fields removed/updated
     - Credentials inserted for tests
 
-### 2.0.8 release, Feb 15th, 2017
+#### 2.0.8 release, Feb 15th, 2017
 - Add Batch API with example code
     - Creation
     - Retrieval
@@ -16,12 +16,12 @@
 - Add mock tests using VCR (for Batch and Track API)
     - https://github.com/vcr/vcr
 
-### 2.0.7 release, Jan 2nd, 2017
+#### 2.0.7 release, Jan 2nd, 2017
 - Fixed bug preventing address validation
 - Removed trailing slash from base URL, added spec test to ensure this configuration
 - Added address validation example
 - Updated basic shipment example to include how to access the Shippo object id
-### 2.0.6 release, Nov 22nd, 2016
+#### 2.0.6 release, Nov 22nd, 2016
 - Fixed bug to send request with correct API version header
 
 #### 2.0.5 release, Oct 24th, 2016
