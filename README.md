@@ -90,10 +90,20 @@ require 'awesome_print'
 ap @shipment
 # {
 #   "carrier_accounts"    => [],
-#   "address_from"        => [ ... ],   # omitted for brevity
-#   "address_to"          => [ ... ],
-#   "address_return"      => [ ... ],
-#   "parcel"              => [ ... ],
+#   "address_from"        => {
+#     "name" => "Mr Hippo",
+#     "company" => "Shippo",
+#     "street1" => "215 Clayton St.",
+#     "street2" => "",
+#     "city" => "San Francisco",
+#     "state" => "CA",
+#     "zip" => "94117",
+#     "country" => "US",
+#     "phone" => "+1 555 341 9393"
+#   },
+#   "address_to"          => { ... },   # omitted for brevity
+#   "address_return"      => { ... },
+#   "parcel"              => { ... },
 #   "shipment_date"       => "2016-07-06T20:33:02.211Z",
 #   "customs_declaration" => nil,
 #   "extra"               => {
@@ -232,9 +242,9 @@ NOTE: this environment variable is only used by the included `bin/example` scrip
 
 ## Gem Versioning Notes
 
-Version 2 and up of this library works with Ruby 2.2 and later, and is not backwards compatible. __Version 1.0.4__ of this library is the last version supporting ruby 1.8 and 1.9.
+Version 3 and up of this library works with Ruby 2.2 and later, and is not backwards compatible. __Version 1.0.4__ of this library is the last version supporting ruby 1.8 and 1.9.
 
-__Warning:__ Version 2 brings potential backwards incompatibility issues. Please be prepared to update your usages (if necessary) when you migrate.
+__Warning:__ Version 3 brings potential backwards incompatibility issues. Please be prepared to update your usages (if necessary) when you migrate.
 
 ### If you are still using Ruby 1.8 or 1.9
 

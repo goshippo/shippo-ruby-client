@@ -1,3 +1,8 @@
+### 3.0.0 release, Mar 31st, 2017
+- Version 3 changes
+    - Object fields removed/updated
+    - Credentials inserted for tests
+
 ### 2.0.8 release, Feb 15th, 2017
 - Add Batch API with example code
     - Creation
