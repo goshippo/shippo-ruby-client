@@ -91,19 +91,26 @@ ap @shipment
 # {
 #   "carrier_accounts"    => [],
 #   "address_from"        => {
-#     "name" => "Mr Hippo",
+#     "name"    => "Mr Hippo",
 #     "company" => "Shippo",
 #     "street1" => "215 Clayton St.",
 #     "street2" => "",
-#     "city" => "San Francisco",
-#     "state" => "CA",
-#     "zip" => "94117",
+#     "city"    => "San Francisco",
+#     "state"   => "CA",
+#     "zip"     => "94117",
 #     "country" => "US",
-#     "phone" => "+1 555 341 9393"
+#     "phone"   => "+1 555 341 9393"
 #   },
 #   "address_to"          => { ... },   # omitted for brevity
 #   "address_return"      => { ... },
-#   "parcel"              => { ... },
+#   "parcels"             => [{
+#     "length"        => 5,
+#     "width"         => 2,
+#     "height"        => 5,
+#     "distance_unit" => in,
+#     "weight"        => 2,
+#     "mass_unit"     => lb,
+#   }],
 #   "shipment_date"       => "2016-07-06T20:33:02.211Z",
 #   "customs_declaration" => nil,
 #   "extra"               => {
