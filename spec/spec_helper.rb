@@ -23,6 +23,7 @@ RSpec.configure do |config|
 end
 
 Shippo::API.token = 'shippo_test_09e74f332aa839940e6c241bb008157c19428339'
+Shippo::API.version = '2017-03-29'
 Shippo::API.warnings = false
 
 CARRIER = 'usps'
