@@ -104,11 +104,11 @@ module Shippo
       end
 
       def make_request!(opts)
-        RestClient::Request.execute(opts) { |response, request, result, &block|
+        RestClient::Request.execute(opts) { |response, &block|
           if [301, 302, 307].include? response.code
-            response.follow_redirection(request, result, &block)
+            response.follow_redirection(&block)
           else
-            response.return!(request, result, &block)
+            response.return!(&block)
           end
         }
       end

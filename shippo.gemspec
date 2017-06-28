@@ -16,7 +16,7 @@ Gem::Specification.new do |spec|
   spec.license               = 'MIT'
   spec.metadata              = { 'shippo_documentation' => 'https://goshippo.com/docs/' }
 
-  spec.add_dependency 'rest-client', '~> 1.8'
+  spec.add_dependency 'rest-client', '>= 2.0'
   spec.add_dependency 'json', '~> 1.8'
   spec.add_dependency 'hashie', '>= 3.5.2'
   spec.add_dependency 'activesupport', '>= 4'
