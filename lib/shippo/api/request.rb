@@ -35,7 +35,7 @@ module Shippo
       attr_accessor :method, :url, :params, :headers
 
       # Result of the execute method is stored in #response and #parsed_response
-      attr_accessor :response, :parsed_response
+      attr_accessor :response, :parsed_response, :redirection_history
 
       # @param [symbol] method :get or any other method such as :put, :post, etc.
       # @param [String] uri URI component appended to the base URL
