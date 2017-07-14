@@ -1,3 +1,6 @@
+#### 3.0.1 release, Jul 14th, 2017
+- Updated rest client dependency
+
 #### 3.0.0 release, Mar 31st, 2017
 - Version 3 changes
     - Object fields removed/updated
