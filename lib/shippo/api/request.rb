@@ -35,7 +35,7 @@ module Shippo
       attr_accessor :method, :url, :params, :headers
 
       # Result of the execute method is stored in #response and #parsed_response
-      attr_accessor :response, :parsed_response
+      attr_accessor :response, :parsed_response, :redirection_history
 
       # @param [symbol] method :get or any other method such as :put, :post, etc.
       # @param [String] uri URI component appended to the base URL
@@ -104,11 +104,11 @@ module Shippo
       end
 
       def make_request!(opts)
-        RestClient::Request.execute(opts) { |response, request, result, &block|
+        RestClient::Request.execute(opts) { |response, &block|
           if [301, 302, 307].include? response.code
-            response.follow_redirection(request, result, &block)
+            response.follow_redirection(&block)
           else
-            response.return!(request, result, &block)
+            response.return!(&block)
           end
         }
       end

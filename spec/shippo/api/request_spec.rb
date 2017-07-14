@@ -10,7 +10,8 @@ RSpec.describe Shippo::API::Request do
   let(:headers) { {'X-Authorize' => 'Accepted'} }
 
   let(:api_request) { Shippo::API::Request.new(method: method, uri: uri, params: params, headers: headers) }
-  let(:http_response) { RestClient::Response.create(json_string, 200, {}, { response: 'OK' }) }
+  let(:net_http) { instance_double('Net::HTTPResponse', {to_hash: {'Status' => ['200 OK']}, code: '200', body: 'foo'}) }
+  let(:http_response) { RestClient::Response.create(json_string, net_http, api_request) }
 
   context '#new' do
     before do |example|
