@@ -77,9 +77,10 @@ module Shippo
       PROPS_CATEG      = %i(state status results).freeze
       PROPS_EMAIL      = %i(owner).freeze
       PROPS_TIMED      = %i(created updated).freeze
+      PROPS_PURPOSE    = %i(purpose).freeze
 
       PROPS            = (PROPS_ID + PROPS_EMAIL + PROPS_TIMED + PROPS_CATEG ).flatten.freeze
-      PROPS_AS_IS      = (PROPS_EMAIL + PROPS_ID).freeze
+      PROPS_AS_IS      = (PROPS_EMAIL + PROPS_ID + PROPS_PURPOSE).freeze
 
       def self.setup_property(prop, custom = {})
         property prop, self.mk_opts(prop).merge(custom)
