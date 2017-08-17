@@ -20,6 +20,7 @@ module Shippo
       extend Forwardable
 
       disable_warnings
+      Hashie.logger = Logger.new(nil)
 
       def self.object_properties
         Shippo::API::ApiObject::PROPS
