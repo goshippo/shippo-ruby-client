@@ -11,8 +11,7 @@ RSpec.describe 'Shippo::API::Shipment' do
     it 'should propertly initialize self and ApiObject' do
       expect(shipment).to be_kind_of(Shippo::Shipment)
       expect(shipment.object.owner).to eql('shippo@shippotest.com')
-      expect(shipment.object.owner).to eql(shipment.owner)
-      expect(shipment.id).to eql(params[:object_id])
+      expect(shipment.object.id).to eql('afa9fa09fa809f98f0a')
     end
   end
 end
