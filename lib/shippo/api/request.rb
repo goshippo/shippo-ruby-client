@@ -89,16 +89,9 @@ module Shippo
       private
 
       def shippo_phone_home
-        payload     = {}
+        payload     = nil
         request_url = url
-
-        if method == :get
-          request_url = params_to_url(params, url)
-          payload = nil
-        else
-          payload = params.to_json
-        end
-
+        (method == :get) ? request_url = params_to_url(params, url) : payload = params.to_json
         setup_headers!(headers)
         opts = make_opts!(headers, method, payload, request_url)
 
