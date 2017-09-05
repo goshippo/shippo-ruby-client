@@ -51,7 +51,7 @@ RSpec.describe Shippo::API::Transformers::List do
           expect(resource.parcels.first.object).to be_kind_of(Shippo::API::ApiObject)
           expect(resource.parcels.first.deliver_by).to eql(deliver_by)
           expect(resource.parcels.first.object.owner).to eql(obj_owner)
-          expect(resource.parcels.first.resource_id).to eql(obj_id)
+          expect(resource.parcels.first.object.id).to eql(obj_id)
         end
       end
       context 'from a special cased enumeration like "items"' do

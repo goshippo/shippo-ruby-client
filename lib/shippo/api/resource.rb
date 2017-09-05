@@ -21,12 +21,7 @@ module Shippo
 
       disable_warnings
 
-      def self.object_properties
-        Shippo::API::ApiObject::PROPS
-      end
-
       attr_accessor :object
-      def_delegators :@object, *object_properties
 
       # Creates a possibly recursive chain (map of lists, etc) of Resource
       # instances based on whether each value is a scalar, array or a hash.
@@ -43,15 +38,6 @@ module Shippo
 
       def self.short_name(name = self.name)
         name.split('::')[-1]
-      end
-
-      # Generate object_ accessors.
-      object_properties.each do |property|
-        method_name = ApiObject.field_name(property)
-        define_method method_name do
-          STDOUT.puts "#{method_name} style accessors are deprecated in favor of #resource.object.#{property}" if Shippo::API.warnings
-          self.object.send(property)
-        end
       end
 
       # allows resources to use default or a custom url
