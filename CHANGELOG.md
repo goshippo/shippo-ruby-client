@@ -1,3 +1,7 @@
+#### 3.1.0 release, Sep 5th, 2017
+- Removed deprecated methods
+- Remove hash payload in GET
+
 #### 3.0.1 release, Jul 14th, 2017
 - Updated rest client dependency
 
