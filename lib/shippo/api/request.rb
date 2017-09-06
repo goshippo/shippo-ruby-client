@@ -89,7 +89,7 @@ module Shippo
       private
 
       def shippo_phone_home
-        payload     = {}
+        payload     = nil
         request_url = url
         (method == :get) ? request_url = params_to_url(params, url) : payload = params.to_json
         setup_headers!(headers)

@@ -18,7 +18,7 @@ RSpec.describe Shippo::API::Resource do
       end
       it 'also provides object_ accessors for backwards compatibility' do
         # noinspection RubyResolve
-        expect(resource.resource_id).to eql(object_id)
+        expect(resource.object.id).to eql(object_id)
         # noinspection RubyResolve
         expect(resource.object_owner).to eql(params[:object_owner])
       end
