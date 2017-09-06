@@ -54,7 +54,7 @@ RSpec.describe Shippo::API do
       expect(Shippo::API.read_timeout).to eq(30)
     end
 
-    it 'should set open timeout via Shippo::API.read_timeout=' do
+    it 'should set read timeout via Shippo::API.read_timeout=' do
       read_timeout = 1
       Shippo::API.read_timeout = read_timeout
       expect(Shippo::API.read_timeout).to eql(read_timeout)
