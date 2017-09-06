@@ -20,6 +20,12 @@ RSpec.configure do |config|
   config.before do
     srand 117
   end
+
+  config.around do |example|
+    state = Shippo::API.instance_variables.map { |name| [name, Shippo::API.instance_variable_get(name)] }
+    example.run
+    state.each { |name, value| Shippo::API.instance_variable_set(name, value) }
+  end
 end
 
 Shippo::API.token = 'shippo_test_09e74f332aa839940e6c241bb008157c19428339'
