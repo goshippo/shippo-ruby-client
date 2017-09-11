@@ -1,10 +1,10 @@
 require 'forwardable'
 
-require 'hashie/mash'
 require 'active_support/inflector'
 
 require 'shippo/exceptions'
 
+require_relative 'api_hash'
 require_relative 'api_object'
 require_relative 'category/status'
 require_relative 'transformers/list'
@@ -14,12 +14,9 @@ require_relative 'extend/url'
 
 module Shippo
   module API
-    class Resource < Hashie::Mash
-      include Hashie::Extensions::StringifyKeys
+    class Resource < ApiHash
       include Enumerable
       extend Forwardable
-
-      disable_warnings
 
       attr_accessor :object
 
@@ -54,7 +51,7 @@ module Shippo
           (args.first.is_a?(String) && args.first =~ /^[0-9A-Fa-f]+$/)
           self.id = args.first
         elsif args.first.respond_to?(:keys)
-          h = Hashie::Mash.new(args.first)
+          h = ApiHash.new(args.first)
           self.deep_merge!(h)
           self.object = ApiObject.create_object(self)
           transformers.each do |transformer|
