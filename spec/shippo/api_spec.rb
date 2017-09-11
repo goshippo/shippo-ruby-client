@@ -37,6 +37,30 @@ RSpec.describe Shippo::API do
     end
   end
 
+  context 'open timeout' do
+    it 'should have default open timeout of 15' do
+      expect(Shippo::API.open_timeout).to eq(15)
+    end
+
+    it 'should set open timeout via Shippo::API.open_timeout=' do
+      open_timeout = 1
+      Shippo::API.open_timeout = open_timeout
+      expect(Shippo::API.open_timeout).to eql(open_timeout)
+    end
+  end
+
+  context 'read timeout' do
+    it 'should have default read timeout of 30' do
+      expect(Shippo::API.read_timeout).to eq(30)
+    end
+
+    it 'should set read timeout via Shippo::API.read_timeout=' do
+      read_timeout = 1
+      Shippo::API.read_timeout = read_timeout
+      expect(Shippo::API.read_timeout).to eql(read_timeout)
+    end
+  end
+
   context 'colors are no longer defined, but should work silently' do
     let(:string) { 'poopikinks' }
     it 'throws exception when colors are used without require' do
