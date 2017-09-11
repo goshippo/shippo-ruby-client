@@ -118,8 +118,8 @@ module Shippo
           :method       => method,
           :payload      => payload,
           :url          => url,
-          :open_timeout => 15,
-          :timeout      => 30,
+          :open_timeout => ::Shippo::API.open_timeout,
+          :timeout      => ::Shippo::API.read_timeout,
           :user         => username,
           :password     => password,
           :user_agent   => 'Shippo/v2.0 RubyBindings'
