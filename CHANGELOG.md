@@ -1,6 +1,8 @@
 #### 3.1.0 release, Sep 5th, 2017
 - Removed deprecated methods
-- Remove hash payload in GET
+- Removed hash payload in GET
+- Made RestClient timeouts configurable
+- Suppressed Hashie warnings
 
 #### 3.0.1 release, Jul 14th, 2017
 - Updated rest client dependency
