@@ -42,7 +42,7 @@ Below we demonstrate the most basic usage of the library:
 require 'shippo'
 
 # Setup your API token
-Shippo::API.token = 'aff988f77afa0fdfdfadf'  # not an actual valid token
+Shippo.api_token = 'aff988f77afa0fdfdfadf'  # not an actual valid token
 
 # Setup query parameter hash
 params   = {  async:          false,
