@@ -35,6 +35,15 @@ RSpec.describe Shippo::API do
       Shippo.api_key 'XYZ'
       expect(Shippo::API.token).to eql('XYZ')
     end
+    it 'should allow setting temporary token' do
+      Shippo::API.with_token('XYZ') { expect(Shippo::API.token).to eql('XYZ') }
+      expect(Shippo::API.token).to be_nil
+    end
+    it 'should allow setting temporary token when token is already set' do
+      Shippo.api_token = 1
+      Shippo::API.with_token('XYZ') { expect(Shippo::API.token).to eql('XYZ') }
+      expect(Shippo::API.token).to eql(1)
+    end
   end
 
   context 'open timeout' do
