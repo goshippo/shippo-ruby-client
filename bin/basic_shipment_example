@@ -86,7 +86,7 @@ parcel       = {
 
 hash = { :address_from   => address_from,
          :address_to     => address_to,
-         :parcel         => parcel,
+         :parcels         => parcel,
          :async          => false }
 
 begin
