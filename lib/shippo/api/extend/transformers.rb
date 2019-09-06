@@ -1,4 +1,4 @@
-require_relative '../transformers/list.rb'
+require 'shippo/api/transformers/list'
 module Shippo
   module API
     module Extend
