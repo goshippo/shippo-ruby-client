@@ -35,7 +35,7 @@ module Shippo
       attr_accessor :method, :url, :params, :headers
 
       # Result of the execute method is stored in #response and #parsed_response
-      attr_accessor :response, :parsed_response
+      attr_accessor :response, :parsed_response, :redirection_history
 
       # @param [symbol] method :get or any other method such as :put, :post, etc.
       # @param [String] uri URI component appended to the base URL
@@ -89,7 +89,7 @@ module Shippo
       private
 
       def shippo_phone_home
-        payload     = {}
+        payload     = nil
         request_url = url
         (method == :get) ? request_url = params_to_url(params, url) : payload = params.to_json
         setup_headers!(headers)
@@ -104,11 +104,11 @@ module Shippo
       end
 
       def make_request!(opts)
-        RestClient::Request.execute(opts) { |response, request, result, &block|
+        RestClient::Request.execute(opts) { |response, &block|
           if [301, 302, 307].include? response.code
-            response.follow_redirection(request, result, &block)
+            response.follow_redirection(&block)
           else
-            response.return!(request, result, &block)
+            response.return!(&block)
           end
         }
       end
@@ -118,8 +118,8 @@ module Shippo
           :method       => method,
           :payload      => payload,
           :url          => url,
-          :open_timeout => 15,
-          :timeout      => 30,
+          :open_timeout => ::Shippo::API.open_timeout,
+          :timeout      => ::Shippo::API.read_timeout,
           :user         => username,
           :password     => password,
           :user_agent   => 'Shippo/v2.0 RubyBindings'

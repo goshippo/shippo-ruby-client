@@ -13,6 +13,12 @@ RSpec.describe Shippo::API do
     end
   end
 
+  context 'api url definition' do
+    it 'api base url should have no trailing slash' do
+      expect(Shippo::API.base[-1]).not_to eql('/')
+    end
+  end    
+
   context 'api token' do
     before do
       Shippo::API.token = nil
@@ -28,6 +34,39 @@ RSpec.describe Shippo::API do
     it 'should set api token via Shippo.api_key(value)' do
       Shippo.api_key 'XYZ'
       expect(Shippo::API.token).to eql('XYZ')
+    end
+    it 'should allow setting temporary token' do
+      Shippo::API.with_token('XYZ') { expect(Shippo::API.token).to eql('XYZ') }
+      expect(Shippo::API.token).to be_nil
+    end
+    it 'should allow setting temporary token when token is already set' do
+      Shippo.api_token = 1
+      Shippo::API.with_token('XYZ') { expect(Shippo::API.token).to eql('XYZ') }
+      expect(Shippo::API.token).to eql(1)
+    end
+  end
+
+  context 'open timeout' do
+    it 'should have default open timeout of 15' do
+      expect(Shippo::API.open_timeout).to eq(15)
+    end
+
+    it 'should set open timeout via Shippo::API.open_timeout=' do
+      open_timeout = 1
+      Shippo::API.open_timeout = open_timeout
+      expect(Shippo::API.open_timeout).to eql(open_timeout)
+    end
+  end
+
+  context 'read timeout' do
+    it 'should have default read timeout of 30' do
+      expect(Shippo::API.read_timeout).to eq(30)
+    end
+
+    it 'should set read timeout via Shippo::API.read_timeout=' do
+      read_timeout = 1
+      Shippo::API.read_timeout = read_timeout
+      expect(Shippo::API.read_timeout).to eql(read_timeout)
     end
   end
 

@@ -1,0 +1,67 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.goshippo.com/batches/
+    body:
+      encoding: UTF-8
+      string: '{"default_carrier_account":"INVALID_CARRIER_ACCOUNT","default_servicelevel_token":"usps_priority","label_filetype":"ZPLII","metadata":"BATCH
+        #170","batch_shipments":[{"shipment":{"address_from":{"name":"Simon Says","company":"","street1":"965
+        Mission St","street2":"Ste 201","city":"San Francisco","state":"CA","zip":"94103","country":"US","phone":"4151234567","email":"hippo@goshippo.com"},"address_to":{"name":"Who
+        Says","company":"","street1":"400 Simon St","street_no":"","street2":"Apt
+        123","city":"San Francisco","state":"CA","zip":"94102","country":"US","phone":"4151234567","email":"hippo@goshippo.com","metadata":""},"parcel":{"length":"5","width":"5","height":"5","distance_unit":"in","weight":"2","mass_unit":"oz","template":"","metadata":"Customer
+        ID 123456"},"extra":{"reference_1":"REF1 - Simon","reference_2":"REF2 - Says"},"metadata":""}},{"shipment":{"address_from":{"name":"Simon
+        Says","company":"","street1":"965 Mission St","street2":"Ste 201","city":"San
+        Francisco","state":"CA","zip":"94103","country":"US","phone":"4151234567","email":"shippo@goshippo.com"},"address_to":{"name":"Who
+        Says","company":"","street1":"400 Simon St","street_no":"","street2":"Apt
+        123","city":"San Francisco","state":"CA","zip":"94102","country":"US","phone":"4151234567","email":"hippo@goshippo.com","metadata":""},"parcel":{"length":"5","width":"5","height":"5","distance_unit":"in","weight":"2","mass_unit":"oz","template":"","metadata":"Customer
+        ID 123456"},"extra":{"reference_1":"REF1 - Simon","reference_2":"REF2 - Says"},"metadata":""}},{"shipment":{"address_from":{"name":"Simon
+        Says","company":"","street1":"965 Mission St","street2":"Ste 201","city":"San
+        Francisco","state":"CA","zip":"94103","country":"US","phone":"4151234567","email":"hippo@goshippo.com"},"address_to":{"name":"Who
+        Says","company":"","street1":"400 Simon St","street_no":"","street2":"Apt
+        123","city":"San Francisco","state":"CA","zip":"94102","country":"US","phone":"4151234567","email":"hippo@goshippo.com","metadata":""},"parcel":{"length":"5","width":"5","height":"5","distance_unit":"in","weight":"2","mass_unit":"oz","template":"","metadata":"Customer
+        ID 123456"},"extra":{"reference_1":"REF1 - Simon","reference_2":"REF2 - Says"},"metadata":""}}]}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<API_TOKEN>"
+      Shippo-Api-Version:
+      - '2017-03-29'
+      Content-Length:
+      - '2235'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: BAD REQUEST
+    headers:
+      Allow:
+      - OPTIONS
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 31 Mar 2017 00:34:53 GMT
+      P3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      Server:
+      - nginx/1.8.0
+      Vary:
+      - Host, Cookie
+      Content-Length:
+      - '196'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"default_carrier_account": ["Invalid account object_id provided ''INVALID_CARRIER_ACCOUNT''.
+        Please list the available CarrierAccount objects (/v1/carrier_accounts) to
+        get your valid object_ids."]}'
+    http_version: 
+  recorded_at: Fri, 31 Mar 2017 00:34:54 GMT
+recorded_with: VCR 3.0.3

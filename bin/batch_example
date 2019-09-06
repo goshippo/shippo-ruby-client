@@ -1,0 +1,179 @@
+#!/usr/bin/env ruby
+#
+# © 2016 Shippo, Inc.
+#
+# License: MIT
+#
+# You can also set +SHIPPO_DEBUG+ to see detailed printouts of objects returned.
+#
+#
+
+lib = File.expand_path('../../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
+require_relative 'config'
+require 'bundler/setup'
+require 'shippo'
+require 'shippo/api/category'
+require 'shippo/exceptions/api_error'
+require 'awesome_print'
+require 'json'
+
+# Simple wrapper class to help us print objects to the STDOUT
+class ExampleHelper
+  def self.log_operation(msg)
+    printf "%s", msg
+    result = yield
+    print "OK\n"
+    result
+  rescue Exception => e
+    raise(e)
+  end
+
+  def self.dump_object(instance, msg = nil)
+    return unless Shippo::API.debug?
+    sep
+    puts "#{msg.upcase}:" if msg
+    puts "\#<#{instance.class.inspect}:0x#{instance.object_id.to_s(16)}> ⇒ "
+    ap instance
+    sep
+    # See https://github.com/goshippo/shippo-ruby-client#resource-id-and-other-object-fields
+    puts "Shippo object id: #{instance.object.id}"
+    sep
+  end
+
+  def self.sep
+    puts '—' * (ENV['COLUMNS'] || 80)
+  end
+
+  # Retries up to 10 times to retrieve a valid
+  # Batch (which takes time to become 'VALID' from
+  # 'VALIDATING' after initially being created).
+  def self.retrieve_valid_batch(id)
+    retries = 10
+    retrieve = nil
+    until retries == 0 do
+      sleep 1
+      retrieve = Shippo::Batch::get(id)
+      break if retrieve[:object_status] == 'VALID'
+      retries -= 1
+    end
+    STDERR.puts 'Unable to retrieve VALID Batch object' unless retrieve
+    retrieve
+  end
+end
+
+# Create address_from object
+address_from = {
+  :name           => 'Mr Hippo',
+  :company        => 'Shippo',
+  :street1        => '215 Clayton St.',
+  :street2        => '',
+  :city           => 'San Francisco',
+  :state          => 'CA',
+  :zip            => '94117',
+  :country        => 'US',
+  :phone          => '+1 555 341 9393',
+  :email          => 'support@goshippo.com' }
+
+# Create address_to object
+address_to   = {
+  :name           => 'Mrs Hippo"',
+  :company        => 'San Diego Zoo',
+  :street1        => '2920 Zoo Drive',
+  :city           => 'San Diego',
+  :state          => 'CA',
+  :zip            => '92101',
+  :country        => 'US',
+  :phone          => '+1 555 341 9393',
+  :email          => 'hippo@goshippo.com' }
+
+# Create parcel object
+parcel       = {
+  :length        => 5,
+  :width         => 2,
+  :height        => 5,
+  :distance_unit => :in,
+  :weight        => 2,
+  :mass_unit     => :lb }
+
+hash = { :default_carrier_account => DEFAULT_CARRIER_ACCOUNT,
+         :default_servicelevel_token => 'usps_priority',
+         :label_filetype => 'ZPLII',
+         :metadata => 'BATCH #170',
+         :batch_shipments => [
+           {
+             :shipment => {
+               :address_from   => address_from,
+               :address_to     => address_to,
+               :parcel         => parcel,
+               :async          => false
+             }
+           }
+         ]
+       }
+
+shipment_params = { :address_from   => address_from,
+                    :address_to     => address_to,
+                    :parcel         => parcel,
+                    :async          => false }
+
+begin
+  batch = ExampleHelper.log_operation 'Making first API call to create a batch...' do
+    Shippo::Batch.create(hash)
+  end
+
+  retrieve = ExampleHelper.log_operation 'Making API call to retrieve newly created batch...' do
+    ExampleHelper.retrieve_valid_batch(batch[:object_id])
+  end
+  puts "Batch status    : #{retrieve[:object_status]}"
+  puts "metadata        : #{retrieve[:metadata]}"
+  puts "Batch shipment count = #{retrieve[:batch_shipments][:count]}"
+  puts
+
+  shipment = ExampleHelper.log_operation 'Making API call to create a shipment... ' do
+    Shippo::Shipment.create(shipment_params)
+  end
+  raise Shippo::Exceptions::UnsuccessfulResponseError.new(shipment.object.inspect) unless shipment.success?
+  File.open('example-shipment.json', 'w') do |file|
+    file.puts JSON.dump(shipment.to_hash)
+  end
+
+  # Adding shipments
+  shipments = Array.new
+  shipments.push({"shipment" => shipment[:object_id]})
+  added = ExampleHelper.log_operation 'Making API call to add a new shipment to batch...' do
+    Shippo::Batch::add_shipment(retrieve[:object_id], shipments)
+  end
+  puts "Batch shipment count = #{added[:batch_shipments][:count]}"
+  puts
+
+  # Removing shipments
+  shipments_to_remove = Array.new
+  shipments_to_remove.push(added.batch_shipments.results[0][:object_id])
+  removed = ExampleHelper.log_operation 'Making API call to remove the new shipment from batch...' do
+    Shippo::Batch::remove_shipment(retrieve[:object_id], shipments_to_remove)
+  end
+  puts "Batch shipment count = #{removed[:batch_shipments][:count]}"
+  puts
+
+  # Purchasing a batch
+  purchase = ExampleHelper.log_operation 'Making API call to purchase a batch...' do
+    Shippo::Batch::purchase(retrieve[:object_id])
+  end
+  puts "Batch status = #{purchase[:object_status]}"
+  puts
+
+rescue Shippo::Exceptions::APIServerError => e
+  puts "Server returned an error:\n#{e}"
+  exit 3
+rescue Shippo::Exceptions::ConnectionError
+  puts 'Error connecting to remote host. Is your Internet working?'
+  exit 2
+rescue Shippo::Exceptions::AuthenticationError
+  if Shippo::API.token
+    puts "Token '#{Shippo::API.token}' does not appear to be valid."
+    puts 'Access denied.'
+  end
+  exit 1
+end

@@ -1,5 +1,5 @@
 module Shippo
   module API
-    VERSION = '2.0.5'
+    VERSION = '3.1.0'
   end
 end

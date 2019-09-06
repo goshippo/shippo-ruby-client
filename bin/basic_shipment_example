@@ -14,14 +14,13 @@
 lib = File.expand_path('../../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
+require_relative 'config'
 require 'bundler/setup'
 require 'shippo'
 require 'shippo/api/category'
 require 'shippo/exceptions/api_error'
 require 'awesome_print'
 require 'json'
-
-Shippo::API.token = ENV['SHIPPO_TOKEN']
 
 # Simple wrapper class to help us print objects to the STDOUT
 class ExampleHelper
@@ -41,6 +40,9 @@ class ExampleHelper
     puts "\#<#{instance.class.inspect}:0x#{instance.object_id.to_s(16)}> ⇒ "
     ap instance
     sep
+    # See https://github.com/goshippo/shippo-ruby-client#resource-id-and-other-object-fields
+    puts "Shippo object id: #{instance.object.id}"
+    sep
   end
 
   def self.sep
@@ -50,7 +52,6 @@ end
 
 # Create address_from object
 address_from = {
-  :object_purpose => 'PURCHASE',
   :name           => 'Mr Hippo',
   :company        => 'Shippo',
   :street1        => '215 Clayton St.',
@@ -64,7 +65,6 @@ address_from = {
 
 # Create address_to object
 address_to   = {
-  :object_purpose => 'PURCHASE',
   :name           => 'Mrs Hippo"',
   :company        => 'San Diego Zoo',
   :street1        => '2920 Zoo Drive',
@@ -84,10 +84,9 @@ parcel       = {
   :weight        => 2,
   :mass_unit     => :lb }
 
-hash = { :object_purpose => 'PURCHASE',
-         :address_from   => address_from,
+hash = { :address_from   => address_from,
          :address_to     => address_to,
-         :parcel         => parcel,
+         :parcels         => parcel,
          :async          => false }
 
 begin
@@ -118,7 +117,7 @@ end
 
 # Get the desired rate according to your business logic
 # We select the first rate in this example
-rate = shipment.rates_list.first
+rate = shipment.rates.first
 ExampleHelper.dump_object(rate, 'First rate returned')
 
 transaction = ExampleHelper.log_operation 'Creating a label with the first rate in the list... ' do

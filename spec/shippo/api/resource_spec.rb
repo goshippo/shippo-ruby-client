@@ -5,7 +5,7 @@ RSpec.describe Shippo::API::Resource do
   context '#initialize' do
     let(:object_id) { 'afa9fa09fa809f98f0a' }
     let(:params) { {
-      rates_list:
+      rates:
                     [{ shipment: '13123' },
                      { shipment: '44343' }],
       object_id:    object_id,
@@ -18,7 +18,7 @@ RSpec.describe Shippo::API::Resource do
       end
       it 'also provides object_ accessors for backwards compatibility' do
         # noinspection RubyResolve
-        expect(resource.resource_id).to eql(object_id)
+        expect(resource.object.id).to eql(object_id)
         # noinspection RubyResolve
         expect(resource.object_owner).to eql(params[:object_owner])
       end

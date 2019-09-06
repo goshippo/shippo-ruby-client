@@ -45,10 +45,8 @@ require 'shippo'
 Shippo::API.token = 'aff988f77afa0fdfdfadf'  # not an actual valid token
 
 # Setup query parameter hash
-params   = { object_purpose: 'PURCHASE',
-              async:          false,
+params   = {  async:          false,
               address_from:   {
-                object_purpose: 'PURCHASE',
                 name:           'Mr Hippo',
                 company:        'Shippo',
                 street1:        '215 Clayton St.',
@@ -57,10 +55,8 @@ params   = { object_purpose: 'PURCHASE',
                 state:          'CA',
                 zip:            '94117',
                 country:        'US',
-                phone:          '+1 555 341 9393',
-                email:          'support@goshippo.com' },
+                phone:          '+1 555 341 9393' },
               address_to:     {
-                object_purpose: 'PURCHASE',
                 name:           'Mrs Hippo"',
                 company:        'San Diego Zoo',
                 street1:        '2920 Zoo Drive',
@@ -70,7 +66,7 @@ params   = { object_purpose: 'PURCHASE',
                 country:        'US',
                 phone:          '+1 555 341 9393',
                 email:          'hippo@goshippo.com' },
-              parcel:         {
+              parcels:         {
                 length:        5,
                 width:         2,
                 height:        5,
@@ -83,12 +79,8 @@ params   = { object_purpose: 'PURCHASE',
 @shipment = Shippo::Shipment.create(params)
 @shipment.success?
 # => true
-@shipment.object.status
+@shipment.status
 # => 'SUCCESS'
-@shipment.status # forwarded to #object
-# => 'SUCCESS'
-@shipment.state
-# => 'VALID'
 ```
 
 Let's take a quick look at what the `Shipment` object looks like:
@@ -97,22 +89,43 @@ Let's take a quick look at what the `Shipment` object looks like:
 require 'awesome_print'
 ap @shipment
 # {
-#        "carrier_accounts" => [],
-#            "address_from" => "a704eada7494bb1be6184ef64b1646db",
-#              "address_to" => "92b43fbfa3641644beb32996042eb57a",
-#          "address_return" => "a1f64ba14b7e41b86a0446de4ebbd769",
-#                  "parcel" => "92df4baac73ea6131940c0d315d70a7d",
-#         "submission_date" => "2016-07-06T20:33:02.211Z",
-#               "return_of" => nil,
-#     "customs_declaration" => nil,
-#        "insurance_amount" => "0",
-#      "insurance_currency" => nil,
-#                   "extra" => {},
-#             "reference_1" => "",
-#             "reference_2" => "",
-#               "rates_url" => "https://api.goshippo.com/v1/shipments/a336daf87a8e442992a68daa6622758f/rates/",
-#                "messages" => [ ] # ommitted for brevity,
-#              "rates_list" => [ ] # ommitted for brevity.
+#   "carrier_accounts"    => [],
+#   "address_from"        => {
+#     "name"    => "Mr Hippo",
+#     "company" => "Shippo",
+#     "street1" => "215 Clayton St.",
+#     "street2" => "",
+#     "city"    => "San Francisco",
+#     "state"   => "CA",
+#     "zip"     => "94117",
+#     "country" => "US",
+#     "phone"   => "+1 555 341 9393"
+#   },
+#   "address_to"          => { ... },   # omitted for brevity
+#   "address_return"      => { ... },
+#   "parcels"             => [{
+#     "length"        => 5,
+#     "width"         => 2,
+#     "height"        => 5,
+#     "distance_unit" => in,
+#     "weight"        => 2,
+#     "mass_unit"     => lb,
+#   }],
+#   "shipment_date"       => "2016-07-06T20:33:02.211Z",
+#   "customs_declaration" => nil,
+#   "extra"               => {
+#     "insurance"   => {
+#       "amount"    => 10,
+#       "currency"  => "USD",
+#       "content"   => "",
+#       "provider"  => "FEDEX"
+#     },
+#     "is_return"   => false,
+#     "reference_1" => "",
+#     "reference_2" => "",
+#   },
+#   "messages"            => [ ... ],
+#   "rates"               => [ ... ]
 # }
 ```
 
@@ -120,40 +133,32 @@ ap @shipment
 
 In the case when the API returns a hash with one of the hash values being an array of entities, and if the corresponding key can be mapped into one of the existing API models, then each of the members of the array is coerced from a hash into an object of the model's type.
 
-In the example below we are showing the result of such transformation where the `rates_list` contains a list of fully constructed objects of type `Shippo::Rate` after being coerced from a hash.
+In the example below we are showing the result of such transformation where `rates` contains a list of fully constructed objects of type `Shippo::Rate` after being coerced from a hash.
 
 ```ruby
-ap @shipment.rates_list.first
+ap @shipment.rates.first
 # =>
-# {
-#                     "shipment" => "20f25e44b16b4051b6dd910cb66fd27b",
-#             "available_shippo" => true,
-#                   "attributes" => [],
-#                       "amount" => "8.51",
-#                     "currency" => "USD",
-#                 "amount_local" => "8.51",
-#               "currency_local" => "USD",
-#                     "provider" => "FedEx",
-#            "provider_image_75" => "https://shippo-static.s3.amazonaws.com/providers/75/FedEx.png",
-#           "provider_image_200" => "https://shippo-static.s3.amazonaws.com/providers/200/FedEx.png",
-#            "servicelevel_name" => "Ground",
-#           "servicelevel_token" => "fedex_ground",
-#           "servicelevel_terms" => "",
-#                         "days" => 2,
-#                   "arrives_by" => nil,
-#               "duration_terms" => "",
-#                    "trackable" => true,
-#                    "insurance" => false,
-#       "insurance_amount_local" => "0.00",
-#     "insurance_currency_local" => nil,
-#             "insurance_amount" => "0.00",
-#           "insurance_currency" => nil,
-#            "delivery_attempts" => nil,
-#            "outbound_endpoint" => "door",
-#             "inbound_endpoint" => "door",
-#                     "messages" => [],
-#              "carrier_account" => "4b1940bc69524163b669asd361842db",
-#                         "test" => true
+# { 
+#   "shipment"            => "20f25e44b16b4051b6dd910cb66fd27b",
+#   "attributes"          => [],
+#   "amount"              => "8.51",
+#   "currency"            => "USD",
+#   "amount_local"        => "8.51",
+#   "currency_local"      => "USD",
+#   "provider"            => "FedEx",
+#   "provider_image_75"   => "https://shippo-static.s3.amazonaws.com/providers/75/FedEx.png",
+#   "provider_image_200"  => "https://shippo-static.s3.amazonaws.com/providers/200/FedEx.png",
+#   "servicelevel"        => {
+#     "name"  => "Ground",
+#     "token" => "fedex_ground",
+#     "terms" => ""
+#   }
+#   "days"                => 2,
+#   "arrives_by"          => nil,
+#   "duration_terms"      => "",
+#   "messages"            => [],
+#   "carrier_account"     => "4b1940bc69524163b669asd361842db",
+#   "test"                => true
 # }
 @shipment.rates.first.owner
 # ⤷ unittest@gmail.com
@@ -170,10 +175,10 @@ You can retrieve a list of objects for many endpoints (e.g. Transactions, Shipme
 @transactions
 # =>
 # {
-#     "count" => 3055,
-#      "next" => "https://api.goshippo.com/v1/transactions/?page=2",
-#  "previous" => nil,
-#  "results"  => [ ... list of Transaction objects ... ]
+#   "count"     => 3055,
+#   "next"      => "https://api.goshippo.com/v1/transactions/?page=2",
+#   "previous"  => nil,
+#   "results"   => [ ... list of Transaction objects ... ]
 # }
 ```
 
@@ -183,13 +188,17 @@ Shippo API returns several generalized fields for each valid resource, that bein
 
 Unfortunately Shippo API also returns `object_id`, which in Ruby has a special meaning: it's the pointer address of any object. Overwriting this field causes all sorts of issues.
 
-For this reason we are mapping `object_id` to `resource_id`, as soon as the hash is passed in to initialize `ApiObject`.
+For this reason we are mapping `object_id` to `resource_id`, as soon as the hash is passed in to initialize `ApiObject`. This way `object_id` continues to be used as a ruby internal field, and can be accessed as expected:
 
-The following console output demonstrates many ways of accessing `object_` fields:
+> In the example below, `object_id` does not refer to any API field, and is a ruby internal field.
 
 ```ruby
 @shipment.object_id    # this is the Ruby object pointer
 # ⤷ 70206221831520  
+```
+To access the `"object_id"` field retrieved with the API, see the following session that highlights many ways of accessing `object_id` field:
+
+```ruby
 @shipment.resource_id  # this is the API id (note: deprecated accessor)
 # ⤷ 20f25e44b16b4051b6dd910cb66fd27b
 @shipment.object.id    # which is actually just this
@@ -198,7 +207,7 @@ The following console output demonstrates many ways of accessing `object_` field
 # ⤷ 20f25e44b16b4051b6dd910cb66fd27b
 ```
 
-And with the rest of the `object_` fields:
+Finally, here is how we access the rest of the `object_` fields:
 
 ``` ruby
 @shipment.object.owner    # this is whether 'object_owner' is stored
@@ -209,18 +218,15 @@ And with the rest of the `object_` fields:
 # ⤷ valued_customer@gmail.com
 ```
 
-Here is the fully construted `ApiObject` instance, attached to our `@shipment`:
+Here is the fully constructed `ApiObject` instance, attached to our `@shipment`:
 
 ```ruby
 ap @shipment.object
 # {
-#     :created => 2016-07-06 20:44:47 UTC,
-#     :updated => 2016-07-06 20:44:47 UTC,
-#       :owner => "valued_customer@gmail.com",
-#       :state => #<Shippo::API::Category::State:0x007fd88be8aa38 @name=:state, @value=:valid>,
-#      :status => #<Shippo::API::Category::Status:0x007fd88be82e28 @name=:status, @value=:success>,
-#     :purpose => #<Shippo::API::Category::Purpose:0x007fd88be985e8 @name=:purpose, @value=:purchase>,
-#          :id => "20f25e44b16b4051b6dd910cb66fd27b"
+#   :created  => 2016-07-06 20:44:47 UTC,
+#   :updated  => 2016-07-06 20:44:47 UTC,
+#   :owner    => "valued_customer@gmail.com",
+#   :id       => "20f25e44b16b4051b6dd910cb66fd27b"
 # }
 ```
 
@@ -243,9 +249,9 @@ NOTE: this environment variable is only used by the included `bin/example` scrip
 
 ## Gem Versioning Notes
 
-Version 2 and up of this library works with Ruby 2.2 and later, and is not backwards compatible. __Version 1.0.4__ of this library is the last version supporting ruby 1.8 and 1.9.
+Version 3 and up of this library works with Ruby 2.2 and later, and is not backwards compatible. __Version 1.0.4__ of this library is the last version supporting ruby 1.8 and 1.9.
 
-__Warning:__ Version 2 brings potential backwards incompatibility issues. Please be prepared to update your usages (if necessary) when you migrate.
+__Warning:__ Version 3 brings potential backwards incompatibility issues. Please be prepared to update your usages (if necessary) when you migrate.
 
 ### If you are still using Ruby 1.8 or 1.9
 

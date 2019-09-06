@@ -1,0 +1,53 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.goshippo.com/tracks/usps/9205590164917312751089/
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Authorization:
+      - "<API_TOKEN>"
+      Shippo-Api-Version:
+      - '2017-03-29'
+      Content-Length:
+      - '0'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Allow:
+      - OPTIONS
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 31 Mar 2017 00:35:44 GMT
+      P3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      Server:
+      - nginx/1.8.0
+      Vary:
+      - Host, Cookie, Accept-Encoding
+      Content-Length:
+      - '737'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAGCk3VgC/92WW2/TMBTHv0rUZ6h8v+Rt0vYwaSBESyVAqDq+bYY0iRK34qJ9d5ywio5Bx9YiEGpfbB+fy+/Y+fvLxELXRd9NymKy7tt+8qSYpA7sh1hfLuv1ynxb0gRxrhEWTGNJMZEcI6UHY3Cu832/DF2zypZfJjamT8OWC+iLhb+E0WWfIPlh9vliGH6O7TBQGiM8jG2zrlM3bns1m1zvuE3NLaeztkn9p2oDdYRbfhcnO34J4fwXfn2C0SKX8hTJp4TOESrH/5vRn+820frKb3w1Bk7NB19v4SzbLjbdkEo2rWE1Rn5xM1c8g1iNMVY5iIMxUL2uql2iQ77rfvTcmPfepqXtfC7B/ZAUQSXlJRFTTPSY2I31unUPsI6jofAewGjJlAAmAoDGOGhtmPZGKWe2HMe8JqdnF+eLs5dnp9+nly4XFKtx+XWz7or+KrYrX6fiKvfYeF8Xzldx4zvvCkhFuvJ5ok+xhhSbuljlzab5ON31eNO2nSIwLRHd9qFq7Lj3iM2/3u3DVexTM6693dsJMsespKLkaKoZvctW5tvAFXDGCWZSBeDeaSNpEJyFIPBttvOXJ89n5/MHkQVrfZvT2ksPzzEv6X56B9zHjO4gSshKH4i1jkjPOJNGBq6lE0QAMEaOSGl7/F7NXsyKfC0vY10EsLHKEO4jqEss/lWCVFESsOGEMcWstkCotBYFFohh+XcQwUEBNgexGz5A+AjsCPoD7LSnmZkAjQJhxkmDuRUkEJBCcLD0IHbOt9ANB+8Acvxvkcvip4bwDE8Vx3fJWWS8pI5SqhxDQavgjdCgQJvMj7Gjn7pd1fgtgLkCUpJ7ZANql7/29R7JoJg/jt9w8jI/PiVY/kx5icGaALNEME+z5mIWNOPOGUWtOyq/tulT0YSQXy/3EctSoY4ktPRR1Pa/V7QNQVPBUBYNRhTXVEuCNYCXWIgf7+v/+155d/0VI/DOQJ4LAAA=
+    http_version: 
+  recorded_at: Fri, 31 Mar 2017 00:35:45 GMT
+recorded_with: VCR 3.0.3

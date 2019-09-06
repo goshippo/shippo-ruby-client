@@ -1,0 +1,118 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.goshippo.com/batches/
+    body:
+      encoding: UTF-8
+      string: '{"default_carrier_account":"903074429eab4954b72df8a70defdfe3","default_servicelevel_token":"usps_priority","label_filetype":"ZPLII","metadata":"BATCH
+        #170","batch_shipments":[{"shipment":{"address_from":{"name":"Simon Says","company":"","street1":"965
+        Mission St","street2":"Ste 201","city":"San Francisco","state":"CA","zip":"94103","country":"US","phone":"4151234567","email":"hippo@goshippo.com"},"address_to":{"name":"Who
+        Says","company":"","street1":"400 Simon St","street_no":"","street2":"Apt
+        123","city":"San Francisco","state":"CA","zip":"94102","country":"US","phone":"4151234567","email":"hippo@goshippo.com","metadata":""},"parcel":{"length":"5","width":"5","height":"5","distance_unit":"in","weight":"2","mass_unit":"oz","template":"","metadata":"Customer
+        ID 123456"},"extra":{"reference_1":"REF1 - Simon","reference_2":"REF2 - Says"},"metadata":""}},{"shipment":{"address_from":{"name":"Simon
+        Says","company":"","street1":"965 Mission St","street2":"Ste 201","city":"San
+        Francisco","state":"CA","zip":"94103","country":"US","phone":"4151234567","email":"shippo@goshippo.com"},"address_to":{"name":"Who
+        Says","company":"","street1":"400 Simon St","street_no":"","street2":"Apt
+        123","city":"San Francisco","state":"CA","zip":"94102","country":"US","phone":"4151234567","email":"hippo@goshippo.com","metadata":""},"parcel":{"length":"5","width":"5","height":"5","distance_unit":"in","weight":"2","mass_unit":"oz","template":"","metadata":"Customer
+        ID 123456"},"extra":{"reference_1":"REF1 - Simon","reference_2":"REF2 - Says"},"metadata":""}},{"shipment":{"address_from":{"name":"Simon
+        Says","company":"","street1":"965 Mission St","street2":"Ste 201","city":"San
+        Francisco","state":"CA","zip":"94103","country":"US","phone":"4151234567","email":"hippo@goshippo.com"},"address_to":{"name":"Who
+        Says","company":"","street1":"400 Simon St","street_no":"","street2":"Apt
+        123","city":"San Francisco","state":"CA","zip":"94102","country":"US","phone":"4151234567","email":"hippo@goshippo.com","metadata":""},"parcel":{"length":"5","width":"5","height":"5","distance_unit":"in","weight":"2","mass_unit":"oz","template":"","metadata":"Customer
+        ID 123456"},"extra":{"reference_1":"REF1 - Simon","reference_2":"REF2 - Says"},"metadata":""}}]}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<API_TOKEN>"
+      Shippo-Api-Version:
+      - '2017-03-29'
+      Content-Length:
+      - '2244'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 201
+      message: CREATED
+    headers:
+      Allow:
+      - OPTIONS
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 31 Mar 2017 00:34:54 GMT
+      P3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      Server:
+      - nginx/1.8.0
+      Vary:
+      - Host, Cookie, Accept-Encoding
+      Content-Length:
+      - '348'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAC6k3VgC/42RS08CMRSF/woZt0I60w4FVqImSkKMC+ICYyZt545Uy7TpAyWE/247ysOFibv2nO8+errLNH8D4StZZ5NeRlkBuKQ5FmREymHOEeMYxQMlQ07yJrvsHQr0Rws21Xhw/upVu5U0RqfLQOh1Ap1nPriEPE3ns9vpYvZwd9ZAWGAeurEFymkf4T7OFwhNMJmUZFAgtDyjg6n/Q6/BswiyxF1PFzf3vYucouTU0LCg4lhmrQRbMSF0aH0CxwgjSkgxBsbJuCScFnUzYhTFmroBfF7uwG6kAAUbUJXX79CmDsEZVxkrtZV+m3DFePQbqcBvDSRk+TifzZLFmRerKsW1htanfHbZYRUU/RY+07ENSsWbsbCRuovxR7Hg4iJJeH7ZnwI6ybvMBCtWzEHlghAAdZdb6n00GhZXO6jdT0jd/qH+arI/Pi5Y9b3DF1awRsdEAgAA
+    http_version: 
+  recorded_at: Fri, 31 Mar 2017 00:34:55 GMT
+- request:
+    method: get
+    uri: https://api.goshippo.com/batches/7a2e35713c484561b0ab30561746b41f
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Authorization:
+      - "<API_TOKEN>"
+      Shippo-Api-Version:
+      - '2017-03-29'
+      Content-Length:
+      - '0'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Allow:
+      - OPTIONS
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 31 Mar 2017 00:34:54 GMT
+      P3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      Server:
+      - nginx/1.8.0
+      Vary:
+      - Host, Cookie, Accept-Encoding
+      Content-Length:
+      - '348'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAC6k3VgC/42RS08CMRSF/woZt0I60w4FVqImSkKMC+ICYyZt545Uy7TpAyWE/247ysOFibv2nO8+errLNH8D4StZZ5NeRlkBuKQ5FmREymHOEeMYxQMlQ07yJrvsHQr0Rws21Xhw/upVu5U0RqfLQOh1Ap1nPriEPE3ns9vpYvZwd9ZAWGAeurEFymkf4T7OFwhNMJmUZFAgtDyjg6n/Q6/BswiyxF1PFzf3vYucouTU0LCg4lhmrQRbMSF0aH0CxwgjSkgxBsbJuCScFnUzYhTFmroBfF7uwG6kAAUbUJXX79CmDsEZVxkrtZV+m3DFePQbqcBvDSRk+TifzZLFmRerKsW1htanfHbZYRUU/RY+07ENSsWbsbCRuovxR7Hg4iJJeH7ZnwI6ybvMBCtWzEHlghAAdZdb6n00GhZXO6jdT0jd/qH+arI/Pi5Y9b3DF1awRsdEAgAA
+    http_version: 
+  recorded_at: Fri, 31 Mar 2017 00:34:55 GMT
+recorded_with: VCR 3.0.3

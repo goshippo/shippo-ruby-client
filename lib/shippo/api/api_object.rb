@@ -21,9 +21,7 @@ module Shippo
     #
     # ```ruby
     # response = {
-    #       "object_state" => "VALID",
-    #     "object_purpose" => "PURCHASE",
-    #      "object_source" => "FULLY_ENTERED",
+    #       "object_state" => "VALID",    # not available for address, shipment or rates
     #     "object_created" => "2014-07-16T23:20:31.089Z",
     #     "object_updated" => "2014-07-16T23:20:31.089Z",
     #          "object_id" => "747207de2ba64443b645d08388d0309c",
@@ -49,8 +47,6 @@ module Shippo
     # # ⤷
     # {
     #       :state => #<Shippo::API::Category::State:0x007fd374b4d0d0 @name=:state, @value=:valid>,
-    #     :purpose => #<Shippo::API::Category::Purpose:0x007fd373df2070 @name=:purpose, @value=:purchase>,
-    #      :source => #<Shippo::API::Category::Source:0x007fd374b4fbf0 @name=:source, @value=:fully_entered>,
     #     :created => 2014-07-16 23:20:31 UTC,
     #     :updated => 2014-07-16 23:20:31 UTC,
     #          :id => "747207de2ba64443b645d08388d0309c",
@@ -78,7 +74,7 @@ module Shippo
 
       # list of allowed properties, of a given type.
       PROPS_ID         = %i(id).freeze
-      PROPS_CATEG      = %i(state purpose source status).freeze
+      PROPS_CATEG      = %i(state status results).freeze
       PROPS_EMAIL      = %i(owner).freeze
       PROPS_TIMED      = %i(created updated).freeze
 

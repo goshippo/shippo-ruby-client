@@ -9,7 +9,7 @@ RSpec.describe Shippo::API::Transformers::List do
   context 'when a value is an array' do
     let(:params) {
       {
-        rates_list: [{ shipment: '13123' }, { shipment: '44343' }],
+        rates: [{ shipment: '13123' }, { shipment: '44343' }],
         parcels:    [{ object_id: obj_id, 'object_owner' => obj_owner, deliver_by: deliver_by }],
         items:      [{ pi: 3.1416926 }],
         shipments:  [{ name: 'Little House in the Fluffy Clouds', object_id: obj_id, 'object_created' => deliver_by.to_s}],
@@ -19,7 +19,7 @@ RSpec.describe Shippo::API::Transformers::List do
     context 'it should be automatically cast to a known class' do
       context 'from a field that ends with _list' do
         it 'should create elements of type Shippo::Rate' do
-          expect(resource.rates_list.first).to be_kind_of(Shippo::Rate)
+          expect(resource.rates.first).to be_kind_of(Shippo::Rate)
         end
       end
       context 'from a name that is a plular of a model, such as parcels' do
@@ -51,7 +51,7 @@ RSpec.describe Shippo::API::Transformers::List do
           expect(resource.parcels.first.object).to be_kind_of(Shippo::API::ApiObject)
           expect(resource.parcels.first.deliver_by).to eql(deliver_by)
           expect(resource.parcels.first.object.owner).to eql(obj_owner)
-          expect(resource.parcels.first.resource_id).to eql(obj_id)
+          expect(resource.parcels.first.object.id).to eql(obj_id)
         end
       end
       context 'from a special cased enumeration like "items"' do

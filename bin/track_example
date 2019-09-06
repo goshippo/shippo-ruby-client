@@ -1,0 +1,119 @@
+#!/usr/bin/env ruby
+#
+# © 2016 Shippo, Inc.
+#
+# License: MIT
+#
+# You can also set +SHIPPO_DEBUG+ to see detailed printouts of objects returned.
+#
+#
+
+lib = File.expand_path('../../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
+require_relative 'config'
+require 'bundler/setup'
+require 'shippo'
+require 'shippo/api/category'
+require 'shippo/exceptions/api_error'
+require 'awesome_print'
+require 'json'
+
+# Simple wrapper class to help us print objects to the STDOUT
+class ExampleHelper
+  def self.log_operation(msg)
+    printf '%s', msg
+    result = yield
+    printf "OK\n"
+    result
+  rescue Exception => e
+    raise(e)
+  end
+
+  def self.dump_object(instance, msg = nil)
+    return unless Shippo::API.debug?
+    sep
+    puts "#{msg.upcase}:" if msg
+    puts "\#<#{instance.class.inspect}:0x#{instance.object_id.to_s(16)}> ⇒ "
+    ap instance
+    sep
+    # See https://github.com/goshippo/shippo-ruby-client#resource-id-and-other-object-fields
+    puts "Shippo object id: #{instance.object.id}"
+    sep
+  end
+
+  def self.sep
+    puts '—' * (ENV['COLUMNS'] || 80)
+  end
+end
+
+# Create address_from object
+address_from = {
+  :name           => 'Mr Hippo',
+  :company        => 'Shippo',
+  :street1        => '215 Clayton St.',
+  :street2        => '',
+  :city           => 'San Francisco',
+  :state          => 'CA',
+  :zip            => '94117',
+  :country        => 'US',
+  :phone          => '+1 555 341 9393',
+  :email          => 'support@goshippo.com' }
+
+# Create address_to object
+address_to   = {
+  :name           => 'Mrs Hippo"',
+  :company        => 'San Diego Zoo',
+  :street1        => '2920 Zoo Drive',
+  :city           => 'San Diego',
+  :state          => 'CA',
+  :zip            => '92101',
+  :country        => 'US',
+  :phone          => '+1 555 341 9393',
+  :email          => 'hippo@goshippo.com' }
+
+# Create parcel object
+parcel       = {
+  :length        => 5,
+  :width         => 2,
+  :height        => 5,
+  :distance_unit => :in,
+  :weight        => 2,
+  :mass_unit     => :lb }
+
+hash = { :address_from   => address_from,
+         :address_to     => address_to,
+         :parcel         => parcel,
+         :async          => false }
+
+begin
+  shipment = ExampleHelper.log_operation 'Making first API call for shipment rates...' do
+    Shippo::Shipment.create(hash)
+  end
+  track = ExampleHelper.log_operation 'Making API call to retrieve tracking status...' do
+    Shippo::Track.get(shipment[:object_id], 'usps')
+  end
+  raise Shippo::Exceptions::UnsuccessfulResponseError.new(shipment.object.inspect) unless shipment.success?
+  File.open('example-shipment.json', 'w') do |file|
+    file.puts JSON.dump(shipment.to_hash)
+  end
+rescue Shippo::Exceptions::APIServerError => e
+  puts "Server returned an error:\n#{e}"
+  exit 3
+rescue Shippo::Exceptions::ConnectionError
+  puts 'Error connecting to remote host. Is your Internet working?'
+  exit 2
+rescue Shippo::Exceptions::AuthenticationError
+  if Shippo::API.token
+    puts "Token '#{Shippo::API.token}' does not appear to be valid."
+    puts 'Access denied.'
+  end
+  exit 1
+end
+
+if track
+  puts "Carrier         : #{track[:carrier]}"
+  puts "Tracking NO     : #{track[:tracking_number]}"
+else
+  puts 'Track ERROR'
+end

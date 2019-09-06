@@ -1,0 +1,98 @@
+#!/usr/bin/env ruby
+#
+# © 2016 Shippo, Inc.
+#
+# License: MIT
+#
+# This example demonstrates how to purchase a label for a domestic US shipment.
+# Please set +SHIPPO_TOKEN+ in the environment before running it.
+#
+# You can also set +SHIPPO_DEBUG+ to see detailed printouts of objects returned.
+#
+#
+
+lib = File.expand_path('../../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
+require_relative 'config'
+require 'bundler/setup'
+require 'shippo'
+require 'shippo/api/category'
+require 'shippo/exceptions/api_error'
+require 'awesome_print'
+require 'json'
+
+# Simple wrapper class to help us print objects to the STDOUT
+class ExampleHelper
+  def self.log_operation(msg)
+    printf '%s', msg
+    result = yield
+    puts 'OK'
+    result
+  rescue Exception => e
+    raise(e)
+  end
+
+  def self.dump_object(instance, msg = nil)
+    return unless Shippo::API.debug?
+    sep
+    puts "#{msg.upcase}:" if msg
+    puts "\#<#{instance.class.inspect}:0x#{instance.object_id.to_s(16)}> ⇒ "
+    ap instance
+    sep
+    # See https://github.com/goshippo/shippo-ruby-client#resource-id-and-other-object-fields
+    puts "Shippo object id: #{instance.object.id}"
+    sep
+  end
+
+  def self.sep
+    puts '—' * (ENV['COLUMNS'] || 80)
+  end
+end
+
+# Create address object
+address = {
+  :name           => 'Mr Hippo',
+  :company        => 'Shippo',
+  :street1        => '215 Clayton St.',
+  :street2        => '',
+  :city           => 'San Francisco',
+  :state          => 'CA',
+  :zip            => '94117',
+  :country        => 'US',
+  :phone          => '+1 555 341 9393',
+  :email          => 'support@goshippo.com',
+  :is_residential => true,
+  :metadata       => 'some metadata'
+}
+
+begin
+  address = ExampleHelper.log_operation 'Creating address... ' do
+    Shippo::Address.create(address)
+  end
+  raise Shippo::Exceptions::UnsuccessfulResponseError.new(address.object.inspect) unless address.valid?
+  File.open('example-address.json', 'w') do |file|
+    file.puts JSON.dump(address.to_hash)
+  end
+rescue Shippo::Exceptions::APIServerError => e
+  puts "Server returned an error:\n#{e}"
+  exit 3
+rescue Shippo::Exceptions::ConnectionError
+  puts 'Error connecting to remote host. Is your Internet working?'
+  exit 2
+rescue Shippo::Exceptions::AuthenticationError
+  if Shippo::API.token
+    puts "Token '#{Shippo::API.token}' does not appear to be valid."
+    puts 'Access denied.'
+  else
+    puts 'Please set authentication token in the environment:'
+    puts 'export SHIPPO_TOKEN="<your token here>"'
+    puts 'and re-run the example.'
+  end
+  exit 1
+end
+
+# Validate the address that we created
+resp = Shippo::Address.validate(address.object.id)
+ExampleHelper.dump_object(resp, 'Validation complete')
+

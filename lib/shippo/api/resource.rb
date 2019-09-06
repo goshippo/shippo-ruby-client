@@ -1,10 +1,9 @@
 require 'forwardable'
 
-require 'hashie/mash'
 require 'active_support/inflector'
 
 require 'shippo/exceptions'
-
+require 'shippo/api/api_hash'
 require 'shippo/api/api_object'
 require 'shippo/api/category/status'
 require 'shippo/api/transformers/list'
@@ -12,19 +11,14 @@ require 'shippo/api/extend/operation'
 require 'shippo/api/extend/transformers'
 require 'shippo/api/extend/url'
 
+
 module Shippo
   module API
-    class Resource < Hashie::Mash
-      include Hashie::Extensions::StringifyKeys
+    class Resource < ApiHash
       include Enumerable
       extend Forwardable
 
-      def self.object_properties
-        Shippo::API::ApiObject::PROPS
-      end
-
       attr_accessor :object
-      def_delegators :@object, *object_properties
 
       # Creates a possibly recursive chain (map of lists, etc) of Resource
       # instances based on whether each value is a scalar, array or a hash.
@@ -43,15 +37,6 @@ module Shippo
         name.split('::')[-1]
       end
 
-      # Generate object_ accessors.
-      object_properties.each do |property|
-        method_name = ApiObject.field_name(property)
-        define_method method_name do
-          STDOUT.puts "#{method_name} style accessors are deprecated in favor of #resource.object.#{property}" if Shippo::API.warnings
-          self.object.send(property)
-        end
-      end
-
       # allows resources to use default or a custom url
       include Shippo::API::Extend::Url
       # allows resources to set supported operations
@@ -62,11 +47,11 @@ module Shippo
 
       # As a Hashie::Mash subclass, Resource can initialize from another hash
       def initialize(*args)
-        if args.first.is_a?(Fixnum) or
+        if args.first.is_a?(Integer) or
           (args.first.is_a?(String) && args.first =~ /^[0-9A-Fa-f]+$/)
           self.id = args.first
         elsif args.first.respond_to?(:keys)
-          h = Hashie::Mash.new(args.first)
+          h = ApiHash.new(args.first)
           self.deep_merge!(h)
           self.object = ApiObject.create_object(self)
           transformers.each do |transformer|
@@ -98,6 +83,10 @@ module Shippo
 
       def success?
         self.object && self.object.status && self.object.status.eql?(Shippo::API::Category::Status::SUCCESS)
+      end
+
+      def valid?
+        self.object && self.object.state && self.object.state.eql?(Shippo::API::Category::State::VALID)
       end
     end
   end

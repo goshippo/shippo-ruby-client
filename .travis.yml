@@ -2,8 +2,10 @@ language: ruby
 env:
   - CODECLIMATE_REPO_TOKEN=d00cb259c01f8d6719834225b572d22ba6ea87feec82f1e48bd10ba250e2c4b5
 rvm:
-  - 2.2.5
-  - 2.3.1
+  - 2.2
+  - 2.3
+  - 2.4
+  - 2.5
 script: "gem install bundler --no-ri --no-rdoc; bundle exec rspec"
 notifications:
   slack:

@@ -1,0 +1,53 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.goshippo.com/tracks/
+    body:
+      encoding: UTF-8
+      string: '{"carrier":"usps","tracking_number":"9205590164917312751089"}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<API_TOKEN>"
+      Shippo-Api-Version:
+      - '2017-03-29'
+      Content-Length:
+      - '61'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 201
+      message: CREATED
+    headers:
+      Allow:
+      - OPTIONS
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 31 Mar 2017 00:35:45 GMT
+      P3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      Server:
+      - nginx/1.8.0
+      Vary:
+      - Host, Cookie, Accept-Encoding
+      Content-Length:
+      - '741'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAGGk3VgC/+WW3W/TMBDA/5Woz1D5bMex8zaJPSABQmtXCRCq/HHeDGkSJW7FmPa/44RVdHx0bC0CCSkPsX2+O//ufOfridVdF7CblNlk3bf95Ek2iZ22H0N9sazXK/N1SVGS54qA4AoKBrTIgUg1CGvnOuz7pe+aVZK8ntgQr4YtL3SfLfBCjyr7qCMOs68Ww/BzaIeBVEBgGNtmXcdu3HY+m9zsqI3NHaWzton9VbXRddB39C5OdvRSmue/0ItRjxLpKE9J8ZSyOSHl+L0d9WG3CRYr3GA1Go7NR6y3cJZtF5pucCWJ1no1Wn59O5e91KEabaySEadHQ/W6qnaJDv6u+1FzYz6gjUvbYTqC+84pSkqWl1RMgarRsVvpdeseIB1GQXDCSE4kMSl8XBspQUmqUYJA7znbchz9mjw7ffF8cXp2+uzb9NKlA4VqXH7TrLusvwztCuuYXaYYG8Q6c1iFDXboMh2zeIlpoo+h1jE0dbZKm03zabqr8TZsO4cAVhK2jUPV2HHvEYN/sxuHy9DHZlx7tzcSdA68ZKLMyVRx9iNbjbn0FoVHC9wqYwhTCAXRYEUuHbnLdn528mr2fP4gstpabJNbe+nBHPKS7ad3wH1M6A6jxI1HTvzAJ/16pQlaY5mXQjNhxPEobdPvfPZ6lqVreRHqzGsbqgThPoKqBPGvEvRUWEIABdXpDiuvwUhaCOcw3WOi2UEEhw6wOYjdUIDgCOwo+QPsmPCp3BlplSDcGyYFk95IJW2hTcrDg9g5bHU3JN4B5PK/RS41PzmY5zCVOfyEnDegUnUToIBD7hUvDM2REuEQpDp+1u12jd8CmE5AS3pP29C1S9W+3tMyGOSP4zdkXuKXTykUP/JD9AJcSkrwlHtHTHo1FdRx5pSxSN0x+bVNH7PG+/R6uY9YahXySI2WPYra/veKKpxKPZVbxw3XzEhIZU6AKLzz0gj/v7xX3t98Aes3dYWeCwAA
+    http_version: 
+  recorded_at: Fri, 31 Mar 2017 00:35:46 GMT
+recorded_with: VCR 3.0.3

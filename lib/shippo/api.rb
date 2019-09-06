@@ -11,14 +11,30 @@ require 'shippo/api/resource'
 
 module Shippo
   module API
-    @base     = 'https://api.goshippo.com/'
-    @version  = nil
-    @token    = ''
-    @debug    = Integer(ENV['SHIPPO_DEBUG'] || 0) > 0 ? true : false
-    @warnings = true
+    @base         = 'https://api.goshippo.com'
+    @version      = ''
+    @token        = ''
+    @debug        = Integer(ENV['SHIPPO_DEBUG'] || 0) > 0 ? true : false
+    @warnings     = true
+    @open_timeout = 15
+    @read_timeout = 30
 
     class << self
-      attr_accessor :base, :version, :token, :debug, :warnings
+      attr_writer :token
+      attr_accessor :base, :version, :debug, :warnings, :open_timeout, :read_timeout
+
+      def token
+        Thread.current[:shippo_api_token] || @token
+      end
+
+      def with_token(token)
+        old_thread_token = Thread.current[:shippo_api_token]
+        Thread.current[:shippo_api_token] = token
+        yield
+      ensure
+        Thread.current[:shippo_api_token] = old_thread_token
+      end
+
       # @param [Symbol] method One of :get, :put, :post
       # @param [String] uri the URL component after the first slash but before params
       # @param [Hash] params hash of optional parameters to add to the URL
