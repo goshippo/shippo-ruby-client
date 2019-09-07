@@ -1,4 +1,4 @@
-#### 3.2.0 release, Sep 5th, 2019
+#### 4.0.0 release, Sep 5th, 2019
 - [Allow multiple accounts in a single service/application](https://github.com/goshippo/shippo-ruby-client/pull/74)
 - [Updated rest client depndency](https://github.com/goshippo/shippo-ruby-client/pull/91)
 - [Remove json dependency](https://github.com/goshippo/shippo-ruby-client/pull/90)
