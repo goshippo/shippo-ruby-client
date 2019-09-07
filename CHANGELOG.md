@@ -1,5 +1,7 @@
 #### 3.2.0 release, Sep 5th, 2019
 - Allow setting token per request
+- Updated rest client depndency
+- Remove json dependency
 
 #### 3.1.0 release, Sep 11th, 2017
 - Removed deprecated methods
