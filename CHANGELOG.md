@@ -1,7 +1,10 @@
 #### 3.2.0 release, Sep 5th, 2019
-- Allow setting token per request
-- Updated rest client depndency
-- Remove json dependency
+- [Allow multiple accounts in a single service/application](https://github.com/goshippo/shippo-ruby-client/pull/74)
+- [Updated rest client depndency](https://github.com/goshippo/shippo-ruby-client/pull/91)
+- [Remove json dependency](https://github.com/goshippo/shippo-ruby-client/pull/90)
+- [Fix require relative issues](https://github.com/goshippo/shippo-ruby-client/pull/90)
+- [Fix shipment create parcel -> parcels](https://github.com/goshippo/shippo-ruby-client/pull/86)
+- [Fix rate call for Shipments](https://github.com/goshippo/shippo-ruby-client/pull/83)
 
 #### 3.1.0 release, Sep 11th, 2017
 - Removed deprecated methods
