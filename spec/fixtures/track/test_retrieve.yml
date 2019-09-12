@@ -2,52 +2,157 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.goshippo.com/tracks/usps/9205590164917312751089/
+    uri: https://api.goshippo.com/tracks/shippo/9102969010383081813033/
     body:
-      encoding: ASCII-8BIT
+      encoding: US-ASCII
       string: ''
     headers:
       Accept:
       - application/json
-      Accept-Encoding:
-      - gzip, deflate
+      User-Agent:
+      - rest-client/2.1.0 (darwin18.7.0 x86_64) ruby/2.6.4p104
       Content-Type:
-      - application/x-www-form-urlencoded
+      - application/json
       Authorization:
       - "<API_TOKEN>"
       Shippo-Api-Version:
       - '2017-03-29'
-      Content-Length:
-      - '0'
-      User-Agent:
-      - Ruby
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.goshippo.com
   response:
     status:
-      code: 200
-      message: OK
+      code: 400
+      message: Bad Request
     headers:
-      Allow:
-      - OPTIONS
-      Content-Encoding:
-      - gzip
+      Date:
+      - Thu, 12 Sep 2019 17:47:41 GMT
       Content-Type:
       - application/json
-      Date:
-      - Fri, 31 Mar 2017 00:35:44 GMT
-      P3p:
-      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
-      Server:
-      - nginx/1.8.0
-      Vary:
-      - Host, Cookie, Accept-Encoding
-      Content-Length:
-      - '737'
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
+      Server:
+      - nginx/1.12.1
+      Vary:
+      - Accept-Language, Host, Cookie
+      P3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      Content-Language:
+      - en-us
+      Allow:
+      - OPTIONS
+      X-Envoy-Upstream-Service-Time:
+      - '9'
     body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        H4sIAGCk3VgC/92WW2/TMBTHv0rUZ6h8v+Rt0vYwaSBESyVAqDq+bYY0iRK34qJ9d5ywio5Bx9YiEGpfbB+fy+/Y+fvLxELXRd9NymKy7tt+8qSYpA7sh1hfLuv1ynxb0gRxrhEWTGNJMZEcI6UHY3Cu832/DF2zypZfJjamT8OWC+iLhb+E0WWfIPlh9vliGH6O7TBQGiM8jG2zrlM3bns1m1zvuE3NLaeztkn9p2oDdYRbfhcnO34J4fwXfn2C0SKX8hTJp4TOESrH/5vRn+820frKb3w1Bk7NB19v4SzbLjbdkEo2rWE1Rn5xM1c8g1iNMVY5iIMxUL2uql2iQ77rfvTcmPfepqXtfC7B/ZAUQSXlJRFTTPSY2I31unUPsI6jofAewGjJlAAmAoDGOGhtmPZGKWe2HMe8JqdnF+eLs5dnp9+nly4XFKtx+XWz7or+KrYrX6fiKvfYeF8Xzldx4zvvCkhFuvJ5ok+xhhSbuljlzab5ON31eNO2nSIwLRHd9qFq7Lj3iM2/3u3DVexTM6693dsJMsespKLkaKoZvctW5tvAFXDGCWZSBeDeaSNpEJyFIPBttvOXJ89n5/MHkQVrfZvT2ksPzzEv6X56B9zHjO4gSshKH4i1jkjPOJNGBq6lE0QAMEaOSGl7/F7NXsyKfC0vY10EsLHKEO4jqEss/lWCVFESsOGEMcWstkCotBYFFohh+XcQwUEBNgexGz5A+AjsCPoD7LSnmZkAjQJhxkmDuRUkEJBCcLD0IHbOt9ANB+8Acvxvkcvip4bwDE8Vx3fJWWS8pI5SqhxDQavgjdCgQJvMj7Gjn7pd1fgtgLkCUpJ7ZANql7/29R7JoJg/jt9w8jI/PiVY/kx5icGaALNEME+z5mIWNOPOGUWtOyq/tulT0YSQXy/3EctSoY4ktPRR1Pa/V7QNQVPBUBYNRhTXVEuCNYCXWIgf7+v/+155d/0VI/DOQJ4LAAA=
+      encoding: UTF-8
+      string: '{"detail": "9102969010383081813033 is not a valid test tracking number.
+        Please use the sample tracking numbers provided in the Shippo API docs: https://goshippo.com/docs/tracking"}'
     http_version: 
-  recorded_at: Fri, 31 Mar 2017 00:35:45 GMT
+  recorded_at: Thu, 12 Sep 2019 17:47:41 GMT
+- request:
+    method: get
+    uri: https://api.goshippo.com/tracks/shippo/9205590164917312751089/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - rest-client/2.1.0 (darwin18.7.0 x86_64) ruby/2.6.4p104
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<API_TOKEN>"
+      Shippo-Api-Version:
+      - '2017-03-29'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.goshippo.com
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Thu, 12 Sep 2019 17:52:14 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx/1.12.1
+      Vary:
+      - Accept-Language, Host, Cookie
+      P3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      Content-Language:
+      - en-us
+      Allow:
+      - OPTIONS
+      X-Envoy-Upstream-Service-Time:
+      - '12'
+    body:
+      encoding: UTF-8
+      string: '{"detail": "9205590164917312751089 is not a valid test tracking number.
+        Please use the sample tracking numbers provided in the Shippo API docs: https://goshippo.com/docs/tracking"}'
+    http_version: 
+  recorded_at: Thu, 12 Sep 2019 17:52:14 GMT
+- request:
+    method: get
+    uri: https://api.goshippo.com/tracks/usps/9205590164917312751089/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - rest-client/2.1.0 (darwin18.7.0 x86_64) ruby/2.6.4p104
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<API_TOKEN>"
+      Shippo-Api-Version:
+      - '2017-03-29'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.goshippo.com
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Thu, 12 Sep 2019 17:53:08 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx/1.12.1
+      Vary:
+      - Accept-Language, Host, Cookie
+      P3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      Content-Language:
+      - en-us
+      Allow:
+      - OPTIONS
+      X-Envoy-Upstream-Service-Time:
+      - '13'
+    body:
+      encoding: UTF-8
+      string: '{"detail": "usps is not a valid test tracking carrier. Please use ''shippo''"}'
+    http_version: 
+  recorded_at: Thu, 12 Sep 2019 17:53:08 GMT
 recorded_with: VCR 3.0.3

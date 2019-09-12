@@ -9,8 +9,8 @@ http_interactions:
     headers:
       Accept:
       - application/json
-      Accept-Encoding:
-      - gzip, deflate
+      User-Agent:
+      - rest-client/2.1.0 (darwin18.7.0 x86_64) ruby/2.6.4p104
       Content-Type:
       - application/json
       Authorization:
@@ -19,35 +19,38 @@ http_interactions:
       - '2017-03-29'
       Content-Length:
       - '61'
-      User-Agent:
-      - Ruby
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.goshippo.com
   response:
     status:
-      code: 201
-      message: CREATED
+      code: 400
+      message: Bad Request
     headers:
-      Allow:
-      - OPTIONS
-      Content-Encoding:
-      - gzip
+      Date:
+      - Thu, 12 Sep 2019 17:53:08 GMT
       Content-Type:
       - application/json
-      Date:
-      - Fri, 31 Mar 2017 00:35:45 GMT
-      P3p:
-      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
-      Server:
-      - nginx/1.8.0
-      Vary:
-      - Host, Cookie, Accept-Encoding
-      Content-Length:
-      - '741'
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
+      Server:
+      - nginx/1.12.1
+      Vary:
+      - Accept-Language, Host, Cookie
+      P3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      Content-Language:
+      - en-us
+      Allow:
+      - OPTIONS
+      X-Envoy-Upstream-Service-Time:
+      - '14'
     body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        H4sIAGGk3VgC/+WW3W/TMBDA/5Woz1D5bMex8zaJPSABQmtXCRCq/HHeDGkSJW7FmPa/44RVdHx0bC0CCSkPsX2+O//ufOfridVdF7CblNlk3bf95Ek2iZ22H0N9sazXK/N1SVGS54qA4AoKBrTIgUg1CGvnOuz7pe+aVZK8ntgQr4YtL3SfLfBCjyr7qCMOs68Ww/BzaIeBVEBgGNtmXcdu3HY+m9zsqI3NHaWzton9VbXRddB39C5OdvRSmue/0ItRjxLpKE9J8ZSyOSHl+L0d9WG3CRYr3GA1Go7NR6y3cJZtF5pucCWJ1no1Wn59O5e91KEabaySEadHQ/W6qnaJDv6u+1FzYz6gjUvbYTqC+84pSkqWl1RMgarRsVvpdeseIB1GQXDCSE4kMSl8XBspQUmqUYJA7znbchz9mjw7ffF8cXp2+uzb9NKlA4VqXH7TrLusvwztCuuYXaYYG8Q6c1iFDXboMh2zeIlpoo+h1jE0dbZKm03zabqr8TZsO4cAVhK2jUPV2HHvEYN/sxuHy9DHZlx7tzcSdA68ZKLMyVRx9iNbjbn0FoVHC9wqYwhTCAXRYEUuHbnLdn528mr2fP4gstpabJNbe+nBHPKS7ad3wH1M6A6jxI1HTvzAJ/16pQlaY5mXQjNhxPEobdPvfPZ6lqVreRHqzGsbqgThPoKqBPGvEvRUWEIABdXpDiuvwUhaCOcw3WOi2UEEhw6wOYjdUIDgCOwo+QPsmPCp3BlplSDcGyYFk95IJW2hTcrDg9g5bHU3JN4B5PK/RS41PzmY5zCVOfyEnDegUnUToIBD7hUvDM2REuEQpDp+1u12jd8CmE5AS3pP29C1S9W+3tMyGOSP4zdkXuKXTykUP/JD9AJcSkrwlHtHTHo1FdRx5pSxSN0x+bVNH7PG+/R6uY9YahXySI2WPYra/veKKpxKPZVbxw3XzEhIZU6AKLzz0gj/v7xX3t98Aes3dYWeCwAA
+      encoding: UTF-8
+      string: '{"detail": "usps is not a valid test tracking carrier. Please use ''shippo''"}'
     http_version: 
-  recorded_at: Fri, 31 Mar 2017 00:35:46 GMT
+  recorded_at: Thu, 12 Sep 2019 17:53:08 GMT
 recorded_with: VCR 3.0.3
