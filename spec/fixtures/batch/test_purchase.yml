@@ -3443,81 +3443,6 @@ http_interactions:
     http_version: 
   recorded_at: Thu, 12 Sep 2019 17:45:38 GMT
 - request:
-    method: post
-    uri: https://api.goshippo.com/batches/
-    body:
-      encoding: UTF-8
-      string: '{"default_carrier_account":"903074429eab4954b72df8a70defdfe3","default_servicelevel_token":"usps_priority","label_filetype":"ZPLII","metadata":"BATCH
-        #170","batch_shipments":[{"shipment":{"address_from":{"name":"Simon Says","company":"","street1":"965
-        Mission St","street2":"Ste 201","city":"San Francisco","state":"CA","zip":"94103","country":"US","phone":"4151234567","email":"hippo@goshippo.com"},"address_to":{"name":"Who
-        Says","company":"","street1":"400 Simon St","street_no":"","street2":"Apt
-        123","city":"San Francisco","state":"CA","zip":"94102","country":"US","phone":"4151234567","email":"hippo@goshippo.com","metadata":""},"parcels":[{"length":"5","width":"5","height":"5","distance_unit":"in","weight":"2","mass_unit":"oz","template":"","metadata":"Customer
-        ID 123456"}],"extra":{"reference_1":"REF1 - Simon","reference_2":"REF2 - Says"},"metadata":""}},{"shipment":{"address_from":{"name":"Simon
-        Says","company":"","street1":"965 Mission St","street2":"Ste 201","city":"San
-        Francisco","state":"CA","zip":"94103","country":"US","phone":"4151234567","email":"shippo@goshippo.com"},"address_to":{"name":"Who
-        Says","company":"","street1":"400 Simon St","street_no":"","street2":"Apt
-        123","city":"San Francisco","state":"CA","zip":"94102","country":"US","phone":"4151234567","email":"hippo@goshippo.com","metadata":""},"parcels":[{"length":"5","width":"5","height":"5","distance_unit":"in","weight":"2","mass_unit":"oz","template":"","metadata":"Customer
-        ID 123456"}],"extra":{"reference_1":"REF1 - Simon","reference_2":"REF2 - Says"},"metadata":""}},{"shipment":{"address_from":{"name":"Simon
-        Says","company":"","street1":"965 Mission St","street2":"Ste 201","city":"San
-        Francisco","state":"CA","zip":"94103","country":"US","phone":"4151234567","email":"hippo@goshippo.com"},"address_to":{"name":"Who
-        Says","company":"","street1":"400 Simon St","street_no":"","street2":"Apt
-        123","city":"San Francisco","state":"CA","zip":"94102","country":"US","phone":"4151234567","email":"hippo@goshippo.com","metadata":""},"parcels":[{"length":"5","width":"5","height":"5","distance_unit":"in","weight":"2","mass_unit":"oz","template":"","metadata":"Customer
-        ID 123456"}],"extra":{"reference_1":"REF1 - Simon","reference_2":"REF2 - Says"},"metadata":""}}]}'
-    headers:
-      Accept:
-      - application/json
-      User-Agent:
-      - rest-client/2.1.0 (darwin18.7.0 x86_64) ruby/2.6.4p104
-      Content-Type:
-      - application/json
-      Authorization:
-      - "<API_TOKEN>"
-      Shippo-Api-Version:
-      - '2017-03-29'
-      Content-Length:
-      - '2253'
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Host:
-      - api.goshippo.com
-  response:
-    status:
-      code: 201
-      message: Created
-    headers:
-      Date:
-      - Thu, 12 Sep 2019 17:46:48 GMT
-      Content-Type:
-      - application/json
-      Content-Length:
-      - '357'
-      Connection:
-      - keep-alive
-      Server:
-      - nginx/1.12.1
-      Content-Language:
-      - en-us
-      Vary:
-      - Accept-Language, Host, Cookie, Accept-Encoding
-      Allow:
-      - OPTIONS
-      P3p:
-      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
-      X-Envoy-Upstream-Service-Time:
-      - '49'
-    body:
-      encoding: ASCII-8BIT
-      string: '{"object_id": "5bc2ae5891e8419a93979bbde750138b", "object_owner": "test@goshippotest.com",
-        "status": "VALIDATING", "object_created": "2019-09-12T17:46:48.419Z", "object_updated":
-        "2019-09-12T17:46:48.419Z", "metadata": "BATCH #170", "default_carrier_account":
-        "903074429eab4954b72df8a70defdfe3", "default_servicelevel_token": "usps_priority",
-        "label_filetype": "ZPLII", "batch_shipments": {"count": 0, "next": null, "previous":
-        null, "results": []}, "object_results": {"purchase_succeeded": 0, "purchase_failed":
-        0, "creation_failed": 0, "creation_succeeded": 0}, "label_url": [], "test":
-        true}'
-    http_version: 
-  recorded_at: Thu, 12 Sep 2019 17:46:48 GMT
-- request:
     method: get
     uri: https://api.goshippo.com/batches/5bc2ae5891e8419a93979bbde750138b
     body:
@@ -4240,4 +4165,802 @@ http_interactions:
       string: '{"detail": "Only batches in VALID state can be purchased."}'
     http_version: 
   recorded_at: Thu, 12 Sep 2019 17:47:05 GMT
+- request:
+    method: post
+    uri: https://api.goshippo.com/batches/
+    body:
+      encoding: UTF-8
+      string: '{"default_carrier_account":"903074429eab4954b72df8a70defdfe3","default_servicelevel_token":"usps_priority","label_filetype":"ZPLII","metadata":"BATCH
+        #170","batch_shipments":[{"shipment":{"address_from":{"name":"Simon Says","company":"","street1":"965
+        Mission St","street2":"Ste 201","city":"San Francisco","state":"CA","zip":"94103","country":"US","phone":"4151234567","email":"hippo@goshippo.com"},"address_to":{"name":"Who
+        Says","company":"","street1":"400 Simon St","street_no":"","street2":"Apt
+        123","city":"San Francisco","state":"CA","zip":"94102","country":"US","phone":"4151234567","email":"hippo@goshippo.com","metadata":""},"parcels":[{"length":"5","width":"5","height":"5","distance_unit":"in","weight":"2","mass_unit":"oz","template":"","metadata":"Customer
+        ID 123456"}],"extra":{"reference_1":"REF1 - Simon","reference_2":"REF2 - Says"},"metadata":""}},{"shipment":{"address_from":{"name":"Simon
+        Says","company":"","street1":"965 Mission St","street2":"Ste 201","city":"San
+        Francisco","state":"CA","zip":"94103","country":"US","phone":"4151234567","email":"shippo@goshippo.com"},"address_to":{"name":"Who
+        Says","company":"","street1":"400 Simon St","street_no":"","street2":"Apt
+        123","city":"San Francisco","state":"CA","zip":"94102","country":"US","phone":"4151234567","email":"hippo@goshippo.com","metadata":""},"parcels":[{"length":"5","width":"5","height":"5","distance_unit":"in","weight":"2","mass_unit":"oz","template":"","metadata":"Customer
+        ID 123456"}],"extra":{"reference_1":"REF1 - Simon","reference_2":"REF2 - Says"},"metadata":""}},{"shipment":{"address_from":{"name":"Simon
+        Says","company":"","street1":"965 Mission St","street2":"Ste 201","city":"San
+        Francisco","state":"CA","zip":"94103","country":"US","phone":"4151234567","email":"hippo@goshippo.com"},"address_to":{"name":"Who
+        Says","company":"","street1":"400 Simon St","street_no":"","street2":"Apt
+        123","city":"San Francisco","state":"CA","zip":"94102","country":"US","phone":"4151234567","email":"hippo@goshippo.com","metadata":""},"parcels":[{"length":"5","width":"5","height":"5","distance_unit":"in","weight":"2","mass_unit":"oz","template":"","metadata":"Customer
+        ID 123456"}],"extra":{"reference_1":"REF1 - Simon","reference_2":"REF2 - Says"},"metadata":""}}]}'
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - rest-client/2.1.0 (darwin18.7.0 x86_64) ruby/2.6.4p104
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<API_TOKEN>"
+      Shippo-Api-Version:
+      - '2017-03-29'
+      Content-Length:
+      - '2253'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.goshippo.com
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Fri, 13 Sep 2019 21:45:42 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '359'
+      Connection:
+      - keep-alive
+      Server:
+      - nginx/1.12.1
+      Content-Language:
+      - en-us
+      Vary:
+      - Accept-Language, Host, Cookie, Accept-Encoding
+      Allow:
+      - OPTIONS
+      P3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      X-Envoy-Upstream-Service-Time:
+      - '56'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"object_id": "e7601f3197004fc6a48d17aa38286bb0", "object_owner": "test@goshippotest.com",
+        "status": "VALIDATING", "object_created": "2019-09-13T21:45:42.075Z", "object_updated":
+        "2019-09-13T21:45:42.075Z", "metadata": "BATCH #170", "default_carrier_account":
+        "903074429eab4954b72df8a70defdfe3", "default_servicelevel_token": "usps_priority",
+        "label_filetype": "ZPLII", "batch_shipments": {"count": 0, "next": null, "previous":
+        null, "results": []}, "object_results": {"purchase_succeeded": 0, "purchase_failed":
+        0, "creation_failed": 0, "creation_succeeded": 0}, "label_url": [], "test":
+        true}'
+    http_version: 
+  recorded_at: Fri, 13 Sep 2019 21:45:42 GMT
+- request:
+    method: get
+    uri: https://api.goshippo.com/batches/e7601f3197004fc6a48d17aa38286bb0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - rest-client/2.1.0 (darwin18.7.0 x86_64) ruby/2.6.4p104
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<API_TOKEN>"
+      Shippo-Api-Version:
+      - '2017-03-29'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.goshippo.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 13 Sep 2019 21:45:44 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '363'
+      Connection:
+      - keep-alive
+      Server:
+      - nginx/1.12.1
+      Content-Language:
+      - en-us
+      Vary:
+      - Accept-Language, Host, Cookie, Accept-Encoding
+      Allow:
+      - OPTIONS
+      P3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      X-Envoy-Upstream-Service-Time:
+      - '33'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"object_id": "e7601f3197004fc6a48d17aa38286bb0", "object_owner": "test@goshippotest.com",
+        "status": "VALIDATING", "object_created": "2019-09-13T21:45:42.075Z", "object_updated":
+        "2019-09-13T21:45:44.310Z", "metadata": "BATCH #170", "default_carrier_account":
+        "903074429eab4954b72df8a70defdfe3", "default_servicelevel_token": "usps_priority",
+        "label_filetype": "ZPLII", "batch_shipments": {"count": 0, "next": null, "previous":
+        null, "results": []}, "object_results": {"purchase_succeeded": 0, "purchase_failed":
+        0, "creation_failed": 0, "creation_succeeded": 0}, "label_url": [], "test":
+        true}'
+    http_version: 
+  recorded_at: Fri, 13 Sep 2019 21:45:44 GMT
+- request:
+    method: get
+    uri: https://api.goshippo.com/batches/e7601f3197004fc6a48d17aa38286bb0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - rest-client/2.1.0 (darwin18.7.0 x86_64) ruby/2.6.4p104
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<API_TOKEN>"
+      Shippo-Api-Version:
+      - '2017-03-29'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.goshippo.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 13 Sep 2019 21:45:46 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '588'
+      Connection:
+      - keep-alive
+      Server:
+      - nginx/1.12.1
+      Content-Language:
+      - en-us
+      Vary:
+      - Accept-Language, Host, Cookie, Accept-Encoding
+      Allow:
+      - OPTIONS
+      P3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      X-Envoy-Upstream-Service-Time:
+      - '102'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"object_id": "e7601f3197004fc6a48d17aa38286bb0", "object_owner": "test@goshippotest.com",
+        "status": "INVALID", "object_created": "2019-09-13T21:45:42.075Z", "object_updated":
+        "2019-09-13T21:45:44.533Z", "metadata": "BATCH #170", "default_carrier_account":
+        "903074429eab4954b72df8a70defdfe3", "default_servicelevel_token": "usps_priority",
+        "label_filetype": "ZPLII", "batch_shipments": {"count": 3, "next": null, "previous":
+        null, "results": [{"metadata": "", "carrier_account": null, "servicelevel_token":
+        null, "shipment": "9b25d9a2d8714fddb8f59cec5516e508", "transaction": null,
+        "object_id": "b33b7ca1f52845f18207c0412396e6d0", "status": "INVALID", "messages":
+        ["Carrier account with the provided object_id does not exist"]}, {"metadata":
+        "", "carrier_account": null, "servicelevel_token": null, "shipment": "50b0aa3f05d344fa96d8b768a1aaf72e",
+        "transaction": null, "object_id": "1cee106c190942ce901f04b21a5b42ee", "status":
+        "INVALID", "messages": ["Carrier account with the provided object_id does
+        not exist"]}, {"metadata": "", "carrier_account": null, "servicelevel_token":
+        null, "shipment": "42b95548803c4e9bb3d385ee2ad68489", "transaction": null,
+        "object_id": "47419379ae1b449e992275b50b1cd219", "status": "INVALID", "messages":
+        ["Carrier account with the provided object_id does not exist"]}]}, "object_results":
+        {"purchase_succeeded": 0, "purchase_failed": 0, "creation_failed": 3, "creation_succeeded":
+        0}, "label_url": [], "test": true}'
+    http_version: 
+  recorded_at: Fri, 13 Sep 2019 21:45:46 GMT
+- request:
+    method: get
+    uri: https://api.goshippo.com/batches/e7601f3197004fc6a48d17aa38286bb0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - rest-client/2.1.0 (darwin18.7.0 x86_64) ruby/2.6.4p104
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<API_TOKEN>"
+      Shippo-Api-Version:
+      - '2017-03-29'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.goshippo.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 13 Sep 2019 21:45:47 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '588'
+      Connection:
+      - keep-alive
+      Server:
+      - nginx/1.12.1
+      Content-Language:
+      - en-us
+      Vary:
+      - Accept-Language, Host, Cookie, Accept-Encoding
+      Allow:
+      - OPTIONS
+      P3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      X-Envoy-Upstream-Service-Time:
+      - '150'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"object_id": "e7601f3197004fc6a48d17aa38286bb0", "object_owner": "test@goshippotest.com",
+        "status": "INVALID", "object_created": "2019-09-13T21:45:42.075Z", "object_updated":
+        "2019-09-13T21:45:44.533Z", "metadata": "BATCH #170", "default_carrier_account":
+        "903074429eab4954b72df8a70defdfe3", "default_servicelevel_token": "usps_priority",
+        "label_filetype": "ZPLII", "batch_shipments": {"count": 3, "next": null, "previous":
+        null, "results": [{"metadata": "", "carrier_account": null, "servicelevel_token":
+        null, "shipment": "9b25d9a2d8714fddb8f59cec5516e508", "transaction": null,
+        "object_id": "b33b7ca1f52845f18207c0412396e6d0", "status": "INVALID", "messages":
+        ["Carrier account with the provided object_id does not exist"]}, {"metadata":
+        "", "carrier_account": null, "servicelevel_token": null, "shipment": "50b0aa3f05d344fa96d8b768a1aaf72e",
+        "transaction": null, "object_id": "1cee106c190942ce901f04b21a5b42ee", "status":
+        "INVALID", "messages": ["Carrier account with the provided object_id does
+        not exist"]}, {"metadata": "", "carrier_account": null, "servicelevel_token":
+        null, "shipment": "42b95548803c4e9bb3d385ee2ad68489", "transaction": null,
+        "object_id": "47419379ae1b449e992275b50b1cd219", "status": "INVALID", "messages":
+        ["Carrier account with the provided object_id does not exist"]}]}, "object_results":
+        {"purchase_succeeded": 0, "purchase_failed": 0, "creation_failed": 3, "creation_succeeded":
+        0}, "label_url": [], "test": true}'
+    http_version: 
+  recorded_at: Fri, 13 Sep 2019 21:45:47 GMT
+- request:
+    method: get
+    uri: https://api.goshippo.com/batches/e7601f3197004fc6a48d17aa38286bb0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - rest-client/2.1.0 (darwin18.7.0 x86_64) ruby/2.6.4p104
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<API_TOKEN>"
+      Shippo-Api-Version:
+      - '2017-03-29'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.goshippo.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 13 Sep 2019 21:45:49 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '588'
+      Connection:
+      - keep-alive
+      Server:
+      - nginx/1.12.1
+      Content-Language:
+      - en-us
+      Vary:
+      - Accept-Language, Host, Cookie, Accept-Encoding
+      Allow:
+      - OPTIONS
+      P3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      X-Envoy-Upstream-Service-Time:
+      - '89'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"object_id": "e7601f3197004fc6a48d17aa38286bb0", "object_owner": "test@goshippotest.com",
+        "status": "INVALID", "object_created": "2019-09-13T21:45:42.075Z", "object_updated":
+        "2019-09-13T21:45:44.533Z", "metadata": "BATCH #170", "default_carrier_account":
+        "903074429eab4954b72df8a70defdfe3", "default_servicelevel_token": "usps_priority",
+        "label_filetype": "ZPLII", "batch_shipments": {"count": 3, "next": null, "previous":
+        null, "results": [{"metadata": "", "carrier_account": null, "servicelevel_token":
+        null, "shipment": "9b25d9a2d8714fddb8f59cec5516e508", "transaction": null,
+        "object_id": "b33b7ca1f52845f18207c0412396e6d0", "status": "INVALID", "messages":
+        ["Carrier account with the provided object_id does not exist"]}, {"metadata":
+        "", "carrier_account": null, "servicelevel_token": null, "shipment": "50b0aa3f05d344fa96d8b768a1aaf72e",
+        "transaction": null, "object_id": "1cee106c190942ce901f04b21a5b42ee", "status":
+        "INVALID", "messages": ["Carrier account with the provided object_id does
+        not exist"]}, {"metadata": "", "carrier_account": null, "servicelevel_token":
+        null, "shipment": "42b95548803c4e9bb3d385ee2ad68489", "transaction": null,
+        "object_id": "47419379ae1b449e992275b50b1cd219", "status": "INVALID", "messages":
+        ["Carrier account with the provided object_id does not exist"]}]}, "object_results":
+        {"purchase_succeeded": 0, "purchase_failed": 0, "creation_failed": 3, "creation_succeeded":
+        0}, "label_url": [], "test": true}'
+    http_version: 
+  recorded_at: Fri, 13 Sep 2019 21:45:49 GMT
+- request:
+    method: get
+    uri: https://api.goshippo.com/batches/e7601f3197004fc6a48d17aa38286bb0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - rest-client/2.1.0 (darwin18.7.0 x86_64) ruby/2.6.4p104
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<API_TOKEN>"
+      Shippo-Api-Version:
+      - '2017-03-29'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.goshippo.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 13 Sep 2019 21:45:50 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '588'
+      Connection:
+      - keep-alive
+      Server:
+      - nginx/1.12.1
+      Content-Language:
+      - en-us
+      Vary:
+      - Accept-Language, Host, Cookie, Accept-Encoding
+      Allow:
+      - OPTIONS
+      P3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      X-Envoy-Upstream-Service-Time:
+      - '81'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"object_id": "e7601f3197004fc6a48d17aa38286bb0", "object_owner": "test@goshippotest.com",
+        "status": "INVALID", "object_created": "2019-09-13T21:45:42.075Z", "object_updated":
+        "2019-09-13T21:45:44.533Z", "metadata": "BATCH #170", "default_carrier_account":
+        "903074429eab4954b72df8a70defdfe3", "default_servicelevel_token": "usps_priority",
+        "label_filetype": "ZPLII", "batch_shipments": {"count": 3, "next": null, "previous":
+        null, "results": [{"metadata": "", "carrier_account": null, "servicelevel_token":
+        null, "shipment": "9b25d9a2d8714fddb8f59cec5516e508", "transaction": null,
+        "object_id": "b33b7ca1f52845f18207c0412396e6d0", "status": "INVALID", "messages":
+        ["Carrier account with the provided object_id does not exist"]}, {"metadata":
+        "", "carrier_account": null, "servicelevel_token": null, "shipment": "50b0aa3f05d344fa96d8b768a1aaf72e",
+        "transaction": null, "object_id": "1cee106c190942ce901f04b21a5b42ee", "status":
+        "INVALID", "messages": ["Carrier account with the provided object_id does
+        not exist"]}, {"metadata": "", "carrier_account": null, "servicelevel_token":
+        null, "shipment": "42b95548803c4e9bb3d385ee2ad68489", "transaction": null,
+        "object_id": "47419379ae1b449e992275b50b1cd219", "status": "INVALID", "messages":
+        ["Carrier account with the provided object_id does not exist"]}]}, "object_results":
+        {"purchase_succeeded": 0, "purchase_failed": 0, "creation_failed": 3, "creation_succeeded":
+        0}, "label_url": [], "test": true}'
+    http_version: 
+  recorded_at: Fri, 13 Sep 2019 21:45:50 GMT
+- request:
+    method: get
+    uri: https://api.goshippo.com/batches/e7601f3197004fc6a48d17aa38286bb0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - rest-client/2.1.0 (darwin18.7.0 x86_64) ruby/2.6.4p104
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<API_TOKEN>"
+      Shippo-Api-Version:
+      - '2017-03-29'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.goshippo.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 13 Sep 2019 21:45:52 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '588'
+      Connection:
+      - keep-alive
+      Server:
+      - nginx/1.12.1
+      Content-Language:
+      - en-us
+      Vary:
+      - Accept-Language, Host, Cookie, Accept-Encoding
+      Allow:
+      - OPTIONS
+      P3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      X-Envoy-Upstream-Service-Time:
+      - '79'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"object_id": "e7601f3197004fc6a48d17aa38286bb0", "object_owner": "test@goshippotest.com",
+        "status": "INVALID", "object_created": "2019-09-13T21:45:42.075Z", "object_updated":
+        "2019-09-13T21:45:44.533Z", "metadata": "BATCH #170", "default_carrier_account":
+        "903074429eab4954b72df8a70defdfe3", "default_servicelevel_token": "usps_priority",
+        "label_filetype": "ZPLII", "batch_shipments": {"count": 3, "next": null, "previous":
+        null, "results": [{"metadata": "", "carrier_account": null, "servicelevel_token":
+        null, "shipment": "9b25d9a2d8714fddb8f59cec5516e508", "transaction": null,
+        "object_id": "b33b7ca1f52845f18207c0412396e6d0", "status": "INVALID", "messages":
+        ["Carrier account with the provided object_id does not exist"]}, {"metadata":
+        "", "carrier_account": null, "servicelevel_token": null, "shipment": "50b0aa3f05d344fa96d8b768a1aaf72e",
+        "transaction": null, "object_id": "1cee106c190942ce901f04b21a5b42ee", "status":
+        "INVALID", "messages": ["Carrier account with the provided object_id does
+        not exist"]}, {"metadata": "", "carrier_account": null, "servicelevel_token":
+        null, "shipment": "42b95548803c4e9bb3d385ee2ad68489", "transaction": null,
+        "object_id": "47419379ae1b449e992275b50b1cd219", "status": "INVALID", "messages":
+        ["Carrier account with the provided object_id does not exist"]}]}, "object_results":
+        {"purchase_succeeded": 0, "purchase_failed": 0, "creation_failed": 3, "creation_succeeded":
+        0}, "label_url": [], "test": true}'
+    http_version: 
+  recorded_at: Fri, 13 Sep 2019 21:45:52 GMT
+- request:
+    method: get
+    uri: https://api.goshippo.com/batches/e7601f3197004fc6a48d17aa38286bb0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - rest-client/2.1.0 (darwin18.7.0 x86_64) ruby/2.6.4p104
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<API_TOKEN>"
+      Shippo-Api-Version:
+      - '2017-03-29'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.goshippo.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 13 Sep 2019 21:45:53 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '588'
+      Connection:
+      - keep-alive
+      Server:
+      - nginx/1.12.1
+      Content-Language:
+      - en-us
+      Vary:
+      - Accept-Language, Host, Cookie, Accept-Encoding
+      Allow:
+      - OPTIONS
+      P3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      X-Envoy-Upstream-Service-Time:
+      - '75'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"object_id": "e7601f3197004fc6a48d17aa38286bb0", "object_owner": "test@goshippotest.com",
+        "status": "INVALID", "object_created": "2019-09-13T21:45:42.075Z", "object_updated":
+        "2019-09-13T21:45:44.533Z", "metadata": "BATCH #170", "default_carrier_account":
+        "903074429eab4954b72df8a70defdfe3", "default_servicelevel_token": "usps_priority",
+        "label_filetype": "ZPLII", "batch_shipments": {"count": 3, "next": null, "previous":
+        null, "results": [{"metadata": "", "carrier_account": null, "servicelevel_token":
+        null, "shipment": "9b25d9a2d8714fddb8f59cec5516e508", "transaction": null,
+        "object_id": "b33b7ca1f52845f18207c0412396e6d0", "status": "INVALID", "messages":
+        ["Carrier account with the provided object_id does not exist"]}, {"metadata":
+        "", "carrier_account": null, "servicelevel_token": null, "shipment": "50b0aa3f05d344fa96d8b768a1aaf72e",
+        "transaction": null, "object_id": "1cee106c190942ce901f04b21a5b42ee", "status":
+        "INVALID", "messages": ["Carrier account with the provided object_id does
+        not exist"]}, {"metadata": "", "carrier_account": null, "servicelevel_token":
+        null, "shipment": "42b95548803c4e9bb3d385ee2ad68489", "transaction": null,
+        "object_id": "47419379ae1b449e992275b50b1cd219", "status": "INVALID", "messages":
+        ["Carrier account with the provided object_id does not exist"]}]}, "object_results":
+        {"purchase_succeeded": 0, "purchase_failed": 0, "creation_failed": 3, "creation_succeeded":
+        0}, "label_url": [], "test": true}'
+    http_version: 
+  recorded_at: Fri, 13 Sep 2019 21:45:53 GMT
+- request:
+    method: get
+    uri: https://api.goshippo.com/batches/e7601f3197004fc6a48d17aa38286bb0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - rest-client/2.1.0 (darwin18.7.0 x86_64) ruby/2.6.4p104
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<API_TOKEN>"
+      Shippo-Api-Version:
+      - '2017-03-29'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.goshippo.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 13 Sep 2019 21:45:57 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '588'
+      Connection:
+      - keep-alive
+      Server:
+      - nginx/1.12.1
+      Content-Language:
+      - en-us
+      Vary:
+      - Accept-Language, Host, Cookie, Accept-Encoding
+      Allow:
+      - OPTIONS
+      P3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      X-Envoy-Upstream-Service-Time:
+      - '79'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"object_id": "e7601f3197004fc6a48d17aa38286bb0", "object_owner": "test@goshippotest.com",
+        "status": "INVALID", "object_created": "2019-09-13T21:45:42.075Z", "object_updated":
+        "2019-09-13T21:45:44.533Z", "metadata": "BATCH #170", "default_carrier_account":
+        "903074429eab4954b72df8a70defdfe3", "default_servicelevel_token": "usps_priority",
+        "label_filetype": "ZPLII", "batch_shipments": {"count": 3, "next": null, "previous":
+        null, "results": [{"metadata": "", "carrier_account": null, "servicelevel_token":
+        null, "shipment": "9b25d9a2d8714fddb8f59cec5516e508", "transaction": null,
+        "object_id": "b33b7ca1f52845f18207c0412396e6d0", "status": "INVALID", "messages":
+        ["Carrier account with the provided object_id does not exist"]}, {"metadata":
+        "", "carrier_account": null, "servicelevel_token": null, "shipment": "50b0aa3f05d344fa96d8b768a1aaf72e",
+        "transaction": null, "object_id": "1cee106c190942ce901f04b21a5b42ee", "status":
+        "INVALID", "messages": ["Carrier account with the provided object_id does
+        not exist"]}, {"metadata": "", "carrier_account": null, "servicelevel_token":
+        null, "shipment": "42b95548803c4e9bb3d385ee2ad68489", "transaction": null,
+        "object_id": "47419379ae1b449e992275b50b1cd219", "status": "INVALID", "messages":
+        ["Carrier account with the provided object_id does not exist"]}]}, "object_results":
+        {"purchase_succeeded": 0, "purchase_failed": 0, "creation_failed": 3, "creation_succeeded":
+        0}, "label_url": [], "test": true}'
+    http_version: 
+  recorded_at: Fri, 13 Sep 2019 21:45:57 GMT
+- request:
+    method: get
+    uri: https://api.goshippo.com/batches/e7601f3197004fc6a48d17aa38286bb0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - rest-client/2.1.0 (darwin18.7.0 x86_64) ruby/2.6.4p104
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<API_TOKEN>"
+      Shippo-Api-Version:
+      - '2017-03-29'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.goshippo.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 13 Sep 2019 21:45:58 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '588'
+      Connection:
+      - keep-alive
+      Server:
+      - nginx/1.12.1
+      Content-Language:
+      - en-us
+      Vary:
+      - Accept-Language, Host, Cookie, Accept-Encoding
+      Allow:
+      - OPTIONS
+      P3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      X-Envoy-Upstream-Service-Time:
+      - '72'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"object_id": "e7601f3197004fc6a48d17aa38286bb0", "object_owner": "test@goshippotest.com",
+        "status": "INVALID", "object_created": "2019-09-13T21:45:42.075Z", "object_updated":
+        "2019-09-13T21:45:44.533Z", "metadata": "BATCH #170", "default_carrier_account":
+        "903074429eab4954b72df8a70defdfe3", "default_servicelevel_token": "usps_priority",
+        "label_filetype": "ZPLII", "batch_shipments": {"count": 3, "next": null, "previous":
+        null, "results": [{"metadata": "", "carrier_account": null, "servicelevel_token":
+        null, "shipment": "9b25d9a2d8714fddb8f59cec5516e508", "transaction": null,
+        "object_id": "b33b7ca1f52845f18207c0412396e6d0", "status": "INVALID", "messages":
+        ["Carrier account with the provided object_id does not exist"]}, {"metadata":
+        "", "carrier_account": null, "servicelevel_token": null, "shipment": "50b0aa3f05d344fa96d8b768a1aaf72e",
+        "transaction": null, "object_id": "1cee106c190942ce901f04b21a5b42ee", "status":
+        "INVALID", "messages": ["Carrier account with the provided object_id does
+        not exist"]}, {"metadata": "", "carrier_account": null, "servicelevel_token":
+        null, "shipment": "42b95548803c4e9bb3d385ee2ad68489", "transaction": null,
+        "object_id": "47419379ae1b449e992275b50b1cd219", "status": "INVALID", "messages":
+        ["Carrier account with the provided object_id does not exist"]}]}, "object_results":
+        {"purchase_succeeded": 0, "purchase_failed": 0, "creation_failed": 3, "creation_succeeded":
+        0}, "label_url": [], "test": true}'
+    http_version: 
+  recorded_at: Fri, 13 Sep 2019 21:45:58 GMT
+- request:
+    method: get
+    uri: https://api.goshippo.com/batches/e7601f3197004fc6a48d17aa38286bb0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - rest-client/2.1.0 (darwin18.7.0 x86_64) ruby/2.6.4p104
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<API_TOKEN>"
+      Shippo-Api-Version:
+      - '2017-03-29'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.goshippo.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 13 Sep 2019 21:46:00 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '588'
+      Connection:
+      - keep-alive
+      Server:
+      - nginx/1.12.1
+      Content-Language:
+      - en-us
+      Vary:
+      - Accept-Language, Host, Cookie, Accept-Encoding
+      Allow:
+      - OPTIONS
+      P3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      X-Envoy-Upstream-Service-Time:
+      - '81'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"object_id": "e7601f3197004fc6a48d17aa38286bb0", "object_owner": "test@goshippotest.com",
+        "status": "INVALID", "object_created": "2019-09-13T21:45:42.075Z", "object_updated":
+        "2019-09-13T21:45:44.533Z", "metadata": "BATCH #170", "default_carrier_account":
+        "903074429eab4954b72df8a70defdfe3", "default_servicelevel_token": "usps_priority",
+        "label_filetype": "ZPLII", "batch_shipments": {"count": 3, "next": null, "previous":
+        null, "results": [{"metadata": "", "carrier_account": null, "servicelevel_token":
+        null, "shipment": "9b25d9a2d8714fddb8f59cec5516e508", "transaction": null,
+        "object_id": "b33b7ca1f52845f18207c0412396e6d0", "status": "INVALID", "messages":
+        ["Carrier account with the provided object_id does not exist"]}, {"metadata":
+        "", "carrier_account": null, "servicelevel_token": null, "shipment": "50b0aa3f05d344fa96d8b768a1aaf72e",
+        "transaction": null, "object_id": "1cee106c190942ce901f04b21a5b42ee", "status":
+        "INVALID", "messages": ["Carrier account with the provided object_id does
+        not exist"]}, {"metadata": "", "carrier_account": null, "servicelevel_token":
+        null, "shipment": "42b95548803c4e9bb3d385ee2ad68489", "transaction": null,
+        "object_id": "47419379ae1b449e992275b50b1cd219", "status": "INVALID", "messages":
+        ["Carrier account with the provided object_id does not exist"]}]}, "object_results":
+        {"purchase_succeeded": 0, "purchase_failed": 0, "creation_failed": 3, "creation_succeeded":
+        0}, "label_url": [], "test": true}'
+    http_version: 
+  recorded_at: Fri, 13 Sep 2019 21:46:00 GMT
+- request:
+    method: post
+    uri: https://api.goshippo.com/batches/e7601f3197004fc6a48d17aa38286bb0/purchase
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - rest-client/2.1.0 (darwin18.7.0 x86_64) ruby/2.6.4p104
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<API_TOKEN>"
+      Shippo-Api-Version:
+      - '2017-03-29'
+      Content-Length:
+      - '2'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.goshippo.com
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Fri, 13 Sep 2019 21:46:01 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx/1.12.1
+      Vary:
+      - Accept-Language, Host, Cookie
+      P3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      Content-Language:
+      - en-us
+      Allow:
+      - OPTIONS
+      X-Envoy-Upstream-Service-Time:
+      - '18'
+    body:
+      encoding: UTF-8
+      string: '{"detail": "Only batches in VALID state can be purchased."}'
+    http_version: 
+  recorded_at: Fri, 13 Sep 2019 21:46:01 GMT
 recorded_with: VCR 3.0.3

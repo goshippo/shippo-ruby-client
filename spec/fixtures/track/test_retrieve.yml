@@ -2,7 +2,52 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.goshippo.com/tracks/shippo/9102969010383081813033/
+    uri: https://api.goshippo.com/tracks/usps/9205590164917312751089/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - rest-client/2.1.0 (darwin18.7.0 x86_64) ruby/2.6.4p104
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<API_TOKEN>"
+      Shippo-Api-Version:
+      - '2017-03-29'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.goshippo.com
+  response:
+    status:
+      code: 301
+      message: Moved Permanently
+    headers:
+      Date:
+      - Fri, 13 Sep 2019 21:31:34 GMT
+      Content-Type:
+      - text/html; charset=utf-8
+      Content-Length:
+      - '70'
+      Connection:
+      - keep-alive
+      Location:
+      - "/tracks/usps/9205590164917312751089"
+      X-Envoy-Upstream-Service-Time:
+      - '0'
+      Server:
+      - envoy
+    body:
+      encoding: UTF-8
+      string: "<a href=\"/tracks/usps/9205590164917312751089\">Moved Permanently</a>.\n\n"
+    http_version: 
+  recorded_at: Fri, 13 Sep 2019 21:31:34 GMT
+- request:
+    method: get
+    uri: https://api.goshippo.com/tracks/usps/9205590164917312751089
     body:
       encoding: US-ASCII
       string: ''
@@ -27,31 +72,22 @@ http_interactions:
       message: Bad Request
     headers:
       Date:
-      - Thu, 12 Sep 2019 17:47:41 GMT
+      - Fri, 13 Sep 2019 21:31:34 GMT
       Content-Type:
-      - application/json
-      Transfer-Encoding:
-      - chunked
+      - application/json; charset=utf-8
+      Content-Length:
+      - '75'
       Connection:
       - keep-alive
-      Server:
-      - nginx/1.12.1
-      Vary:
-      - Accept-Language, Host, Cookie
-      P3p:
-      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
-      Content-Language:
-      - en-us
-      Allow:
-      - OPTIONS
       X-Envoy-Upstream-Service-Time:
-      - '9'
+      - '4'
+      Server:
+      - envoy
     body:
       encoding: UTF-8
-      string: '{"detail": "9102969010383081813033 is not a valid test tracking number.
-        Please use the sample tracking numbers provided in the Shippo API docs: https://goshippo.com/docs/tracking"}'
+      string: '{"detail":"usps is not a valid test tracking carrier. Please use ''shippo''"}'
     http_version: 
-  recorded_at: Thu, 12 Sep 2019 17:47:41 GMT
+  recorded_at: Fri, 13 Sep 2019 21:31:34 GMT
 - request:
     method: get
     uri: https://api.goshippo.com/tracks/shippo/9205590164917312751089/
@@ -79,7 +115,7 @@ http_interactions:
       message: Bad Request
     headers:
       Date:
-      - Thu, 12 Sep 2019 17:52:14 GMT
+      - Fri, 13 Sep 2019 21:35:57 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -97,16 +133,61 @@ http_interactions:
       Allow:
       - OPTIONS
       X-Envoy-Upstream-Service-Time:
-      - '12'
+      - '11'
     body:
       encoding: UTF-8
       string: '{"detail": "9205590164917312751089 is not a valid test tracking number.
         Please use the sample tracking numbers provided in the Shippo API docs: https://goshippo.com/docs/tracking"}'
     http_version: 
-  recorded_at: Thu, 12 Sep 2019 17:52:14 GMT
+  recorded_at: Fri, 13 Sep 2019 21:35:57 GMT
 - request:
     method: get
-    uri: https://api.goshippo.com/tracks/usps/9205590164917312751089/
+    uri: https://api.goshippo.com/tracks/usps/9102969010383081813033/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - rest-client/2.1.0 (darwin18.7.0 x86_64) ruby/2.6.4p104
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<API_TOKEN>"
+      Shippo-Api-Version:
+      - '2017-03-29'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.goshippo.com
+  response:
+    status:
+      code: 301
+      message: Moved Permanently
+    headers:
+      Date:
+      - Fri, 13 Sep 2019 21:41:40 GMT
+      Content-Type:
+      - text/html; charset=utf-8
+      Content-Length:
+      - '70'
+      Connection:
+      - keep-alive
+      Location:
+      - "/tracks/usps/9102969010383081813033"
+      X-Envoy-Upstream-Service-Time:
+      - '0'
+      Server:
+      - envoy
+    body:
+      encoding: UTF-8
+      string: "<a href=\"/tracks/usps/9102969010383081813033\">Moved Permanently</a>.\n\n"
+    http_version: 
+  recorded_at: Fri, 13 Sep 2019 21:41:40 GMT
+- request:
+    method: get
+    uri: https://api.goshippo.com/tracks/usps/9102969010383081813033
     body:
       encoding: US-ASCII
       string: ''
@@ -131,7 +212,50 @@ http_interactions:
       message: Bad Request
     headers:
       Date:
-      - Thu, 12 Sep 2019 17:53:08 GMT
+      - Fri, 13 Sep 2019 21:41:41 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '75'
+      Connection:
+      - keep-alive
+      X-Envoy-Upstream-Service-Time:
+      - '2'
+      Server:
+      - envoy
+    body:
+      encoding: UTF-8
+      string: '{"detail":"usps is not a valid test tracking carrier. Please use ''shippo''"}'
+    http_version: 
+  recorded_at: Fri, 13 Sep 2019 21:41:41 GMT
+- request:
+    method: get
+    uri: https://api.goshippo.com/tracks/shippo/9102969010383081813033/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - rest-client/2.1.0 (darwin18.7.0 x86_64) ruby/2.6.4p104
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<API_TOKEN>"
+      Shippo-Api-Version:
+      - '2017-03-29'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.goshippo.com
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Fri, 13 Sep 2019 21:42:34 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -149,10 +273,80 @@ http_interactions:
       Allow:
       - OPTIONS
       X-Envoy-Upstream-Service-Time:
-      - '13'
+      - '10'
     body:
       encoding: UTF-8
-      string: '{"detail": "usps is not a valid test tracking carrier. Please use ''shippo''"}'
+      string: '{"detail": "9102969010383081813033 is not a valid test tracking number.
+        Please use the sample tracking numbers provided in the Shippo API docs: https://goshippo.com/docs/tracking"}'
     http_version: 
-  recorded_at: Thu, 12 Sep 2019 17:53:08 GMT
+  recorded_at: Fri, 13 Sep 2019 21:42:34 GMT
+- request:
+    method: get
+    uri: https://api.goshippo.com/tracks/shippo/SHIPPO_TRANSIT/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - rest-client/2.1.0 (darwin18.7.0 x86_64) ruby/2.6.4p104
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<API_TOKEN>"
+      Shippo-Api-Version:
+      - '2017-03-29'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.goshippo.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 13 Sep 2019 21:43:41 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '539'
+      Connection:
+      - keep-alive
+      Server:
+      - nginx/1.12.1
+      Content-Language:
+      - en-us
+      Vary:
+      - Accept-Language, Host, Cookie, Accept-Encoding
+      Allow:
+      - OPTIONS
+      P3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      X-Envoy-Upstream-Service-Time:
+      - '20'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"messages": [], "carrier": "shippo", "tracking_number": "SHIPPO_TRANSIT",
+        "address_from": {"city": "San Francisco", "state": "CA", "zip": "94103", "country":
+        "US"}, "address_to": {"city": "Chicago", "state": "IL", "zip": "60611", "country":
+        "US"}, "eta": "2019-09-16T21:43:41.656Z", "original_eta": "2019-09-16T21:43:41.656Z",
+        "servicelevel": {"token": "shippo_priority", "name": "Priority Mail"}, "metadata":
+        "Shippo test tracking", "tracking_status": {"object_created": "2019-09-13T21:43:41.659Z",
+        "object_updated": null, "object_id": "45f3bc3facbc45f28ecfeaf016b95e09", "status":
+        "TRANSIT", "status_details": "Your shipment has departed from the origin.",
+        "status_date": "2019-09-12T19:38:41.659Z", "location": {"city": "San Francisco",
+        "state": "CA", "zip": "94103", "country": "US"}}, "tracking_history": [{"object_created":
+        "2019-09-13T21:43:41.661Z", "object_updated": null, "object_id": "4113717efb1b49158922a08eb1d34474",
+        "status": "UNKNOWN", "status_details": "The carrier has received the electronic
+        shipment information.", "status_date": "2019-09-11T17:33:41.661Z", "location":
+        {"city": "San Francisco", "state": "CA", "zip": "94103", "country": "US"}},
+        {"object_created": "2019-09-13T21:43:41.661Z", "object_updated": null, "object_id":
+        "617cba4449f043dfada573716de93c4a", "status": "TRANSIT", "status_details":
+        "Your shipment has departed from the origin.", "status_date": "2019-09-12T19:38:41.661Z",
+        "location": {"city": "San Francisco", "state": "CA", "zip": "94103", "country":
+        "US"}}], "transaction": null, "test": true}'
+    http_version: 
+  recorded_at: Fri, 13 Sep 2019 21:43:41 GMT
 recorded_with: VCR 3.0.3

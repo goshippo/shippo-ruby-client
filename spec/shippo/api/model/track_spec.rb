@@ -9,12 +9,12 @@ RSpec.describe 'Shippo::API::Track' do
 
   describe '#retrieve' do
     it 'should properly return a Track object' do
-      VCR.use_cassette("track/test_retrieve", :record => :all) do
+      VCR.use_cassette("track/test_retrieve") do
         track = Shippo::Track::get(TRACKING_NO, CARRIER)
         expect(track).to be_kind_of(Shippo::Track)
         expect(track.tracking_number).to be == TRACKING_NO
         expect(track.tracking_history).not_to be == nil
-        expect(track.tracking_history.last[:status]).to be == 'DELIVERED'
+        expect(track.tracking_history.last[:status]).to be == 'TRANSIT'
       end
     end
   end
@@ -31,12 +31,12 @@ RSpec.describe 'Shippo::API::Track' do
 
   describe '#register_webhook' do
     it 'should properly return a Track object' do
-      VCR.use_cassette("track/test_register_webhook", :record => :all) do
+      VCR.use_cassette("track/test_register_webhook") do
         track = Shippo::Track::create(params.dup)
         expect(track).to be_kind_of(Shippo::Track)
         expect(track.tracking_number).to be == TRACKING_NO
         expect(track.tracking_history).not_to be == nil
-        expect(track.tracking_history.last[:status]).to be == 'DELIVERED'
+        expect(track.tracking_history.last[:status]).to be == 'TRANSIT'
       end
     end
   end

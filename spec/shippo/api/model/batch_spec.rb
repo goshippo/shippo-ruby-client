@@ -131,7 +131,7 @@ RSpec.describe 'Shippo::API::Batch' do
 
   describe '#purchase' do
     it 'should properly purchase a batch' do
-      VCR.use_cassette('batch/test_purchase') do
+      VCR.use_cassette('batch/test_purchase', :record => :all) do
         batch = Shippo::Batch::create(dummy_batch.dup)
         retrieve = retrieve_valid_batch(batch[:object_id])
         purchase = Shippo::Batch::purchase(retrieve[:object_id])

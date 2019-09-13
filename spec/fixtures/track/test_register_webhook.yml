@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.goshippo.com/tracks/
     body:
       encoding: UTF-8
-      string: '{"carrier":"usps","tracking_number":"9205590164917312751089"}'
+      string: '{"carrier":"shippo","tracking_number":"SHIPPO_TRANSIT"}'
     headers:
       Accept:
       - application/json
@@ -18,39 +18,57 @@ http_interactions:
       Shippo-Api-Version:
       - '2017-03-29'
       Content-Length:
-      - '61'
+      - '55'
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Host:
       - api.goshippo.com
   response:
     status:
-      code: 400
-      message: Bad Request
+      code: 201
+      message: Created
     headers:
       Date:
-      - Thu, 12 Sep 2019 17:53:08 GMT
+      - Fri, 13 Sep 2019 21:43:42 GMT
       Content-Type:
       - application/json
-      Transfer-Encoding:
-      - chunked
+      Content-Length:
+      - '538'
       Connection:
       - keep-alive
       Server:
       - nginx/1.12.1
-      Vary:
-      - Accept-Language, Host, Cookie
-      P3p:
-      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
       Content-Language:
       - en-us
+      Vary:
+      - Accept-Language, Host, Cookie, Accept-Encoding
       Allow:
       - OPTIONS
+      P3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
       X-Envoy-Upstream-Service-Time:
-      - '14'
+      - '34'
     body:
-      encoding: UTF-8
-      string: '{"detail": "usps is not a valid test tracking carrier. Please use ''shippo''"}'
+      encoding: ASCII-8BIT
+      string: '{"messages": [], "carrier": "shippo", "tracking_number": "SHIPPO_TRANSIT",
+        "address_from": {"city": "San Francisco", "state": "CA", "zip": "94103", "country":
+        "US"}, "address_to": {"city": "Chicago", "state": "IL", "zip": "60611", "country":
+        "US"}, "eta": "2019-09-16T21:43:42.103Z", "original_eta": "2019-09-16T21:43:42.103Z",
+        "servicelevel": {"token": "shippo_priority", "name": "Priority Mail"}, "metadata":
+        "Shippo test tracking", "tracking_status": {"object_created": "2019-09-13T21:43:42.117Z",
+        "object_updated": null, "object_id": "21772f3725ab4222ad2a116a4de56571", "status":
+        "TRANSIT", "status_details": "Your shipment has departed from the origin.",
+        "status_date": "2019-09-12T19:38:42.117Z", "location": {"city": "San Francisco",
+        "state": "CA", "zip": "94103", "country": "US"}}, "tracking_history": [{"object_created":
+        "2019-09-13T21:43:42.119Z", "object_updated": null, "object_id": "45e25cc8dc9245bbb28accc27e020761",
+        "status": "UNKNOWN", "status_details": "The carrier has received the electronic
+        shipment information.", "status_date": "2019-09-11T17:33:42.119Z", "location":
+        {"city": "San Francisco", "state": "CA", "zip": "94103", "country": "US"}},
+        {"object_created": "2019-09-13T21:43:42.119Z", "object_updated": null, "object_id":
+        "27581db20c4e4e2db644d8d8bb4a7692", "status": "TRANSIT", "status_details":
+        "Your shipment has departed from the origin.", "status_date": "2019-09-12T19:38:42.119Z",
+        "location": {"city": "San Francisco", "state": "CA", "zip": "94103", "country":
+        "US"}}], "transaction": null, "test": true}'
     http_version: 
-  recorded_at: Thu, 12 Sep 2019 17:53:08 GMT
+  recorded_at: Fri, 13 Sep 2019 21:43:42 GMT
 recorded_with: VCR 3.0.3
