@@ -51,7 +51,11 @@ module Shippo
 
         def detect_type_class(model_name)
           type = model_name.to_s.singularize.camelize
-          "Shippo::#{type}".constantize rescue nil
+          begin
+            "Shippo::#{type}".constantize
+          rescue Exception
+            return nil
+          end
         end
 
         def detect_type_name(list_key)
