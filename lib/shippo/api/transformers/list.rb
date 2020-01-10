@@ -52,8 +52,8 @@ module Shippo
         def detect_type_class(model_name)
           type = model_name.to_s.singularize.camelize
           begin
-            "Shippo::#{type}".constantize
-          rescue Exception
+            "Shippo::#{type}".constantize rescue nil
+          rescue LoadError
             return nil
           end
         end
