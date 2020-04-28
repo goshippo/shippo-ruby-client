@@ -14,7 +14,7 @@ RSpec.describe 'Shippo::API::Track' do
         expect(track).to be_kind_of(Shippo::Track)
         expect(track.tracking_number).to be == TRACKING_NO
         expect(track.tracking_history).not_to be == nil
-        expect(track.tracking_history.last[:status]).to be == 'DELIVERED'
+        expect(track.tracking_history.last[:status]).to be == 'TRANSIT'
       end
     end
   end
@@ -36,7 +36,7 @@ RSpec.describe 'Shippo::API::Track' do
         expect(track).to be_kind_of(Shippo::Track)
         expect(track.tracking_number).to be == TRACKING_NO
         expect(track.tracking_history).not_to be == nil
-        expect(track.tracking_history.last[:status]).to be == 'DELIVERED'
+        expect(track.tracking_history.last[:status]).to be == 'TRANSIT'
       end
     end
   end
