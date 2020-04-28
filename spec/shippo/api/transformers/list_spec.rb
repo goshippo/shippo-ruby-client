@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'rspec/mocks'
 require 'shippo/api/transformers/list'
 
 RSpec.describe Shippo::API::Transformers::List do
@@ -30,6 +31,10 @@ RSpec.describe Shippo::API::Transformers::List do
           end
           it 'should be able to match the class name' do
             expect(transform.send(:detect_type_class, 'parcels')).to eql(Shippo::Parcel)
+          end
+          it 'should return nil if String#constantize raise LoadError' do
+            expect_any_instance_of(String).to receive(:constantize).and_raise(LoadError)
+            expect(transform.send(:detect_type_class, 'parcels')).to eql(nil)
           end
           context 'when shipping is created' do
             let(:parcel) { Shippo::Parcel.from(params[:parcels][0]) }
