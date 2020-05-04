@@ -72,6 +72,14 @@ module Shippo
         rescue ::RestClient::BadRequest => e
           raise Shippo::Exceptions::InvalidInputError.new(e.inspect)
 
+        rescue ::RestClient::NotFound => e
+          if e.respond_to?(:response) && e.response.is_a?(RestClient::Response) && e.response&.body&.include?('detail')
+            awesome_print_response(e) if Shippo::API.debug?
+            raise Shippo::Exceptions::UnsuccessfulResponseError.new('Unsuccessful response with an error', self, e.response)
+          end
+
+          raise Shippo::Exceptions::ConnectionError.new(connection_error_message(url, e))
+
         rescue ::RestClient::Exception => e
           raise Shippo::Exceptions::ConnectionError.new(connection_error_message(url, e))
 
