@@ -21,6 +21,7 @@ require 'shippo/api/category'
 require 'shippo/exceptions/api_error'
 require 'awesome_print'
 require 'json'
+require 'date'
 
 # Simple wrapper class to help us print objects to the STDOUT
 class ExampleHelper
@@ -138,3 +139,15 @@ else
   puts 'Transaction ERROR'
   puts transaction.messages
 end
+
+
+
+pickup_object = { :carrier_account  => rate.carrier_account,
+  :location => {
+    :building_location_type => "Knock on Door"
+    :address_to             => address_to,
+  },
+  :transactions => Array(transaction.object_id),
+  :requested_start_time => Time.now.strftime('%Y-%m-%dT%H:%M:%S.%L%z'),
+  :requested_end_time => Date.tomorrow.strftime('%Y-%m-%dT%H:%M:%S.%L%z'),
+  :is_test => false }
