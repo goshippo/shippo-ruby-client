@@ -1,5 +1,7 @@
-#### 4.0.1 release, Oct 28th, 2021
-- Added Orders & Pickups
+#### 4.1.0 release, Oct 28th, 2021
+- Added Orders
+- Added Pickups
+- Added CirclCi
 
 #### 4.0.0 release, Sep 5th, 2019
 - [Allow multiple accounts in a single service/application](https://github.com/goshippo/shippo-ruby-client/pull/74)
