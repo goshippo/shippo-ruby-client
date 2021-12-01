@@ -74,7 +74,7 @@ module Shippo
 
       # list of allowed properties, of a given type.
       PROPS_ID         = %i(id).freeze
-      PROPS_CATEG      = %i(state status results).freeze
+      PROPS_CATEG      = %i(state status results purpose).freeze
       PROPS_EMAIL      = %i(owner).freeze
       PROPS_TIMED      = %i(created updated).freeze
 

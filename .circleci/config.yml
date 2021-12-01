@@ -1,0 +1,13 @@
+version: 2.1
+orbs:
+    ruby: circleci/ruby@1.2.0
+
+jobs:
+  build:
+    docker:
+      - image: cimg/ruby:2.6.5-node
+    steps:
+      - checkout
+      - run: gem install bundler
+      - run: bundle install
+      - run: rspec

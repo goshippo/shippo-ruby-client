@@ -20,13 +20,12 @@ RSpec.describe Shippo::API::Request do
       unless example.metadata[:skip_before]
         Shippo::API.open_timeout = open_timeout
         Shippo::API.read_timeout = read_timeout
-        Shippo::API.version = "2017-03-29"
       end
         allow(RestClient::Request).to receive(:execute).and_return(http_response)
         api_request.execute
     end
     it 'should include Shippo-API-Version in header if one is specified' do
-      expect(api_request.headers[:'Shippo-API-Version']).to eql("2017-03-29")
+      expect(api_request.headers[:'Shippo-API-Version']).to eql("2018-02-08")
     end
     it 'should successfully return the response object' do
       expect(api_request.response).to_not be_nil

@@ -70,7 +70,7 @@ begin
   address = ExampleHelper.log_operation 'Creating address... ' do
     Shippo::Address.create(address)
   end
-  raise Shippo::Exceptions::UnsuccessfulResponseError.new(address.object.inspect) unless address.valid?
+  raise Shippo::Exceptions::UnsuccessfulResponseError.new(address.object.inspect) unless address.is_complete?
   File.open('example-address.json', 'w') do |file|
     file.puts JSON.dump(address.to_hash)
   end

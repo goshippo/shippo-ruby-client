@@ -89,37 +89,49 @@ address_to   = {
   :email          => 'hippo@goshippo.com' }
 
 # Create parcel object
-parcel       = {
+parcel1       = {
   :length        => 5,
   :width         => 2,
   :height        => 5,
   :distance_unit => :in,
   :weight        => 2,
   :mass_unit     => :lb }
+parcel2       = {
+  :length        => 4,
+  :width         => 8,
+  :height        => 4,
+  :distance_unit => :in,
+  :weight        => 6,
+  :mass_unit     => :lb }
 
-hash = { :default_carrier_account => DEFAULT_CARRIER_ACCOUNT,
-         :default_servicelevel_token => 'usps_priority',
-         :label_filetype => 'ZPLII',
-         :metadata => 'BATCH #170',
-         :batch_shipments => [
-           {
-             :shipment => {
-               :address_from   => address_from,
-               :address_to     => address_to,
-               :parcel         => parcel,
-               :async          => false
-             }
-           }
-         ]
-       }
 
-shipment_params = { :address_from   => address_from,
-                    :address_to     => address_to,
-                    :parcel         => parcel,
-                    :async          => false }
+shipment1 = { :address_from   => address_from,
+              :address_to     => address_to,
+              :parcels        => [parcel1],
+              :async          => false }
+
+shipment2 = { :address_from   => address_from,
+              :address_to     => address_to,
+              :parcels        => [parcel2],
+              :async          => false }
 
 begin
-  batch = ExampleHelper.log_operation 'Making first API call to create a batch...' do
+  shipment_1 = ExampleHelper.log_operation 'Making API call for shipment... ' do
+    Shippo::Shipment.create(shipment1)
+  end
+  # **** NOTE: Known issue with TEST API KEY and BATCH, must create shipment first
+  hash = { :default_carrier_account => DEFAULT_CARRIER_ACCOUNT,
+          :default_servicelevel_token => 'usps_priority',
+          :label_filetype => 'ZPLII',
+          :metadata => 'BATCH #170',
+          :batch_shipments => [
+            {
+              :shipment => shipment_1[:object_id]
+            }
+          ]
+        }
+
+  batch = ExampleHelper.log_operation 'Making API call to create a batch...' do
     Shippo::Batch.create(hash)
   end
 
@@ -131,26 +143,26 @@ begin
   puts "Batch shipment count = #{retrieve[:batch_shipments][:count]}"
   puts
 
-  shipment = ExampleHelper.log_operation 'Making API call to create a shipment... ' do
-    Shippo::Shipment.create(shipment_params)
+  shipment_2 = ExampleHelper.log_operation 'Making API call to create a shipment... ' do
+    Shippo::Shipment.create(shipment2)
   end
-  raise Shippo::Exceptions::UnsuccessfulResponseError.new(shipment.object.inspect) unless shipment.success?
+  raise Shippo::Exceptions::UnsuccessfulResponseError.new(shipment_2.object.inspect) unless shipment_2.success?
   File.open('example-shipment.json', 'w') do |file|
-    file.puts JSON.dump(shipment.to_hash)
+    file.puts JSON.dump(shipment_2.to_hash)
   end
 
   # Adding shipments
   shipments = Array.new
-  shipments.push({"shipment" => shipment[:object_id]})
+  shipments.push({"shipment" => shipment_2[:object_id]})
   added = ExampleHelper.log_operation 'Making API call to add a new shipment to batch...' do
     Shippo::Batch::add_shipment(retrieve[:object_id], shipments)
   end
   puts "Batch shipment count = #{added[:batch_shipments][:count]}"
   puts
-
+  
   # Removing shipments
   shipments_to_remove = Array.new
-  shipments_to_remove.push(added.batch_shipments.results[0][:object_id])
+  shipments_to_remove.push(added.batch_shipments.results.last[:object_id])
   removed = ExampleHelper.log_operation 'Making API call to remove the new shipment from batch...' do
     Shippo::Batch::remove_shipment(retrieve[:object_id], shipments_to_remove)
   end
