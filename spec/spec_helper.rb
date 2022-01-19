@@ -28,11 +28,11 @@ RSpec.configure do |config|
   end
 end
 
-Shippo::API.token = 'shippo_test_09e74f332aa839940e6c241bb008157c19428339'
-Shippo::API.version = '2017-03-29'
+Shippo::API.token = ENV["SHIPPO_TOKEN"]
+Shippo::API.version = '2018-02-08'
 Shippo::API.warnings = false
 
 CARRIER = 'shippo'
-DEFAULT_CARRIER_ACCOUNT = '903074429eab4954b72df8a70defdfe3'
+DEFAULT_CARRIER_ACCOUNT = ENV["DEFAULT_CARRIER_ACCOUNT"]
 DEFAULT_SERVICELEVEL_TOKEN = 'usps_priority'
 TRACKING_NO = 'SHIPPO_TRANSIT'

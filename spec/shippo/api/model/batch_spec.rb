@@ -5,10 +5,10 @@ require 'spec_helper'
 # Batch (which takes time to become 'VALID' from
 # 'VALIDATING' after initially being created).
 def retrieve_valid_batch(id)
-  retries = 10
+  retries = 4
   retrieve = nil
   until retries == 0 do
-    sleep 1
+    sleep 3
     retrieve = Shippo::Batch::get(id)
     break if retrieve[:status] == 'VALID'
     retries -= 1
@@ -17,14 +17,24 @@ def retrieve_valid_batch(id)
   retrieve
 end
 
+def create_batch(shipment_hash, batch_hash)
+  shipments = Array.new
+  shipment = Shippo::Shipment::create(shipment_hash)
+  shipments.push({"shipment" => shipment[:object_id]})
+  new_batch = batch_hash.dup
+  new_batch[:batch_shipments] = shipments
+  Shippo::Batch::create(new_batch)
+end
+
 RSpec.describe 'Shippo::API::Batch' do
   let(:dummy_batch) { DUMMY_BATCH }
   let(:dummy_shipment) { DUMMY_SHIPMENT }
+  let(:dummy_shipment_2) { DUMMY_SHIPMENT_2 }
 
   describe '#create' do
     it 'should properly create and return a Batch object' do
       VCR.use_cassette('batch/test_create') do
-        batch = Shippo::Batch::create(dummy_batch.dup)
+        batch = create_batch(dummy_shipment, dummy_batch)
         expect(batch).to be_kind_of(Shippo::Batch)
         expect(batch[:status]).to be == 'VALIDATING'
       end
@@ -37,7 +47,7 @@ RSpec.describe 'Shippo::API::Batch' do
         invalid_dummy_batch = dummy_batch.dup
         invalid_dummy_batch[:default_carrier_account] = 'INVALID_CARRIER_ACCOUNT'
         expect {
-          batch = Shippo::Batch::create(invalid_dummy_batch.dup)
+          batch = create_batch(dummy_shipment, invalid_dummy_batch.dup)
         }.to raise_error(Shippo::Exceptions::Error)
       end
     end
@@ -46,7 +56,7 @@ RSpec.describe 'Shippo::API::Batch' do
   describe '#retrieve' do
     it 'should properly return a Batch object' do
       VCR.use_cassette('batch/test_retrieve') do
-        batch = Shippo::Batch::create(dummy_batch.dup)
+        batch = create_batch(dummy_shipment, dummy_batch)
         retrieve = Shippo::Batch::get(batch[:object_id])
         expect(retrieve).to be_kind_of(Shippo::Batch)
         expect(retrieve).to be == batch
@@ -67,12 +77,12 @@ RSpec.describe 'Shippo::API::Batch' do
   describe '#add_shipment' do
     it 'should properly add a shipment to an existing batch' do
       VCR.use_cassette('batch/test_add') do
-        batch = Shippo::Batch::create(dummy_batch.dup)
+        batch = create_batch(dummy_shipment, dummy_batch)
         retrieve = retrieve_valid_batch(batch[:object_id])
         batch_size = retrieve.batch_shipments.results.length
 
         shipments = Array.new
-        shipment = Shippo::Shipment::create(dummy_shipment.dup)
+        shipment = Shippo::Shipment::create(dummy_shipment_2.dup)
         shipments.push({"shipment" => shipment[:object_id]})
 
         added = Shippo::Batch::add_shipment(retrieve[:object_id], shipments)
@@ -97,7 +107,7 @@ RSpec.describe 'Shippo::API::Batch' do
   describe '#remove_shipment' do
     it 'should properly remove a shipment from an existing batch' do
       VCR.use_cassette('batch/test_remove') do
-        batch = Shippo::Batch::create(dummy_batch.dup)
+        batch = create_batch(dummy_shipment, dummy_batch)
         retrieve = retrieve_valid_batch(batch[:object_id])
         batch_size = retrieve.batch_shipments.results.length
 
@@ -132,7 +142,9 @@ RSpec.describe 'Shippo::API::Batch' do
   describe '#purchase' do
     it 'should properly purchase a batch' do
       VCR.use_cassette('batch/test_purchase', :record => :all) do
-        batch = Shippo::Batch::create(dummy_batch.dup)
+        # test key returns 429 error during testing [Exceeds rate limit]
+        sleep 61
+        batch = create_batch(dummy_shipment, dummy_batch)
         retrieve = retrieve_valid_batch(batch[:object_id])
         purchase = Shippo::Batch::purchase(retrieve[:object_id])
         expect(purchase[:status]).to be == 'PURCHASING'
