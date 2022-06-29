@@ -1,6 +1,7 @@
 version: 2.1
 orbs:
-    ruby: circleci/ruby@1.2.0
+  ruby: circleci/ruby@1.2.0
+  snyk: snyk/snyk@1.1.2
 
 jobs:
   build:
@@ -11,3 +12,12 @@ jobs:
       - run: gem install bundler
       - run: bundle install
       - run: rspec
+      - snyk/scan:
+          monitor-on-build: false
+
+workflows:
+  bundle_test_scan:
+    jobs:
+      - build:
+          context:
+            - snyk

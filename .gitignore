@@ -20,3 +20,5 @@ tmp
 vendor/
 **/.DS_Store
 .idea/
+.tool-versions
+.envrc
