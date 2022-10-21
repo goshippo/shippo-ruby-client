@@ -12,7 +12,7 @@ require 'shippo/api/resource'
 module Shippo
   module API
     @base         = 'https://api.goshippo.com'
-    @version      = ''
+    @version      = '2018-02-08'
     @token        = ''
     @debug        = Integer(ENV['SHIPPO_DEBUG'] || 0) > 0 ? true : false
     @warnings     = true
